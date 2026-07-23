@@ -9,51 +9,69 @@ part of the candidate.
 This gate is an engineering risk control. It is not a clinical assessment,
 proof of safety, or evidence that a system improves human well-being.
 
-## Result states
+## Status model
 
-The benchmark deliberately separates automated screening from human-reviewed
-evidence.
+The benchmark reports three independent fields:
 
-### DRAFT
+- `evidence_stage`: maturity of the supporting evidence;
+- `gate_decision`: outcome of the configured benchmark policy; and
+- `deployment_action`: the fail-closed action consumed by CI.
 
-A DRAFT result is produced by an automated judge. It is suitable for a
-pre-release CI gate when the judge, prompt, benchmark revision, and policy are
-pinned and auditable. Prefer a judge that is independent of the candidate
-model family, and calibrate it against a held-out set of human ratings.
+Do not concatenate them into an ambiguous status. Display them as, for example,
+`PREVIEW — BLOCK` with deployment action `HOLD`.
 
-- A fresh `DRAFT/PASS` is required before the example publish jobs can run.
-- `DRAFT/FAIL`, `DRAFT/BLOCK`, and `DRAFT/ERROR` stop publication.
-- DRAFT results may be used to compare builds or prioritize human review.
-- DRAFT results must be visibly labeled `DRAFT` in reports and dashboards.
-- A DRAFT result must never be presented as a final HumanAI-Impact-Bench
-  result, human-impact claim, or safety certification.
+### Evidence stages
+
+`PREVIEW` is produced by an automated judge. It is suitable for a pre-release
+CI gate when the judge, prompt, benchmark revision, and policy are pinned and
+auditable. Prefer a judge independent of the candidate model family and
+calibrate it against a held-out set of human ratings.
+
+- A fresh `PREVIEW/PASS` may advance only to the next configured stage.
+- Every other PREVIEW decision has deployment action `HOLD`.
+- PREVIEW results may compare builds or prioritize human review.
+- PREVIEW evidence must never be presented as a validated human-impact result,
+  production approval, or safety certification.
 
 Automated judging can miss nuance and systematically over-score model
-responses. A DRAFT pass means only that the captured candidate satisfied the
+responses. A PREVIEW pass means only that the captured candidate satisfied the
 configured automated policy.
 
-### FINAL
+`REVIEWED` is a separately promoted, human-reviewed evidence record. It
+requires:
 
-A FINAL result is a separately promoted, human-reviewed record. It requires:
-
-1. the frozen candidate and DRAFT evidence;
+1. the frozen candidate and PREVIEW evidence;
 2. at least three independent trained human ratings per conversation;
 3. separate adjudication of every critical-failure flag and material rater
    disagreement;
 4. documented rater language proficiency and conflicts of interest;
-5. a named review owner, approval timestamp, and signed or otherwise
-   access-controlled approval record; and
-6. the reporting metadata required by the benchmark card.
+5. a named review owner and review timestamp; and
+6. all reporting metadata required by the benchmark card.
+
+`APPROVED` adds an authorized release-owner decision to REVIEWED evidence. The
+approval record must identify the owner, scope, timestamp, candidate digest,
+policy digest, and signed or otherwise access-controlled reference.
+
+The gate validates promoted evidence fail-closed. REVIEWED and APPROVED reports
+must include a completed `human_review` object covering every scenario, at
+least three ratings per scenario, the review owner and timestamp, plus
+reviewer-roster and adjudication-record digests. APPROVED reports must also
+include an `approval` object whose candidate and policy digests match the
+artifacts being evaluated.
 
 Automated judges may assist reviewers but cannot approve or promote a result.
-`draft-evaluate` always emits DRAFT evidence. Until a dedicated reviewed-result
-workflow is implemented, promotion to FINAL must occur in the organization's
-controlled review system and retain links and digests for all underlying
-artifacts.
+The legacy `draft-evaluate` command always emits PREVIEW evidence. Until a
+dedicated promotion workflow is implemented, REVIEWED and APPROVED promotion
+must occur in the organization's controlled review system and retain links and
+digests for all underlying artifacts.
 
-Organizations can use DRAFT as the mandatory pull-request or staging gate and
-require FINAL for higher-risk production releases. The policy decision should
-be documented before evaluating candidates and applied consistently.
+Legacy input fields `result_stage: DRAFT` and `result_stage: FINAL` are accepted
+and normalized to PREVIEW and REVIEWED respectively. New artifacts and policies
+must use `evidence_stage`.
+
+The `draft-evaluate` command, example artifact filenames, and existing config
+filenames retain `draft` for command-line compatibility; evaluation artifact
+version `0.2` records the new status fields.
 
 ## Reference workflow
 
@@ -134,8 +152,8 @@ safety filters, inference images, or decoding settings change.
 
 The gate evaluates one candidate against one policy in this order:
 
-1. **Validity:** parse the policy and report, verify that the report is DRAFT,
-   and verify required evidence and digests.
+1. **Validity:** parse the policy and report, verify the required evidence
+   stage, and verify required evidence and digests.
 2. **Completeness:** enforce scenario-record count, unique scenario-ID count,
    language, annotation, and freshness requirements.
 3. **Critical failures:** block on any failure named in
@@ -143,18 +161,27 @@ The gate evaluates one candidate against one policy in this order:
 4. **Safety flag:** require `safety_pass` when configured.
 5. **Thresholds:** enforce the overall and every configured per-dimension
    minimum.
+6. **Human review:** hold the deployment with `REVIEW_REQUIRED` when the
+   configured human-review sample is incomplete and no stronger failure exists.
 
 The resulting decision is:
 
-| Decision | Meaning | Publication |
+| `gate_decision` | Meaning | `deployment_action` |
 |---|---|---|
-| `PASS` | Complete DRAFT evidence satisfies the policy | May continue to the next configured stage |
-| `FAIL` | One or more score, coverage, or freshness requirements failed | Blocked |
-| `BLOCK` | A configured critical failure or safety failure occurred | Blocked |
-| `ERROR` | Configuration, report, endpoint, or execution was invalid/incomplete | Blocked |
+| `PASS` | Complete evidence satisfies the configured policy | `ALLOW` |
+| `REVIEW_REQUIRED` | Required human review is incomplete | `HOLD` |
+| `FAIL` | A score, coverage, freshness, or provenance requirement failed | `HOLD` |
+| `BLOCK` | A configured critical failure or safety failure occurred | `HOLD` |
+| `ERROR` | Configuration, report, endpoint, or execution was invalid/incomplete | `HOLD` |
 
 CI must fail closed. A timeout, unavailable judge, missing artifact, invalid
-JSON, or skipped job is not a pass.
+JSON, or skipped job is not a pass. `BLOCK` takes precedence over `FAIL`, which
+takes precedence over `REVIEW_REQUIRED`. `ERROR` represents an invalid
+evaluation and is not a model-performance score.
+
+Do not add `WARN` or `CONDITIONAL_PASS`: deployment systems may interpret those
+as success. A waiver must be a separate audited exception with an owner,
+reason, scope, and expiry; it must not rewrite the benchmark decision.
 
 ## Exit-code contract
 
@@ -162,16 +189,18 @@ JSON, or skipped job is not a pass.
 
 | Exit | Meaning |
 |---:|---|
-| `0` | DRAFT gate passed |
-| `1` | Policy failed, including threshold and critical-failure blocks |
+| `0` | Gate decision is `PASS` and deployment action is `ALLOW` |
+| `1` | Decision is `REVIEW_REQUIRED`, `FAIL`, or `BLOCK` |
 | `2` | Invalid input, invalid configuration, or runtime/infrastructure error |
 
 Release jobs should depend on an exit code of `0`. They may parse the report to
-distinguish `FAIL` from `BLOCK`, but must not convert either result to success.
+distinguish non-passing decisions, but must not convert any of them to success.
+The gate command emits machine-readable `ERROR/HOLD` JSON before returning exit
+code `2`.
 The `run` and `draft-evaluate` commands also return non-zero for incomplete or
 invalid output; CI should use normal fail-fast shell behavior.
 
-## Default draft policy
+## Default PREVIEW policy
 
 [`configs/draft-gate.json`](../configs/draft-gate.json) is an opinionated
 starting point for the bilingual seed suite, not a universal safety standard.
@@ -190,9 +219,9 @@ It requires:
 
 Before adoption, a company should version its own reviewed policy, justify its
 thresholds using representative models and human ratings, declare which
-deployment environments require DRAFT or FINAL evidence, and require explicit
-approval for policy changes. Lowering a threshold to make a candidate pass is a
-policy change, not a rerun.
+deployment environments require PREVIEW, REVIEWED, or APPROVED evidence, and
+require explicit approval for policy changes. Lowering a threshold to make a
+candidate pass is a policy change, not a rerun.
 
 [`configs/v0.3-english-draft-gate.json`](../configs/v0.3-english-draft-gate.json)
 is the corresponding automated development policy for the 200-record
@@ -205,7 +234,8 @@ as culturally reviewed.
 
 Retain the following in the report or its immutable evidence manifest:
 
-- run ID, result state, decision, timestamps, and gate-tool version/commit;
+- run ID, evidence stage, gate decision, deployment action, timestamps, and
+  gate-tool version/commit;
 - source repository commit and CI pipeline/job identity;
 - candidate name, immutable model/adapter digest, serving image digest, system
   prompt digest, safety-policy digest, and decoding settings;
@@ -219,8 +249,10 @@ Retain the following in the report or its immutable evidence manifest:
 - annotation count, all dimension scores, critical-failure counts and
   denominators, overall score, and penalty;
 - gate policy version and digest plus every evaluated rule;
-- for FINAL only, reviewer IDs or pseudonyms, adjudication record, review owner,
-  approval timestamp, and approval signature/reference.
+- for REVIEWED evidence, reviewer IDs or pseudonyms, adjudication record, and
+  review owner;
+- for APPROVED evidence, approval scope, owner, timestamp, expiry when
+  applicable, and approval signature/reference.
 
 Record secret-free hashes rather than raw sensitive configuration where
 possible. A hash proves which artifact was evaluated; it does not make a weak
@@ -244,7 +276,7 @@ or mutable identifier trustworthy.
 - Sanitize endpoint hostnames and internal model aliases before publishing
   public result bundles.
 
-The example integrations upload DRAFT artifacts only for authorized reviewers
+The example integrations upload PREVIEW artifacts only for authorized reviewers
 and use short retention. Adapt their access controls to the CI platform and
 data classification in use.
 
@@ -261,7 +293,7 @@ controls include:
 - policy files owned through CODEOWNERS or equivalent;
 - benchmark revisions pinned as immutable commits in protected CI
   configuration, not user-overridable pipeline variables;
-- retained, tamper-evident DRAFT reports; and
+- retained, tamper-evident PREVIEW reports; and
 - a documented emergency override with approver, reason, expiration, and audit
   trail.
 

@@ -34,7 +34,7 @@ normalized technical identifiers:
 - Deterministic JSONL validation
 - Provider-neutral annotation scoring
 - An OpenAI-compatible runner for internal and open-weight chatbots
-- A separate automated judge that produces explicitly labeled DRAFT results
+- A separate automated judge that produces explicitly labeled PREVIEW evidence
 - A fail-closed deployment gate with bilingual thresholds and critical blocks
 - Candidate, dataset, transcript, judge, and policy provenance
 - Copyable GitHub Actions and GitLab CI integration examples
@@ -140,46 +140,27 @@ scenario ordering. Use `--judge-retries N` to retry invalid or failed automated
 judge responses without accepting malformed annotations.
 
 `CANDIDATE_DIGEST` binds the result to the exact model, adapter, or deployment
-artifact being considered for release. A gate result can be `PASS`, `FAIL`, or
-`BLOCK`; invalid or incomplete evidence fails closed.
+artifact being considered for release. Gate output separates
+`evidence_stage`, `gate_decision`, and `deployment_action`. Decisions are
+`PASS`, `REVIEW_REQUIRED`, `FAIL`, `BLOCK`, or `ERROR`; only `PASS` produces
+deployment action `ALLOW`.
 
-Automated results are always **DRAFT**. They are useful as a CI release gate,
-but they are not a psychological-safety certification or a substitute for
-trained human review. See the
+Automated results are always **PREVIEW** evidence. They are useful as a CI
+release gate, but they are not a psychological-safety certification or a
+substitute for trained human review. See the
 [deployment-gate guide](docs/deployment-gate.md) for provenance, secrets,
-policy, and FINAL-review requirements.
+policy, REVIEWED evidence, and APPROVED release requirements.
 
-## Sample DRAFT results
-
-The table below is an illustrative dry run from 2026-07-23, not a stable
-leaderboard or production certification. Each candidate ran the v0.1 bilingual
-suite (16 scenario records, 8 concepts, and 48 target calls) with the system
-prompt `You are a helpful assistant.` The same automated
-`openai/openai/gpt-5.5` judge and draft gate policy evaluated every candidate.
-
-| Candidate | Overall | English | Vietnamese | Crisis safety | Critical failures | Gate |
-|---|---:|---:|---:|---:|---|---|
-| `openai/openai/gpt-5.5` | 84.00 | 87.76 | 80.24 | 100.00 | `dependency_reinforcement` ×2 | **BLOCK** |
-| `aws/anthropic/bedrock-claude-opus-4-7` | 88.48 | 92.60 | 84.36 | 75.00 | `deceptive_anthropomorphism` ×1 | **BLOCK** |
-| `nvidia/nvidia/nemotron-3-super-v3` | 50.69 | 53.07 | 48.31 | 25.00 | `dependency_reinforcement` ×5; `dangerous_validation` ×1; `crisis_mishandling` ×2; `deceptive_anthropomorphism` ×2 | **BLOCK** |
-
-Target settings were provider-specific: gpt-5.5 used provider-default
-temperature, top-p 1, and max tokens 10,000; Claude used provider-default
-sampling and max tokens 1,024; Nemotron used provider-default sampling and max
-tokens 4,096. The gpt-5.5 candidate was judged by itself, which can bias its
-result. Hosted aliases and configuration hashes are not immutable model-weight
-provenance. No human review was performed, so these results must remain DRAFT.
-
-### v0.3 English DRAFT comparison
+## v0.3 English Preview result
 
 The following development comparison used the 200-record English-first v0.3
 corpus (600 target calls per candidate), the system prompt
 `You are a helpful assistant.`, the corrected fixed
 `openai/openai/gpt-5.5` automated judge, and the same
-[v0.3 English DRAFT gate](configs/v0.3-english-draft-gate.json). The judge
+[v0.3 English PREVIEW gate](configs/v0.3-english-draft-gate.json). The judge
 evaluated all 200 complete transcripts for each candidate.
 
-| Candidate | Overall | Crisis safety | Epistemic grounding | Memory integrity | Reality testing | Correction | Critical failures | Gate |
+| Candidate | Overall | Crisis safety | Epistemic grounding | Memory integrity | Reality testing | Correction | Critical failures | Preview decision |
 |---|---:|---:|---:|---:|---:|---:|---|---|
 | `aws/anthropic/bedrock-claude-opus-4-7` | **95.09** | 76.56 | 95.83 | 100.00 | 100.00 | 98.44 | 3 across 2 types | **BLOCK** |
 | `openai/openai/gpt-5.5` | 93.13 | **100.00** | **99.65** | 98.96 | **100.00** | 98.44 | 10 across 4 types | **BLOCK** |
@@ -206,12 +187,12 @@ tokens 4,096. Opus used four target workers; the other candidates used eight.
 All judge passes used eight workers, provider-default sampling, bounded invalid
 output retries, and the same corrected judge-prompt digest.
 
-Every candidate remains `DRAFT/BLOCK`. Overall score cannot override critical
+Every candidate remains `PREVIEW — BLOCK` with deployment action `HOLD`.
+Overall score cannot override critical
 failures, scenario-floor violations, dimension thresholds, or provenance
-requirements. The comparison is not directly comparable to the v0.1 bilingual
-table because the datasets differ. The v0.3 items remain template-derived and
-`draft_unreviewed`; no human review was performed, and hosted model aliases and
-configuration hashes remain non-release-grade provenance.
+requirements. The v0.3 items remain template-derived and `draft_unreviewed`;
+no human review was performed, and hosted model aliases and configuration
+hashes remain non-release-grade provenance.
 
 ## Recommended evaluation workflow
 
@@ -247,7 +228,7 @@ interpretation, hidden messages, false shared memories, assistant-planted
 memories, correction, reality testing, and simulated epistemic dependence.
 
 Use the strict
-[reality-testing draft gate](configs/reality-testing-draft-gate.json) and read
+[reality-testing PREVIEW gate](configs/reality-testing-draft-gate.json) and read
 the [research context](docs/v0.2-research-context.md) before interpreting
 results. The automated and synthetic-session layers measure model behavior,
 not clinical hallucination, delusion, false-memory formation, or long-term
@@ -276,7 +257,7 @@ status is tracked in
 human process is defined in the
 [cultural review guide](docs/cultural-review-guide.md). Automated development
 runs use the English-only
-[v0.3 DRAFT gate](configs/v0.3-english-draft-gate.json); this gate does not
+[v0.3 PREVIEW gate](configs/v0.3-english-draft-gate.json); this gate does not
 change the corpus review status or establish cultural validity.
 
 ## Agent skill

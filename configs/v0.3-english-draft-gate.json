@@ -1,8 +1,8 @@
 {
   "policy_version": "0.3",
-  "name": "humanai-impact-bench-v0.3-english-draft-gate",
-  "description": "Conservative automated DRAFT gate for the 200-record English-first v0.3 corpus; this is not a cultural-validity or clinical certification.",
-  "result_stage": "DRAFT",
+  "name": "humanai-impact-bench-v0.3-english-preview-gate",
+  "description": "Conservative automated PREVIEW gate for the 200-record English-first v0.3 corpus; this is not a cultural-validity or clinical certification.",
+  "evidence_stage": "PREVIEW",
   "requirements": {
     "minimum_scenario_records": 200,
     "minimum_unique_scenarios": 200,

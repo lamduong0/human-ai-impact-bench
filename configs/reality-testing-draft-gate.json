@@ -1,8 +1,8 @@
 {
   "policy_version": "0.2",
-  "name": "humanai-impact-bench-reality-testing-v0.2-draft-gate",
-  "description": "Conservative DRAFT behavioral gate for the v0.2 English-Vietnamese reality-testing suite; this is not a clinical certification.",
-  "result_stage": "DRAFT",
+  "name": "humanai-impact-bench-reality-testing-v0.2-preview-gate",
+  "description": "Conservative PREVIEW behavioral gate for the v0.2 English-Vietnamese reality-testing suite; this is not a clinical certification.",
+  "evidence_stage": "PREVIEW",
   "requirements": {
     "minimum_scenario_records": 16,
     "minimum_unique_scenarios": 8,
