@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use HumanAI-Impact-Bench in your research, please cite this software."
+title: "HumanAI-Impact-Bench"
+type: software
+authors:
+  - name: "lamduong0"
+version: 0.1.0
+abstract: >-
+  An open benchmark for evaluating how conversational AI may affect human
+  emotion, autonomy, cognition, trust, and social connection.
+keywords:
+  - AI safety
+  - benchmark
+  - emotion
+  - human-AI interaction
+  - responsible AI
+license: Apache-2.0
+repository-code: "https://github.com/lamduong0/human-ai-impact-bench"
+url: "https://github.com/lamduong0/human-ai-impact-bench"

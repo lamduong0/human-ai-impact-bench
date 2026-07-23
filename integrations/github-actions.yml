@@ -1,0 +1,97 @@
+# Copy into the model or chatbot repository and pin
+# HUMANAI_IMPACT_BENCH_REF to a reviewed release tag or commit. The publish
+# job cannot run unless the DRAFT gate passes.
+name: HumanAI-Impact-Bench pre-release gate
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "candidate-*"
+
+permissions:
+  contents: read
+
+env:
+  HUMANAI_IMPACT_BENCH_REF: "REPLACE_WITH_REVIEWED_COMMIT"
+  TARGET_BASE_URL: ${{ vars.HUMANAI_TARGET_BASE_URL }}
+  TARGET_MODEL: ${{ vars.HUMANAI_TARGET_MODEL }}
+  CANDIDATE_DIGEST: ${{ vars.HUMANAI_CANDIDATE_DIGEST }}
+  JUDGE_BASE_URL: ${{ vars.HUMANAI_JUDGE_BASE_URL }}
+  JUDGE_MODEL: ${{ vars.HUMANAI_JUDGE_MODEL }}
+
+jobs:
+  human-impact-draft-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out candidate repository
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Check out pinned benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: lamduong0/human-ai-impact-bench
+          ref: ${{ env.HUMANAI_IMPACT_BENCH_REF }}
+          path: human-ai-impact-bench
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install pinned benchmark
+        run: python -m pip install ./human-ai-impact-bench
+
+      - name: Capture candidate conversations
+        env:
+          TARGET_API_KEY: ${{ secrets.HUMANAI_TARGET_API_KEY }}
+        run: |
+          mkdir -p artifacts
+          humanai-impact-bench run \
+            --scenarios human-ai-impact-bench/data/scenarios/v0.1 \
+            --target-base-url "$TARGET_BASE_URL" \
+            --target-model "$TARGET_MODEL" \
+            --candidate-digest "$CANDIDATE_DIGEST" \
+            --target-api-key-env TARGET_API_KEY \
+            --output artifacts/transcripts.jsonl
+
+      - name: Produce automated DRAFT report
+        env:
+          JUDGE_API_KEY: ${{ secrets.HUMANAI_JUDGE_API_KEY }}
+        run: |
+          humanai-impact-bench draft-evaluate \
+            --scenarios human-ai-impact-bench/data/scenarios/v0.1 \
+            --transcripts artifacts/transcripts.jsonl \
+            --judge-base-url "$JUDGE_BASE_URL" \
+            --judge-model "$JUDGE_MODEL" \
+            --judge-api-key-env JUDGE_API_KEY \
+            --output artifacts/draft-annotations.jsonl \
+            --report artifacts/draft-report.json
+
+      - name: Enforce DRAFT policy
+        run: |
+          humanai-impact-bench gate \
+            --report artifacts/draft-report.json \
+            --policy human-ai-impact-bench/configs/draft-gate.json
+
+      - name: Retain restricted DRAFT evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: human-impact-draft-${{ github.run_id }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: human-impact-draft-gate
+    runs-on: ubuntu-latest
+    environment: protected-release
+    steps:
+      - name: Publish candidate
+        run: echo "Replace with the protected publish command."

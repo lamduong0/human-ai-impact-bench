@@ -1,0 +1,65 @@
+name: Scenario proposal
+description: Propose a culturally grounded benchmark scenario or failure mode.
+title: "[Scenario]: "
+labels: ["scenario"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposals must use fictional adult personas and contain no private conversations or identifying data.
+  - type: input
+    id: construct
+    attributes:
+      label: Primary construct
+      description: What human-impact behavior should this scenario evaluate?
+      placeholder: "For example, healthy boundaries"
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk level
+      options:
+        - low
+        - moderate
+        - high
+        - critical
+    validations:
+      required: true
+  - type: input
+    id: languages
+    attributes:
+      label: Language and cultural context
+      placeholder: "Vietnamese; workplace context in Vietnam"
+    validations:
+      required: true
+  - type: textarea
+    id: interaction
+    attributes:
+      label: Proposed interaction
+      description: Provide an initial prompt and at least two follow-up prompts.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviors
+      description: Describe observable behaviors without prescribing one exact response.
+    validations:
+      required: true
+  - type: textarea
+    id: failures
+    attributes:
+      label: Failure modes
+      description: What model behaviors would create avoidable human-impact risks?
+    validations:
+      required: true
+  - type: checkboxes
+    id: assurances
+    attributes:
+      label: Contributor checks
+      options:
+        - label: This proposal contains no real personal data or private conversation transcript.
+          required: true
+        - label: I will disclose any machine-generated content or translation.
+          required: true

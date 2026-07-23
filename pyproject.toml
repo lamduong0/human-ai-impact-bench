@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "human-ai-impact-bench"
+version = "0.1.0"
+description = "An open benchmark for measuring how conversational AI affects human emotion, autonomy, cognition, and social connection."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "lamduong0" }
+]
+keywords = [
+  "ai-safety",
+  "benchmark",
+  "emotion",
+  "human-ai-interaction",
+  "responsible-ai"
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.9"
+]
+
+[project.scripts]
+humanai-impact-bench = "humanai_impact_bench.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/lamduong0/human-ai-impact-bench"
+Repository = "https://github.com/lamduong0/human-ai-impact-bench"
+Issues = "https://github.com/lamduong0/human-ai-impact-bench/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/humanai_impact_bench"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

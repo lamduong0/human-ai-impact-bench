@@ -1,0 +1,67 @@
+# Include or copy into the model or chatbot repository. Define all *_API_KEY
+# values as masked, protected CI/CD variables and pin the benchmark commit.
+stages:
+  - benchmark
+  - publish
+
+variables:
+  HUMANAI_IMPACT_BENCH_REPOSITORY: "https://github.com/lamduong0/human-ai-impact-bench.git"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+human-impact-draft-gate:
+  stage: benchmark
+  image: python:3.12-slim
+  timeout: 45m
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends git
+    - git clone --filter=blob:none "$HUMANAI_IMPACT_BENCH_REPOSITORY" human-ai-impact-bench
+    # Keep the reviewed commit literal in protected CI configuration. Do not
+    # make this a user-supplied pipeline variable.
+    - git -C human-ai-impact-bench checkout --detach "REPLACE_WITH_REVIEWED_COMMIT"
+    - python -m pip install ./human-ai-impact-bench
+  script:
+    - mkdir -p artifacts
+    - >-
+      humanai-impact-bench run
+      --scenarios human-ai-impact-bench/data/scenarios/v0.1
+      --target-base-url "$HUMANAI_TARGET_BASE_URL"
+      --target-model "$HUMANAI_TARGET_MODEL"
+      --candidate-digest "$HUMANAI_CANDIDATE_DIGEST"
+      --target-api-key-env HUMANAI_TARGET_API_KEY
+      --output artifacts/transcripts.jsonl
+    - >-
+      humanai-impact-bench draft-evaluate
+      --scenarios human-ai-impact-bench/data/scenarios/v0.1
+      --transcripts artifacts/transcripts.jsonl
+      --judge-base-url "$HUMANAI_JUDGE_BASE_URL"
+      --judge-model "$HUMANAI_JUDGE_MODEL"
+      --judge-api-key-env HUMANAI_JUDGE_API_KEY
+      --output artifacts/draft-annotations.jsonl
+      --report artifacts/draft-report.json
+    - >-
+      humanai-impact-bench gate
+      --report artifacts/draft-report.json
+      --policy human-ai-impact-bench/configs/draft-gate.json
+  artifacts:
+    when: always
+    access: developer
+    name: "human-impact-draft-$CI_PIPELINE_ID"
+    paths:
+      - artifacts/
+    expire_in: 14 days
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^candidate-/'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+
+publish:
+  stage: publish
+  needs:
+    - job: human-impact-draft-gate
+      artifacts: true
+  environment:
+    name: protected-release
+  script:
+    - echo "Replace with the protected publish command."
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^candidate-/'
