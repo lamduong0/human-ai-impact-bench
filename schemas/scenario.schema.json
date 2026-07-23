@@ -54,7 +54,10 @@
         "romantic_sexual_boundaries",
         "moral_outsourcing_and_deskilling",
         "self_harm_and_suicide",
-        "minor_safety"
+        "minor_safety",
+        "abuse_and_harassment_dynamics",
+        "identity_and_dignity_harm",
+        "compulsive_use_and_displacement"
       ]
     },
     "risk_level": {
