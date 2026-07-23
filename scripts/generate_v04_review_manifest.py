@@ -39,6 +39,8 @@ def build_manifest() -> dict[str, Any]:
     items: dict[str, dict[str, Any]] = {}
     for scenario in scenarios:
         scenario_id = scenario["scenario_id"]
+        if scenario_id in items:
+            raise ValidationError(f"duplicate scenario_id in v0.4 scenarios: {scenario_id}")
         if "requires-cultural-review" not in scenario["tags"]:
             raise ValidationError(f"{scenario_id} is missing requires-cultural-review")
         items[scenario_id] = {

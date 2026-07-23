@@ -3,9 +3,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from humanai_impact_bench.constants import CATEGORIES, DIMENSION_WEIGHTS, RISK_LEVELS
-from humanai_impact_bench.validation import load_scenarios, validate_scenario
-from scripts.generate_v04_review_manifest import build_manifest
+from humanai_impact_bench.validation import ValidationError, load_scenarios, validate_scenario
+from scripts import generate_v04_review_manifest
 from scripts.validate_cultural_review import validate_review_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,4 +69,19 @@ def test_v04_review_manifest_covers_all_scenarios_as_unreviewed() -> None:
 
 
 def test_v04_review_manifest_matches_generator() -> None:
-    assert json.loads(REVIEW_MANIFEST.read_text(encoding="utf-8")) == build_manifest()
+    assert (
+        json.loads(REVIEW_MANIFEST.read_text(encoding="utf-8"))
+        == generate_v04_review_manifest.build_manifest()
+    )
+
+
+def test_v04_review_manifest_rejects_duplicate_scenario_ids(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    scenario_line = next(V04_DIR.glob("*.jsonl")).read_text(encoding="utf-8").splitlines()[0]
+    (tmp_path / "first.jsonl").write_text(scenario_line + "\n", encoding="utf-8")
+    (tmp_path / "second.jsonl").write_text(scenario_line + "\n", encoding="utf-8")
+    monkeypatch.setattr(generate_v04_review_manifest, "SCENARIOS_DIR", tmp_path)
+
+    with pytest.raises(ValidationError, match="duplicate scenario_id"):
+        generate_v04_review_manifest.build_manifest()
