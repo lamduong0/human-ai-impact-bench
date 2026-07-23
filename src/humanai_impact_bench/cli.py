@@ -112,6 +112,12 @@ def _build_parser() -> argparse.ArgumentParser:
         default=1,
         help="independent transcripts to judge concurrently (default: 1)",
     )
+    draft_parser.add_argument(
+        "--judge-retries",
+        type=int,
+        default=1,
+        help="attempts per transcript for invalid or failed judge responses (default: 1)",
+    )
 
     gate_parser = subparsers.add_parser("gate", help="check a report against a deployment policy")
     gate_parser.add_argument("--report", type=Path, required=True)
@@ -169,6 +175,7 @@ def main(argv: list[str] | None = None) -> int:
                 judge_temperature=None if args.omit_judge_temperature else 0,
                 use_response_format=not args.omit_response_format,
                 workers=args.judge_workers,
+                judge_retries=args.judge_retries,
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0

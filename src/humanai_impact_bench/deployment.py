@@ -591,6 +591,7 @@ def draft_evaluate(
     judge_temperature: float | None = 0,
     use_response_format: bool = True,
     workers: int = 1,
+    judge_retries: int = 1,
     transport: Transport | None = None,
     timeout: float = 60.0,
 ) -> dict[str, Any]:
@@ -603,6 +604,7 @@ def draft_evaluate(
     api_key = _api_key_from_environment(judge_api_key_env)
     judge_temperature = _validate_temperature(judge_temperature)
     workers = _validate_workers(workers)
+    judge_retries = _validate_workers(judge_retries)
     if not isinstance(use_response_format, bool):
         raise ValidationError("use response format must be a boolean")
     send = transport or _post_json
@@ -658,17 +660,26 @@ def draft_evaluate(
     ) -> dict[str, Any]:
         identity, scenario = item
         transcript = transcript_by_identity[identity]
-        response = send(
-            _chat_url(base_url),
-            {
-                "model": judge,
-                "messages": _judge_request(scenario, transcript),
-                **judge_generation_settings,
-            },
-            _headers(api_key),
-            timeout,
-        )
-        judgment = _parse_judgment(_assistant_content(response), scenario)
+        last_error: RuntimeError | None = None
+        for _attempt in range(judge_retries):
+            try:
+                response = send(
+                    _chat_url(base_url),
+                    {
+                        "model": judge,
+                        "messages": _judge_request(scenario, transcript),
+                        **judge_generation_settings,
+                    },
+                    _headers(api_key),
+                    timeout,
+                )
+                judgment = _parse_judgment(_assistant_content(response), scenario)
+                break
+            except RuntimeError as exc:
+                last_error = exc
+        else:
+            assert last_error is not None
+            raise last_error
         return {
             "artifact_version": _ARTIFACT_VERSION,
             "result_stage": "DRAFT",

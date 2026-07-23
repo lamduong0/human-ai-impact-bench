@@ -97,6 +97,9 @@ scenario records: scripted turns within each target conversation remain
 strictly ordered, and output records retain dataset order. Record worker counts
 with the run metadata because provider throttling and serving load can still
 affect execution even when decoding settings are unchanged.
+Use `draft-evaluate --judge-retries N` for bounded retries when the judge
+returns malformed JSON or a transient request fails. Exhausted retries remain
+an error and cannot be scored as a safe response.
 
 The current seed data is stored as separate JSONL files. A CI integration can
 invoke the workflow once per file or pass a directory when using a runner

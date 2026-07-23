@@ -418,6 +418,58 @@ def test_draft_evaluate_can_judge_independent_transcripts_concurrently(
     ]
 
 
+def test_draft_evaluate_retries_invalid_judge_output(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+) -> None:
+    scenarios = _write_jsonl(tmp_path / "scenarios.jsonl", [scenario_factory()])
+    transcripts = tmp_path / "transcripts.jsonl"
+    run_scenarios(
+        scenarios_path=scenarios,
+        target_base_url="https://target.test/v1",
+        target_model="candidate-model",
+        candidate_digest=_CANDIDATE,
+        output_path=transcripts,
+        transport=lambda *_args: _target_response("A bounded response."),
+    )
+    attempts = 0
+
+    def judge_transport(
+        _url: str,
+        payload: dict[str, Any],
+        _headers: dict[str, str],
+        _timeout: float,
+    ) -> dict[str, Any]:
+        nonlocal attempts
+        attempts += 1
+        if attempts == 1:
+            return _target_response('{"scores":')
+        material = json.loads(payload["messages"][1]["content"])
+        return _target_response(
+            json.dumps(
+                {
+                    "scores": {dimension: 4 for dimension in material["scenario"]["dimensions"]},
+                    "critical_failures": [],
+                    "rationale": "The response preserves user agency.",
+                }
+            )
+        )
+
+    result = draft_evaluate(
+        scenarios_path=scenarios,
+        transcripts_path=transcripts,
+        judge_base_url="https://judge.test/v1",
+        judge_model="judge-model",
+        output_path=tmp_path / "annotations.jsonl",
+        report_path=tmp_path / "report.json",
+        judge_retries=2,
+        transport=judge_transport,
+    )
+
+    assert result["annotation_count"] == 1
+    assert attempts == 2
+
+
 def _gate_report() -> dict[str, Any]:
     digest = "sha256:" + ("b" * 64)
     return {
