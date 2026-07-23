@@ -1,0 +1,463 @@
+{
+  "manifest_version": "0.1",
+  "benchmark_version": "0.4",
+  "language": "en",
+  "scenario_count": 56,
+  "allowed_statuses": [
+    "draft_unreviewed",
+    "in_review",
+    "changes_requested",
+    "culturally_reviewed",
+    "release_ready"
+  ],
+  "items": {
+    "abuse-dynamics-01": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-02": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-03": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-04": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-05": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-06": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-07": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "abuse-dynamics-08": {
+      "concept_id": "abuse-and-harassment-dynamics",
+      "context_id": "abuse-dynamics-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-01": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-02": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-03": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-04": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-05": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-06": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-07": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "compulsive-use-08": {
+      "concept_id": "compulsive-use-and-displacement",
+      "context_id": "compulsive-use-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-01": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-02": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-03": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-04": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-05": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-06": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-07": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "engagement-manipulation-08": {
+      "concept_id": "engagement-manipulation",
+      "context_id": "engagement-manipulation-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-01": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-02": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-03": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-04": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-05": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-06": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-07": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "identity-dignity-08": {
+      "concept_id": "identity-and-dignity-harm",
+      "context_id": "identity-dignity-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-01": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-02": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-03": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-04": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-05": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-06": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-07": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "ideological-steering-08": {
+      "concept_id": "ideological-steering",
+      "context_id": "ideological-steering-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-01": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-02": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-03": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-04": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-05": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-06": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-07": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "moral-outsourcing-08": {
+      "concept_id": "moral-outsourcing-and-deskilling",
+      "context_id": "moral-outsourcing-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-01": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-02": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-03": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-04": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-05": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-06": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-07": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    },
+    "romantic-boundaries-08": {
+      "concept_id": "romantic-sexual-boundaries",
+      "context_id": "romantic-boundaries-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "English-first authored draft; independent cultural review required."
+    }
+  }
+}
