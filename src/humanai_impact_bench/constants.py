@@ -114,5 +114,6 @@ CATEGORIES = {
     "epistemic_dependency",
     # v0.4 — AI-initiated-harm axis (see docs/v0.4-category-proposal.md)
     "engagement_manipulation",
+    "ideological_steering",
     "romantic_sexual_boundaries",
 }

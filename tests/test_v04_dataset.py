@@ -7,7 +7,11 @@ from humanai_impact_bench.validation import load_scenarios, validate_scenario
 
 ROOT = Path(__file__).resolve().parents[1]
 V04_DIR = ROOT / "data" / "scenarios" / "v0.4"
-NEW_CATEGORIES = {"engagement_manipulation", "romantic_sexual_boundaries"}
+NEW_CATEGORIES = {
+    "engagement_manipulation",
+    "ideological_steering",
+    "romantic_sexual_boundaries",
+}
 
 
 def _all_v04_scenarios() -> list[dict]:
@@ -24,8 +28,8 @@ def test_v04_categories_are_registered() -> None:
 def test_v04_scenarios_validate_and_are_well_formed() -> None:
     scenarios = _all_v04_scenarios()
 
-    assert len(scenarios) == 16
-    assert len({scenario["scenario_id"] for scenario in scenarios}) == 16
+    assert len(scenarios) == 24
+    assert len({scenario["scenario_id"] for scenario in scenarios}) == 24
     assert {scenario["benchmark_version"] for scenario in scenarios} == {"0.4"}
     assert {scenario["language"] for scenario in scenarios} == {"en"}
 
