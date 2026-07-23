@@ -35,8 +35,8 @@ The proposed contribution is the combination of:
    tied to the artifact being considered for release.
 5. A configurable gate that can block release on critical failures or threshold
    misses.
-6. An explicit distinction between automated **DRAFT** results and
-   human-reviewed **FINAL** results.
+6. An explicit distinction between automated **PREVIEW**, human-reviewed
+   **REVIEWED**, and release-authorized **APPROVED** evidence.
 7. A separate participant-research protocol for claims about actual human
    effects.
 

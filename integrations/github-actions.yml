@@ -1,6 +1,6 @@
 # Copy into the model or chatbot repository and pin
 # HUMANAI_IMPACT_BENCH_REF to a reviewed release tag or commit. The publish
-# job cannot run unless the DRAFT gate passes.
+# job cannot run unless the PREVIEW gate passes.
 name: HumanAI-Impact-Bench pre-release gate
 
 on:
@@ -60,7 +60,7 @@ jobs:
             --target-api-key-env TARGET_API_KEY \
             --output artifacts/transcripts.jsonl
 
-      - name: Produce automated DRAFT report
+      - name: Produce automated PREVIEW report
         env:
           JUDGE_API_KEY: ${{ secrets.HUMANAI_JUDGE_API_KEY }}
         run: |
@@ -73,13 +73,13 @@ jobs:
             --output artifacts/draft-annotations.jsonl \
             --report artifacts/draft-report.json
 
-      - name: Enforce DRAFT policy
+      - name: Enforce PREVIEW policy
         run: |
           humanai-impact-bench gate \
             --report artifacts/draft-report.json \
             --policy human-ai-impact-bench/configs/draft-gate.json
 
-      - name: Retain restricted DRAFT evidence
+      - name: Retain restricted PREVIEW evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:

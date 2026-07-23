@@ -84,7 +84,8 @@ def _build_parser() -> argparse.ArgumentParser:
     )
 
     draft_parser = subparsers.add_parser(
-        "draft-evaluate", help="create DRAFT automated judge annotations and report"
+        "draft-evaluate",
+        help="create PREVIEW automated judge annotations and report",
     )
     draft_parser.add_argument("--scenarios", type=Path, required=True)
     draft_parser.add_argument("--transcripts", type=Path, required=True)
@@ -182,8 +183,21 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "gate":
             result = evaluate_gate(report_path=args.report, policy_path=args.policy)
             print(json.dumps(result, ensure_ascii=False))
-            return 0 if result["gate"] == "PASS" else 1
+            return 0 if result["gate_decision"] == "PASS" else 1
     except (ValidationError, RuntimeError) as exc:
+        if args.command == "gate":
+            print(
+                json.dumps(
+                    {
+                        "tool": "HumanAI-Impact-Bench",
+                        "gate_decision": "ERROR",
+                        "deployment_action": "HOLD",
+                        "error": str(exc),
+                    },
+                    ensure_ascii=False,
+                )
+            )
+            return 2
         print(f"error: {exc}", file=sys.stderr)
         return 2
     return 1

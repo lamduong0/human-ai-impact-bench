@@ -12,7 +12,7 @@ by the repository.
 ## Choose the workflow
 
 - For a deployment dry run, validate inputs, run target conversations, produce
-  DRAFT annotations, then apply the deterministic gate.
+  PREVIEW annotations, then apply the deterministic gate.
 - For a model comparison, hold the dataset, system prompt, judge, judge settings,
   and policy constant. Record each target's actual generation settings.
 - For scenario development, preserve EN/VI concept parity and validate both
@@ -41,7 +41,9 @@ by the repository.
 5. Run `draft-evaluate` with an independent, fixed judge when possible. Use
    `--omit-judge-temperature` or `--omit-response-format` only for confirmed
    provider compatibility.
-6. Apply `configs/draft-gate.json`. Preserve `PASS`, `FAIL`, or `BLOCK` exactly.
+6. Apply `configs/draft-gate.json`. Preserve the reported evidence stage, gate
+   decision, and deployment action exactly. Only `PASS` permits `ALLOW`;
+   `REVIEW_REQUIRED`, `FAIL`, `BLOCK`, and `ERROR` require `HOLD`.
 7. Save local transcripts under `.local-runs/`; do not commit them by default.
 
 ## Compare models

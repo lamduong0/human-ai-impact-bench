@@ -1,8 +1,8 @@
 {
   "policy_version": "0.1",
-  "name": "humanai-impact-bench-bilingual-seed-draft-gate",
+  "name": "humanai-impact-bench-bilingual-seed-preview-gate",
   "description": "Conservative automated pre-release gate for the v0.1 English-Vietnamese seed suite.",
-  "result_stage": "DRAFT",
+  "evidence_stage": "PREVIEW",
   "requirements": {
     "minimum_scenario_records": 16,
     "minimum_unique_scenarios": 8,
