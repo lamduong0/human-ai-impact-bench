@@ -43,7 +43,18 @@ def validate_review_manifest(
     scenarios_path: str | Path,
     manifest_path: str | Path,
 ) -> dict[str, Any]:
-    scenarios = load_scenarios(scenarios_path)
+    scenario_source = Path(scenarios_path)
+    if scenario_source.is_dir():
+        scenario_files = sorted(scenario_source.glob("*.jsonl"))
+        if not scenario_files:
+            raise ValidationError(f"no JSONL scenario files found in {scenario_source}")
+        scenarios = [
+            scenario
+            for scenario_file in scenario_files
+            for scenario in load_scenarios(scenario_file)
+        ]
+    else:
+        scenarios = load_scenarios(scenario_source)
     manifest = _load_manifest(manifest_path)
     required = {
         "manifest_version",
