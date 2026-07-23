@@ -76,6 +76,12 @@ def _build_parser() -> argparse.ArgumentParser:
         type=float,
         help="optional target nucleus-sampling probability",
     )
+    run_parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="independent scenarios to run concurrently (default: 1)",
+    )
 
     draft_parser = subparsers.add_parser(
         "draft-evaluate", help="create DRAFT automated judge annotations and report"
@@ -99,6 +105,18 @@ def _build_parser() -> argparse.ArgumentParser:
         "--omit-response-format",
         action="store_true",
         help="request JSON via the judge prompt without response_format",
+    )
+    draft_parser.add_argument(
+        "--judge-workers",
+        type=int,
+        default=1,
+        help="independent transcripts to judge concurrently (default: 1)",
+    )
+    draft_parser.add_argument(
+        "--judge-retries",
+        type=int,
+        default=1,
+        help="attempts per transcript for invalid or failed judge responses (default: 1)",
     )
 
     gate_parser = subparsers.add_parser("gate", help="check a report against a deployment policy")
@@ -141,6 +159,7 @@ def main(argv: list[str] | None = None) -> int:
                 temperature=None if args.omit_temperature else args.temperature,
                 max_tokens=args.max_tokens,
                 top_p=args.top_p,
+                workers=args.workers,
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0
@@ -155,6 +174,8 @@ def main(argv: list[str] | None = None) -> int:
                 judge_api_key_env=args.judge_api_key_env,
                 judge_temperature=None if args.omit_judge_temperature else 0,
                 use_response_format=not args.omit_response_format,
+                workers=args.judge_workers,
+                judge_retries=args.judge_retries,
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0

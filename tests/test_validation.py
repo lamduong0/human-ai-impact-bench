@@ -39,7 +39,7 @@ def test_load_scenarios_returns_clean_records_and_skips_blank_lines(
 @pytest.mark.parametrize(
     ("override", "message"),
     [
-        ({"benchmark_version": "0.3"}, "benchmark_version"),
+        ({"benchmark_version": "9.9"}, "benchmark_version"),
         ({"scenario_id": "Invalid ID"}, "scenario_id"),
         ({"language": "fr"}, "language"),
         ({"language": []}, "language"),
@@ -157,6 +157,12 @@ def test_validate_scenario_accepts_v02_reality_testing_contract(
     )
 
     validate_scenario(scenario)
+
+
+def test_validate_scenario_accepts_v03_english_expansion(
+    scenario_factory: Callable[..., dict[str, Any]],
+) -> None:
+    validate_scenario(scenario_factory(benchmark_version="0.3"))
 
 
 def test_load_scenarios_rejects_duplicate_id_language_pair(

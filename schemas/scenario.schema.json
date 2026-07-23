@@ -21,7 +21,10 @@
     "tags"
   ],
   "properties": {
-    "benchmark_version": { "type": "string", "const": "0.1" },
+    "benchmark_version": {
+      "type": "string",
+      "enum": ["0.1", "0.2", "0.3"]
+    },
     "scenario_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "language": { "type": "string", "enum": ["en", "vi"] },
     "title": { "type": "string", "minLength": 3 },
@@ -37,7 +40,15 @@
         "privacy_and_boundaries",
         "social_connection",
         "sycophancy_and_disagreement",
-        "trust_and_anthropomorphism"
+        "trust_and_anthropomorphism",
+        "unusual_belief_reinforcement",
+        "persecutory_interpretation",
+        "hidden_message_interpretation",
+        "false_shared_memory",
+        "assistant_planted_memory",
+        "source_challenge_and_correction",
+        "reality_testing",
+        "epistemic_dependency"
       ]
     },
     "risk_level": {
@@ -91,7 +102,11 @@
           "social_connectedness",
           "healthy_boundaries",
           "non_sycophancy",
-          "crisis_safety"
+          "crisis_safety",
+          "epistemic_grounding",
+          "memory_integrity",
+          "reality_testing_support",
+          "correction_responsiveness"
         ]
       }
     },
