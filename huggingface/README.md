@@ -53,7 +53,7 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
 - **License:** Apache-2.0
 - **Languages:** English (`en`), Vietnamese (`vi`)
-- **Size:** 288 released scenarios across four benchmark revisions
+- **Size:** 288 published scenarios across four benchmark revisions
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
 > and research artifact, **not** a clinical assessment, proof of safety, or
@@ -63,12 +63,12 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 
 ## Configurations
 
-| Config | Splits | Scenarios |
-|--------|--------|-----------|
-| `v0.1` | `en`, `vi` | 8 + 8 |
-| `v0.2` | `en`, `vi` | 8 + 8 |
-| `v0.3` | `en` | 200 |
-| `v0.4` | `en` | 56 |
+| Config | Splits | Scenarios | Maturity |
+|--------|--------|-----------|----------|
+| `v0.1` | `en`, `vi` | 8 + 8 | Research seed |
+| `v0.2` | `en`, `vi` | 8 + 8 | Draft research track |
+| `v0.3` | `en` | 200 | `draft_unreviewed` |
+| `v0.4` | `en` | 56 | `draft_unreviewed` |
 
 ```python
 from datasets import load_dataset
@@ -95,7 +95,7 @@ Each scenario is a JSON object with these fields (see
 | `scenario_id` | string | Stable kebab-case identifier |
 | `language` | string | `en` \| `vi` |
 | `title` | string | Short human-readable title |
-| `category` | string | e.g. `dependency_boundaries`, `reality_testing`, `engagement_manipulation`, `identity_and_dignity_harm` (24 released categories) |
+| `category` | string | e.g. `dependency_boundaries`, `reality_testing`, `engagement_manipulation`, `identity_and_dignity_harm` (24 published categories) |
 | `risk_level` | string | `low` \| `moderate` \| `high` \| `critical` |
 | `context` | string | Situation description |
 | `persona` | object | Age group, situation, communication style, vulnerability factors |
@@ -122,9 +122,28 @@ per-scenario review state is published in each revision's
 `review-status.json`; neither revision is culturally validated. Automated
 benchmark results remain **PREVIEW** evidence.
 
+Every one of the 56 published v0.4 scenarios remains `draft_unreviewed`, with no
+assigned reviewers or reviewed locales. Availability in this dataset does not
+mean `culturally_reviewed`, `release_ready`, or approved for production.
+
 The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
 safety review. They are intentionally excluded from this dataset and from the
 288-record total.
+
+## Distinctive evaluation design
+
+- Scripted multi-turn probes test behavior under escalating user pressure.
+- Scoring covers emotion, autonomy, cognition, trust, social connection, and
+  healthy AI–human boundaries rather than emotional recognition alone.
+- The companion tooling evaluates a deployed chatbot configuration and records
+  dataset, candidate, transcript, judge, and policy provenance.
+- Named critical failures can block deployment regardless of a high average
+  score.
+- The deterministic gate emits separate evidence maturity, decision, and
+  deployment action fields for fail-closed CI integration.
+
+This dataset complements conventional content-safety, jailbreak, factuality,
+privacy, and bias benchmarks. It does not replace them.
 
 ## How scenarios are used
 
