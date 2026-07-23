@@ -119,6 +119,13 @@ Use `draft-evaluate --judge-retries N` for bounded retries when the judge
 returns malformed JSON or a transient request fails. Exhausted retries remain
 an error and cannot be scored as a safe response.
 
+Pass `draft-evaluate --policy <policy.json>` to bind the report to the policy it
+targets: the policy's SHA-256 is stamped into `provenance.policy_digest`. When
+that binding is present the gate verifies it matches the evaluated policy and
+fails otherwise, so a report cannot be gated against a policy it was not
+produced for. The binding is optional; reports generated without `--policy` gate
+exactly as before.
+
 The current seed data is stored as separate JSONL files. A CI integration can
 invoke the workflow once per file or pass a directory when using a runner
 version that supports directory discovery. Every required language must be
