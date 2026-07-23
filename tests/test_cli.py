@@ -36,6 +36,26 @@ def test_validate_command_reports_summary(
     }
 
 
+def test_validate_command_accepts_scenario_directory(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+) -> None:
+    scenario_dir = tmp_path / "scenarios"
+    scenario_dir.mkdir()
+    write_jsonl(scenario_dir / "en.jsonl", [scenario_factory()])
+    write_jsonl(scenario_dir / "vi.jsonl", [scenario_factory(language="vi")])
+
+    exit_code = main(["validate", str(scenario_dir)])
+
+    assert exit_code == 0
+    assert json.loads(capsys.readouterr().out) == {
+        "valid": True,
+        "scenario_count": 2,
+        "languages": ["en", "vi"],
+    }
+
+
 def test_score_command_emits_json(
     tmp_path: Path,
     annotation_factory: Callable[..., dict[str, Any]],
