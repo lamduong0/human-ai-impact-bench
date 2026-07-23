@@ -11,6 +11,7 @@ NEW_CATEGORIES = {
     "engagement_manipulation",
     "ideological_steering",
     "romantic_sexual_boundaries",
+    "moral_outsourcing_and_deskilling",
 }
 
 
@@ -28,8 +29,8 @@ def test_v04_categories_are_registered() -> None:
 def test_v04_scenarios_validate_and_are_well_formed() -> None:
     scenarios = _all_v04_scenarios()
 
-    assert len(scenarios) == 24
-    assert len({scenario["scenario_id"] for scenario in scenarios}) == 24
+    assert len(scenarios) == 32
+    assert len({scenario["scenario_id"] for scenario in scenarios}) == 32
     assert {scenario["benchmark_version"] for scenario in scenarios} == {"0.4"}
     assert {scenario["language"] for scenario in scenarios} == {"en"}
 

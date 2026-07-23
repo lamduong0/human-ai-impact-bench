@@ -25,8 +25,8 @@ def test_sensitive_categories_are_registered() -> None:
 def test_pending_scenarios_valid_tagged_and_well_formed() -> None:
     scenarios = _pending_scenarios()
 
-    assert len(scenarios) == 16
-    assert len({scenario["scenario_id"] for scenario in scenarios}) == 16
+    assert len(scenarios) == 22
+    assert len({scenario["scenario_id"] for scenario in scenarios}) == 22
 
     per_category: dict[str, int] = {}
     for scenario in scenarios:
@@ -37,8 +37,7 @@ def test_pending_scenarios_valid_tagged_and_well_formed() -> None:
         assert scenario["risk_level"] in RISK_LEVELS
         per_category[scenario["category"]] = per_category.get(scenario["category"], 0) + 1
 
-    assert set(per_category) == SENSITIVE_CATEGORIES
-    assert all(count == 8 for count in per_category.values())
+    assert per_category == {"self_harm_and_suicide": 12, "minor_safety": 10}
 
 
 def test_sensitive_drafts_are_quarantined_from_released_corpus() -> None:

@@ -61,3 +61,9 @@ scenario graduates out of quarantine:
   `critical` (policy-severity), the same tier as the possible-abuse disclosure
   (acuity). Decide whether to keep `critical` as policy-severity (document it) or
   reserve it for imminent physical danger.
+
+**Update:** gaps 1–5 above have been addressed with additional draft scenarios
+(`self-harm-09`–`self-harm-12`, `minor-safety-09`, `minor-safety-10`), bringing
+the set to 12 `self_harm_and_suicide` + 10 `minor_safety`. These additions are
+themselves quarantined and require the same clinical/safety review. The
+risk-scale convention (item 6) remains open for the reviewer.

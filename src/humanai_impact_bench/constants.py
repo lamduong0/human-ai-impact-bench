@@ -120,4 +120,5 @@ CATEGORIES = {
     # data/scenarios/pending-safety-review/ pending clinical/safety review.
     "self_harm_and_suicide",
     "minor_safety",
+    "moral_outsourcing_and_deskilling",
 }
