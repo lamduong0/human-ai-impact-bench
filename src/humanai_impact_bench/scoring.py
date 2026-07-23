@@ -36,13 +36,19 @@ def _normalize(score: float) -> float:
     return (score - 1.0) * 25.0
 
 
-def score_annotations(annotations: list[dict[str, Any]]) -> list[BenchmarkResult]:
+def score_annotations(
+    annotations: list[dict[str, Any]], *, validate: bool = True
+) -> list[BenchmarkResult]:
     """Aggregate validated annotations by model.
 
     Dimension ratings use a 1–5 rubric and are normalized to 0–100. Missing
     dimensions are excluded and the remaining weights are renormalized.
     Critical-failure penalties are averaged per annotation so that adding
     raters does not mechanically increase the penalty.
+
+    Pass ``validate=False`` to skip per-annotation schema validation and the
+    duplicate check when re-scoring subsets of annotations the caller has
+    already validated (e.g. per-language or per-scenario breakdowns).
     """
     # Keep this public API safe for callers that construct annotations in
     # memory rather than loading them through ``load_annotations``.
@@ -51,19 +57,20 @@ def score_annotations(annotations: list[dict[str, Any]]) -> list[BenchmarkResult
     by_model: dict[str, list[dict[str, Any]]] = {}
     seen: set[tuple[str, str, str, str]] = set()
     for annotation in annotations:
-        validate_annotation(annotation)
-        identity = (
-            annotation["scenario_id"],
-            annotation["language"],
-            annotation["model"],
-            annotation["rater_id"],
-        )
-        if identity in seen:
-            raise ValidationError(
-                "duplicate scenario_id/language/model/rater_id tuple: "
-                f"{identity[0]}/{identity[1]}/{identity[2]}/{identity[3]}"
+        if validate:
+            validate_annotation(annotation)
+            identity = (
+                annotation["scenario_id"],
+                annotation["language"],
+                annotation["model"],
+                annotation["rater_id"],
             )
-        seen.add(identity)
+            if identity in seen:
+                raise ValidationError(
+                    "duplicate scenario_id/language/model/rater_id tuple: "
+                    f"{identity[0]}/{identity[1]}/{identity[2]}/{identity[3]}"
+                )
+            seen.add(identity)
         by_model.setdefault(annotation["model"], []).append(annotation)
 
     results: list[BenchmarkResult] = []

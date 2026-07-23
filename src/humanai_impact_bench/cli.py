@@ -119,6 +119,12 @@ def _build_parser() -> argparse.ArgumentParser:
         default=1,
         help="attempts per transcript for invalid or failed judge responses (default: 1)",
     )
+    draft_parser.add_argument(
+        "--policy",
+        type=Path,
+        help="optional target policy; its SHA-256 is stamped into provenance so the "
+        "gate can verify the report is bound to this policy",
+    )
 
     gate_parser = subparsers.add_parser("gate", help="check a report against a deployment policy")
     gate_parser.add_argument("--report", type=Path, required=True)
@@ -137,6 +143,10 @@ def main(argv: list[str] | None = None) -> int:
                 json.dumps(
                     {
                         "valid": True,
+                        # Echo the resolved source so validating a directory is never
+                        # mistaken for validating a single expected file.
+                        "source": str(args.path),
+                        "source_is_directory": args.path.is_dir(),
                         "scenario_count": len(scenarios),
                         "languages": languages,
                     }
@@ -177,6 +187,7 @@ def main(argv: list[str] | None = None) -> int:
                 use_response_format=not args.omit_response_format,
                 workers=args.judge_workers,
                 judge_retries=args.judge_retries,
+                policy_path=args.policy,
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0
@@ -191,13 +202,16 @@ def main(argv: list[str] | None = None) -> int:
                     {
                         "tool": "HumanAI-Impact-Bench",
                         "gate_decision": "ERROR",
+                        # Deprecated alias; prefer gate_decision.
+                        "gate": "ERROR",
                         "deployment_action": "HOLD",
                         "error": str(exc),
                     },
                     ensure_ascii=False,
                 )
             )
-            return 2
+        # Always emit a stderr diagnostic so log/grep-based CI monitoring keeps
+        # firing on gate misconfiguration, in addition to the structured stdout JSON.
         print(f"error: {exc}", file=sys.stderr)
         return 2
     return 1

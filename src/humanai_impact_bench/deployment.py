@@ -119,10 +119,14 @@ def _validate_top_p(value: float | None) -> float | None:
     return result
 
 
-def _validate_workers(value: int) -> int:
+def _validate_positive_int(value: int, label: str) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value < 1:
-        raise ValidationError("workers must be a positive integer")
+        raise ValidationError(f"{label} must be a positive integer")
     return value
+
+
+def _validate_workers(value: int) -> int:
+    return _validate_positive_int(value, "workers")
 
 
 def _api_key_from_environment(variable: str | None) -> str | None:
@@ -317,6 +321,31 @@ def _ensure_distinct_paths(*paths: str | Path) -> None:
     resolved = [Path(path).resolve() for path in paths]
     if len(resolved) != len(set(resolved)):
         raise ValidationError("input and output paths must be distinct")
+    # Equality alone is not enough: an output file written *inside* a scenario
+    # directory would later be globbed back in as a scenario (and would change the
+    # dataset_digest), so reject any path nested within another.
+    for outer in resolved:
+        for inner in resolved:
+            if inner != outer and inner.is_relative_to(outer):
+                raise ValidationError(
+                    f"path {inner} must not be nested inside path {outer}"
+                )
+
+
+def _map_maybe_concurrent(
+    function: Callable[[Any], dict[str, Any]],
+    items: list[Any],
+    workers: int,
+) -> list[dict[str, Any]]:
+    """Map ``function`` over ``items``, sequentially or across a thread pool.
+
+    A single worker runs in-process to avoid thread overhead; both paths preserve
+    input order.
+    """
+    if workers == 1:
+        return [function(item) for item in items]
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        return list(executor.map(function, items))
 
 
 def run_scenarios(
@@ -396,11 +425,7 @@ def run_scenarios(
             "messages": messages,
         }
 
-    if workers == 1:
-        records = [run_scenario(scenario) for scenario in scenarios]
-    else:
-        with ThreadPoolExecutor(max_workers=workers) as executor:
-            records = list(executor.map(run_scenario, scenarios))
+    records = _map_maybe_concurrent(run_scenario, scenarios, workers)
 
     _atomic_write_jsonl(output_path, records)
     transcript_digest = _sha256_file(output_path)
@@ -595,19 +620,23 @@ def draft_evaluate(
     use_response_format: bool = True,
     workers: int = 1,
     judge_retries: int = 1,
+    policy_path: str | Path | None = None,
     transport: Transport | None = None,
     timeout: float = 60.0,
 ) -> dict[str, Any]:
     """Create explicitly preview automated annotations and an aggregate report."""
     _ensure_distinct_paths(scenarios_path, transcripts_path, output_path, report_path)
     scenarios, dataset_digest = load_scenario_source(scenarios_path)
+    # Optionally bind the report to the policy it targets so the gate can verify
+    # the provenance policy_digest matches (see evaluate_gate).
+    policy_digest = _sha256_file(policy_path) if policy_path is not None else None
     transcripts = _load_transcripts(transcripts_path)
     base_url = _validate_base_url(judge_base_url, "judge base URL")
     judge = _validate_non_empty(judge_model, "judge model")
     api_key = _api_key_from_environment(judge_api_key_env)
     judge_temperature = _validate_temperature(judge_temperature)
     workers = _validate_workers(workers)
-    judge_retries = _validate_workers(judge_retries)
+    judge_retries = _validate_positive_int(judge_retries, "judge retries")
     if not isinstance(use_response_format, bool):
         raise ValidationError("use response format must be a boolean")
     send = transport or _post_json
@@ -686,6 +715,9 @@ def draft_evaluate(
         return {
             "artifact_version": _EVALUATION_ARTIFACT_VERSION,
             "evidence_stage": "PREVIEW",
+            # Deprecated alias for consumers of the pre-0.2 field; DRAFT normalizes
+            # to PREVIEW in the gate reader.
+            "result_stage": "DRAFT",
             "automated": True,
             "warning": _PREVIEW_WARNING,
             "scenario_id": scenario["scenario_id"],
@@ -699,12 +731,11 @@ def draft_evaluate(
         }
 
     scenario_items = list(scenario_by_identity.items())
-    if workers == 1:
-        annotations = [judge_scenario(item) for item in scenario_items]
-    else:
-        with ThreadPoolExecutor(max_workers=workers) as executor:
-            annotations = list(executor.map(judge_scenario, scenario_items))
+    annotations = _map_maybe_concurrent(judge_scenario, scenario_items, workers)
 
+    # The aggregate pass validates every annotation; the per-language and
+    # per-scenario breakdowns re-score subsets of that validated data, so they
+    # skip redundant re-validation (validate=False).
     aggregate = score_annotations(annotations)
     if len(aggregate) != 1:
         raise RuntimeError("could not aggregate draft annotations")
@@ -712,13 +743,14 @@ def draft_evaluate(
     language_results: dict[str, dict[str, Any]] = {}
     for language in sorted({annotation["language"] for annotation in annotations}):
         language_result = score_annotations(
-            [annotation for annotation in annotations if annotation["language"] == language]
+            [annotation for annotation in annotations if annotation["language"] == language],
+            validate=False,
         )[0]
         language_results[language] = language_result.to_dict()
     scenario_results: dict[str, dict[str, Any]] = {}
     for annotation in annotations:
         identity = f"{annotation['scenario_id']}:{annotation['language']}"
-        scenario_results[identity] = score_annotations([annotation])[0].to_dict()
+        scenario_results[identity] = score_annotations([annotation], validate=False)[0].to_dict()
     worst_case_identity, worst_case_result = min(
         scenario_results.items(),
         key=lambda item: (item[1]["overall_score"], item[0]),
@@ -732,6 +764,9 @@ def draft_evaluate(
         "tool": _TOOL_NAME,
         "report_version": _EVALUATION_ARTIFACT_VERSION,
         "evidence_stage": "PREVIEW",
+        # Deprecated alias for consumers of the pre-0.2 field; DRAFT normalizes
+        # to PREVIEW in the gate reader.
+        "result_stage": "DRAFT",
         "automated": True,
         "warning": _PREVIEW_WARNING,
         "generated_at": generated_at,
@@ -773,6 +808,8 @@ def draft_evaluate(
             "judge_generation_settings": judge_generation_settings,
         },
     }
+    if policy_digest is not None:
+        report["provenance"]["policy_digest"] = policy_digest
     _atomic_write_jsonl(output_path, annotations)
     _atomic_write_json(report_path, report)
     return {
@@ -1307,10 +1344,17 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
                 )
             except ValidationError:
                 failures.append("required judge metadata judge_prompt_digest is invalid")
-        if "judge_generation_settings" in provenance and not isinstance(
-            provenance["judge_generation_settings"], dict
-        ):
-            failures.append("required judge metadata judge_generation_settings is invalid")
+        if "judge_generation_settings" in provenance:
+            judge_settings = provenance["judge_generation_settings"]
+            if not isinstance(judge_settings, dict):
+                failures.append("required judge metadata judge_generation_settings is invalid")
+            elif not judge_settings:
+                # An empty dict records no pinned judge configuration, so the report
+                # provides none of the deterministic-judge guarantee the flag implies.
+                failures.append(
+                    "required judge metadata judge_generation_settings must record the "
+                    "judge generation configuration"
+                )
     if require_independent_judge:
         judge_model = provenance.get("judge_model")
         if not isinstance(judge_model, str) or not judge_model.strip():
@@ -1319,10 +1363,27 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
             failures.append("judge_model must differ from the evaluated model")
 
     policy_digest = _sha256_file(policy_path)
-    if approval is not None and approval["policy_digest"] != policy_digest:
-        raise ValidationError("report approval policy_digest does not match the evaluated policy")
     # The digest is generated from the exact policy bytes used for this decision.
-    # The boolean controls whether it is part of the policy's required audit trail.
+    # A report may bind itself to its target policy by stamping provenance.policy_digest
+    # (via `draft-evaluate --policy`). Whenever that binding is present it must match the
+    # evaluated policy, so a report cannot claim a policy binding it does not actually have.
+    if "policy_digest" in provenance:
+        try:
+            _validate_digest(provenance["policy_digest"], "report provenance policy_digest")
+        except ValidationError:
+            failures.append("provenance policy_digest is invalid")
+        else:
+            if provenance["policy_digest"] != policy_digest:
+                failures.append("provenance policy_digest does not match the evaluated policy")
+    # require_policy_digest additionally binds the APPROVED-stage approval record to the
+    # evaluated policy; PREVIEW/REVIEWED reports carry no approval, so the flag has nothing
+    # to enforce there beyond the optional provenance binding above.
+    if (
+        provenance_policy["require_policy_digest"]
+        and approval is not None
+        and approval["policy_digest"] != policy_digest
+    ):
+        failures.append("required policy_digest does not match the evaluated policy")
     gate_decision = (
         "BLOCK"
         if blocking_failures
@@ -1331,6 +1392,10 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
     return {
         "tool": _TOOL_NAME,
         "gate_decision": gate_decision,
+        # Deprecated aliases for third-party consumers of the pre-rename output
+        # contract; prefer gate_decision / evidence_stage.
+        "gate": gate_decision,
+        "result_stage": report_evidence_stage,
         "deployment_action": "ALLOW" if gate_decision == "PASS" else "HOLD",
         "policy": policy["name"],
         "policy_digest": policy_digest,

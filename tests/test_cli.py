@@ -31,6 +31,8 @@ def test_validate_command_reports_summary(
     assert exit_code == 0
     assert json.loads(capsys.readouterr().out) == {
         "valid": True,
+        "source": str(path),
+        "source_is_directory": False,
         "scenario_count": 2,
         "languages": ["en", "vi"],
     }
@@ -51,6 +53,8 @@ def test_validate_command_accepts_scenario_directory(
     assert exit_code == 0
     assert json.loads(capsys.readouterr().out) == {
         "valid": True,
+        "source": str(scenario_dir),
+        "source_is_directory": True,
         "scenario_count": 2,
         "languages": ["en", "vi"],
     }

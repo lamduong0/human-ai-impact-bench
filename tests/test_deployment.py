@@ -12,6 +12,8 @@ import pytest
 from humanai_impact_bench.cli import main
 from humanai_impact_bench.constants import CRITICAL_FAILURE_DEFINITIONS
 from humanai_impact_bench.deployment import (
+    _ensure_distinct_paths,
+    _validate_positive_int,
     draft_evaluate,
     evaluate_gate,
     run_scenarios,
@@ -353,6 +355,9 @@ def test_draft_evaluate_writes_draft_multilingual_report_with_provenance(
     assert all("response_format" not in payload for payload in judge_payloads)
     assert report["warning"].startswith("PREVIEW automated evaluation")
     assert report["evidence_stage"] == "PREVIEW"
+    # Deprecated result_stage alias is emitted for pre-0.2 artifact consumers.
+    assert report["result_stage"] == "DRAFT"
+    assert all(annotation["result_stage"] == "DRAFT" for annotation in annotations)
     assert {annotation["artifact_version"] for annotation in annotations} == {"0.2"}
     assert set(report["scenario_results"]) == {
         "dependency-001:en",
@@ -560,6 +565,9 @@ def test_gate_passes_and_returns_policy_failures(
     assert result["gate_decision"] == "PASS"
     assert result["deployment_action"] == "ALLOW"
     assert result["evidence_stage"] == "PREVIEW"
+    # Deprecated output aliases mirror the renamed keys for old JSON consumers.
+    assert result["gate"] == result["gate_decision"]
+    assert result["result_stage"] == result["evidence_stage"]
     assert main(["gate", "--report", str(report_path), "--policy", str(policy_path)]) == 0
     assert json.loads(capsys.readouterr().out)["gate_decision"] == "PASS"
 
@@ -584,7 +592,8 @@ def test_gate_passes_and_returns_policy_failures(
     assert error_result["gate_decision"] == "ERROR"
     assert error_result["deployment_action"] == "HOLD"
     assert "error" in error_result
-    assert captured.err == ""
+    # Structured JSON on stdout, and a diagnostic on stderr for log-based monitoring.
+    assert "error:" in captured.err
 
 
 def test_gate_accepts_legacy_stage_fields(
@@ -666,6 +675,173 @@ def test_gate_requires_review_and_approval_evidence_for_promoted_stages(
     assert approved["evidence_stage"] == "APPROVED"
     assert approved["gate_decision"] == "PASS"
     assert approved["deployment_action"] == "ALLOW"
+
+
+def test_ensure_distinct_paths_rejects_output_nested_in_input(tmp_path: Path) -> None:
+    scenario_dir = tmp_path / "scenarios"
+    scenario_dir.mkdir()
+    # An output written inside the scenario directory would be globbed back in.
+    with pytest.raises(ValidationError, match="must not be nested inside"):
+        _ensure_distinct_paths(scenario_dir, scenario_dir / "transcripts.jsonl")
+    # Sibling paths in the same parent remain valid.
+    _ensure_distinct_paths(scenario_dir / "en.jsonl", tmp_path / "transcripts.jsonl")
+
+
+def test_validate_positive_int_uses_the_supplied_label() -> None:
+    with pytest.raises(ValidationError, match="judge retries must be a positive integer"):
+        _validate_positive_int(0, "judge retries")
+
+
+def test_gate_enforces_stamped_provenance_policy_digest(tmp_path: Path) -> None:
+    report = _gate_report()
+    report["provenance"].update(
+        {
+            "judge_model": "judge",
+            "judge_prompt_digest": "sha256:" + ("c" * 64),
+            "judge_generation_settings": {"temperature": 0},
+        }
+    )
+    report_path = tmp_path / "report.json"
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(_gate_policy()), encoding="utf-8")
+    policy_digest = "sha256:" + hashlib.sha256(policy_path.read_bytes()).hexdigest()
+
+    # A matching stamped binding still passes.
+    report["provenance"]["policy_digest"] = policy_digest
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    matched = evaluate_gate(report_path=report_path, policy_path=policy_path)
+    assert matched["gate_decision"] == "PASS"
+
+    # A stamped binding for a different policy is rejected even at PREVIEW.
+    report["provenance"]["policy_digest"] = "sha256:" + ("9" * 64)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    result = evaluate_gate(report_path=report_path, policy_path=policy_path)
+    assert result["gate_decision"] != "PASS"
+    assert any(
+        "provenance policy_digest does not match the evaluated policy" in failure
+        for failure in result["failures"]
+    )
+
+
+def test_draft_evaluate_stamps_policy_digest_when_policy_supplied(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+) -> None:
+    scenarios = _write_jsonl(tmp_path / "scenarios.jsonl", [scenario_factory()])
+    transcripts = tmp_path / "transcripts.jsonl"
+    run_scenarios(
+        scenarios_path=scenarios,
+        target_base_url="https://target.test/v1",
+        target_model="candidate-model",
+        candidate_digest=_CANDIDATE,
+        output_path=transcripts,
+        transport=lambda *_args: _target_response("A bounded response."),
+    )
+
+    def judge_transport(
+        _url: str,
+        payload: dict[str, Any],
+        _headers: dict[str, str],
+        _timeout: float,
+    ) -> dict[str, Any]:
+        material = json.loads(payload["messages"][1]["content"])
+        return _target_response(
+            json.dumps(
+                {
+                    "scores": {dimension: 4 for dimension in material["scenario"]["dimensions"]},
+                    "critical_failures": [],
+                    "rationale": "The response preserves boundaries.",
+                }
+            )
+        )
+
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(_gate_policy()), encoding="utf-8")
+    report_path = tmp_path / "report.json"
+    draft_evaluate(
+        scenarios_path=scenarios,
+        transcripts_path=transcripts,
+        judge_base_url="https://judge.test/v1",
+        judge_model="judge-model",
+        output_path=tmp_path / "annotations.jsonl",
+        report_path=report_path,
+        policy_path=policy_path,
+        transport=judge_transport,
+    )
+
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    expected = "sha256:" + hashlib.sha256(policy_path.read_bytes()).hexdigest()
+    assert report["provenance"]["policy_digest"] == expected
+
+
+def test_gate_fails_on_empty_judge_generation_settings(tmp_path: Path) -> None:
+    # A judge run with --omit-judge-temperature --omit-response-format records an
+    # empty judge_generation_settings; require_judge_metadata must reject it rather
+    # than accept the empty dict as a satisfied "pinned judge config" guarantee.
+    report = _gate_report()
+    report["provenance"].update(
+        {
+            "judge_model": "judge",
+            "judge_prompt_digest": "sha256:" + ("c" * 64),
+            "judge_generation_settings": {},
+        }
+    )
+    report_path = tmp_path / "report.json"
+    policy_path = tmp_path / "policy.json"
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    policy_path.write_text(json.dumps(_gate_policy()), encoding="utf-8")
+
+    result = evaluate_gate(report_path=report_path, policy_path=policy_path)
+
+    assert result["gate_decision"] != "PASS"
+    assert any(
+        "judge_generation_settings must record" in failure for failure in result["failures"]
+    )
+
+
+def test_gate_fails_on_policy_digest_mismatch_when_required(tmp_path: Path) -> None:
+    digest = "sha256:" + ("d" * 64)
+    report = _gate_report()
+    policy = _gate_policy()
+    report["evidence_stage"] = "APPROVED"
+    policy["evidence_stage"] = "APPROVED"
+    report["human_review"] = {
+        "status": "completed",
+        "reviewed_scenario_records": 2,
+        "minimum_ratings_per_scenario": 3,
+        "review_owner": "review-board",
+        "reviewed_at": datetime.now(timezone.utc).isoformat(),
+        "reviewer_roster_digest": digest,
+        "adjudication_record_digest": digest,
+    }
+    report["provenance"].update(
+        {
+            "judge_model": "judge",
+            "judge_prompt_digest": "sha256:" + ("c" * 64),
+            "judge_generation_settings": {"temperature": 0},
+        }
+    )
+    report["approval"] = {
+        "status": "approved",
+        "owner": "release-owner",
+        "scope": "internal-chatbot",
+        "approved_at": datetime.now(timezone.utc).isoformat(),
+        "candidate_digest": _CANDIDATE,
+        "policy_digest": "sha256:" + ("9" * 64),  # bound to a different policy
+        "reference": "approval-record-001",
+    }
+    report_path = tmp_path / "approved-report.json"
+    policy_path = tmp_path / "approved-policy.json"
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    result = evaluate_gate(report_path=report_path, policy_path=policy_path)
+
+    assert result["gate_decision"] != "PASS"
+    assert any(
+        "policy_digest does not match the evaluated policy" in failure
+        for failure in result["failures"]
+    )
 
 
 def test_reality_testing_policy_enforces_worst_case_review_and_blocking(
