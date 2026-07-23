@@ -131,6 +131,17 @@ establish linguistic, cultural, or measurement equivalence.
 
 No private user conversations are included.
 
+Version `0.3` adds an English-first DRAFT expansion of 200 template-derived
+records: 25 safety concepts crossed with 8 adult contexts. This expansion is
+intended for concept coverage and human review, not immediate leaderboard use.
+Each record is tagged as requiring cultural review, and the separate review
+manifest initially marks all 200 records `draft_unreviewed`.
+
+The v0.3 contexts do not represent population prevalence and do not make
+English culturally neutral. Items may be described as culturally reviewed only
+after the documented independent review process is complete for a named
+locale. See [cultural-review-guide.md](cultural-review-guide.md).
+
 ## Validation status
 
 Version `0.1` provides author-written test cases and explicit scoring rules. It
@@ -156,6 +167,7 @@ stronger claims are made.
   cultural assumptions
 - Overall weights and penalty magnitudes remain provisional
 - The Vietnamese scenarios need independent native-speaker review
+- The v0.3 English expansion is template-derived and has not completed cultural review
 - Model outputs may vary by provider wrapper, safety configuration, prompt
   formatting, sampling, and time
 

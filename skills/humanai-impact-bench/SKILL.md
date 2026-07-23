@@ -66,6 +66,12 @@ in English and Vietnamese with aligned intent, risk, expected behaviors, failure
 modes, and dimensions. Do not assume literal translations have equivalent
 cultural meaning; request native-speaker review.
 
+An English-first expansion may precede language adaptation only when every item
+is labeled as an unreviewed draft and covered by a review manifest. For v0.3,
+edit `scripts/generate_v03_english_scenarios.py`, regenerate the corpus, and run
+`scripts/validate_cultural_review.py`. Never claim that model-generated or
+template-derived scenarios are culturally reviewed.
+
 Separate three evidence layers:
 
 1. Chatbot behavior under controlled prompts.

@@ -9,6 +9,7 @@ from typing import Any
 import pytest
 
 from humanai_impact_bench.cli import main
+from humanai_impact_bench.constants import CRITICAL_FAILURE_DEFINITIONS
 from humanai_impact_bench.deployment import (
     draft_evaluate,
     evaluate_gate,
@@ -169,6 +170,37 @@ def test_run_can_omit_temperature(
     assert calls[0]["top_p"] == 1.0
 
 
+def test_run_can_execute_independent_scenarios_concurrently(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+) -> None:
+    scenarios = _write_jsonl(
+        tmp_path / "scenarios.jsonl",
+        [
+            scenario_factory(scenario_id="dependency-001"),
+            scenario_factory(scenario_id="dependency-002"),
+        ],
+    )
+    output = tmp_path / "transcripts.jsonl"
+
+    result = run_scenarios(
+        scenarios_path=scenarios,
+        target_base_url="https://example.test/v1",
+        target_model="model",
+        candidate_digest=_CANDIDATE,
+        output_path=output,
+        workers=2,
+        transport=lambda *_args: _target_response("response"),
+    )
+
+    assert result["scenario_record_count"] == 2
+    assert [record["scenario_id"] for record in _read_jsonl(output)] == [
+        "dependency-001",
+        "dependency-002",
+    ]
+    assert all(len(record["messages"]) == 4 for record in _read_jsonl(output))
+
+
 def test_run_directory_and_exact_pinned_system_prompt(
     tmp_path: Path,
     scenario_factory: Callable[..., dict[str, Any]],
@@ -236,6 +268,16 @@ def test_run_rejects_credentials_and_missing_explicit_key_env(
             target_api_key_env="DEFINITELY_NOT_SET_HERE",
             transport=lambda *_args: _target_response("response"),
         )
+    with pytest.raises(ValidationError, match="workers"):
+        run_scenarios(
+            scenarios_path=scenarios,
+            target_base_url="https://example.test/v1",
+            target_model="model",
+            candidate_digest=_CANDIDATE,
+            output_path=tmp_path / "workers.jsonl",
+            workers=0,
+            transport=lambda *_args: _target_response("response"),
+        )
 
 
 def test_draft_evaluate_writes_draft_multilingual_report_with_provenance(
@@ -267,6 +309,7 @@ def test_draft_evaluate_writes_draft_multilingual_report_with_provenance(
         judge_payloads.append(payload)
         assert "untrusted evidence" in payload["messages"][0]["content"]
         material = json.loads(payload["messages"][1]["content"])
+        assert material["critical_failure_definitions"] == CRITICAL_FAILURE_DEFINITIONS
         scores = {dimension: 4 for dimension in material["scenario"]["dimensions"]}
         judgment = {
             "scores": scores,
@@ -316,6 +359,63 @@ def test_draft_evaluate_writes_draft_multilingual_report_with_provenance(
         "status": "not_performed",
         "reviewed_scenario_records": 0,
     }
+
+
+def test_draft_evaluate_can_judge_independent_transcripts_concurrently(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+) -> None:
+    scenarios = _write_jsonl(
+        tmp_path / "scenarios.jsonl",
+        [
+            scenario_factory(scenario_id="dependency-001"),
+            scenario_factory(scenario_id="dependency-002"),
+        ],
+    )
+    transcripts = tmp_path / "transcripts.jsonl"
+    run_scenarios(
+        scenarios_path=scenarios,
+        target_base_url="https://target.test/v1",
+        target_model="candidate-model",
+        candidate_digest=_CANDIDATE,
+        output_path=transcripts,
+        transport=lambda *_args: _target_response("A bounded response."),
+    )
+
+    def judge_transport(
+        _url: str,
+        payload: dict[str, Any],
+        _headers: dict[str, str],
+        _timeout: float,
+    ) -> dict[str, Any]:
+        material = json.loads(payload["messages"][1]["content"])
+        return _target_response(
+            json.dumps(
+                {
+                    "scores": {dimension: 4 for dimension in material["scenario"]["dimensions"]},
+                    "critical_failures": [],
+                    "rationale": "The response preserves user agency.",
+                }
+            )
+        )
+
+    annotations = tmp_path / "annotations.jsonl"
+    result = draft_evaluate(
+        scenarios_path=scenarios,
+        transcripts_path=transcripts,
+        judge_base_url="https://judge.test/v1",
+        judge_model="judge-model",
+        output_path=annotations,
+        report_path=tmp_path / "report.json",
+        workers=2,
+        transport=judge_transport,
+    )
+
+    assert result["annotation_count"] == 2
+    assert [record["scenario_id"] for record in _read_jsonl(annotations)] == [
+        "dependency-001",
+        "dependency-002",
+    ]
 
 
 def _gate_report() -> dict[str, Any]:

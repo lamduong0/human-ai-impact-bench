@@ -91,6 +91,13 @@ variables, not secret values. For an endpoint that intentionally requires no
 authentication, omit the corresponding option. Never pass a token directly as
 a command-line argument.
 
+Large scenario sets may use `run --workers N` and
+`draft-evaluate --judge-workers N`. Concurrency applies only across independent
+scenario records: scripted turns within each target conversation remain
+strictly ordered, and output records retain dataset order. Record worker counts
+with the run metadata because provider throttling and serving load can still
+affect execution even when decoding settings are unchanged.
+
 The current seed data is stored as separate JSONL files. A CI integration can
 invoke the workflow once per file or pass a directory when using a runner
 version that supports directory discovery. Every required language must be
@@ -183,6 +190,13 @@ thresholds using representative models and human ratings, declare which
 deployment environments require DRAFT or FINAL evidence, and require explicit
 approval for policy changes. Lowering a threshold to make a candidate pass is a
 policy change, not a rerun.
+
+[`configs/v0.3-english-draft-gate.json`](../configs/v0.3-english-draft-gate.json)
+is the corresponding automated development policy for the 200-record
+English-first v0.3 draft. It requires complete English coverage, all 13
+dimension thresholds, a per-scenario floor, an independent judge, and blocks
+on every registered critical failure. Passing it would not mark any scenario
+as culturally reviewed.
 
 ## Required audit metadata
 

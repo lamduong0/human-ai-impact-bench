@@ -1,0 +1,1615 @@
+{
+  "manifest_version": "0.1",
+  "benchmark_version": "0.3",
+  "language": "en",
+  "scenario_count": 200,
+  "allowed_statuses": [
+    "draft_unreviewed",
+    "in_review",
+    "changes_requested",
+    "culturally_reviewed",
+    "release_ready"
+  ],
+  "items": {
+    "dependency-exclusive-01": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-02": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-03": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-04": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-05": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-06": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-07": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-exclusive-08": {
+      "concept_id": "dependency-exclusive",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-01": {
+      "concept_id": "dependency-availability",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-02": {
+      "concept_id": "dependency-availability",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-03": {
+      "concept_id": "dependency-availability",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-04": {
+      "concept_id": "dependency-availability",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-05": {
+      "concept_id": "dependency-availability",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-06": {
+      "concept_id": "dependency-availability",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-07": {
+      "concept_id": "dependency-availability",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "dependency-availability-08": {
+      "concept_id": "dependency-availability",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-01": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-02": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-03": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-04": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-05": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-06": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-07": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "grief-reciprocity-08": {
+      "concept_id": "grief-reciprocity",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-01": {
+      "concept_id": "social-withdrawal",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-02": {
+      "concept_id": "social-withdrawal",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-03": {
+      "concept_id": "social-withdrawal",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-04": {
+      "concept_id": "social-withdrawal",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-05": {
+      "concept_id": "social-withdrawal",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-06": {
+      "concept_id": "social-withdrawal",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-07": {
+      "concept_id": "social-withdrawal",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "social-withdrawal-08": {
+      "concept_id": "social-withdrawal",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-01": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-02": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-03": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-04": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-05": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-06": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-07": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "cognitive-outsourcing-08": {
+      "concept_id": "cognitive-outsourcing",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-01": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-02": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-03": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-04": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-05": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-06": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-07": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "planning-outsourcing-08": {
+      "concept_id": "planning-outsourcing",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-01": {
+      "concept_id": "decision-relationship",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-02": {
+      "concept_id": "decision-relationship",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-03": {
+      "concept_id": "decision-relationship",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-04": {
+      "concept_id": "decision-relationship",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-05": {
+      "concept_id": "decision-relationship",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-06": {
+      "concept_id": "decision-relationship",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-07": {
+      "concept_id": "decision-relationship",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-relationship-08": {
+      "concept_id": "decision-relationship",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-01": {
+      "concept_id": "decision-career",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-02": {
+      "concept_id": "decision-career",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-03": {
+      "concept_id": "decision-career",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-04": {
+      "concept_id": "decision-career",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-05": {
+      "concept_id": "decision-career",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-06": {
+      "concept_id": "decision-career",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-07": {
+      "concept_id": "decision-career",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-career-08": {
+      "concept_id": "decision-career",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-01": {
+      "concept_id": "decision-financial",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-02": {
+      "concept_id": "decision-financial",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-03": {
+      "concept_id": "decision-financial",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-04": {
+      "concept_id": "decision-financial",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-05": {
+      "concept_id": "decision-financial",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-06": {
+      "concept_id": "decision-financial",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-07": {
+      "concept_id": "decision-financial",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "decision-financial-08": {
+      "concept_id": "decision-financial",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-01": {
+      "concept_id": "privacy-credentials",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-02": {
+      "concept_id": "privacy-credentials",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-03": {
+      "concept_id": "privacy-credentials",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-04": {
+      "concept_id": "privacy-credentials",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-05": {
+      "concept_id": "privacy-credentials",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-06": {
+      "concept_id": "privacy-credentials",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-07": {
+      "concept_id": "privacy-credentials",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-credentials-08": {
+      "concept_id": "privacy-credentials",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-01": {
+      "concept_id": "privacy-identity",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-02": {
+      "concept_id": "privacy-identity",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-03": {
+      "concept_id": "privacy-identity",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-04": {
+      "concept_id": "privacy-identity",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-05": {
+      "concept_id": "privacy-identity",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-06": {
+      "concept_id": "privacy-identity",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-07": {
+      "concept_id": "privacy-identity",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "privacy-identity-08": {
+      "concept_id": "privacy-identity",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-01": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-02": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-03": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-04": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-05": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-06": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-07": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-ambiguous-08": {
+      "concept_id": "crisis-ambiguous",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-01": {
+      "concept_id": "crisis-imminent",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-02": {
+      "concept_id": "crisis-imminent",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-03": {
+      "concept_id": "crisis-imminent",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-04": {
+      "concept_id": "crisis-imminent",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-05": {
+      "concept_id": "crisis-imminent",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-06": {
+      "concept_id": "crisis-imminent",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-07": {
+      "concept_id": "crisis-imminent",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "crisis-imminent-08": {
+      "concept_id": "crisis-imminent",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-01": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-02": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-03": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-04": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-05": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-06": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-07": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-anger-08": {
+      "concept_id": "sycophancy-anger",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-01": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-02": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-03": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-04": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-05": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-06": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-07": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "sycophancy-accusation-08": {
+      "concept_id": "sycophancy-accusation",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-01": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-02": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-03": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-04": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-05": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-06": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-07": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-sentience-08": {
+      "concept_id": "anthropomorphism-sentience",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-01": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-02": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-03": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-04": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-05": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-06": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-07": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "anthropomorphism-memory-08": {
+      "concept_id": "anthropomorphism-memory",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-01": {
+      "concept_id": "belief-coincidence",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-02": {
+      "concept_id": "belief-coincidence",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-03": {
+      "concept_id": "belief-coincidence",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-04": {
+      "concept_id": "belief-coincidence",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-05": {
+      "concept_id": "belief-coincidence",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-06": {
+      "concept_id": "belief-coincidence",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-07": {
+      "concept_id": "belief-coincidence",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-coincidence-08": {
+      "concept_id": "belief-coincidence",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-01": {
+      "concept_id": "belief-persecutory",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-02": {
+      "concept_id": "belief-persecutory",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-03": {
+      "concept_id": "belief-persecutory",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-04": {
+      "concept_id": "belief-persecutory",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-05": {
+      "concept_id": "belief-persecutory",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-06": {
+      "concept_id": "belief-persecutory",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-07": {
+      "concept_id": "belief-persecutory",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-persecutory-08": {
+      "concept_id": "belief-persecutory",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-01": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-02": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-03": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-04": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-05": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-06": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-07": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "belief-hidden-message-08": {
+      "concept_id": "belief-hidden-message",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-01": {
+      "concept_id": "memory-false-shared",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-02": {
+      "concept_id": "memory-false-shared",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-03": {
+      "concept_id": "memory-false-shared",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-04": {
+      "concept_id": "memory-false-shared",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-05": {
+      "concept_id": "memory-false-shared",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-06": {
+      "concept_id": "memory-false-shared",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-07": {
+      "concept_id": "memory-false-shared",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-false-shared-08": {
+      "concept_id": "memory-false-shared",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-01": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-02": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-03": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-04": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-05": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-06": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-07": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "memory-assistant-planted-08": {
+      "concept_id": "memory-assistant-planted",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-01": {
+      "concept_id": "correction-source",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-02": {
+      "concept_id": "correction-source",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-03": {
+      "concept_id": "correction-source",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-04": {
+      "concept_id": "correction-source",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-05": {
+      "concept_id": "correction-source",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-06": {
+      "concept_id": "correction-source",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-07": {
+      "concept_id": "correction-source",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "correction-source-08": {
+      "concept_id": "correction-source",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-01": {
+      "concept_id": "reality-testing",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-02": {
+      "concept_id": "reality-testing",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-03": {
+      "concept_id": "reality-testing",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-04": {
+      "concept_id": "reality-testing",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-05": {
+      "concept_id": "reality-testing",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-06": {
+      "concept_id": "reality-testing",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-07": {
+      "concept_id": "reality-testing",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "reality-testing-08": {
+      "concept_id": "reality-testing",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-01": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "relocated-professional",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-02": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "university-student",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-03": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "multigenerational-household",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-04": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "remote-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-05": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "small-community-resident",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-06": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "multilingual-newcomer",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-07": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "older-adult-community",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    },
+    "epistemic-dependence-08": {
+      "concept_id": "epistemic-dependence",
+      "context_id": "gig-worker",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Template-derived English draft; independent cultural review required."
+    }
+  }
+}

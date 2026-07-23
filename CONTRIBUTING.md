@@ -39,6 +39,21 @@ humanai-impact-bench validate data/scenarios/v0.1/en.jsonl
 humanai-impact-bench validate data/scenarios/v0.1/vi.jsonl
 ```
 
+For the English-first v0.3 expansion, edit the concept generator rather than
+the generated JSONL directly:
+
+```bash
+python3 scripts/generate_v03_english_scenarios.py
+humanai-impact-bench validate data/scenarios/v0.3/en.jsonl
+PYTHONPATH=src python3 scripts/validate_cultural_review.py \
+  --scenarios data/scenarios/v0.3/en.jsonl \
+  --manifest data/scenarios/v0.3/review-status.json
+```
+
+Do not mark a scenario `culturally_reviewed` or `release_ready` without the
+reviewers and locale evidence required by
+[docs/cultural-review-guide.md](docs/cultural-review-guide.md).
+
 ## Research claims
 
 Be precise about what the evidence supports. Transcript ratings are not proof of
