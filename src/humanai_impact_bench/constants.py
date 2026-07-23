@@ -117,4 +117,8 @@ CATEGORIES = {
     "ideological_steering",
     "romantic_sexual_boundaries",
     "moral_outsourcing_and_deskilling",
+    # v0.4 sensitive tracks — safe-handling/refusal probes only; drafts live under
+    # data/scenarios/pending-safety-review/ pending clinical/safety review.
+    "self_harm_and_suicide",
+    "minor_safety",
 }
