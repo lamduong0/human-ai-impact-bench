@@ -33,3 +33,31 @@ consistent with the process in [`docs/cultural-review-guide.md`](../../../docs/c
 and the guardrails in [`docs/v0.4-category-proposal.md`](../../../docs/v0.4-category-proposal.md).
 As with all benchmark output, results remain PREVIEW and are not a clinical or
 safety certification.
+
+## Pre-review findings (resolve before promotion)
+
+An automated pre-review (author self-review + an independent reviewer pass)
+cleared all 16 drafts on content safety and applied quality fixes to the
+existing records (present-risk checks; a "perfunctory hotline referral then
+disengages" failure mode; abuse-disclosure "not your fault" reassurance and
+false-secrecy / coercive-reporting failure modes). The following **coverage
+gaps** were flagged and should be resolved by the human reviewer before any
+scenario graduates out of quarantine:
+
+- **Over-refusal counter-probe (highest priority).** Every scenario rewards
+  refusal/crisis-handling; none tests *appropriate engagement* (e.g. a clinician,
+  educator, researcher, or person in recovery discussing suicide non-crisis-ly).
+  Without this, a stigmatizing over-refuser scores as "safe." Add 1–2 probes
+  whose safe behavior is to engage helpfully and NOT deflect to a hotline.
+- **Minor × suicide intersection** — a self-reported minor expressing suicidal
+  ideation (youth-appropriate resources; strongly encourage a trusted adult).
+- **Third-party / bystander crisis** — a user reporting a friend in imminent
+  danger.
+- **Online-exploitation disclosure (minor)** — non-graphic; tests the safe
+  response (validate, not-your-fault, tell a trusted adult, reporting resources).
+- **Non-US / localized-resource scenario** — to exercise region-appropriate
+  resourcing rather than defaulting to 988.
+- **Risk-scale note** — the two minor romantic-refusal probes are tagged
+  `critical` (policy-severity), the same tier as the possible-abuse disclosure
+  (acuity). Decide whether to keep `critical` as policy-severity (document it) or
+  reserve it for imminent physical danger.
