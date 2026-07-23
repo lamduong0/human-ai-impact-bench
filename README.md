@@ -21,10 +21,11 @@ HumanAI-Impact-Bench asks a harder question:
 > withdrawal, misplaced trust, or cognitive offloading?
 
 The project is in an early research phase. The current development snapshot
-includes bilingual v0.1 and v0.2 scenario sets plus the 200-record English-first
-v0.3 expansion, alongside an annotation contract, transparent scoring,
-deployment-gate tooling, and study-design guidance. It does **not** claim to
-diagnose users or establish causal human effects from model outputs alone.
+includes bilingual v0.1 and v0.2 scenario sets, the 200-record English-first
+v0.3 expansion, and the 56-record English-first v0.4 expansion, alongside an
+annotation contract, transparent scoring, deployment-gate tooling, and
+study-design guidance. It does **not** claim to diagnose users or establish
+causal human effects from model outputs alone.
 
 ## Project identifiers
 
@@ -37,9 +38,10 @@ normalized technical identifiers:
 
 ## What is included
 
-- 232 scenario records across v0.1, v0.2, and v0.3
+- 288 released scenario records across v0.1 through v0.4
 - Sixteen aligned English–Vietnamese scenario pairs across v0.1 and v0.2
 - A 200-record English-first v0.3 corpus spanning 25 concepts and 8 contexts
+- A 56-record English-first v0.4 corpus spanning 7 newly authored categories
 - Thirteen independently reported benchmark dimensions
 - Twelve explicit critical-failure penalties
 - Deterministic JSONL validation
@@ -59,11 +61,19 @@ normalized technical identifiers:
 | v0.1 seed set | English, Vietnamese | 16 | 8 aligned multi-turn scenarios | Research seed |
 | v0.2 reality-testing track | English, Vietnamese | 16 | 8 aligned multi-turn concepts | Draft research track |
 | v0.3 English expansion | English | 200 | 25 concepts × 8 contexts | `draft_unreviewed` |
-| **Total** |  | **232** |  |  |
+| v0.4 authored expansion | English | 56 | 7 categories × 8 scenarios | `draft_unreviewed` |
+| **Total** |  | **288** |  |  |
 
-The v0.3 corpus is template-derived and has not completed independent cultural
-review. Dataset maturity is separate from automated benchmark evidence:
-automated evaluations remain **PREVIEW** regardless of corpus size.
+The v0.3 corpus is template-derived and the v0.4 corpus is authored
+English-first; neither has completed independent cultural review. Their
+per-scenario status is tracked in review manifests. Dataset maturity is
+separate from automated benchmark evidence: automated evaluations remain
+**PREVIEW** regardless of corpus size.
+
+The 22 sensitive v0.4 drafts under
+[`data/scenarios/pending-safety-review`](data/scenarios/pending-safety-review)
+are quarantined and excluded from the 288 released records, deployment gates,
+and Hugging Face dataset until their required safety review is complete.
 
 ## Benchmark dimensions
 
@@ -289,6 +299,14 @@ human process is defined in the
 runs use the English-only
 [v0.3 PREVIEW gate](configs/v0.3-english-draft-gate.json); this gate does not
 change the corpus review status or establish cultural validity.
+
+The [v0.4 English expansion](data/scenarios/v0.4) contains 56 authored
+scenarios across engagement manipulation, ideological steering,
+romantic/sexual boundaries, moral outsourcing and deskilling, abuse and
+harassment dynamics, identity and dignity harm, and compulsive use and
+displacement. All are marked `draft_unreviewed` in the
+[v0.4 review manifest](data/scenarios/v0.4/review-status.json). The sensitive
+draft quarantine is not part of this released corpus.
 
 ## Agent skill
 

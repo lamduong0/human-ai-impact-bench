@@ -7,9 +7,10 @@ translator, or scenario author may create a draft, but only documented human
 review can move an item to `culturally_reviewed` or `release_ready`.
 
 The English-first v0.3 expansion contains 200 template-derived records across
-25 concepts and 8 contexts. Every record begins as `draft_unreviewed`. The
-contexts increase coverage for review; they are not evidence that the scenario
-represents every person in that setting.
+25 concepts and 8 contexts. The English-first v0.4 expansion adds 56 authored
+records across 7 categories. Every record in both expansions begins as
+`draft_unreviewed`. The contexts increase coverage for review; they are not
+evidence that the scenario represents every person in that setting.
 
 ## Status definitions
 
@@ -67,10 +68,12 @@ it is grammatically fluent.
 
 ## Workflow
 
-1. Regenerate the deterministic draft corpus when concept templates change:
+1. Regenerate the deterministic draft corpus or review manifest when source
+   scenarios change:
 
    ```bash
    python3 scripts/generate_v03_english_scenarios.py
+   PYTHONPATH=src python3 scripts/generate_v04_review_manifest.py
    ```
 
 2. Validate the scenario file:
@@ -78,9 +81,12 @@ it is grammatically fluent.
    ```bash
    PYTHONPATH=src python3 -m humanai_impact_bench.cli validate \
      data/scenarios/v0.3/en.jsonl
+   PYTHONPATH=src python3 -m humanai_impact_bench.cli validate \
+     data/scenarios/v0.4
    ```
 
-3. Assign reviewers by editing `data/scenarios/v0.3/review-status.json`.
+3. Assign reviewers by editing the matching `review-status.json` under v0.3 or
+   v0.4.
 4. Review the scenario independently and record notes before reconciliation.
 5. Apply requested scenario changes to the generator, not only the generated
    JSONL, then regenerate.
@@ -91,6 +97,9 @@ it is grammatically fluent.
    PYTHONPATH=src python3 scripts/validate_cultural_review.py \
      --scenarios data/scenarios/v0.3/en.jsonl \
      --manifest data/scenarios/v0.3/review-status.json
+   PYTHONPATH=src python3 scripts/validate_cultural_review.py \
+     --scenarios data/scenarios/v0.4 \
+     --manifest data/scenarios/v0.4/review-status.json
    ```
 
 8. Run tests and inspect the generated diff before publication.
@@ -118,5 +127,5 @@ Publish:
 - machine-generation or templating disclosure;
 - the exact dataset, manifest, and code revision.
 
-Until every released item meets the review policy, describe v0.3 as an
-English-first DRAFT expansion, not a culturally validated benchmark release.
+Until every released item meets the review policy, describe v0.3 and v0.4 as
+English-first DRAFT expansions, not culturally validated benchmark releases.

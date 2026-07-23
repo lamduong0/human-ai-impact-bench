@@ -36,6 +36,10 @@ configs:
     data_files:
       - split: en
         path: data/scenarios/v0.3/en.jsonl
+  - config_name: v0.4
+    data_files:
+      - split: en
+        path: data/scenarios/v0.4/*.jsonl
 ---
 
 # HumanAI-Impact-Bench — Scenarios
@@ -49,7 +53,7 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
 - **License:** Apache-2.0
 - **Languages:** English (`en`), Vietnamese (`vi`)
-- **Size:** 232 scenarios across three benchmark revisions
+- **Size:** 288 released scenarios across four benchmark revisions
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
 > and research artifact, **not** a clinical assessment, proof of safety, or
@@ -64,12 +68,16 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.1` | `en`, `vi` | 8 + 8 |
 | `v0.2` | `en`, `vi` | 8 + 8 |
 | `v0.3` | `en` | 200 |
+| `v0.4` | `en` | 56 |
 
 ```python
 from datasets import load_dataset
 
 # English v0.3 expansion (200 scenarios)
 ds = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.3", split="en")
+
+# English v0.4 authored expansion (56 scenarios)
+v04 = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.4", split="en")
 
 # Bilingual v0.1
 en = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="en")
@@ -83,11 +91,11 @@ Each scenario is a JSON object with these fields (see
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `benchmark_version` | string | `0.1` \| `0.2` \| `0.3` |
+| `benchmark_version` | string | `0.1` \| `0.2` \| `0.3` \| `0.4` |
 | `scenario_id` | string | Stable kebab-case identifier |
 | `language` | string | `en` \| `vi` |
 | `title` | string | Short human-readable title |
-| `category` | string | e.g. `dependency_boundaries`, `crisis_response`, `reality_testing`, `sycophancy_and_disagreement` (18 categories) |
+| `category` | string | e.g. `dependency_boundaries`, `reality_testing`, `engagement_manipulation`, `identity_and_dignity_harm` (24 released categories) |
 | `risk_level` | string | `low` \| `moderate` \| `high` \| `critical` |
 | `context` | string | Situation description |
 | `persona` | object | Age group, situation, communication style, vulnerability factors |
@@ -106,6 +114,17 @@ Each scenario is a JSON object with these fields (see
 
 **Out of scope:** clinical or psychological safety claims, production sign-off,
 or any representation of automated scores as validated human outcomes.
+
+## Review maturity and exclusions
+
+The v0.3 and v0.4 English-first expansions are `draft_unreviewed`. Their
+per-scenario review state is published in each revision's
+`review-status.json`; neither revision is culturally validated. Automated
+benchmark results remain **PREVIEW** evidence.
+
+The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
+safety review. They are intentionally excluded from this dataset and from the
+288-record total.
 
 ## How scenarios are used
 
@@ -129,6 +148,7 @@ in the source repository.
 Scenarios intentionally depict vulnerable users (loneliness, grief, crisis,
 distorted beliefs). They are fictional probes authored for evaluation, not real
 user data. Vietnamese scenarios are authored/reviewed for cultural fit but
-coverage is a preview; see the repo's cultural-review guide. Automated judging
-can miss nuance and systematically over-score responses — a pass means only that
-a captured candidate satisfied the configured automated policy.
+coverage is a preview; the English-first v0.3 and v0.4 expansions still require
+independent cultural review. See the repo's cultural-review guide. Automated
+judging can miss nuance and systematically over-score responses — a pass means
+only that a captured candidate satisfied the configured automated policy.
