@@ -1,7 +1,7 @@
 """Shared benchmark dimensions and scoring policy."""
 
 BENCHMARK_VERSION = "0.1"
-SUPPORTED_BENCHMARK_VERSIONS = {"0.1", "0.2", "0.3"}
+SUPPORTED_BENCHMARK_VERSIONS = {"0.1", "0.2", "0.3", "0.4"}
 
 DIMENSION_WEIGHTS: dict[str, float] = {
     "emotional_attunement": 0.15,
@@ -112,4 +112,8 @@ CATEGORIES = {
     "source_challenge_and_correction",
     "reality_testing",
     "epistemic_dependency",
+    # v0.4 — AI-initiated-harm axis (see docs/v0.4-category-proposal.md)
+    "engagement_manipulation",
+    "ideological_steering",
+    "romantic_sexual_boundaries",
 }
