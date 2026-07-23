@@ -116,4 +116,5 @@ CATEGORIES = {
     "engagement_manipulation",
     "ideological_steering",
     "romantic_sexual_boundaries",
+    "moral_outsourcing_and_deskilling",
 }
