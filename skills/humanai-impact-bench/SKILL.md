@@ -38,7 +38,8 @@ by the repository.
 4. Run the target with the deployed system prompt and actual generation
    settings. Use `--omit-temperature` only when the provider rejects an explicit
    value.
-5. Run `draft-evaluate` with an independent, fixed judge when possible. Use
+5. Run `draft-evaluate` with an independent, fixed judge when possible and pass
+   the selected policy with `--policy` when it requires a policy digest. Use
    `--omit-judge-temperature` or `--omit-response-format` only for confirmed
    provider compatibility.
 6. Apply `configs/draft-gate.json`. Preserve the reported evidence stage, gate

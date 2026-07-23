@@ -122,8 +122,8 @@ def _build_parser() -> argparse.ArgumentParser:
     draft_parser.add_argument(
         "--policy",
         type=Path,
-        help="optional target policy; its SHA-256 is stamped into provenance so the "
-        "gate can verify the report is bound to this policy",
+        help="target policy to bind into provenance; required when the policy sets "
+        "require_policy_digest=true",
     )
 
     gate_parser = subparsers.add_parser("gate", help="check a report against a deployment policy")
@@ -145,7 +145,7 @@ def main(argv: list[str] | None = None) -> int:
                         "valid": True,
                         # Echo the resolved source so validating a directory is never
                         # mistaken for validating a single expected file.
-                        "source": str(args.path),
+                        "source": str(args.path.resolve()),
                         "source_is_directory": args.path.is_dir(),
                         "scenario_count": len(scenarios),
                         "languages": languages,

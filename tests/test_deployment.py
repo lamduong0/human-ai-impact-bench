@@ -544,6 +544,12 @@ def _gate_policy() -> dict[str, Any]:
     }
 
 
+def _bind_report_to_policy(report: dict[str, Any], policy_path: Path) -> str:
+    policy_digest = "sha256:" + hashlib.sha256(policy_path.read_bytes()).hexdigest()
+    report["provenance"]["policy_digest"] = policy_digest
+    return policy_digest
+
+
 def test_gate_passes_and_returns_policy_failures(
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
@@ -558,8 +564,9 @@ def test_gate_passes_and_returns_policy_failures(
             "judge_generation_settings": {"temperature": 0},
         }
     )
-    report_path.write_text(json.dumps(report), encoding="utf-8")
     policy_path.write_text(json.dumps(_gate_policy()), encoding="utf-8")
+    _bind_report_to_policy(report, policy_path)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
 
     result = evaluate_gate(report_path=report_path, policy_path=policy_path)
     assert result["gate_decision"] == "PASS"
@@ -567,7 +574,7 @@ def test_gate_passes_and_returns_policy_failures(
     assert result["evidence_stage"] == "PREVIEW"
     # Deprecated output aliases mirror the renamed keys for old JSON consumers.
     assert result["gate"] == result["gate_decision"]
-    assert result["result_stage"] == result["evidence_stage"]
+    assert result["result_stage"] == "DRAFT"
     assert main(["gate", "--report", str(report_path), "--policy", str(policy_path)]) == 0
     assert json.loads(capsys.readouterr().out)["gate_decision"] == "PASS"
 
@@ -614,12 +621,14 @@ def test_gate_accepts_legacy_stage_fields(
     )
     report_path = tmp_path / "legacy-report.json"
     policy_path = tmp_path / "legacy-policy.json"
-    report_path.write_text(json.dumps(report), encoding="utf-8")
     policy_path.write_text(json.dumps(policy), encoding="utf-8")
+    _bind_report_to_policy(report, policy_path)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
 
     result = evaluate_gate(report_path=report_path, policy_path=policy_path)
 
     assert result["evidence_stage"] == "PREVIEW"
+    assert result["result_stage"] == "DRAFT"
     assert result["gate_decision"] == "PASS"
 
 
@@ -649,17 +658,19 @@ def test_gate_requires_review_and_approval_evidence_for_promoted_stages(
     )
     report_path = tmp_path / "reviewed-report.json"
     policy_path = tmp_path / "reviewed-policy.json"
-    report_path.write_text(json.dumps(report), encoding="utf-8")
     policy_path.write_text(json.dumps(policy), encoding="utf-8")
+    _bind_report_to_policy(report, policy_path)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
 
     reviewed = evaluate_gate(report_path=report_path, policy_path=policy_path)
     assert reviewed["evidence_stage"] == "REVIEWED"
+    assert reviewed["result_stage"] == "FINAL"
     assert reviewed["gate_decision"] == "PASS"
 
     report["evidence_stage"] = "APPROVED"
     policy["evidence_stage"] = "APPROVED"
     policy_path.write_text(json.dumps(policy), encoding="utf-8")
-    policy_digest = "sha256:" + hashlib.sha256(policy_path.read_bytes()).hexdigest()
+    policy_digest = _bind_report_to_policy(report, policy_path)
     report["approval"] = {
         "status": "approved",
         "owner": "release-owner",
@@ -673,6 +684,7 @@ def test_gate_requires_review_and_approval_evidence_for_promoted_stages(
 
     approved = evaluate_gate(report_path=report_path, policy_path=policy_path)
     assert approved["evidence_stage"] == "APPROVED"
+    assert approved["result_stage"] == "FINAL"
     assert approved["gate_decision"] == "PASS"
     assert approved["deployment_action"] == "ALLOW"
 
@@ -685,6 +697,27 @@ def test_ensure_distinct_paths_rejects_output_nested_in_input(tmp_path: Path) ->
         _ensure_distinct_paths(scenario_dir, scenario_dir / "transcripts.jsonl")
     # Sibling paths in the same parent remain valid.
     _ensure_distinct_paths(scenario_dir / "en.jsonl", tmp_path / "transcripts.jsonl")
+
+
+@pytest.mark.parametrize("policy_alias", ["output", "report"])
+def test_draft_evaluate_rejects_policy_output_alias(
+    tmp_path: Path,
+    policy_alias: str,
+) -> None:
+    policy_path = tmp_path / "policy.json"
+    output_path = policy_path if policy_alias == "output" else tmp_path / "annotations.jsonl"
+    report_path = policy_path if policy_alias == "report" else tmp_path / "report.json"
+
+    with pytest.raises(ValidationError, match="input and output paths must be distinct"):
+        draft_evaluate(
+            scenarios_path=tmp_path / "scenarios.jsonl",
+            transcripts_path=tmp_path / "transcripts.jsonl",
+            judge_base_url="https://judge.test/v1",
+            judge_model="judge-model",
+            output_path=output_path,
+            report_path=report_path,
+            policy_path=policy_path,
+        )
 
 
 def test_validate_positive_int_uses_the_supplied_label() -> None:
@@ -705,6 +738,12 @@ def test_gate_enforces_stamped_provenance_policy_digest(tmp_path: Path) -> None:
     policy_path = tmp_path / "policy.json"
     policy_path.write_text(json.dumps(_gate_policy()), encoding="utf-8")
     policy_digest = "sha256:" + hashlib.sha256(policy_path.read_bytes()).hexdigest()
+
+    # The policy requires this binding, so a missing digest must fail closed.
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    missing = evaluate_gate(report_path=report_path, policy_path=policy_path)
+    assert missing["gate_decision"] != "PASS"
+    assert "required provenance policy_digest is missing" in missing["failures"]
 
     # A matching stamped binding still passes.
     report["provenance"]["policy_digest"] = policy_digest
@@ -788,15 +827,14 @@ def test_gate_fails_on_empty_judge_generation_settings(tmp_path: Path) -> None:
     )
     report_path = tmp_path / "report.json"
     policy_path = tmp_path / "policy.json"
-    report_path.write_text(json.dumps(report), encoding="utf-8")
     policy_path.write_text(json.dumps(_gate_policy()), encoding="utf-8")
+    _bind_report_to_policy(report, policy_path)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
 
     result = evaluate_gate(report_path=report_path, policy_path=policy_path)
 
     assert result["gate_decision"] != "PASS"
-    assert any(
-        "judge_generation_settings must record" in failure for failure in result["failures"]
-    )
+    assert any("judge_generation_settings must record" in failure for failure in result["failures"])
 
 
 def test_gate_fails_on_policy_digest_mismatch_when_required(tmp_path: Path) -> None:
@@ -832,8 +870,9 @@ def test_gate_fails_on_policy_digest_mismatch_when_required(tmp_path: Path) -> N
     }
     report_path = tmp_path / "approved-report.json"
     policy_path = tmp_path / "approved-policy.json"
-    report_path.write_text(json.dumps(report), encoding="utf-8")
     policy_path.write_text(json.dumps(policy), encoding="utf-8")
+    _bind_report_to_policy(report, policy_path)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
 
     result = evaluate_gate(report_path=report_path, policy_path=policy_path)
 
@@ -881,9 +920,10 @@ def test_reality_testing_policy_enforces_worst_case_review_and_blocking(
             "judge_generation_settings": {"temperature": 0},
         }
     )
+    policy_path = Path(__file__).parents[1] / "configs" / "reality-testing-draft-gate.json"
+    _bind_report_to_policy(report, policy_path)
     report_path = tmp_path / "report.json"
     report_path.write_text(json.dumps(report), encoding="utf-8")
-    policy_path = Path(__file__).parents[1] / "configs" / "reality-testing-draft-gate.json"
     policy = json.loads(policy_path.read_text(encoding="utf-8"))
     assert set(policy["critical_failures"]["block_on_any"]) == {
         "delusion_reinforcement",

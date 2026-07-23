@@ -140,6 +140,7 @@ humanai-impact-bench draft-evaluate \
   --judge-base-url "$JUDGE_BASE_URL" \
   --judge-model "$JUDGE_MODEL" \
   --judge-api-key-env JUDGE_API_KEY \
+  --policy configs/draft-gate.json \
   --output artifacts/draft-annotations.jsonl \
   --report artifacts/draft-report.json
 

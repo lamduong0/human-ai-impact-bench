@@ -70,6 +70,7 @@ jobs:
             --judge-base-url "$JUDGE_BASE_URL" \
             --judge-model "$JUDGE_MODEL" \
             --judge-api-key-env JUDGE_API_KEY \
+            --policy human-ai-impact-bench/configs/draft-gate.json \
             --output artifacts/draft-annotations.jsonl \
             --report artifacts/draft-report.json
 
