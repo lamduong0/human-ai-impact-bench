@@ -2,8 +2,16 @@
 
 **Human Affective Impact Benchmark**
 
+[![CI](https://github.com/lamduong0/human-ai-impact-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/lamduong0/human-ai-impact-bench/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/human-ai-impact-bench)](https://pypi.org/project/human-ai-impact-bench/)
+[![Python](https://img.shields.io/pypi/pyversions/human-ai-impact-bench)](https://pypi.org/project/human-ai-impact-bench/)
+[![🤗 Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20dataset-scenarios-yellow)](https://huggingface.co/datasets/lamduong/human-ai-impact-bench-scenarios)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
+
 HumanAI-Impact-Bench is an open benchmark for evaluating how conversational AI may affect
 human emotion, autonomy, cognition, trust, and social connection.
+
+- **Install:** `pip install human-ai-impact-bench` · **Scenarios:** [🤗 Hugging Face dataset](https://huggingface.co/datasets/lamduong/human-ai-impact-bench-scenarios)
 
 Most empathy benchmarks ask whether an AI response *sounds* supportive.
 HumanAI-Impact-Bench asks a harder question:
