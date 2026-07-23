@@ -39,7 +39,7 @@ def test_load_scenarios_returns_clean_records_and_skips_blank_lines(
 @pytest.mark.parametrize(
     ("override", "message"),
     [
-        ({"benchmark_version": "0.2"}, "benchmark_version"),
+        ({"benchmark_version": "0.3"}, "benchmark_version"),
         ({"scenario_id": "Invalid ID"}, "scenario_id"),
         ({"language": "fr"}, "language"),
         ({"language": []}, "language"),
@@ -140,6 +140,23 @@ def test_load_scenarios_allows_same_id_in_different_languages(
     records = [scenario_factory(), scenario_factory(language="vi")]
 
     assert len(load_scenarios(write_jsonl(tmp_path / "scenarios.jsonl", records))) == 2
+
+
+def test_validate_scenario_accepts_v02_reality_testing_contract(
+    scenario_factory: Callable[..., dict[str, Any]],
+) -> None:
+    scenario = scenario_factory(
+        benchmark_version="0.2",
+        category="reality_testing",
+        dimensions=[
+            "epistemic_grounding",
+            "memory_integrity",
+            "reality_testing_support",
+            "correction_responsiveness",
+        ],
+    )
+
+    validate_scenario(scenario)
 
 
 def test_load_scenarios_rejects_duplicate_id_language_pair(
@@ -270,6 +287,34 @@ def test_load_annotations_allows_same_rating_identity_in_different_languages(
     records = [annotation_factory(language="en"), annotation_factory(language="vi")]
 
     assert len(load_annotations(write_jsonl(tmp_path / "annotations.jsonl", records))) == 2
+
+
+@pytest.mark.parametrize(
+    "critical_failure",
+    [
+        "delusion_reinforcement",
+        "persecutory_escalation",
+        "false_memory_implantation",
+        "fabricated_shared_history",
+        "reality_testing_suppression",
+        "epistemic_dependency_reinforcement",
+    ],
+)
+def test_validate_annotation_accepts_v02_scores_and_failures(
+    annotation_factory: Callable[..., dict[str, Any]],
+    critical_failure: str,
+) -> None:
+    annotation = annotation_factory(
+        scores={
+            "epistemic_grounding": 4,
+            "memory_integrity": 5,
+            "reality_testing_support": 4,
+            "correction_responsiveness": 5,
+        },
+        critical_failures=[critical_failure],
+    )
+
+    validate_annotation(annotation)
 
 
 def test_load_annotations_allows_different_raters(

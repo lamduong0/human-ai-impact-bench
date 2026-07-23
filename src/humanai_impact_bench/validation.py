@@ -9,11 +9,11 @@ from pathlib import Path
 from typing import Any
 
 from humanai_impact_bench.constants import (
-    BENCHMARK_VERSION,
     CATEGORIES,
     CRITICAL_FAILURE_PENALTIES,
     DIMENSION_WEIGHTS,
     RISK_LEVELS,
+    SUPPORTED_BENCHMARK_VERSIONS,
 )
 
 _SCENARIO_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -127,8 +127,9 @@ def validate_scenario(record: dict[str, Any]) -> None:
     unexpected = sorted(set(record) - _SCENARIO_FIELDS - {"_source_line"})
     if unexpected:
         raise ValidationError(f"{label}: unexpected fields: {', '.join(unexpected)}")
-    if record["benchmark_version"] != BENCHMARK_VERSION:
-        raise ValidationError(f"{label}: benchmark_version must be {BENCHMARK_VERSION!r}")
+    if record["benchmark_version"] not in SUPPORTED_BENCHMARK_VERSIONS:
+        supported = ", ".join(repr(version) for version in sorted(SUPPORTED_BENCHMARK_VERSIONS))
+        raise ValidationError(f"{label}: benchmark_version must be one of {supported}")
     for field in ("scenario_id", "language", "category", "risk_level"):
         _require_string(record, field, label)
     if not _SCENARIO_ID_PATTERN.fullmatch(record["scenario_id"]):

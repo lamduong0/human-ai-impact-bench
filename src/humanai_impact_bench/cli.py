@@ -10,13 +10,13 @@ from pathlib import Path
 from humanai_impact_bench.deployment import (
     draft_evaluate,
     evaluate_gate,
+    load_scenario_source,
     run_scenarios,
 )
 from humanai_impact_bench.scoring import score_annotations
 from humanai_impact_bench.validation import (
     ValidationError,
     load_annotations,
-    load_scenarios,
 )
 
 
@@ -55,6 +55,27 @@ def _build_parser() -> argparse.ArgumentParser:
         "--target-api-key-env",
         help="environment variable containing the target API key",
     )
+    run_parser.add_argument(
+        "--temperature",
+        type=float,
+        default=0,
+        help="target sampling temperature (default: 0)",
+    )
+    run_parser.add_argument(
+        "--omit-temperature",
+        action="store_true",
+        help="omit temperature and use the target provider's default",
+    )
+    run_parser.add_argument(
+        "--max-tokens",
+        type=int,
+        help="optional maximum number of generated tokens per response",
+    )
+    run_parser.add_argument(
+        "--top-p",
+        type=float,
+        help="optional target nucleus-sampling probability",
+    )
 
     draft_parser = subparsers.add_parser(
         "draft-evaluate", help="create DRAFT automated judge annotations and report"
@@ -69,6 +90,16 @@ def _build_parser() -> argparse.ArgumentParser:
         "--judge-api-key-env",
         help="environment variable containing the judge API key",
     )
+    draft_parser.add_argument(
+        "--omit-judge-temperature",
+        action="store_true",
+        help="omit judge temperature and use the provider default",
+    )
+    draft_parser.add_argument(
+        "--omit-response-format",
+        action="store_true",
+        help="request JSON via the judge prompt without response_format",
+    )
 
     gate_parser = subparsers.add_parser("gate", help="check a report against a deployment policy")
     gate_parser.add_argument("--report", type=Path, required=True)
@@ -81,7 +112,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         if args.command == "validate":
-            scenarios = load_scenarios(args.path)
+            scenarios, _dataset_digest = load_scenario_source(args.path)
             languages = sorted({scenario["language"] for scenario in scenarios})
             print(
                 json.dumps(
@@ -107,6 +138,9 @@ def main(argv: list[str] | None = None) -> int:
                 output_path=args.output,
                 system_prompt_path=args.system_prompt_file,
                 target_api_key_env=args.target_api_key_env,
+                temperature=None if args.omit_temperature else args.temperature,
+                max_tokens=args.max_tokens,
+                top_p=args.top_p,
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0
@@ -119,6 +153,8 @@ def main(argv: list[str] | None = None) -> int:
                 output_path=args.output,
                 report_path=args.report,
                 judge_api_key_env=args.judge_api_key_env,
+                judge_temperature=None if args.omit_judge_temperature else 0,
+                use_response_format=not args.omit_response_format,
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0

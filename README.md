@@ -109,6 +109,9 @@ humanai-impact-bench run \
   --target-model "$TARGET_MODEL" \
   --candidate-digest "$CANDIDATE_DIGEST" \
   --target-api-key-env TARGET_API_KEY \
+  --temperature 0.7 \
+  --top-p 1 \
+  --max-tokens 1024 \
   --output artifacts/transcripts.jsonl
 
 humanai-impact-bench draft-evaluate \
@@ -125,6 +128,12 @@ humanai-impact-bench gate \
   --policy configs/draft-gate.json
 ```
 
+Use `--omit-temperature` when a provider requires its own default sampling
+temperature.
+For judge endpoints with limited OpenAI compatibility, use
+`--omit-judge-temperature` and/or `--omit-response-format`; strict JSON is
+still required and validated by the benchmark.
+
 `CANDIDATE_DIGEST` binds the result to the exact model, adapter, or deployment
 artifact being considered for release. A gate result can be `PASS`, `FAIL`, or
 `BLOCK`; invalid or incomplete evidence fails closed.
@@ -134,6 +143,27 @@ but they are not a psychological-safety certification or a substitute for
 trained human review. See the
 [deployment-gate guide](docs/deployment-gate.md) for provenance, secrets,
 policy, and FINAL-review requirements.
+
+## Sample DRAFT results
+
+The table below is an illustrative dry run from 2026-07-23, not a stable
+leaderboard or production certification. Each candidate ran the v0.1 bilingual
+suite (16 scenario records, 8 concepts, and 48 target calls) with the system
+prompt `You are a helpful assistant.` The same automated
+`openai/openai/gpt-5.5` judge and draft gate policy evaluated every candidate.
+
+| Candidate | Overall | English | Vietnamese | Crisis safety | Critical failures | Gate |
+|---|---:|---:|---:|---:|---|---|
+| `openai/openai/gpt-5.5` | 84.00 | 87.76 | 80.24 | 100.00 | `dependency_reinforcement` ×2 | **BLOCK** |
+| `aws/anthropic/bedrock-claude-opus-4-7` | 88.48 | 92.60 | 84.36 | 75.00 | `deceptive_anthropomorphism` ×1 | **BLOCK** |
+| `nvidia/nvidia/nemotron-3-super-v3` | 50.69 | 53.07 | 48.31 | 25.00 | `dependency_reinforcement` ×5; `dangerous_validation` ×1; `crisis_mishandling` ×2; `deceptive_anthropomorphism` ×2 | **BLOCK** |
+
+Target settings were provider-specific: gpt-5.5 used provider-default
+temperature, top-p 1, and max tokens 10,000; Claude used provider-default
+sampling and max tokens 1,024; Nemotron used provider-default sampling and max
+tokens 4,096. The gpt-5.5 candidate was judged by itself, which can bias its
+result. Hosted aliases and configuration hashes are not immutable model-weight
+provenance. No human review was performed, so these results must remain DRAFT.
 
 ## Recommended evaluation workflow
 
@@ -161,6 +191,21 @@ scores or miss nuanced empathy and safety failures. HumanAI-Impact-Bench therefo
 human evaluation as the reference method and requires judge models to be
 calibrated against human ratings.
 
+## v0.2 reality-testing track
+
+The DRAFT [v0.2 dataset](data/scenarios/v0.2) adds eight aligned English and
+Vietnamese concepts for unusual-belief reinforcement, persecutory
+interpretation, hidden messages, false shared memories, assistant-planted
+memories, correction, reality testing, and simulated epistemic dependence.
+
+Use the strict
+[reality-testing draft gate](configs/reality-testing-draft-gate.json) and read
+the [research context](docs/v0.2-research-context.md) before interpreting
+results. The automated and synthetic-session layers measure model behavior,
+not clinical hallucination, delusion, false-memory formation, or long-term
+human outcomes. Direct measurement requires a separate ethics-reviewed human
+study.
+
 ## Roadmap
 
 - Expand to 200+ culturally reviewed scenarios
@@ -173,6 +218,19 @@ calibrated against human ratings.
 - Add languages through native-speaker review rather than machine translation
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to participate.
+
+## Agent skill
+
+Coding agents can use the canonical
+[HumanAI-Impact-Bench skill](skills/humanai-impact-bench/SKILL.md) to run,
+compare, interpret, and extend the benchmark. Repository entrypoints for Codex
+and Claude are provided in [AGENTS.md](AGENTS.md) and
+[CLAUDE.md](CLAUDE.md).
+
+The skill includes the
+[v0.2 reality-testing research plan](skills/humanai-impact-bench/references/v0.2-research-plan.md)
+for delusion reinforcement, false-memory integrity, reality-testing support,
+and ethically reviewed longitudinal research.
 
 ## Research context
 

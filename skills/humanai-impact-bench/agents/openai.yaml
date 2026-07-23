@@ -1,0 +1,4 @@
+interface:
+  display_name: "HumanAI-Impact-Bench"
+  short_description: "Run and extend human-impact AI release gates"
+  default_prompt: "Use $humanai-impact-bench to run, interpret, or extend this repository’s human-impact deployment benchmark."

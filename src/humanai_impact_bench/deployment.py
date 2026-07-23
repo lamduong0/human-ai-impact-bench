@@ -82,6 +82,36 @@ def _validate_non_empty(value: str, label: str) -> str:
     return value.strip()
 
 
+def _validate_temperature(value: float | None) -> float | None:
+    if value is None:
+        return None
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValidationError("temperature must be a number")
+    result = float(value)
+    if not math.isfinite(result) or not 0 <= result <= 2:
+        raise ValidationError("temperature must be between 0 and 2")
+    return result
+
+
+def _validate_max_tokens(value: int | None) -> int | None:
+    if value is None:
+        return None
+    if isinstance(value, bool) or not isinstance(value, int) or value < 1:
+        raise ValidationError("max tokens must be a positive integer")
+    return value
+
+
+def _validate_top_p(value: float | None) -> float | None:
+    if value is None:
+        return None
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValidationError("top p must be a number")
+    result = float(value)
+    if not math.isfinite(result) or not 0 <= result <= 1:
+        raise ValidationError("top p must be between 0 and 1")
+    return result
+
+
 def _api_key_from_environment(variable: str | None) -> str | None:
     if variable is None:
         return None
@@ -187,7 +217,7 @@ def _load_system_prompt(path: str | Path | None) -> tuple[str | None, str | None
     return prompt, _sha256_file(source)
 
 
-def _load_scenario_source(path: str | Path) -> tuple[list[dict[str, Any]], str]:
+def load_scenario_source(path: str | Path) -> tuple[list[dict[str, Any]], str]:
     """Load a JSONL file or all top-level JSONL files in a directory."""
     source = Path(path)
     if source.is_file():
@@ -285,6 +315,9 @@ def run_scenarios(
     output_path: str | Path,
     system_prompt_path: str | Path | None = None,
     target_api_key_env: str | None = None,
+    temperature: float | None = 0,
+    max_tokens: int | None = None,
+    top_p: float | None = None,
     transport: Transport | None = None,
     timeout: float = 60.0,
 ) -> dict[str, Any]:
@@ -293,16 +326,25 @@ def run_scenarios(
     if system_prompt_path is not None:
         distinct_paths.append(system_prompt_path)
     _ensure_distinct_paths(*distinct_paths)
-    scenarios, dataset_digest = _load_scenario_source(scenarios_path)
+    scenarios, dataset_digest = load_scenario_source(scenarios_path)
     base_url = _validate_base_url(target_base_url, "target base URL")
     model = _validate_non_empty(target_model, "target model")
     candidate = _candidate_digest(candidate_digest)
     system_prompt, system_prompt_digest = _load_system_prompt(system_prompt_path)
     api_key = _api_key_from_environment(target_api_key_env)
+    temperature = _validate_temperature(temperature)
+    max_tokens = _validate_max_tokens(max_tokens)
+    top_p = _validate_top_p(top_p)
     send = transport or _post_json
     records: list[dict[str, Any]] = []
     run_at = _timestamp()
-    generation_settings = {"temperature": 0}
+    generation_settings: dict[str, Any] = {}
+    if temperature is not None:
+        generation_settings["temperature"] = temperature
+    if max_tokens is not None:
+        generation_settings["max_tokens"] = max_tokens
+    if top_p is not None:
+        generation_settings["top_p"] = top_p
 
     for scenario in scenarios:
         messages: list[dict[str, str]] = []
@@ -530,17 +572,27 @@ def draft_evaluate(
     output_path: str | Path,
     report_path: str | Path,
     judge_api_key_env: str | None = None,
+    judge_temperature: float | None = 0,
+    use_response_format: bool = True,
     transport: Transport | None = None,
     timeout: float = 60.0,
 ) -> dict[str, Any]:
     """Create explicitly draft automated annotations and an aggregate report."""
     _ensure_distinct_paths(scenarios_path, transcripts_path, output_path, report_path)
-    scenarios, dataset_digest = _load_scenario_source(scenarios_path)
+    scenarios, dataset_digest = load_scenario_source(scenarios_path)
     transcripts = _load_transcripts(transcripts_path)
     base_url = _validate_base_url(judge_base_url, "judge base URL")
     judge = _validate_non_empty(judge_model, "judge model")
     api_key = _api_key_from_environment(judge_api_key_env)
+    judge_temperature = _validate_temperature(judge_temperature)
+    if not isinstance(use_response_format, bool):
+        raise ValidationError("use response format must be a boolean")
     send = transport or _post_json
+    judge_generation_settings: dict[str, Any] = {}
+    if judge_temperature is not None:
+        judge_generation_settings["temperature"] = judge_temperature
+    if use_response_format:
+        judge_generation_settings["response_format"] = {"type": "json_object"}
 
     scenario_by_identity = {
         (scenario["scenario_id"], scenario["language"]): scenario for scenario in scenarios
@@ -590,8 +642,7 @@ def draft_evaluate(
             {
                 "model": judge,
                 "messages": _judge_request(scenario, transcript),
-                "temperature": 0,
-                "response_format": {"type": "json_object"},
+                **judge_generation_settings,
             },
             _headers(api_key),
             timeout,
@@ -624,6 +675,14 @@ def draft_evaluate(
             [annotation for annotation in annotations if annotation["language"] == language]
         )[0]
         language_results[language] = language_result.to_dict()
+    scenario_results: dict[str, dict[str, Any]] = {}
+    for annotation in annotations:
+        identity = f"{annotation['scenario_id']}:{annotation['language']}"
+        scenario_results[identity] = score_annotations([annotation])[0].to_dict()
+    worst_case_identity, worst_case_result = min(
+        scenario_results.items(),
+        key=lambda item: (item[1]["overall_score"], item[0]),
+    )
     coverage_keys = [
         f"{annotation['scenario_id']}:{annotation['language']}" for annotation in annotations
     ]
@@ -643,6 +702,11 @@ def draft_evaluate(
         "unique_scenario_count": len({scenario["scenario_id"] for scenario in scenarios}),
         "languages": sorted({scenario["language"] for scenario in scenarios}),
         "language_results": language_results,
+        "scenario_results": dict(sorted(scenario_results.items())),
+        "worst_case_scenario_result": {
+            "scenario_record": worst_case_identity,
+            "overall_score": worst_case_result["overall_score"],
+        },
         "dimension_scores": result["dimension_scores"],
         "base_score": result["base_score"],
         "penalty": result["penalty"],
@@ -653,6 +717,10 @@ def draft_evaluate(
             "annotations_per_scenario": dict(sorted(counts.items())),
             "minimum_annotations_per_scenario": min(counts.values()),
         },
+        "human_review": {
+            "status": "not_performed",
+            "reviewed_scenario_records": 0,
+        },
         "provenance": {
             "dataset_digest": dataset_digest,
             "candidate_digest": candidate,
@@ -662,10 +730,7 @@ def draft_evaluate(
             "system_prompt_digest": next(iter(system_prompt_digests)),
             "judge_model": judge,
             "judge_prompt_digest": _sha256_text(f"{_JUDGE_SYSTEM_PROMPT}\njudge-request-format:v1"),
-            "judge_generation_settings": {
-                "temperature": 0,
-                "response_format": {"type": "json_object"},
-            },
+            "judge_generation_settings": judge_generation_settings,
         },
     }
     _atomic_write_jsonl(output_path, annotations)
@@ -779,6 +844,13 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
     if not isinstance(requirements["require_safety_pass"], bool):
         raise ValidationError("require_safety_pass must be a boolean")
     require_safety_pass = requirements["require_safety_pass"]
+    minimum_human_reviewed_records = 0
+    if "minimum_human_reviewed_scenario_records" in requirements:
+        minimum_human_reviewed_records = _integer(
+            requirements["minimum_human_reviewed_scenario_records"],
+            "minimum_human_reviewed_scenario_records",
+            minimum=0,
+        )
     required_languages = requirements["required_languages"]
     if (
         not isinstance(required_languages, list)
@@ -817,6 +889,14 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
             minimum=0,
             maximum=100,
         )
+    scenario_overall_threshold: float | None = None
+    if "minimum_scenario_overall_score" in thresholds:
+        scenario_overall_threshold = _number(
+            thresholds["minimum_scenario_overall_score"],
+            "minimum_scenario_overall_score",
+            minimum=0,
+            maximum=100,
+        )
 
     critical_policy = _object(policy["critical_failures"], "policy critical_failures")
     block_on_any = critical_policy.get("block_on_any")
@@ -840,10 +920,16 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
         "require_policy_digest",
         "require_judge_metadata",
     }
-    if set(provenance_policy) != required_provenance_fields or any(
-        not isinstance(provenance_policy[field], bool) for field in required_provenance_fields
+    allowed_provenance_fields = required_provenance_fields | {"require_independent_judge"}
+    if (
+        not required_provenance_fields.issubset(provenance_policy)
+        or not set(provenance_policy).issubset(allowed_provenance_fields)
+        or any(not isinstance(value, bool) for value in provenance_policy.values())
     ):
-        raise ValidationError("policy provenance flags must all be booleans")
+        raise ValidationError(
+            "policy provenance must contain the required boolean flags and no unknown fields"
+        )
+    require_independent_judge = provenance_policy.get("require_independent_judge", False)
 
     report_required = {
         "result_stage",
@@ -920,6 +1006,24 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
         if not isinstance(identity, str) or not identity:
             raise ValidationError("coverage scenario identities must be non-empty strings")
         _integer(count, f"annotation count for {identity}", minimum=1)
+    scenario_results: dict[str, Any] | None = None
+    if scenario_overall_threshold is not None:
+        scenario_results = _object(report.get("scenario_results"), "report scenario_results")
+        if set(scenario_results) != set(annotation_counts):
+            raise ValidationError("scenario_results keys must match coverage scenario records")
+        for identity, scenario_result_value in scenario_results.items():
+            scenario_result = _object(
+                scenario_result_value,
+                f"report scenario_results.{identity}",
+            )
+            if "overall_score" not in scenario_result:
+                raise ValidationError(f"report scenario_results.{identity} missing overall_score")
+            _number(
+                scenario_result["overall_score"],
+                f"report scenario_results.{identity}.overall_score",
+                minimum=0,
+                maximum=100,
+            )
     try:
         coverage_identities = [
             (identity.rsplit(":", 1)[0], identity.rsplit(":", 1)[1])
@@ -939,6 +1043,16 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
             "coverage unique scenario count does not match report unique_scenario_count"
         )
     provenance = _object(report["provenance"], "report provenance")
+    reviewed_scenario_records = 0
+    if minimum_human_reviewed_records:
+        human_review = _object(report.get("human_review"), "report human_review")
+        reviewed_scenario_records = _integer(
+            human_review.get("reviewed_scenario_records"),
+            "reviewed_scenario_records",
+            minimum=0,
+        )
+        if reviewed_scenario_records > report_scenario_records:
+            raise ValidationError("reviewed_scenario_records cannot exceed scenario_record_count")
 
     try:
         generated_at = datetime.fromisoformat(str(report["generated_at"]).replace("Z", "+00:00"))
@@ -999,6 +1113,19 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
                     f"language {language} overall_score {value:.2f} is below required "
                     f"{language_overall_threshold:.2f}"
                 )
+    if scenario_overall_threshold is not None and scenario_results is not None:
+        for identity, scenario_result in scenario_results.items():
+            value = float(scenario_result["overall_score"])
+            if value < scenario_overall_threshold:
+                failures.append(
+                    f"scenario {identity} overall_score {value:.2f} is below required "
+                    f"{scenario_overall_threshold:.2f}"
+                )
+    if reviewed_scenario_records < minimum_human_reviewed_records:
+        failures.append(
+            f"human-reviewed scenario records {reviewed_scenario_records} is below required "
+            f"{minimum_human_reviewed_records}"
+        )
     present_blocking_failures = sorted(set(block_on_any) & set(failure_counts))
     if present_blocking_failures:
         blocking_failures.append(
@@ -1043,6 +1170,12 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
             provenance["judge_generation_settings"], dict
         ):
             failures.append("required judge metadata judge_generation_settings is invalid")
+    if require_independent_judge:
+        judge_model = provenance.get("judge_model")
+        if not isinstance(judge_model, str) or not judge_model.strip():
+            failures.append("independent judge metadata is missing")
+        elif judge_model == report["model"]:
+            failures.append("judge_model must differ from the evaluated model")
 
     policy_digest = _sha256_file(policy_path)
     # The digest is generated from the exact policy bytes used for this decision.
