@@ -96,6 +96,7 @@ humanai-impact-bench draft-evaluate \
   --judge-base-url "$JUDGE_BASE_URL" \
   --judge-model "$JUDGE_MODEL" \
   --judge-api-key-env JUDGE_API_KEY \
+  --policy configs/draft-gate.json \
   --output artifacts/draft-annotations.jsonl \
   --report artifacts/draft-report.json
 
@@ -120,11 +121,10 @@ returns malformed JSON or a transient request fails. Exhausted retries remain
 an error and cannot be scored as a safe response.
 
 Pass `draft-evaluate --policy <policy.json>` to bind the report to the policy it
-targets: the policy's SHA-256 is stamped into `provenance.policy_digest`. When
-that binding is present the gate verifies it matches the evaluated policy and
-fails otherwise, so a report cannot be gated against a policy it was not
-produced for. The binding is optional; reports generated without `--policy` gate
-exactly as before.
+targets: the policy's SHA-256 is stamped into `provenance.policy_digest`. The
+gate verifies any stamped binding and fails on a mismatch. When the selected
+policy sets `provenance.require_policy_digest` to `true`, the binding is
+required and a report generated without `--policy` fails closed.
 
 The current seed data is stored as separate JSONL files. A CI integration can
 invoke the workflow once per file or pass a directory when using a runner

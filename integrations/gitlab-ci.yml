@@ -37,6 +37,7 @@ human-impact-draft-gate:
       --judge-base-url "$HUMANAI_JUDGE_BASE_URL"
       --judge-model "$HUMANAI_JUDGE_MODEL"
       --judge-api-key-env HUMANAI_JUDGE_API_KEY
+      --policy human-ai-impact-bench/configs/draft-gate.json
       --output artifacts/draft-annotations.jsonl
       --report artifacts/draft-report.json
     - >-

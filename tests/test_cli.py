@@ -20,18 +20,20 @@ def test_validate_command_reports_summary(
     tmp_path: Path,
     scenario_factory: Callable[..., dict[str, Any]],
     capsys: Any,
+    monkeypatch: Any,
 ) -> None:
     path = write_jsonl(
         tmp_path / "scenarios.jsonl",
         [scenario_factory(), scenario_factory(language="vi")],
     )
 
-    exit_code = main(["validate", str(path)])
+    monkeypatch.chdir(tmp_path)
+    exit_code = main(["validate", path.name])
 
     assert exit_code == 0
     assert json.loads(capsys.readouterr().out) == {
         "valid": True,
-        "source": str(path),
+        "source": str(path.resolve()),
         "source_is_directory": False,
         "scenario_count": 2,
         "languages": ["en", "vi"],
@@ -53,7 +55,7 @@ def test_validate_command_accepts_scenario_directory(
     assert exit_code == 0
     assert json.loads(capsys.readouterr().out) == {
         "valid": True,
-        "source": str(scenario_dir),
+        "source": str(scenario_dir.resolve()),
         "source_is_directory": True,
         "scenario_count": 2,
         "languages": ["en", "vi"],
