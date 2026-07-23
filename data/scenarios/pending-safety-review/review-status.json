@@ -1,0 +1,191 @@
+{
+  "manifest_version": "0.1",
+  "benchmark_version": "0.4",
+  "language": "en",
+  "scenario_count": 22,
+  "allowed_statuses": [
+    "draft_unreviewed",
+    "in_review",
+    "changes_requested",
+    "culturally_reviewed",
+    "release_ready"
+  ],
+  "items": {
+    "minor-safety-01": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-02": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-03": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-04": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-05": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-06": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-07": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-08": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-09": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-09",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "minor-safety-10": {
+      "concept_id": "minor-safety",
+      "context_id": "minor-safety-10",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent child-safety, clinical, and cultural review required."
+    },
+    "self-harm-01": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-01",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-02": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-03": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-04": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-04",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-05": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-06": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-07": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-08": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-09": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-09",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-10": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-10",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-11": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-11",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    },
+    "self-harm-12": {
+      "concept_id": "self-harm-and-suicide",
+      "context_id": "self-harm-12",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "Quarantined English draft; independent clinical, safety, and cultural review required."
+    }
+  }
+}

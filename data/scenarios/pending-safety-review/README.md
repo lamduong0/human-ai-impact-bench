@@ -11,7 +11,17 @@ The scenarios here are **quarantined**. They are deliberately kept **out** of th
 released `data/scenarios/v0.x/` corpus and out of every deployment-gate policy.
 Every record is tagged `requires-safety-review`. A test
 (`tests/test_pending_safety_review.py`) enforces both the tag and the quarantine
-invariant (these categories must not appear under `data/scenarios/v0.4/`).
+invariant (these categories must not appear under any released
+`data/scenarios/v*/` corpus). The machine-readable `review-status.json` covers
+all drafts as `draft_unreviewed`; it does not claim human review.
+
+Validate the manifest and its coverage with:
+
+```bash
+PYTHONPATH=src python scripts/validate_cultural_review.py \
+  --scenarios data/scenarios/pending-safety-review \
+  --manifest data/scenarios/pending-safety-review/review-status.json
+```
 
 ## What these scenarios are — and are not
 
@@ -34,36 +44,23 @@ and the guardrails in [`docs/v0.4-category-proposal.md`](../../../docs/v0.4-cate
 As with all benchmark output, results remain PREVIEW and are not a clinical or
 safety certification.
 
-## Pre-review findings (resolve before promotion)
+## Automated pre-review findings
 
-An automated pre-review (author self-review + an independent reviewer pass)
-cleared all 16 drafts on content safety and applied quality fixes to the
-existing records (present-risk checks; a "perfunctory hotline referral then
-disengages" failure mode; abuse-disclosure "not your fault" reassurance and
-false-secrecy / coercive-reporting failure modes). The following **coverage
-gaps** were flagged and should be resolved by the human reviewer before any
-scenario graduates out of quarantine:
+An author self-review plus an independent automated model pass screened the
+original 16 drafts and did not flag a prohibited content payload. This was an
+automated development check, not independent human, clinical, child-safety, or
+cultural sign-off. It led to present-risk checks, a "perfunctory hotline
+referral then disengages" failure mode, abuse-disclosure "not your fault"
+reassurance, and false-secrecy/coercive-reporting failure modes.
 
-- **Over-refusal counter-probe (highest priority).** Every scenario rewards
-  refusal/crisis-handling; none tests *appropriate engagement* (e.g. a clinician,
-  educator, researcher, or person in recovery discussing suicide non-crisis-ly).
-  Without this, a stigmatizing over-refuser scores as "safe." Add 1–2 probes
-  whose safe behavior is to engage helpfully and NOT deflect to a hotline.
-- **Minor × suicide intersection** — a self-reported minor expressing suicidal
-  ideation (youth-appropriate resources; strongly encourage a trusted adult).
-- **Third-party / bystander crisis** — a user reporting a friend in imminent
-  danger.
-- **Online-exploitation disclosure (minor)** — non-graphic; tests the safe
-  response (validate, not-your-fault, tell a trusted adult, reporting resources).
-- **Non-US / localized-resource scenario** — to exercise region-appropriate
-  resourcing rather than defaulting to 988.
-- **Risk-scale note** — the two minor romantic-refusal probes are tagged
-  `critical` (policy-severity), the same tier as the possible-abuse disclosure
-  (acuity). Decide whether to keep `critical` as policy-severity (document it) or
-  reserve it for imminent physical danger.
+The automated pass also identified coverage gaps. Six additional quarantined
+drafts address non-crisis over-refusal, minor × suicide, third-party crisis,
+online-exploitation disclosure, and non-US resource localization:
+`self-harm-09`–`self-harm-12`, `minor-safety-09`, and `minor-safety-10`. They
+bring the set to 12 `self_harm_and_suicide` plus 10 `minor_safety` drafts. All
+22 remain `draft_unreviewed`.
 
-**Update:** gaps 1–5 above have been addressed with additional draft scenarios
-(`self-harm-09`–`self-harm-12`, `minor-safety-09`, `minor-safety-10`), bringing
-the set to 12 `self_harm_and_suicide` + 10 `minor_safety`. These additions are
-themselves quarantined and require the same clinical/safety review. The
-risk-scale convention (item 6) remains open for the reviewer.
+The human reviewers must still decide whether `critical` represents policy
+severity or only imminent physical danger. The two non-crisis over-refusal
+counter-probes are intentionally `low`; every harm-risk probe remains `high` or
+`critical`.
