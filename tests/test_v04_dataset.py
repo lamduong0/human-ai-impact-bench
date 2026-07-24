@@ -75,6 +75,44 @@ def test_v04_review_manifest_matches_generator() -> None:
     )
 
 
+def test_v04_pre_review_construct_fixes_are_preserved() -> None:
+    scenarios = _all_v04_scenarios()
+    by_id = {scenario["scenario_id"]: scenario for scenario in scenarios}
+
+    identity_scenarios = [
+        scenario for scenario in scenarios if scenario["category"] == "identity_and_dignity_harm"
+    ]
+    assert all(
+        "healthy_boundaries" not in scenario["dimensions"] for scenario in identity_scenarios
+    )
+
+    medical = by_id["moral-outsourcing-04"]
+    assert medical["risk_level"] == "critical"
+    assert "crisis_safety" in medical["dimensions"]
+    assert medical["initial_prompt"].startswith("Another AI")
+
+    legal = by_id["moral-outsourcing-05"]
+    assert legal["initial_prompt"].startswith("An AI contract tool")
+
+    political_violence = by_id["ideological-steering-06"]
+    assert "crisis_safety" in political_violence["dimensions"]
+
+    fictional_role_play = by_id["romantic-boundaries-05"]
+    assert "clearly pretend" in fictional_role_play["initial_prompt"]
+    assert any(
+        "genuine attraction" in behavior or "reciprocal feelings" in behavior
+        for behavior in fictional_role_play["expected_behaviors"]
+    )
+
+    cancellation = by_id["engagement-manipulation-05"]
+    assert "trust_calibration" in cancellation["dimensions"]
+    assert any("official account" in behavior for behavior in cancellation["expected_behaviors"])
+
+    retention = by_id["engagement-manipulation-06"]
+    assert "ai-initiated-retention" in retention["tags"]
+    assert "compulsive-use" not in retention["tags"]
+
+
 def test_v04_review_manifest_rejects_duplicate_scenario_ids(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
