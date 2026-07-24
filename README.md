@@ -38,7 +38,7 @@ normalized technical identifiers:
 
 ## What is included
 
-- 288 released scenario records across v0.1 through v0.4
+- 288 publicly available scenario records across v0.1 through v0.4
 - Sixteen aligned English–Vietnamese scenario pairs across v0.1 and v0.2
 - A 200-record English-first v0.3 corpus spanning 25 concepts and 8 contexts
 - A 56-record English-first v0.4 corpus spanning 7 newly authored categories
@@ -70,10 +70,48 @@ per-scenario status is tracked in review manifests. Dataset maturity is
 separate from automated benchmark evidence: automated evaluations remain
 **PREVIEW** regardless of corpus size.
 
+All 56 published v0.4 scenarios remain `draft_unreviewed`: the review manifest
+has no assigned reviewers, no reviewed locales, and zero items marked
+`culturally_reviewed` or `release_ready`. “Published” means openly available
+for research and PREVIEW engineering evaluation; it does not mean reviewed,
+validated, or approved for production deployment.
+
 The 22 sensitive v0.4 drafts under
 [`data/scenarios/pending-safety-review`](data/scenarios/pending-safety-review)
-are quarantined and excluded from the 288 released records, deployment gates,
+are quarantined and excluded from the 288 public records, deployment gates,
 and Hugging Face dataset until their required safety review is complete.
+
+## Why this benchmark stands out
+
+- **It evaluates interaction effects, not emotional fluency alone.** The
+  benchmark asks whether a response preserves the user's agency, reasoning,
+  trust calibration, human relationships, and healthy boundaries—not merely
+  whether the response recognizes emotion or sounds empathetic.
+- **It uses scripted multi-turn escalation.** Follow-up prompts test whether a
+  model changes course under pressure, rewards compulsive use, becomes
+  possessive, validates a harmful conclusion, or takes over the user's
+  decisions.
+- **It tests the deployed conversational system.** Model weights, fine-tune or
+  adapter, system prompt, decoding settings, safety wrapper, and serving
+  behavior are treated as one candidate rather than attributing the result only
+  to a base model.
+- **Critical failures override averages.** Dependency reinforcement,
+  manipulative engagement, dangerous validation, deceptive anthropomorphism,
+  and other named failures can block a candidate even when its overall score is
+  high.
+- **The gate is designed for CI.** It separates evidence maturity, gate
+  decision, and deployment action, and fails closed on incomplete coverage,
+  invalid provenance, critical failures, or unmet thresholds.
+- **The evidence trail is auditable.** Dataset, candidate, system prompt,
+  transcript, judge, and policy configuration are recorded or digested so
+  model comparisons can be reproduced and uncontrolled comparisons rejected.
+- **Claims stay bounded.** Automated runs are PREVIEW behavioral evidence.
+  Human ratings and ethics-reviewed longitudinal studies are separate evidence
+  layers; the benchmark does not claim to measure clinical safety or causal
+  long-term harm.
+
+HumanAI-Impact-Bench is intended to complement—not replace—content-safety,
+jailbreak, factuality, privacy, bias, and domain-specific evaluations.
 
 ## Benchmark dimensions
 
@@ -278,7 +316,10 @@ study.
 ## Roadmap
 
 - Draft 200+ English-priority scenarios (**200 complete in v0.3**)
-- Complete independent, locale-specific cultural review for the v0.3 corpus
+- Complete independent, locale-specific cultural review for the v0.3 and v0.4
+  corpora before promoting any scenario beyond `draft_unreviewed`
+- Complete dedicated clinical/safety review for the 22 quarantined sensitive
+  drafts before considering them for the public corpus
 - Add blinded pairwise-comparison tooling
 - Add adapters for Inspect AI, Promptfoo, garak, and non-OpenAI APIs
 - Add JSON, HTML, and JUnit report exporters
@@ -306,7 +347,7 @@ romantic/sexual boundaries, moral outsourcing and deskilling, abuse and
 harassment dynamics, identity and dignity harm, and compulsive use and
 displacement. All are marked `draft_unreviewed` in the
 [v0.4 review manifest](data/scenarios/v0.4/review-status.json). The sensitive
-draft quarantine is not part of this released corpus.
+draft quarantine is not part of this published draft corpus.
 
 ## Agent skill
 
