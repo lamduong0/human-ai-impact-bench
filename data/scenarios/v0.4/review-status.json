@@ -7,6 +7,7 @@
     "draft_unreviewed",
     "in_review",
     "changes_requested",
+    "maintainer_reviewed",
     "culturally_reviewed",
     "release_ready"
   ],
@@ -14,450 +15,730 @@
     "abuse-dynamics-01": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-02": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-03": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-04": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-05": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-06": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-07": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "abuse-dynamics-08": {
       "concept_id": "abuse-and-harassment-dynamics",
       "context_id": "abuse-dynamics-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-01": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-02": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-03": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-04": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-05": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-06": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-07": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "compulsive-use-08": {
       "concept_id": "compulsive-use-and-displacement",
       "context_id": "compulsive-use-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-01": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-02": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-03": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-04": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-05": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-06": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-07": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "engagement-manipulation-08": {
       "concept_id": "engagement-manipulation",
       "context_id": "engagement-manipulation-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-01": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-02": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-03": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-04": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-05": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-06": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-07": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "identity-dignity-08": {
       "concept_id": "identity-and-dignity-harm",
       "context_id": "identity-dignity-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-01": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-02": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-03": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-04": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-05": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-06": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-07": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "ideological-steering-08": {
       "concept_id": "ideological-steering",
       "context_id": "ideological-steering-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-01": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-02": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-03": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-04": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-05": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-06": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-07": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "moral-outsourcing-08": {
       "concept_id": "moral-outsourcing-and-deskilling",
       "context_id": "moral-outsourcing-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-01": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-01",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-02": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-02",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-03": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-03",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-04": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-04",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-05": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-05",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-06": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-06",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-07": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-07",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     },
     "romantic-boundaries-08": {
       "concept_id": "romantic-sexual-boundaries",
       "context_id": "romantic-boundaries-08",
-      "status": "draft_unreviewed",
-      "reviewers": [],
-      "reviewed_locales": [],
-      "notes": "English-first authored draft; independent cultural review required."
+      "status": "maintainer_reviewed",
+      "reviewers": [
+        "lamduong0"
+      ],
+      "reviewed_locales": [
+        "en-US",
+        "en-VN"
+      ],
+      "notes": "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. Reviewer self-reported qualification: software engineer; author/maintainer conflict disclosed. The maintainer elected to skip a second independent reviewer and will steward this dataset. This item is maintainer reviewed, not independently culturally validated, specialist safety approved, or release ready."
     }
   }
 }

@@ -9,6 +9,16 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "data" / "scenarios" / "v0.3"
+REVIEWER_ID = "lamduong0"
+REVIEWED_LOCALES = ["en-US", "en-VN"]
+MAINTAINER_REVIEW_NOTE = (
+    "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. "
+    "Reviewer self-reported qualification: software engineer; author/maintainer "
+    "conflict disclosed. The maintainer elected to skip a second independent "
+    "reviewer and will steward this dataset. This item is maintainer reviewed, "
+    "not independently culturally validated, specialist safety approved, or "
+    "release ready."
+)
 
 CONTEXTS = [
     {
@@ -835,10 +845,10 @@ def build_review_manifest(scenarios: list[dict[str, Any]]) -> dict[str, Any]:
         items[scenario["scenario_id"]] = {
             "concept_id": concept_id,
             "context_id": context_id,
-            "status": "draft_unreviewed",
-            "reviewers": [],
-            "reviewed_locales": [],
-            "notes": "Template-derived English draft; independent cultural review required.",
+            "status": "maintainer_reviewed",
+            "reviewers": [REVIEWER_ID],
+            "reviewed_locales": REVIEWED_LOCALES,
+            "notes": MAINTAINER_REVIEW_NOTE,
         }
     return {
         "manifest_version": "0.1",
@@ -849,6 +859,7 @@ def build_review_manifest(scenarios: list[dict[str, Any]]) -> dict[str, Any]:
             "draft_unreviewed",
             "in_review",
             "changes_requested",
+            "maintainer_reviewed",
             "culturally_reviewed",
             "release_ready",
         ],

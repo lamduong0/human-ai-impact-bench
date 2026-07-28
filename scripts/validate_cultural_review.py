@@ -12,6 +12,7 @@ from typing import Any
 from humanai_impact_bench.validation import ValidationError, load_scenarios
 
 REVIEWED_STATUSES = {"culturally_reviewed", "release_ready"}
+MAINTAINER_REVIEWED_STATUS = "maintainer_reviewed"
 
 
 def _load_manifest(path: str | Path) -> dict[str, Any]:
@@ -132,6 +133,11 @@ def validate_review_manifest(
         status = item["status"]
         if status not in allowed_statuses:
             raise ValidationError(f"review item {scenario_id} has unknown status {status!r}")
+        if status == MAINTAINER_REVIEWED_STATUS and (not reviewers or not locales):
+            raise ValidationError(
+                f"review item {scenario_id} cannot claim {status!r} without "
+                "a maintainer reviewer and at least one reviewed locale"
+            )
         if status in REVIEWED_STATUSES and (len(reviewers) < 2 or not locales):
             raise ValidationError(
                 f"review item {scenario_id} cannot claim {status!r} without "

@@ -16,9 +16,31 @@ ALLOWED_STATUSES = [
     "draft_unreviewed",
     "in_review",
     "changes_requested",
+    "maintainer_reviewed",
     "culturally_reviewed",
     "release_ready",
 ]
+MAINTAINER_REVIEWED_SCENARIO_IDS = frozenset(
+    f"{prefix}-{index:02d}"
+    for prefix in (
+        "abuse-dynamics",
+        "compulsive-use",
+        "engagement-manipulation",
+        "identity-dignity",
+        "ideological-steering",
+        "moral-outsourcing",
+        "romantic-boundaries",
+    )
+    for index in range(1, 9)
+)
+MAINTAINER_REVIEW_NOTE = (
+    "Maintainer review completed 2026-07-28 by lamduong0 for en-US and en-VN. "
+    "Reviewer self-reported qualification: software engineer; author/maintainer "
+    "conflict disclosed. The maintainer elected to skip a second independent "
+    "reviewer and will steward this dataset. This item is maintainer reviewed, "
+    "not independently culturally validated, specialist safety approved, or "
+    "release ready."
+)
 
 
 def _single_tag_value(tags: list[str], prefix: str, scenario_id: str) -> str:
@@ -43,13 +65,18 @@ def build_manifest() -> dict[str, Any]:
             raise ValidationError(f"duplicate scenario_id in v0.4 scenarios: {scenario_id}")
         if "requires-cultural-review" not in scenario["tags"]:
             raise ValidationError(f"{scenario_id} is missing requires-cultural-review")
+        maintainer_reviewed = scenario_id in MAINTAINER_REVIEWED_SCENARIO_IDS
         items[scenario_id] = {
             "concept_id": _single_tag_value(scenario["tags"], "concept-", scenario_id),
             "context_id": _single_tag_value(scenario["tags"], "context-", scenario_id),
-            "status": "draft_unreviewed",
-            "reviewers": [],
-            "reviewed_locales": [],
-            "notes": ("English-first authored draft; independent cultural review required."),
+            "status": "maintainer_reviewed" if maintainer_reviewed else "draft_unreviewed",
+            "reviewers": ["lamduong0"] if maintainer_reviewed else [],
+            "reviewed_locales": ["en-US", "en-VN"] if maintainer_reviewed else [],
+            "notes": (
+                MAINTAINER_REVIEW_NOTE
+                if maintainer_reviewed
+                else "English-first authored draft; independent cultural review required."
+            ),
         }
 
     return {

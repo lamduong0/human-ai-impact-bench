@@ -55,7 +55,7 @@ def test_v04_scenarios_validate_and_are_well_formed() -> None:
     assert all(count == 8 for count in per_category.values())
 
 
-def test_v04_review_manifest_covers_all_scenarios_as_unreviewed() -> None:
+def test_v04_review_manifest_records_maintainer_review() -> None:
     result = validate_review_manifest(V04_DIR, REVIEW_MANIFEST)
 
     assert result == {
@@ -63,9 +63,18 @@ def test_v04_review_manifest_covers_all_scenarios_as_unreviewed() -> None:
         "benchmark_version": "0.4",
         "language": "en",
         "scenario_count": 56,
-        "status_counts": {"draft_unreviewed": 56},
+        "status_counts": {"maintainer_reviewed": 56},
         "culturally_reviewed_count": 0,
     }
+    manifest = json.loads(REVIEW_MANIFEST.read_text(encoding="utf-8"))
+    assert set(manifest["items"]) == generate_v04_review_manifest.MAINTAINER_REVIEWED_SCENARIO_IDS
+    for item in manifest["items"].values():
+        assert item["status"] == "maintainer_reviewed"
+        assert item["reviewers"] == ["lamduong0"]
+        assert item["reviewed_locales"] == ["en-US", "en-VN"]
+        assert "author/maintainer conflict disclosed" in item["notes"]
+        assert "elected to skip a second independent reviewer" in item["notes"]
+        assert "not independently culturally validated" in item["notes"]
 
 
 def test_v04_review_manifest_matches_generator() -> None:

@@ -12,7 +12,14 @@ from humanai_impact_bench.constants import (
     DIMENSION_WEIGHTS,
 )
 from humanai_impact_bench.validation import ValidationError, load_scenarios, validate_scenario
-from scripts.generate_v03_english_scenarios import CONCEPTS, CONTEXTS, build_scenarios
+from scripts.generate_v03_english_scenarios import (
+    CONCEPTS,
+    CONTEXTS,
+    REVIEWED_LOCALES,
+    REVIEWER_ID,
+    build_review_manifest,
+    build_scenarios,
+)
 from scripts.validate_cultural_review import validate_review_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,7 +46,7 @@ def test_generated_v03_file_matches_generator() -> None:
     assert load_scenarios(SCENARIOS) == build_scenarios()
 
 
-def test_v03_review_manifest_covers_all_scenarios_as_unreviewed() -> None:
+def test_v03_review_manifest_records_maintainer_review() -> None:
     result = validate_review_manifest(SCENARIOS, REVIEW_MANIFEST)
 
     assert result == {
@@ -47,9 +54,18 @@ def test_v03_review_manifest_covers_all_scenarios_as_unreviewed() -> None:
         "benchmark_version": "0.3",
         "language": "en",
         "scenario_count": 200,
-        "status_counts": {"draft_unreviewed": 200},
+        "status_counts": {"maintainer_reviewed": 200},
         "culturally_reviewed_count": 0,
     }
+    manifest = json.loads(REVIEW_MANIFEST.read_text(encoding="utf-8"))
+    assert manifest == build_review_manifest(build_scenarios())
+    for item in manifest["items"].values():
+        assert item["status"] == "maintainer_reviewed"
+        assert item["reviewers"] == [REVIEWER_ID]
+        assert item["reviewed_locales"] == REVIEWED_LOCALES
+        assert "author/maintainer conflict disclosed" in item["notes"]
+        assert "elected to skip a second independent reviewer" in item["notes"]
+        assert "not independently culturally validated" in item["notes"]
 
 
 def test_reviewed_status_requires_two_reviewers_and_locale(tmp_path: Path) -> None:
