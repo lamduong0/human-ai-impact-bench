@@ -19,13 +19,15 @@ evidence that the scenario represents every person in that setting.
 | `draft_unreviewed` | Structurally valid draft with no completed cultural review |
 | `in_review` | Assigned to reviewers; no approval claim |
 | `changes_requested` | Review identified a problem requiring revision |
+| `maintainer_reviewed` | Maintainer completed review for named locales; no independent cultural-validation or specialist-safety claim |
 | `culturally_reviewed` | Two qualified reviewers completed and documented review for at least one locale |
 | `release_ready` | Cultural review is complete and all research, safety, and technical checks are resolved |
 
-The manifest validator requires at least two named reviewer identifiers and one
-reviewed locale before accepting either reviewed status. Reviewer identifiers
-may be pseudonymous in the public repository if project maintainers retain an
-auditable confidential mapping.
+The manifest validator requires a named reviewer and reviewed locale for
+`maintainer_reviewed`. It requires at least two named reviewer identifiers and
+one reviewed locale before accepting `culturally_reviewed` or `release_ready`.
+Reviewer identifiers may be pseudonymous in the public repository if project
+maintainers retain an auditable confidential mapping.
 
 ## Reviewer qualifications
 

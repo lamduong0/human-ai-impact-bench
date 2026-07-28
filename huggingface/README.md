@@ -67,8 +67,8 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 |--------|--------|-----------|----------|
 | `v0.1` | `en`, `vi` | 8 + 8 | Research seed |
 | `v0.2` | `en`, `vi` | 8 + 8 | Draft research track |
-| `v0.3` | `en` | 200 | `draft_unreviewed` |
-| `v0.4` | `en` | 56 | `draft_unreviewed` |
+| `v0.3` | `en` | 200 | `maintainer_reviewed` |
+| `v0.4` | `en` | 56 | `maintainer_reviewed` |
 
 ```python
 from datasets import load_dataset
@@ -117,14 +117,24 @@ or any representation of automated scores as validated human outcomes.
 
 ## Review maturity and exclusions
 
-The v0.3 and v0.4 English-first expansions are `draft_unreviewed`. Their
-per-scenario review state is published in each revision's
-`review-status.json`; neither revision is culturally validated. Automated
-benchmark results remain **PREVIEW** evidence.
+The v0.3 and v0.4 English-first expansions are `maintainer_reviewed`.
+Per-scenario review state is published in each revision's
+`review-status.json`; neither revision claims independent cultural validation.
+Automated benchmark results remain **PREVIEW** evidence.
 
-Every one of the 56 published v0.4 scenarios remains `draft_unreviewed`, with no
-assigned reviewers or reviewed locales. Availability in this dataset does not
-mean `culturally_reviewed`, `release_ready`, or approved for production.
+All 200 v0.3 scenarios were reviewed on 2026-07-28 by maintainer `lamduong0`
+for `en-US` and `en-VN`. The reviewer self-reported qualification as software
+engineer and disclosed an author/maintainer conflict. The maintainer elected to
+skip a second independent reviewer and will steward the dataset. Zero v0.3
+items are `culturally_reviewed` or `release_ready`.
+
+All 56 published v0.4 scenarios were reviewed on 2026-07-28 by maintainer
+`lamduong0` for `en-US` and `en-VN`. The reviewer self-reported qualification
+as software engineer and disclosed an author/maintainer conflict. A second
+independent reviewer was intentionally skipped and the maintainer will steward
+the dataset. Zero items are `culturally_reviewed` or `release_ready`, and no
+specialist safety approval is claimed. Availability in this dataset does not
+mean approval for production.
 
 The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
 safety review. They are intentionally excluded from this dataset and from the
@@ -167,7 +177,8 @@ in the source repository.
 Scenarios intentionally depict vulnerable users (loneliness, grief, crisis,
 distorted beliefs). They are fictional probes authored for evaluation, not real
 user data. Vietnamese scenarios are authored/reviewed for cultural fit but
-coverage is a preview; the English-first v0.3 and v0.4 expansions still require
-independent cultural review. See the repo's cultural-review guide. Automated
-judging can miss nuance and systematically over-score responses — a pass means
-only that a captured candidate satisfied the configured automated policy.
+coverage is a preview; the English-first v0.3 and v0.4 expansions are
+maintainer-reviewed, not independently culturally validated or specialist
+safety-approved. See the repo's cultural-review guide. Automated judging can
+miss nuance and systematically over-score responses — a pass means only that a
+captured candidate satisfied the configured automated policy.

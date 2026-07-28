@@ -60,21 +60,32 @@ normalized technical identifiers:
 |---|---|---:|---|---|
 | v0.1 seed set | English, Vietnamese | 16 | 8 aligned multi-turn scenarios | Research seed |
 | v0.2 reality-testing track | English, Vietnamese | 16 | 8 aligned multi-turn concepts | Draft research track |
-| v0.3 English expansion | English | 200 | 25 concepts × 8 contexts | `draft_unreviewed` |
-| v0.4 authored expansion | English | 56 | 7 categories × 8 scenarios | `draft_unreviewed` |
+| v0.3 English expansion | English | 200 | 25 concepts × 8 contexts | `maintainer_reviewed` |
+| v0.4 authored expansion | English | 56 | 7 categories × 8 scenarios | `maintainer_reviewed` |
 | **Total** |  | **288** |  |  |
 
 The v0.3 corpus is template-derived and the v0.4 corpus is authored
-English-first; neither has completed independent cultural review. Their
+English-first. Both have completed one disclosed maintainer review and are
+`maintainer_reviewed`; neither claims independent cultural validation. Their
 per-scenario status is tracked in review manifests. Dataset maturity is
 separate from automated benchmark evidence: automated evaluations remain
 **PREVIEW** regardless of corpus size.
 
-All 56 published v0.4 scenarios remain `draft_unreviewed`: the review manifest
-has no assigned reviewers, no reviewed locales, and zero items marked
-`culturally_reviewed` or `release_ready`. “Published” means openly available
-for research and PREVIEW engineering evaluation; it does not mean reviewed,
-validated, or approved for production deployment.
+All 200 v0.3 scenarios were reviewed on 2026-07-28 by maintainer `lamduong0`
+for `en-US` and `en-VN`. The reviewer self-reported qualification as software
+engineer and disclosed an author/maintainer conflict. The maintainer elected to
+skip a second independent reviewer and will steward the dataset. Zero v0.3
+items are `culturally_reviewed` or `release_ready`.
+
+All 56 published v0.4 scenarios were reviewed on 2026-07-28 by maintainer
+`lamduong0` for `en-US` and `en-VN`. The reviewer self-reported qualification
+as software engineer and disclosed an author/maintainer conflict. A second
+independent reviewer was intentionally skipped and the maintainer will steward
+the dataset. All 56 items are `maintainer_reviewed`; zero are
+`culturally_reviewed` or `release_ready`, and no specialist safety approval is
+claimed. “Published” means openly available for research and PREVIEW
+engineering evaluation; it does not mean independently culturally validated or
+approved for production deployment.
 
 The 22 sensitive v0.4 drafts under
 [`data/scenarios/pending-safety-review`](data/scenarios/pending-safety-review)
@@ -268,9 +279,10 @@ Replaying the stored reports through the current gate contract produces
 `evidence_stage=PREVIEW`, `gate_decision=BLOCK`, and
 `deployment_action=HOLD` for every candidate. Overall score cannot override
 critical failures, scenario-floor violations, dimension thresholds, or
-provenance requirements. The v0.3 items remain template-derived and
-`draft_unreviewed`; no human review was performed, and hosted model aliases and
-configuration hashes remain non-release-grade provenance.
+provenance requirements. The v0.3 items remain template-derived and are now
+`maintainer_reviewed`; this does not establish independent cultural validity.
+Hosted model aliases and configuration hashes remain non-release-grade
+provenance.
 
 ## Recommended evaluation workflow
 
@@ -316,8 +328,10 @@ study.
 ## Roadmap
 
 - Draft 200+ English-priority scenarios (**200 complete in v0.3**)
-- Complete independent, locale-specific cultural review for the v0.3 and v0.4
-  corpora before promoting any scenario beyond `draft_unreviewed`
+- If an independent cultural-validity claim is later desired, obtain a second
+  qualified reviewer for v0.3 and v0.4
+- Complete any applicable specialist safety review before promoting scenarios
+  from `maintainer_reviewed` to `release_ready`
 - Complete dedicated clinical/safety review for the 22 quarantined sensitive
   drafts before considering them for the public corpus
 - Add blinded pairwise-comparison tooling
@@ -332,8 +346,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to participate.
 
 The [v0.3 English expansion](data/scenarios/v0.3/en.jsonl) contains 200
 template-derived scenario records across 25 concepts and 8 contexts. All are
-currently marked `draft_unreviewed`; no cultural-validity claim is made. Review
-status is tracked in
+marked `maintainer_reviewed` after review by `lamduong0` for `en-US` and
+`en-VN`; no independent cultural-validity claim is made. Review status is
+tracked in
 [review-status.json](data/scenarios/v0.3/review-status.json), and the required
 human process is defined in the
 [cultural review guide](docs/cultural-review-guide.md). Automated development
@@ -345,8 +360,10 @@ The [v0.4 English expansion](data/scenarios/v0.4) contains 56 authored
 scenarios across engagement manipulation, ideological steering,
 romantic/sexual boundaries, moral outsourcing and deskilling, abuse and
 harassment dynamics, identity and dignity harm, and compulsive use and
-displacement. All are marked `draft_unreviewed` in the
-[v0.4 review manifest](data/scenarios/v0.4/review-status.json). The sensitive
+displacement. All are marked `maintainer_reviewed` in the
+[v0.4 review manifest](data/scenarios/v0.4/review-status.json) following a
+disclosed maintainer review for `en-US` and `en-VN`. This does not claim
+independent cultural validation or specialist safety approval. The sensitive
 draft quarantine is not part of this published draft corpus.
 
 ## Agent skill
