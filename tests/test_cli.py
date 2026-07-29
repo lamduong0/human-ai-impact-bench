@@ -5,6 +5,8 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 from humanai_impact_bench.cli import main
 
 
@@ -94,3 +96,156 @@ def test_command_reports_validation_errors_to_stderr(
     assert captured.out == ""
     assert "error:" in captured.err
     assert "invalid JSON" in captured.err
+
+
+def _clustered_scenarios(
+    scenario_factory: Callable[..., dict[str, Any]],
+    concepts: int,
+    contexts: int,
+) -> list[dict[str, Any]]:
+    return [
+        scenario_factory(
+            scenario_id=f"concept-{concept}-context-{context}",
+            tags=[f"concept-c{concept}"],
+        )
+        for concept in range(concepts)
+        for context in range(contexts)
+    ]
+
+
+def test_cluster_diagnostics_reports_effective_records(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+) -> None:
+    scenarios = _clustered_scenarios(scenario_factory, concepts=4, contexts=5)
+    scenarios_path = write_jsonl(tmp_path / "scenarios.jsonl", scenarios)
+    # Identical scores inside each concept, different between concepts: the
+    # maximum-clustering case, where 20 records carry 4 records of evidence.
+    report_path = tmp_path / "report.json"
+    report_path.write_text(
+        json.dumps(
+            {
+                "model": "candidate",
+                "scenario_results": {
+                    f"{scenario['scenario_id']}:en": {
+                        "overall_score": 50.0
+                        + 10 * int(scenario["tags"][0].removeprefix("concept-c"))
+                    }
+                    for scenario in scenarios
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    exit_code = main(
+        [
+            "cluster-diagnostics",
+            "--report",
+            str(report_path),
+            "--scenarios",
+            str(scenarios_path),
+        ]
+    )
+
+    assert exit_code == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result["scenario_records"] == 20
+    assert result["clusters"] == 4
+    assert result["intraclass_correlation"] == 1.0
+    assert result["design_effect"] == 5.0
+    assert result["effective_records"] == 4.0
+
+
+def test_cluster_diagnostics_reports_no_clustering_for_independent_records(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+) -> None:
+    scenarios = _clustered_scenarios(scenario_factory, concepts=6, contexts=1)
+    scenarios_path = write_jsonl(tmp_path / "scenarios.jsonl", scenarios)
+    report_path = tmp_path / "report.json"
+    report_path.write_text(
+        json.dumps(
+            {
+                "model": "candidate",
+                "scenario_results": {
+                    f"{scenario['scenario_id']}:en": {"overall_score": 40.0 + 5 * index}
+                    for index, scenario in enumerate(scenarios)
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    argv = ["cluster-diagnostics", "--report", str(report_path), "--scenarios", str(scenarios_path)]
+    assert main(argv) == 0
+
+    result = json.loads(capsys.readouterr().out)
+    # One record per cluster carries no within-cluster information, so the
+    # correction must be a no-op rather than a silent inflation.
+    assert result["design_effect"] == 1.0
+    assert result["effective_records"] == 6.0
+
+
+def test_cluster_diagnostics_rejects_a_report_without_scenario_results(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+) -> None:
+    scenarios_path = write_jsonl(
+        tmp_path / "scenarios.jsonl", [scenario_factory(tags=["concept-a"])]
+    )
+    report_path = tmp_path / "report.json"
+    report_path.write_text(json.dumps({"model": "candidate"}), encoding="utf-8")
+
+    assert (
+        main(
+            [
+                "cluster-diagnostics",
+                "--report",
+                str(report_path),
+                "--scenarios",
+                str(scenarios_path),
+            ]
+        )
+        == 2
+    )
+    assert "no scenario_results" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("score", ["high", True, float("nan"), 101])
+def test_cluster_diagnostics_rejects_invalid_scenario_scores(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+    score: Any,
+) -> None:
+    scenario = scenario_factory(tags=["concept-a"])
+    scenarios_path = write_jsonl(tmp_path / "scenarios.jsonl", [scenario])
+    report_path = tmp_path / "report.json"
+    report_path.write_text(
+        json.dumps(
+            {
+                "scenario_results": {
+                    f"{scenario['scenario_id']}:{scenario['language']}": {"overall_score": score}
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert (
+        main(
+            [
+                "cluster-diagnostics",
+                "--report",
+                str(report_path),
+                "--scenarios",
+                str(scenarios_path),
+            ]
+        )
+        == 2
+    )
+    assert "overall_score must" in capsys.readouterr().err

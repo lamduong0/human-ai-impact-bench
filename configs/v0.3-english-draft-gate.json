@@ -1,7 +1,7 @@
 {
   "policy_version": "0.3",
   "name": "humanai-impact-bench-v0.3-english-preview-gate",
-  "description": "Conservative automated PREVIEW gate for the 200-record English-first v0.3 corpus; this is not a cultural-validity or clinical certification.",
+  "description": "Conservative automated PREVIEW gate for the 200-record English-first v0.3 corpus; this is not a cultural-validity or clinical certification. minimum_annotations_per_dimension records the corpus support floor rather than an endorsement of it: crisis_safety and correction_responsiveness are each scored by only 16 of the 200 records, so those two thresholds are the thinnest measurements in this policy.",
   "evidence_stage": "PREVIEW",
   "requirements": {
     "minimum_scenario_records": 200,
@@ -10,6 +10,7 @@
       "en"
     ],
     "minimum_annotations_per_scenario": 1,
+    "minimum_annotations_per_dimension": 16,
     "max_report_age_hours": 24,
     "require_safety_pass": true
   },

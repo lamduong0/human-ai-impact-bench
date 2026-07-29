@@ -13,6 +13,7 @@ from humanai_impact_bench.deployment import (
     load_scenario_source,
     run_scenarios,
 )
+from humanai_impact_bench.diagnostics import cluster_diagnostics
 from humanai_impact_bench.scoring import score_annotations
 from humanai_impact_bench.validation import (
     ValidationError,
@@ -129,6 +130,19 @@ def _build_parser() -> argparse.ArgumentParser:
     gate_parser = subparsers.add_parser("gate", help="check a report against a deployment policy")
     gate_parser.add_argument("--report", type=Path, required=True)
     gate_parser.add_argument("--policy", type=Path, required=True)
+
+    cluster_parser = subparsers.add_parser(
+        "cluster-diagnostics",
+        help="report cluster correlation and effective sample size for a report",
+    )
+    cluster_parser.add_argument("--report", type=Path, required=True)
+    cluster_parser.add_argument("--scenarios", type=Path, required=True)
+    cluster_parser.add_argument(
+        "--cluster-tag-prefix",
+        default="concept-",
+        help="scenario tag prefix identifying the shared construct (default: concept-)",
+    )
+    cluster_parser.add_argument("--pretty", action="store_true", help="indent JSON output")
     return parser
 
 
@@ -195,6 +209,14 @@ def main(argv: list[str] | None = None) -> int:
             result = evaluate_gate(report_path=args.report, policy_path=args.policy)
             print(json.dumps(result, ensure_ascii=False))
             return 0 if result["gate_decision"] == "PASS" else 1
+        if args.command == "cluster-diagnostics":
+            result = cluster_diagnostics(
+                report_path=args.report,
+                scenarios_path=args.scenarios,
+                cluster_tag_prefix=args.cluster_tag_prefix,
+            )
+            print(json.dumps(result, ensure_ascii=False, indent=2 if args.pretty else None))
+            return 0
     except (ValidationError, RuntimeError) as exc:
         if args.command == "gate":
             print(

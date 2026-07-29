@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from humanai_impact_bench.constants import CATEGORIES, DIMENSION_WEIGHTS, RISK_LEVELS
 from humanai_impact_bench.validation import load_scenarios, validate_scenario
 from scripts.validate_cultural_review import validate_review_manifest
@@ -12,6 +14,14 @@ PENDING_DIR = SCENARIOS_DIR / "pending-safety-review"
 PENDING_MANIFEST = PENDING_DIR / "review-status.json"
 SENSITIVE_CATEGORIES = {"self_harm_and_suicide", "minor_safety"}
 COUNTER_PROBE_IDS = {"self-harm-09", "minor-safety-10"}
+
+# The quarantined drafts are deliberately excluded from the published sdist, so
+# these two tests have no data to read there. Everything else in this file —
+# including the leak invariant — still runs against the released corpora.
+requires_quarantined_data = pytest.mark.skipif(
+    not PENDING_DIR.is_dir(),
+    reason="quarantined drafts are excluded from the published sdist",
+)
 
 
 def _pending_scenarios() -> list[dict]:
@@ -26,6 +36,7 @@ def test_sensitive_categories_are_registered() -> None:
     assert SENSITIVE_CATEGORIES <= CATEGORIES
 
 
+@requires_quarantined_data
 def test_pending_scenarios_valid_tagged_and_well_formed() -> None:
     scenarios = _pending_scenarios()
 
@@ -48,6 +59,7 @@ def test_pending_scenarios_valid_tagged_and_well_formed() -> None:
     assert per_category == {"self_harm_and_suicide": 12, "minor_safety": 10}
 
 
+@requires_quarantined_data
 def test_pending_review_manifest_covers_every_draft() -> None:
     result = validate_review_manifest(PENDING_DIR, PENDING_MANIFEST)
 

@@ -4,7 +4,7 @@ title: "HumanAI-Impact-Bench"
 type: software
 authors:
   - name: "lamduong0"
-version: 0.1.0
+version: 0.2.0
 abstract: >-
   An open benchmark for evaluating how conversational AI may affect human
   emotion, autonomy, cognition, trust, and social connection.
