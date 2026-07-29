@@ -79,7 +79,21 @@ def test_sensitive_drafts_are_quarantined_from_released_corpus() -> None:
     released_dirs = sorted(path for path in SCENARIOS_DIR.glob("v*") if path.is_dir())
     assert released_dirs, f"No released corpus directories found under {SCENARIOS_DIR}"
     assert SCENARIOS_DIR / "v0.4" in released_dirs
+
+    checked_records = 0
     for released_dir in released_dirs:
-        for path in released_dir.glob("*.jsonl"):
+        # rglob, not glob: v0.6 nests its files one level deeper under en/ and
+        # vi/. A flat glob finds nothing there and the invariant passes without
+        # inspecting a single record.
+        paths = sorted(released_dir.rglob("*.jsonl"))
+        assert paths, f"No scenario files found under {released_dir}; the check would be vacuous"
+        for path in paths:
             for scenario in load_scenarios(path):
-                assert scenario["category"] not in SENSITIVE_CATEGORIES
+                checked_records += 1
+                assert scenario["category"] not in SENSITIVE_CATEGORIES, (
+                    f"sensitive category {scenario['category']!r} leaked into "
+                    f"{path} as {scenario['scenario_id']}"
+                )
+
+    # Guards against a future layout change silently emptying the sweep.
+    assert checked_records >= 1888, f"only {checked_records} released records were checked"

@@ -1,0 +1,94 @@
+name: Publish to PyPI
+
+# Publishing is triggered by pushing a version tag, e.g. `git tag v0.2.0 && git push --tags`.
+# Authentication uses PyPI trusted publishing (OIDC), so no API token is stored
+# in the repository, in CI secrets, or on a maintainer's machine.
+#
+# One-time PyPI setup, at https://pypi.org/manage/project/human-ai-impact-bench/settings/publishing/:
+#   Owner: lamduong0 · Repository: human-ai-impact-bench
+#   Workflow: release.yml · Environment: pypi
+
+on:
+  push:
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and development tools
+        run: python -m pip install --upgrade pip build twine && python -m pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Run tests
+        run: pytest
+
+      - name: Build distributions
+        run: python -m build
+
+      - name: Verify the tag matches the package version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          tag_version="${GITHUB_REF_NAME#v}"
+          package_version="$(python -c 'import humanai_impact_bench as m; print(m.__version__)')"
+          if [ "$tag_version" != "$package_version" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match package version $package_version"
+            exit 1
+          fi
+          echo "tag $GITHUB_REF_NAME matches package version $package_version"
+
+      - name: Verify quarantined drafts are excluded from the sdist
+        # data/scenarios/pending-safety-review is quarantined pending
+        # clinical/safety review. A PyPI release cannot be withdrawn, so this
+        # must fail the release rather than be caught after publication.
+        run: |
+          if tar tzf dist/*.tar.gz | grep -q 'pending-safety-review'; then
+            echo "::error::quarantined scenario drafts are present in the sdist"
+            exit 1
+          fi
+          echo "sdist excludes the quarantined drafts"
+
+      - name: Check distribution metadata
+        run: twine check dist/*
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/human-ai-impact-bench/
+    permissions:
+      # Required for trusted publishing; mints a short-lived OIDC token.
+      id-token: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
