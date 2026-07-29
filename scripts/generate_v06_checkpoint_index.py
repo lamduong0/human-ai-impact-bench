@@ -166,7 +166,8 @@ def build_index() -> dict[str, Any]:
         ),
         "limitations": [
             "The index freezes authored coverage, not cultural validity or human-impact evidence.",
-            "Maintainer review of earlier Stage 1 records does not transfer to new records.",
+            "Single-maintainer review does not establish independent cultural validity "
+            "or specialist safety approval.",
             "Automated benchmark runs over this checkpoint remain PREVIEW evidence.",
         ],
     }

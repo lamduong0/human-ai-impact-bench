@@ -34,6 +34,22 @@ MAINTAINER_REVIEW_NOTE = (
     "not independently culturally validated, specialist safety approved, or "
     "release ready."
 )
+CHECKPOINT_REVIEWED_LOCALES = {
+    "en": ["en-US", "en-VN"],
+    "vi": ["vi-VN"],
+}
+
+
+def _checkpoint_review_note(language: str) -> str:
+    locales = " and ".join(CHECKPOINT_REVIEWED_LOCALES[language])
+    return (
+        f"Full-checkpoint maintainer review approved 2026-07-29 by lamduong0 "
+        f"for {locales}. Reviewer self-reported qualification: software "
+        "engineer; author/maintainer conflict disclosed. The maintainer elected "
+        "to skip a second independent reviewer and will steward this dataset. "
+        "This item is maintainer reviewed, not independently culturally "
+        "validated, specialist safety approved, or release ready."
+    )
 
 
 def _digest(scenario: dict[str, Any]) -> str:
@@ -68,6 +84,7 @@ def build_manifest(
     existing_manifest: dict[str, Any] | None = None,
     *,
     maintainer_review_stage1: bool = False,
+    maintainer_review_all: bool = False,
 ) -> dict[str, Any]:
     language_dir = V06_DIR / language
     scenarios = [
@@ -117,7 +134,16 @@ def build_manifest(
         ):
             for field in ("status", "reviewers", "reviewed_locales", "notes"):
                 item[field] = existing_item[field]
-        if (
+        if maintainer_review_all:
+            item.update(
+                {
+                    "status": "maintainer_reviewed",
+                    "reviewers": ["lamduong0"],
+                    "reviewed_locales": CHECKPOINT_REVIEWED_LOCALES[language],
+                    "notes": _checkpoint_review_note(language),
+                }
+            )
+        elif (
             maintainer_review_stage1
             and stage1_approved_digests.get((language, scenario_id)) == item["scenario_digest"]
         ):
@@ -149,6 +175,11 @@ def main() -> int:
         action="store_true",
         help="Record the disclosed maintainer approval for current Stage 1 categories.",
     )
+    parser.add_argument(
+        "--mark-all-maintainer-reviewed",
+        action="store_true",
+        help="Record the disclosed maintainer approval for the complete v0.6 checkpoint.",
+    )
     args = parser.parse_args()
 
     output_path = V06_DIR / args.language / "review-status.json"
@@ -161,6 +192,7 @@ def main() -> int:
                 args.language,
                 existing_manifest=existing_manifest,
                 maintainer_review_stage1=args.mark_stage1_maintainer_reviewed,
+                maintainer_review_all=args.mark_all_maintainer_reviewed,
             ),
             ensure_ascii=False,
             indent=2,

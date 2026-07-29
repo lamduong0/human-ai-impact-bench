@@ -81,7 +81,7 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.3` | `en` | 200 | `maintainer_reviewed` |
 | `v0.4` | `en` | 56 | `maintainer_reviewed` |
 | `v0.5` | `en` (`en-US`, `en-VN`) | 400 | `maintainer_reviewed`; development only |
-| `v0.6` | `en`, `vi` | 800 + 400 | 210 `maintainer_reviewed`, 990 `draft_unreviewed`; development only |
+| `v0.6` | `en`, `vi` | 800 + 400 | `maintainer_reviewed`; development only |
 
 ```python
 from datasets import load_dataset
@@ -166,12 +166,12 @@ engineer, disclosed an author/maintainer conflict, and elected to skip a second
 independent reviewer. They are `maintainer_reviewed`, not independently
 `culturally_reviewed`, specialist-approved, or `release_ready`.
 
-The v0.6 checkpoint contains 1,200 physical records: 800 English and 400
-Vietnamese. Its frozen 210-record Stage 1 English foundation is
-`maintainer_reviewed`; all other 990 records are `draft_unreviewed`, including
-every Vietnamese v0.6 record. Structural pair alignment and lexical screening
-do not establish translation quality, cultural validity, specialist safety
-approval, or release readiness.
+All 1,200 v0.6 records were reviewed on 2026-07-29 by maintainer `lamduong0`.
+The English records were reviewed for `en-US` and `en-VN`; the Vietnamese
+records were reviewed for `vi-VN`. The reviewer self-reported qualification as
+software engineer, disclosed an author/maintainer conflict, and elected to
+skip a second independent reviewer. They are `maintainer_reviewed`, not
+independently `culturally_reviewed`, specialist-approved, or `release_ready`.
 
 The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
 safety review. They are intentionally excluded from this dataset and from the

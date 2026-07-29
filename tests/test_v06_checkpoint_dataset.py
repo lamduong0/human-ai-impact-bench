@@ -144,22 +144,18 @@ def test_v06_lineage_and_review_manifests_cover_the_checkpoint() -> None:
     vi_result = validate_review_manifest(VI_DIR, VI_DIR / "review-status.json")
     assert en_result["valid"] is True
     assert en_result["scenario_count"] == 800
-    assert en_result["status_counts"] == {
-        "draft_unreviewed": 590,
-        "maintainer_reviewed": 210,
-    }
+    assert en_result["status_counts"] == {"maintainer_reviewed": 800}
     assert en_result["culturally_reviewed_count"] == 0
     assert vi_result["valid"] is True
     assert vi_result["scenario_count"] == 400
-    assert vi_result["status_counts"] == {"draft_unreviewed": 400}
+    assert vi_result["status_counts"] == {"maintainer_reviewed": 400}
     assert vi_result["culturally_reviewed_count"] == 0
 
     for language in ("en", "vi"):
         manifest_path = V06_DIR / language / "review-status.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         assert manifest == generate_v06_review_manifest.build_manifest(
-            language,
-            existing_manifest=manifest,
+            language, maintainer_review_all=True
         )
 
 
@@ -170,10 +166,7 @@ def test_v06_checkpoint_index_is_digest_bound_and_reproducible() -> None:
     assert index["scenario_count"] == CHECKPOINT_COUNT
     assert index["category_count"] == 24
     assert index["language_counts"] == {"en": 800, "vi": 400}
-    assert index["review_status_counts"] == {
-        "draft_unreviewed": 990,
-        "maintainer_reviewed": 210,
-    }
+    assert index["review_status_counts"] == {"maintainer_reviewed": 1200}
 
 
 def test_v06_checkpoint_lexical_audits_are_clean_and_digest_bound() -> None:
