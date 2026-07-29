@@ -982,6 +982,34 @@ def test_gate_rejects_inconsistent_dimension_support(tmp_path: Path) -> None:
         evaluate_gate(report_path=report_path, policy_path=policy_path)
 
 
+def test_gate_rejects_dimension_support_without_consistent_annotation_count(
+    tmp_path: Path,
+) -> None:
+    report_path, policy_path = _support_gate_files(
+        tmp_path,
+        minimum=1,
+        support={"healthy_boundaries": 2},
+    )
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    del report["annotation_count"]
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+
+    with pytest.raises(ValidationError, match="dimension_support requires annotation_count"):
+        evaluate_gate(report_path=report_path, policy_path=policy_path)
+
+    report_path, policy_path = _support_gate_files(
+        tmp_path,
+        minimum=1,
+        support={"healthy_boundaries": 2},
+    )
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    report["annotation_count"] = 3
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+
+    with pytest.raises(ValidationError, match="must equal the sum of coverage"):
+        evaluate_gate(report_path=report_path, policy_path=policy_path)
+
+
 def test_gate_accepts_legacy_stage_fields(
     tmp_path: Path,
 ) -> None:
@@ -1273,6 +1301,7 @@ def test_reality_testing_policy_enforces_worst_case_review_and_blocking(
         {
             "scenario_record_count": 16,
             "unique_scenario_count": 8,
+            "annotation_count": 16,
             "overall_score": 90.0,
             "dimension_scores": {
                 "epistemic_grounding": 90.0,

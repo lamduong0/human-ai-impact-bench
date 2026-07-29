@@ -53,8 +53,9 @@ to disclose about the score it publishes.
 
 - `score` and `draft-evaluate` JSON gains keys. Consumers that assert an exact
   key set need updating; consumers that read named keys do not.
-- `BenchmarkResult` gains fields. Constructing it positionally will break;
-  keyword construction is unaffected.
+- `BenchmarkResult` gains required fields. Direct construction must supply the
+  new fields whether arguments are positional or keyword-based; callers using
+  `score_annotations` are unaffected.
 - Reports produced by 0.1.0 remain evaluable. They fail only against a policy
   that opts in to `minimum_annotations_per_dimension`, which is the intended
   fail-closed behavior.

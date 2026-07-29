@@ -204,7 +204,13 @@ weight and penalty tables.
 HumanAI-Impact-Bench requires Python 3.10 or newer and has no runtime dependencies.
 
 ```bash
-python -m pip install -e .
+python -m pip install human-ai-impact-bench
+humanai-impact-bench --help
+```
+
+From a repository checkout, validate the bundled seed scenarios:
+
+```bash
 humanai-impact-bench validate data/scenarios/v0.1/en.jsonl
 humanai-impact-bench validate data/scenarios/v0.1/vi.jsonl
 ```

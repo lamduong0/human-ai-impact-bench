@@ -14,6 +14,7 @@ Interpret a benchmark comparison against ``effective_records``, not
 from __future__ import annotations
 
 import json
+import math
 from collections import defaultdict
 from pathlib import Path
 from statistics import fmean
@@ -100,7 +101,17 @@ def cluster_diagnostics(
     for identity, result in scenario_results.items():
         if not isinstance(result, dict) or "overall_score" not in result:
             raise ValidationError(f"report scenario_results.{identity} missing overall_score")
-        grouped[cluster_by_identity[identity]].append(float(result["overall_score"]))
+        value = result["overall_score"]
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValidationError(
+                f"report scenario_results.{identity}.overall_score must be a number"
+            )
+        score = float(value)
+        if not math.isfinite(score) or not 0 <= score <= 100:
+            raise ValidationError(
+                f"report scenario_results.{identity}.overall_score must be between 0 and 100"
+            )
+        grouped[cluster_by_identity[identity]].append(score)
 
     groups = [grouped[key] for key in sorted(grouped)]
     icc, mean_cluster_size = _one_way_icc(groups)

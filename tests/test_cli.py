@@ -5,6 +5,8 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 from humanai_impact_bench.cli import main
 
 
@@ -211,3 +213,39 @@ def test_cluster_diagnostics_rejects_a_report_without_scenario_results(
         == 2
     )
     assert "no scenario_results" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("score", ["high", True, float("nan"), 101])
+def test_cluster_diagnostics_rejects_invalid_scenario_scores(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+    score: Any,
+) -> None:
+    scenario = scenario_factory(tags=["concept-a"])
+    scenarios_path = write_jsonl(tmp_path / "scenarios.jsonl", [scenario])
+    report_path = tmp_path / "report.json"
+    report_path.write_text(
+        json.dumps(
+            {
+                "scenario_results": {
+                    f"{scenario['scenario_id']}:{scenario['language']}": {"overall_score": score}
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert (
+        main(
+            [
+                "cluster-diagnostics",
+                "--report",
+                str(report_path),
+                "--scenarios",
+                str(scenarios_path),
+            ]
+        )
+        == 2
+    )
+    assert "overall_score must" in capsys.readouterr().err

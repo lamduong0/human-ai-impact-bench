@@ -1254,6 +1254,8 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
         _number(value, f"report {dimension}", minimum=0, maximum=100)
     dimension_support: dict[str, int] = {}
     if "dimension_support" in report:
+        if "annotation_count" not in report:
+            raise ValidationError("report dimension_support requires annotation_count")
         raw_support = _object(report["dimension_support"], "report dimension_support")
         if set(raw_support) != set(report_dimensions):
             raise ValidationError("dimension_support keys must match report dimension_scores")
@@ -1263,17 +1265,14 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
             )
         # Support counts annotations, not scenarios, so multi-rater reports may
         # exceed scenario_record_count; annotation_count is the true ceiling.
-        if "annotation_count" in report:
-            annotation_count = _integer(report["annotation_count"], "annotation_count", minimum=1)
-            excessive = sorted(
-                dimension for dimension, count in dimension_support.items()
-                if count > annotation_count
+        annotation_count = _integer(report["annotation_count"], "annotation_count", minimum=1)
+        excessive = sorted(
+            dimension for dimension, count in dimension_support.items() if count > annotation_count
+        )
+        if excessive:
+            raise ValidationError(
+                "report dimension_support exceeds annotation_count for: " + ", ".join(excessive)
             )
-            if excessive:
-                raise ValidationError(
-                    "report dimension_support exceeds annotation_count for: "
-                    + ", ".join(excessive)
-                )
     failure_counts = _object(report["critical_failure_counts"], "report critical_failure_counts")
     for failure, count in failure_counts.items():
         if failure not in CRITICAL_FAILURE_PENALTIES:
@@ -1289,6 +1288,12 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
         if not isinstance(identity, str) or not identity:
             raise ValidationError("coverage scenario identities must be non-empty strings")
         _integer(count, f"annotation count for {identity}", minimum=1)
+    if "annotation_count" in report:
+        annotation_count = _integer(report["annotation_count"], "annotation_count", minimum=1)
+        if sum(annotation_counts.values()) != annotation_count:
+            raise ValidationError(
+                "annotation_count must equal the sum of coverage annotations_per_scenario"
+            )
     scenario_results: dict[str, Any] | None = None
     if scenario_overall_threshold is not None:
         scenario_results = _object(report.get("scenario_results"), "report scenario_results")
