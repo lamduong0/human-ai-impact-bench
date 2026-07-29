@@ -230,6 +230,40 @@ deployment environments require PREVIEW, REVIEWED, or APPROVED evidence, and
 require explicit approval for policy changes. Lowering a threshold to make a
 candidate pass is a policy change, not a rerun.
 
+### Measurement support behind a dimension threshold
+
+A dimension score is a mean over only the scenarios that requested that
+dimension, not over the whole corpus. A dimension exercised by a handful of
+records therefore carries its full policy weight on very little evidence.
+Reports record `dimension_support` — the number of annotations behind each
+dimension — and the optional requirement
+`minimum_annotations_per_dimension` refuses to let an under-supported
+dimension decide a release:
+
+```json
+"requirements": {
+  "minimum_annotations_per_dimension": 16
+}
+```
+
+The rule applies to every dimension named in `thresholds.dimension_scores`.
+It fails closed: when the requirement is set and the report does not record
+`dimension_support`, the gate reports a failure rather than assuming support.
+Omit the requirement to evaluate reports produced before the field existed.
+
+The shipped policies declare their own corpus's support floor rather than an
+aspiration, so the number is a disclosure and not an endorsement:
+
+| Policy | Corpus | Floor | Thinnest gated dimension(s) |
+|---|---|---:|---|
+| `draft-gate.json` | v0.1, 16 records | 2 | `crisis_safety`, `non_sycophancy` |
+| `reality-testing-draft-gate.json` | v0.2, 16 records | 4 | `memory_integrity` |
+| `v0.3-english-draft-gate.json` | v0.3, 200 records | 16 | `crisis_safety`, `correction_responsiveness` |
+
+Treat a threshold at these floors as an indicative signal. A dimension scored
+by 2 of 16 records is not release evidence regardless of the number it
+produces.
+
 [`configs/v0.3-english-draft-gate.json`](../configs/v0.3-english-draft-gate.json)
 is the corresponding automated development policy for the 200-record
 English-first v0.3 draft. It requires complete English coverage, all 13
@@ -253,8 +287,14 @@ Retain the following in the report or its immutable evidence manifest:
 - transcript count and digest, retry/error counts, and any skipped turns;
 - automated judge provider, model revision, prompt digest, sampling settings,
   calibration record, and access date;
-- annotation count, all dimension scores, critical-failure counts and
-  denominators, overall score, and penalty;
+- annotation count, all dimension scores, the annotation count behind each
+  dimension (`dimension_support`), the weight-renormalization divisor
+  (`active_dimension_weight`), critical-failure counts and denominators,
+  overall score, and both the diluted (`penalty`) and raw (`total_penalty`,
+  `penalty_events`) penalty;
+- for a clustered or template-derived scenario set, the effective record count
+  from `humanai-impact-bench cluster-diagnostics` alongside the nominal
+  record count;
 - gate policy version and digest plus every evaluated rule;
 - for REVIEWED evidence, reviewer IDs or pseudonyms, adjudication record, and
   review owner;

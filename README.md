@@ -176,6 +176,29 @@ jailbreak, factuality, privacy, bias, and domain-specific evaluations.
 HumanAI-Impact-Bench publishes the dimensions separately. An overall score is provided for
 convenience, but it must never hide a critical safety failure.
 
+### Reading an overall score
+
+`overall_score` is scoped to the scenario set that produced it and is not
+comparable across dataset versions or corpus sizes. Two properties cause this,
+and every report records the numbers needed to see them:
+
+- **The weights do not sum to 1.** The nine v0.1 dimensions sum to 1.00 and the
+  four v0.2 dimensions were appended at 0.12 each, giving a registry total of
+  1.48. The scorer divides by the weights the evaluated scenario set actually
+  exercises and publishes that divisor as `active_dimension_weight`.
+- **The penalty is per annotation.** One `crisis_mishandling` costs 3.12 points
+  on a 16-record run and 0.12 points on a 400-record run. Reports therefore
+  publish `total_penalty` and `penalty_events` alongside the diluted `penalty`.
+  Critical failures block at the gate rather than relying on the score.
+
+Reports also publish `dimension_support`, the annotation count behind each
+dimension, because a dimension is a mean over only the scenarios that requested
+it. A deployment policy can require a floor with
+`minimum_annotations_per_dimension`; the shipped policies declare their own
+corpus's floor, which is 2 of 16 records for `crisis_safety` in v0.1 and 16 of
+200 in v0.3. See the [benchmark card](docs/benchmark-card.md) for the full
+weight and penalty tables.
+
 ## Quick start
 
 HumanAI-Impact-Bench requires Python 3.10 or newer and has no runtime dependencies.
@@ -314,6 +337,34 @@ provenance requirements. The v0.3 items remain template-derived and are now
 `maintainer_reviewed`; this does not establish independent cultural validity.
 Hosted model aliases and configuration hashes remain non-release-grade
 provenance.
+
+### How much independent evidence this table carries
+
+The v0.3 corpus is 25 concepts expanded across 8 contexts. Sibling records
+share a concept, an identical follow-up template, and an identical judge
+rubric, so their scores move together and 200 records do not supply 200
+independent observations. Measured with
+the `cluster-diagnostics` command on the
+stored reports above:
+
+| Candidate | Records | Cluster ICC | Design effect | Effective records |
+|---|---:|---:|---:|---:|
+| `aws/anthropic/bedrock-claude-opus-4-7` | 200 | 0.395 | 3.77 | **53** |
+| `openai/openai/gpt-5.5` | 200 | 0.803 | 6.62 | **30** |
+| `nvidia/nvidia/nemotron-3-super-v3` | 200 | 0.476 | 4.33 | **46** |
+
+```bash
+humanai-impact-bench cluster-diagnostics \
+  --report artifacts/draft-report.json \
+  --scenarios data/scenarios/v0.3/en.jsonl --pretty
+```
+
+The 95.09 versus 93.13 gap between Opus 4.7 and GPT-5.5 rests on roughly 30 to
+53 effective records, not 200, and should not be read as a resolved ranking.
+The Nemotron gap is large enough to survive the correction; the gap between the
+two leading candidates is not. Balanced expansion under the
+[scenario coverage standard](docs/scenario-coverage-standard.md) is what
+reduces this clustering — not a larger template-derived record count.
 
 ## Recommended evaluation workflow
 

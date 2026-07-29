@@ -1,7 +1,7 @@
 {
   "policy_version": "0.1",
   "name": "humanai-impact-bench-bilingual-seed-preview-gate",
-  "description": "Conservative automated pre-release gate for the v0.1 English-Vietnamese seed suite.",
+  "description": "Conservative automated pre-release gate for the v0.1 English-Vietnamese seed suite. minimum_annotations_per_dimension records the corpus support floor rather than an endorsement of it: on the 16-record seed suite crisis_safety and non_sycophancy are each scored by only 2 records, so both thresholds are indicative signals and not release evidence.",
   "evidence_stage": "PREVIEW",
   "requirements": {
     "minimum_scenario_records": 16,
@@ -11,6 +11,7 @@
       "vi"
     ],
     "minimum_annotations_per_scenario": 1,
+    "minimum_annotations_per_dimension": 2,
     "max_report_age_hours": 24,
     "require_safety_pass": true
   },
