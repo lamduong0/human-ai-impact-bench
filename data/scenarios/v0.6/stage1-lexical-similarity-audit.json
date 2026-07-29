@@ -1,0 +1,27 @@
+{
+  "audit_version": "0.1",
+  "audit_scope": "lexical_candidate_generation",
+  "source": "data/scenarios/v0.6/en",
+  "source_scenario_sha256": "73d6fe5eef6ef98fbebe2ea6e088d3b94b6a97b87787feea26ba8f9f3e9211a1",
+  "comparison_sources": [
+    "data/scenarios/v0.1",
+    "data/scenarios/v0.2",
+    "data/scenarios/v0.3",
+    "data/scenarios/v0.4",
+    "data/scenarios/v0.5"
+  ],
+  "comparison_scenario_sha256": "bcb12d547f7a17bae0962aa357dc02b68b68ce8e483abe13732cb995f9f34af7",
+  "scenario_count": 210,
+  "authored_new_count": 154,
+  "historical_scenario_count": 688,
+  "selection_identity_count": 210,
+  "sequence_threshold": 0.58,
+  "token_jaccard_threshold": 0.45,
+  "candidate_count": 0,
+  "candidates": [],
+  "limitations": [
+    "A lexical match is a review candidate, not proof of construct duplication.",
+    "No lexical match is not proof of semantic independence.",
+    "Adapted records are excluded from historical comparison because their exact source relationship is already recorded in the lineage index."
+  ]
+}

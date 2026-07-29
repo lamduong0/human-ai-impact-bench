@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -38,6 +39,16 @@ def _string_array(value: Any, label: str) -> list[str]:
     if len(value) != len(set(value)):
         raise ValidationError(f"{label} items must be unique")
     return value
+
+
+def _scenario_digest(scenario: dict[str, Any]) -> str:
+    payload = json.dumps(
+        scenario,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode()
+    return hashlib.sha256(payload).hexdigest()
 
 
 def validate_review_manifest(
@@ -112,7 +123,7 @@ def validate_review_manifest(
         item = manifest["items"][scenario_id]
         if not isinstance(item, dict):
             raise ValidationError(f"review item {scenario_id} must be an object")
-        expected_fields = {
+        required_item_fields = {
             "concept_id",
             "context_id",
             "status",
@@ -120,7 +131,13 @@ def validate_review_manifest(
             "reviewed_locales",
             "notes",
         }
-        if set(item) != expected_fields:
+        digest_required = manifest["benchmark_version"] in {"0.5", "0.6"}
+        if digest_required:
+            required_item_fields.add("scenario_digest")
+        optional_item_fields = set() if digest_required else {"scenario_digest"}
+        if not required_item_fields <= set(item) or not set(item) <= (
+            required_item_fields | optional_item_fields
+        ):
             raise ValidationError(f"review item {scenario_id} has invalid fields")
         for field in ("concept_id", "context_id", "status", "notes"):
             if not isinstance(item[field], str):
@@ -147,6 +164,20 @@ def validate_review_manifest(
         context_tag = f"context-{item['context_id']}"
         if concept_tag not in scenario["tags"] or context_tag not in scenario["tags"]:
             raise ValidationError(f"review item {scenario_id} does not match scenario tags")
+        if "scenario_digest" in item:
+            digest = item["scenario_digest"]
+            if (
+                not isinstance(digest, str)
+                or len(digest) != 64
+                or any(character not in "0123456789abcdef" for character in digest)
+            ):
+                raise ValidationError(
+                    f"review item {scenario_id}.scenario_digest must be lowercase SHA-256"
+                )
+            if digest != _scenario_digest(scenario):
+                raise ValidationError(
+                    f"review item {scenario_id}.scenario_digest does not match scenario data"
+                )
         status_counts[status] += 1
 
     return {

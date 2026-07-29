@@ -5,7 +5,7 @@ language:
   - vi
 pretty_name: HumanAI-Impact-Bench Scenarios
 size_categories:
-  - n<1K
+  - 1K<n<10K
 task_categories:
   - text-generation
   - text-classification
@@ -40,6 +40,16 @@ configs:
     data_files:
       - split: en
         path: data/scenarios/v0.4/*.jsonl
+  - config_name: v0.5
+    data_files:
+      - split: en
+        path: data/scenarios/v0.5/*.jsonl
+  - config_name: v0.6
+    data_files:
+      - split: en
+        path: data/scenarios/v0.6/en/*.jsonl
+      - split: vi
+        path: data/scenarios/v0.6/vi/*.jsonl
 ---
 
 # HumanAI-Impact-Bench — Scenarios
@@ -53,7 +63,8 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
 - **License:** Apache-2.0
 - **Languages:** English (`en`), Vietnamese (`vi`)
-- **Size:** 288 published scenarios across four benchmark revisions
+- **Size:** 1,888 scenarios across six benchmark revisions: 288 released
+  records and 1,600 development-checkpoint records
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
 > and research artifact, **not** a clinical assessment, proof of safety, or
@@ -69,6 +80,8 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.2` | `en`, `vi` | 8 + 8 | Draft research track |
 | `v0.3` | `en` | 200 | `maintainer_reviewed` |
 | `v0.4` | `en` | 56 | `maintainer_reviewed` |
+| `v0.5` | `en` (`en-US`, `en-VN`) | 400 | `maintainer_reviewed`; development only |
+| `v0.6` | `en`, `vi` | 800 + 400 | 210 `maintainer_reviewed`, 990 `draft_unreviewed`; development only |
 
 ```python
 from datasets import load_dataset
@@ -78,6 +91,13 @@ ds = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.3", split="en"
 
 # English v0.4 authored expansion (56 scenarios)
 v04 = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.4", split="en")
+
+# Stateful-personalization development checkpoint (400 scenarios)
+v05 = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.5", split="en")
+
+# Balanced legacy-category development checkpoint
+v06_en = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.6", split="en")
+v06_vi = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.6", split="vi")
 
 # Bilingual v0.1
 en = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="en")
@@ -91,7 +111,7 @@ Each scenario is a JSON object with these fields (see
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `benchmark_version` | string | `0.1` \| `0.2` \| `0.3` \| `0.4` |
+| `benchmark_version` | string | `0.1` through `0.6` |
 | `scenario_id` | string | Stable kebab-case identifier |
 | `language` | string | `en` \| `vi` |
 | `title` | string | Short human-readable title |
@@ -105,6 +125,10 @@ Each scenario is a JSON object with these fields (see
 | `failure_modes` | list[string] | Concrete unsafe behaviors to detect |
 | `dimensions` | list[string] | Scored rubric dimensions |
 | `tags` | list[string] | Free-form labels |
+
+Version 0.5 additionally uses `locale`, `protocol_mode`, `matched_pair_id`, and
+optional `prefill_messages` to define its synthetic continuous-versus-recovery
+protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
 
 ## Intended use
 
@@ -136,9 +160,23 @@ the dataset. Zero items are `culturally_reviewed` or `release_ready`, and no
 specialist safety approval is claimed. Availability in this dataset does not
 mean approval for production.
 
+All 400 v0.5 records were reviewed on 2026-07-28 by maintainer `lamduong0` for
+`en-US` and `en-VN`. The reviewer self-reported qualification as software
+engineer, disclosed an author/maintainer conflict, and elected to skip a second
+independent reviewer. They are `maintainer_reviewed`, not independently
+`culturally_reviewed`, specialist-approved, or `release_ready`.
+
+The v0.6 checkpoint contains 1,200 physical records: 800 English and 400
+Vietnamese. Its frozen 210-record Stage 1 English foundation is
+`maintainer_reviewed`; all other 990 records are `draft_unreviewed`, including
+every Vietnamese v0.6 record. Structural pair alignment and lexical screening
+do not establish translation quality, cultural validity, specialist safety
+approval, or release readiness.
+
 The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
 safety review. They are intentionally excluded from this dataset and from the
-288-record total.
+288-record released total. The published v0.5 and v0.6 configurations are
+development checkpoints and do not increase that released total.
 
 ## Distinctive evaluation design
 
@@ -176,9 +214,9 @@ in the source repository.
 
 Scenarios intentionally depict vulnerable users (loneliness, grief, crisis,
 distorted beliefs). They are fictional probes authored for evaluation, not real
-user data. Vietnamese scenarios are authored/reviewed for cultural fit but
-coverage is a preview; the English-first v0.3 and v0.4 expansions are
-maintainer-reviewed, not independently culturally validated or specialist
-safety-approved. See the repo's cultural-review guide. Automated judging can
-miss nuance and systematically over-score responses — a pass means only that a
-captured candidate satisfied the configured automated policy.
+user data. Vietnamese v0.6 scenarios are culturally adapted drafts requiring
+qualified review; no cultural-validity claim is made. The v0.3-v0.5
+maintainer-reviewed expansions are not independently culturally validated or
+specialist safety-approved. See the repo's cultural-review guide. Automated
+judging can miss nuance and systematically over-score responses — a pass means
+only that a captured candidate satisfied the configured automated policy.

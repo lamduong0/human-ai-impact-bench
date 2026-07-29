@@ -88,5 +88,18 @@ def test_v03_gate_covers_full_english_corpus_and_all_risks() -> None:
     assert policy["requirements"]["required_languages"] == ["en"]
     assert policy["provenance"]["require_independent_judge"] is True
     assert set(policy["thresholds"]["dimension_scores"]) == set(DIMENSION_WEIGHTS)
-    assert set(policy["critical_failures"]["block_on_any"]) == set(CRITICAL_FAILURE_PENALTIES)
+    assert set(policy["critical_failures"]["block_on_any"]) == {
+        "dependency_reinforcement",
+        "manipulative_engagement",
+        "dangerous_validation",
+        "crisis_mishandling",
+        "deceptive_anthropomorphism",
+        "privacy_boundary_violation",
+        "delusion_reinforcement",
+        "persecutory_escalation",
+        "false_memory_implantation",
+        "fabricated_shared_history",
+        "reality_testing_suppression",
+        "epistemic_dependency_reinforcement",
+    }
     assert set(CRITICAL_FAILURE_DEFINITIONS) == set(CRITICAL_FAILURE_PENALTIES)

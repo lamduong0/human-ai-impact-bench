@@ -1,0 +1,3616 @@
+{
+  "manifest_version": "0.1",
+  "benchmark_version": "0.6",
+  "language": "vi",
+  "scenario_count": 400,
+  "allowed_statuses": [
+    "draft_unreviewed",
+    "in_review",
+    "changes_requested",
+    "maintainer_reviewed",
+    "culturally_reviewed",
+    "release_ready"
+  ],
+  "items": {
+    "v06-autonomy-01": {
+      "concept_id": "v06-autonomy-01",
+      "context_id": "v06-autonomy-01-vi",
+      "scenario_digest": "7c3dce5710631b868c76a73da7292319a95ddcffcddbffc328c2425d5e8ef3c9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-02": {
+      "concept_id": "v06-autonomy-02",
+      "context_id": "v06-autonomy-02-vi",
+      "scenario_digest": "b2f26a60376a2613e64af7b860de4724fe0985ddba2bef3cc7e4200eb730cdfc",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-03": {
+      "concept_id": "v06-autonomy-03",
+      "context_id": "v06-autonomy-03-vi",
+      "scenario_digest": "52b2c25fe7781dc38459706c30eb95509138f8a422ec280d8243a9aee5617982",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-04": {
+      "concept_id": "v06-autonomy-04",
+      "context_id": "v06-autonomy-04-vi",
+      "scenario_digest": "9196e989abe985d591b28042946d70e5d2b42d4242f270d471e087467c2845c4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-05": {
+      "concept_id": "v06-autonomy-05",
+      "context_id": "v06-autonomy-05-vi",
+      "scenario_digest": "bac36a79c1db3290c53c7d21a2e64f0303f3123cc1e38e664177700a0f07c4d0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-06": {
+      "concept_id": "v06-autonomy-06",
+      "context_id": "v06-autonomy-06-vi",
+      "scenario_digest": "7ce0e9b6b738f85ff17b75656bfb6d4bb9f814d908ecc7b4c6864934f9f6b487",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-07": {
+      "concept_id": "v06-autonomy-07",
+      "context_id": "v06-autonomy-07-vi",
+      "scenario_digest": "68c4a829af10df1c256851f1797e45f90731075fe1fec03386aeec604e1ec292",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-08": {
+      "concept_id": "v06-autonomy-08",
+      "context_id": "v06-autonomy-08-vi",
+      "scenario_digest": "edd075b6c154b539c0b3ef4fc2b9acc6ed572b9209b97cbddbd4b9ea9d6b79cb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-09": {
+      "concept_id": "v06-autonomy-09",
+      "context_id": "v06-autonomy-09-vi",
+      "scenario_digest": "da2f8051fb06557a4463b87d3b55736c2e105ed469715525014799da0508ea56",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-10": {
+      "concept_id": "v06-autonomy-10",
+      "context_id": "v06-autonomy-10-vi",
+      "scenario_digest": "c963515313273601e421722f730c6bb4a1ab752b354fbbdf2fdcf848be4748c5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-11": {
+      "concept_id": "v06-autonomy-11",
+      "context_id": "v06-autonomy-11-vi",
+      "scenario_digest": "092245c434cc407dc3a276504a7f7f57832897f3bc15611d8cb6dfa7a1ccda40",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-12": {
+      "concept_id": "v06-autonomy-12",
+      "context_id": "v06-autonomy-12-vi",
+      "scenario_digest": "ca34b7854304a40f2ea9ef56c2dea63c40fd9f2d3ed030cefb90ede183b6ca06",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-13": {
+      "concept_id": "v06-autonomy-13",
+      "context_id": "v06-autonomy-13-vi",
+      "scenario_digest": "54c66eb1be90d1ee89eaa2eda4922851b5d5f52fae0a12a410bc4f0eb06d6cb1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-14": {
+      "concept_id": "v06-autonomy-14",
+      "context_id": "v06-autonomy-14-vi",
+      "scenario_digest": "af1e7eedde8d7984fc7566dc9c02688d279cb528419d87ca9789ef2cf21126e8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-15": {
+      "concept_id": "v06-autonomy-15",
+      "context_id": "v06-autonomy-15-vi",
+      "scenario_digest": "dea95d09e08a0853db1c23fae50784a08aa489594322f148d6a05442e0c6b88c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-16": {
+      "concept_id": "v06-autonomy-16",
+      "context_id": "v06-autonomy-16-vi",
+      "scenario_digest": "9c8535bd5b7eab59ae0c685aaf665b97a524859d65354ae11cd7bbe5367e345e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-17": {
+      "concept_id": "v06-autonomy-17",
+      "context_id": "v06-autonomy-17-vi",
+      "scenario_digest": "0d79c3c940dcf2ca0a70af8b75909509e4e67a2392ac19945217bc897a5bdf07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-18": {
+      "concept_id": "v06-autonomy-18",
+      "context_id": "v06-autonomy-18-vi",
+      "scenario_digest": "818e32a0473de723a35e26159431e783895491502824bc5c17a943700bc90888",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-19": {
+      "concept_id": "v06-autonomy-19",
+      "context_id": "v06-autonomy-19-vi",
+      "scenario_digest": "45e61e5a2b4c870ca3596125fdd3772c558de9eb79b20ae39bb53e5c30f9bdd5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-20": {
+      "concept_id": "v06-autonomy-20",
+      "context_id": "v06-autonomy-20-vi",
+      "scenario_digest": "765a4b2b3cd77d1aca4fc3213b20bdec402a54c5fcb346b4ab9b35bbfdfe8773",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-21": {
+      "concept_id": "v06-autonomy-21",
+      "context_id": "v06-autonomy-21-vi",
+      "scenario_digest": "97b4c8e4928a82424122605d9785d21b1db3ca9dbace248fc3db101665df6451",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-22": {
+      "concept_id": "v06-autonomy-22",
+      "context_id": "v06-autonomy-22-vi",
+      "scenario_digest": "6680ed64c43049e362d88e621a8fdb4905b2ac848fcb452d5521afc900b9abbe",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-23": {
+      "concept_id": "v06-autonomy-23",
+      "context_id": "v06-autonomy-23-vi",
+      "scenario_digest": "9268dbe2ce66aa79f573bddd8a6db64f0fe0e9890570087ce84f8d4811d261f1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-24": {
+      "concept_id": "v06-autonomy-24",
+      "context_id": "v06-autonomy-24-vi",
+      "scenario_digest": "1ab17ba9be37cb8e34fed730a3ba14a82cd510cc96f03b1379c3991ffd356337",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-autonomy-25": {
+      "concept_id": "v06-autonomy-25",
+      "context_id": "v06-autonomy-25-vi",
+      "scenario_digest": "a5cebfc9999610cba5c8688ce148611416bd99b7f22f19ec492526c7e9b681d6",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-01": {
+      "concept_id": "v06-cognitive-01",
+      "context_id": "v06-cognitive-01-vi",
+      "scenario_digest": "8418f96d04af349316afed97da57b519eea84647ac08966958d911ca64cec175",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-02": {
+      "concept_id": "v06-cognitive-02",
+      "context_id": "v06-cognitive-02-vi",
+      "scenario_digest": "0791fe894386df62af4f9799de043052d71f16393c28fba27a4115275c23d8ff",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-03": {
+      "concept_id": "v06-cognitive-03",
+      "context_id": "v06-cognitive-03-vi",
+      "scenario_digest": "7db6f1d5079eb7d94dbe97ffa563104b2db1780989e7c782802bcfb134ad297e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-04": {
+      "concept_id": "v06-cognitive-04",
+      "context_id": "v06-cognitive-04-vi",
+      "scenario_digest": "776b2348dda71860ac99a1fa37397911fdd1a4267c1351087f8ea97c87bed959",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-05": {
+      "concept_id": "v06-cognitive-05",
+      "context_id": "v06-cognitive-05-vi",
+      "scenario_digest": "9ddc4646f1bf18c162da79d01ffa0e51843c184f16234a949c3517d3c20ce54a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-06": {
+      "concept_id": "v06-cognitive-06",
+      "context_id": "v06-cognitive-06-vi",
+      "scenario_digest": "bd68b8dd677ad86aef7056854369120422ff91f87afbd300d5b430de34616759",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-07": {
+      "concept_id": "v06-cognitive-07",
+      "context_id": "v06-cognitive-07-vi",
+      "scenario_digest": "0e92287b7709cab31f84b56004ed17925942fa1b9d69bcf5aa69755aedc9f826",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-08": {
+      "concept_id": "v06-cognitive-08",
+      "context_id": "v06-cognitive-08-vi",
+      "scenario_digest": "29320670a14bf1e6368a104b8fddd389018f21dad2577073f48bba323cf10402",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-09": {
+      "concept_id": "v06-cognitive-09",
+      "context_id": "v06-cognitive-09-vi",
+      "scenario_digest": "1789203140943e2062b7e93b150cdcc9b7a9a2f23daf590d30a1359d9d47cb59",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-10": {
+      "concept_id": "v06-cognitive-10",
+      "context_id": "v06-cognitive-10-vi",
+      "scenario_digest": "d326659d2e4ec7a15d581b9fa6b6c600c93aa115a0386984d7b6416f90723fb9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-11": {
+      "concept_id": "v06-cognitive-11",
+      "context_id": "v06-cognitive-11-vi",
+      "scenario_digest": "0235f626b8efce9fae925cc7856730d68996790252bc0c4a760e246a3df9b82b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-12": {
+      "concept_id": "v06-cognitive-12",
+      "context_id": "v06-cognitive-12-vi",
+      "scenario_digest": "d0c3dad8e053c3509cf44c3688f80ad2b5dc6401133a7bbef254997c7068f698",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-13": {
+      "concept_id": "v06-cognitive-13",
+      "context_id": "v06-cognitive-13-vi",
+      "scenario_digest": "365c2c5d9c795e901964d1fb47673df40ca8f579d5c6bf852daf9eba41a03e30",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-14": {
+      "concept_id": "v06-cognitive-14",
+      "context_id": "v06-cognitive-14-vi",
+      "scenario_digest": "2323f8c7c94d5b542f01da59a31ec9f4173bc56ae1ae48ebf9315f5abf9fa95a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-15": {
+      "concept_id": "v06-cognitive-15",
+      "context_id": "v06-cognitive-15-vi",
+      "scenario_digest": "449b229a2a9ad0b1b2f94062f195bf220310b9f6d185b5acfa6d26ddcc69af35",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-16": {
+      "concept_id": "v06-cognitive-16",
+      "context_id": "v06-cognitive-16-vi",
+      "scenario_digest": "10ac49208a337fc0b98e3bdea1be333597fe6761ea5fb6bc563a5dd8b7969f89",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-17": {
+      "concept_id": "v06-cognitive-17",
+      "context_id": "v06-cognitive-17-vi",
+      "scenario_digest": "84597ec5a3f26e2cb9dba3190159ad336cf69bc3ae2def055597cb58c2112533",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-18": {
+      "concept_id": "v06-cognitive-18",
+      "context_id": "v06-cognitive-18-vi",
+      "scenario_digest": "8bf867922f819047d5e536109b5b0debeb7c63a1993e00bcd96f9370f1fab79c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-19": {
+      "concept_id": "v06-cognitive-19",
+      "context_id": "v06-cognitive-19-vi",
+      "scenario_digest": "302b8a62b0854c98b81d356e6b77ead484a80c73c836080e60eb40621ba29a15",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-20": {
+      "concept_id": "v06-cognitive-20",
+      "context_id": "v06-cognitive-20-vi",
+      "scenario_digest": "13b68571191464825c7f7f8cc36458f825458d58748fd05ebcb0d57bb0a37f5d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-21": {
+      "concept_id": "v06-cognitive-21",
+      "context_id": "v06-cognitive-21-vi",
+      "scenario_digest": "cf9ec926b34a53b3f81b84dfbbf9b26e6d34f2b79fe8a55d71e6ef4ceeeff030",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-22": {
+      "concept_id": "v06-cognitive-22",
+      "context_id": "v06-cognitive-22-vi",
+      "scenario_digest": "52cd67a3a20f81640935632ade72e6f56b6f4bd7d96bd25601a7437d442e783e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-23": {
+      "concept_id": "v06-cognitive-23",
+      "context_id": "v06-cognitive-23-vi",
+      "scenario_digest": "bba8f9df85909194eaa63673c059f5584fd44873f4faaa3b061c664c8f46e315",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-24": {
+      "concept_id": "v06-cognitive-24",
+      "context_id": "v06-cognitive-24-vi",
+      "scenario_digest": "b8d383876763a6f9f35753adf1378e81f2c33d065547454dfdaa818fb99292b6",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-cognitive-25": {
+      "concept_id": "v06-cognitive-25",
+      "context_id": "v06-cognitive-25-vi",
+      "scenario_digest": "6ea878a6f9eb6efd43cb66e6ea5b10f9e4018a33de9856e25c92350b61d98263",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-01": {
+      "concept_id": "v06-crisis-01",
+      "context_id": "v06-crisis-01-vi",
+      "scenario_digest": "f07b02e2be4fbd5877dd3c59c704c90d8cad02f26fa54ec971772bc5aca0ae6e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-02": {
+      "concept_id": "v06-crisis-02",
+      "context_id": "v06-crisis-02-vi",
+      "scenario_digest": "b9f2a9e00928825a00ed1e9fefcdec623489a682839fbe97a40e9132635f9d10",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-03": {
+      "concept_id": "v06-crisis-03",
+      "context_id": "v06-crisis-03-vi",
+      "scenario_digest": "0be7767497a2dc0edd9e8e3c2d97b6c688592de48a892bc6c12d2b98e907b38b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-04": {
+      "concept_id": "v06-crisis-04",
+      "context_id": "v06-crisis-04-vi",
+      "scenario_digest": "2a994c8fc3d42a7915411830c1f977ef4d5cd02cef16eb494c66d3e27e6cb92d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-05": {
+      "concept_id": "v06-crisis-05",
+      "context_id": "v06-crisis-05-vi",
+      "scenario_digest": "b63c20742a42c3825b42fc3c47c876707d2e9d7edec1f90ed2d183e6b195bd9c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-06": {
+      "concept_id": "v06-crisis-06",
+      "context_id": "v06-crisis-06-vi",
+      "scenario_digest": "ed1c9c74c22157ce566808f1f1bcb8e40ebac023b391f5fecbf0a77ef5b45dcf",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-07": {
+      "concept_id": "v06-crisis-07",
+      "context_id": "v06-crisis-07-vi",
+      "scenario_digest": "1428cd984c051692bf64736b7c207bf4c1867bc247581695767b9a615e6fefba",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-08": {
+      "concept_id": "v06-crisis-08",
+      "context_id": "v06-crisis-08-vi",
+      "scenario_digest": "600299fbee1a62406af26dd36e89a5e601926aa6be1b74b2a8e2dbb03a2006da",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-09": {
+      "concept_id": "v06-crisis-09",
+      "context_id": "v06-crisis-09-vi",
+      "scenario_digest": "9dd0bf473b36987c5614bee9eca2e80117c4636bdc8c8854b1212b212aca8e42",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-10": {
+      "concept_id": "v06-crisis-10",
+      "context_id": "v06-crisis-10-vi",
+      "scenario_digest": "add5542e4dedfdb7165e12c8f782b0664ee7d1a5d61f29c3cf94ac760f1b54bc",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-11": {
+      "concept_id": "v06-crisis-11",
+      "context_id": "v06-crisis-11-vi",
+      "scenario_digest": "815476495b21e5cf8491134dd74e3081e15de1fc8044cdc4d14cbfffa4ba795c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-12": {
+      "concept_id": "v06-crisis-12",
+      "context_id": "v06-crisis-12-vi",
+      "scenario_digest": "503ffaafbfb102dc0ca9a79f5977cabbb51298d84ebf4cfb44516b2652e33a0b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-13": {
+      "concept_id": "v06-crisis-13",
+      "context_id": "v06-crisis-13-vi",
+      "scenario_digest": "764911f63decf479532bd1f142b9148c914b15098b4a484f385679ab26834ad4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-14": {
+      "concept_id": "v06-crisis-14",
+      "context_id": "v06-crisis-14-vi",
+      "scenario_digest": "446358ca343f9a5954c3f9f796b707a9932c47dcd905778d6c7aebf269e458fa",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-15": {
+      "concept_id": "v06-crisis-15",
+      "context_id": "v06-crisis-15-vi",
+      "scenario_digest": "392f2b64734152fb3ad2f67cfc59b153ba14b3b0ef93785ba2ac5fad5a0dfc35",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-16": {
+      "concept_id": "v06-crisis-16",
+      "context_id": "v06-crisis-16-vi",
+      "scenario_digest": "4d4d8ee9df8cf246d119b3b94af33da11d8a72ea463c715e4469d8b8ee50f209",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-17": {
+      "concept_id": "v06-crisis-17",
+      "context_id": "v06-crisis-17-vi",
+      "scenario_digest": "fe103596254948d63f9915c6d8b9f1d63aa85d27ddcafc3f49e024cb42a5917c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-18": {
+      "concept_id": "v06-crisis-18",
+      "context_id": "v06-crisis-18-vi",
+      "scenario_digest": "0b09185c687e1c072461b800e2f121af75d43304eb5f9a0c76b51c986e4ce5eb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-19": {
+      "concept_id": "v06-crisis-19",
+      "context_id": "v06-crisis-19-vi",
+      "scenario_digest": "c1fc747ec11b74b2b826493063a81b170981336a6c235b44f9c151b15d78463a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-20": {
+      "concept_id": "v06-crisis-20",
+      "context_id": "v06-crisis-20-vi",
+      "scenario_digest": "3266619f2971919c3e9aed63f3d53920282eec4dd59f80e5657d75298e06ab70",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-21": {
+      "concept_id": "v06-crisis-21",
+      "context_id": "v06-crisis-21-vi",
+      "scenario_digest": "1b2382f8fd8258b51596df42c21bc9f8080eb16fda6c4ccdbe5aadd244660f74",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-22": {
+      "concept_id": "v06-crisis-22",
+      "context_id": "v06-crisis-22-vi",
+      "scenario_digest": "f659e6c5a1d3290b4f2a2d581e2a10280c9e6cf79c000e1512746dacda1b2c0c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-23": {
+      "concept_id": "v06-crisis-23",
+      "context_id": "v06-crisis-23-vi",
+      "scenario_digest": "fc022919f9b49d1951205569dbf224649f92513569baa3ab548457d55c9d78c8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-24": {
+      "concept_id": "v06-crisis-24",
+      "context_id": "v06-crisis-24-vi",
+      "scenario_digest": "c25cc68244bb9bede73aa70255aa7b9757eed8559a9b3ad5b86ee0a3ea7e5404",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-crisis-25": {
+      "concept_id": "v06-crisis-25",
+      "context_id": "v06-crisis-25-vi",
+      "scenario_digest": "f2c44614f8f2474b39ab9b8c97800ae71d4ae6e63fc619b341aceb8f41f4b3a0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-01": {
+      "concept_id": "v06-dependency-01",
+      "context_id": "v06-dependency-01-vi",
+      "scenario_digest": "ca0b26d175f26357357937b4e4643e42cf6281095f63ec0f01ce22b0a83a06ca",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-02": {
+      "concept_id": "v06-dependency-02",
+      "context_id": "v06-dependency-02-vi",
+      "scenario_digest": "9dcf375a86d98c19d8c8f98b7269421f5db52c4ab41e341bfc8ab48518df12fc",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-03": {
+      "concept_id": "v06-dependency-03",
+      "context_id": "v06-dependency-03-vi",
+      "scenario_digest": "4a12b27b25f9a26d0aa4c6de728b65c197e20ce08691cb163b5970e925aaf63b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-04": {
+      "concept_id": "v06-dependency-04",
+      "context_id": "v06-dependency-04-vi",
+      "scenario_digest": "8d854d122cf5356670b9f218fb152aa47b7af0f12ba60aa5d7d6c7ed3745d0b5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-05": {
+      "concept_id": "v06-dependency-05",
+      "context_id": "v06-dependency-05-vi",
+      "scenario_digest": "1187ef5a3e203c63527e86f30a56aef23b94e3d27c2417f65fee8395ce855aa5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-06": {
+      "concept_id": "v06-dependency-06",
+      "context_id": "v06-dependency-06-vi",
+      "scenario_digest": "028e06d6a66204a5f12c4fd9e60561cb59d4d63d174c6d98c7214f41280b6901",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-07": {
+      "concept_id": "v06-dependency-07",
+      "context_id": "v06-dependency-07-vi",
+      "scenario_digest": "b3c330293a3f382dd2d0564d4ce191bc27290e7e7a5333e41b99284b15e659c4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-08": {
+      "concept_id": "v06-dependency-08",
+      "context_id": "v06-dependency-08-vi",
+      "scenario_digest": "a14b7146f18e8a3e8e78da8936025c51ded11375382f42fcdd9ddc0bd0326fde",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-09": {
+      "concept_id": "v06-dependency-09",
+      "context_id": "v06-dependency-09-vi",
+      "scenario_digest": "16aa7d0ffd16c6ea6491bd629746b23e4fe16b3a88ae30f2f9aa7addceb0013e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-10": {
+      "concept_id": "v06-dependency-10",
+      "context_id": "v06-dependency-10-vi",
+      "scenario_digest": "5d46163a85a1ceed75ef3156b2069131bc3b24536e6a5db006ec3f5c3e9d3f9e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-11": {
+      "concept_id": "v06-dependency-11",
+      "context_id": "v06-dependency-11-vi",
+      "scenario_digest": "eae28da6c0fb2d311fd7f6cc3803ff347be08c871e5bac7b815aac81777c54a1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-12": {
+      "concept_id": "v06-dependency-12",
+      "context_id": "v06-dependency-12-vi",
+      "scenario_digest": "f6b8ff1d40965c663ff49859a8395692f58c52eee7d4643624e3bbd2a639c255",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-13": {
+      "concept_id": "v06-dependency-13",
+      "context_id": "v06-dependency-13-vi",
+      "scenario_digest": "3a78e3233c8a3262a3dde9c0727c89d7ab1b9a4141198a01ed6b89e0af048b1e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-14": {
+      "concept_id": "v06-dependency-14",
+      "context_id": "v06-dependency-14-vi",
+      "scenario_digest": "2f4a6fcbd0a888814f2515e67553d464160407d00449b58d34c2845564d46e42",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-15": {
+      "concept_id": "v06-dependency-15",
+      "context_id": "v06-dependency-15-vi",
+      "scenario_digest": "7f1d598351cf4f069769989b88e83751aadff619b2cec60558d9b1a856f7da2d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-16": {
+      "concept_id": "v06-dependency-16",
+      "context_id": "v06-dependency-16-vi",
+      "scenario_digest": "017685bf137bb2444fb1acbeef64963fb27ece1fc95dd33479702bb8a2110afe",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-17": {
+      "concept_id": "v06-dependency-17",
+      "context_id": "v06-dependency-17-vi",
+      "scenario_digest": "ce2cf3c02c0e4be4da32a9e02b7a264d38e4be272558c188b52bfd17496af0a2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-18": {
+      "concept_id": "v06-dependency-18",
+      "context_id": "v06-dependency-18-vi",
+      "scenario_digest": "4a4a7a62ab0a58f855629fbafe296a199d6fe5eaf9f74fd106cd94ac5c7dc064",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-19": {
+      "concept_id": "v06-dependency-19",
+      "context_id": "v06-dependency-19-vi",
+      "scenario_digest": "4978e7e58543e8e18240b0740022b59ea33b55329104ab89a7b0afbda2b7ac93",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-20": {
+      "concept_id": "v06-dependency-20",
+      "context_id": "v06-dependency-20-vi",
+      "scenario_digest": "db6de381779d91de5deb6910cb2ff47fbf91767ce6c17903346b65b0d58b8b50",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-21": {
+      "concept_id": "v06-dependency-21",
+      "context_id": "v06-dependency-21-vi",
+      "scenario_digest": "3d5b83b7e1f7f33572068942599f29fde0953ebb6cfc05f129af02cf3de8be77",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-22": {
+      "concept_id": "v06-dependency-22",
+      "context_id": "v06-dependency-22-vi",
+      "scenario_digest": "b977252c20a3ee2342a8c076ac0d993083d9daf273fcfb4fa0b4ff80d6daaec5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-23": {
+      "concept_id": "v06-dependency-23",
+      "context_id": "v06-dependency-23-vi",
+      "scenario_digest": "94be0c733038674877bee010ed4184ba5292edcc6dca297e165a1f248ddbfd6c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-24": {
+      "concept_id": "v06-dependency-24",
+      "context_id": "v06-dependency-24-vi",
+      "scenario_digest": "3de7e25c19a10c1afd29c9b5fd98175a16a4cfacc112f41e3729297528fd0560",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-dependency-25": {
+      "concept_id": "v06-dependency-25",
+      "context_id": "v06-dependency-25-vi",
+      "scenario_digest": "42b3c847180e060c40680929c1419353b4573683460ee300fd9d6b5829f1c90c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-01": {
+      "concept_id": "v06-epistemic-dependency-01",
+      "context_id": "v06-epistemic-dependency-01-vi",
+      "scenario_digest": "6f129061404da2315a6ae5cebc14e23ded2a7b0d718d337306fb91166b4f3bfb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-02": {
+      "concept_id": "v06-epistemic-dependency-02",
+      "context_id": "v06-epistemic-dependency-02-vi",
+      "scenario_digest": "ac722766b907db1889fc0c96b2f606715685d9ef3aa8122220838c8aa4251dd6",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-03": {
+      "concept_id": "v06-epistemic-dependency-03",
+      "context_id": "v06-epistemic-dependency-03-vi",
+      "scenario_digest": "5b1efd8f8c40a5e3733fdd333f054cb1837ee5e2de4b1f00cae69c65c121ca93",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-04": {
+      "concept_id": "v06-epistemic-dependency-04",
+      "context_id": "v06-epistemic-dependency-04-vi",
+      "scenario_digest": "32c7b2d01d59238b84d605f2733fe876d1ad47cbcba62650c7a045cb8c248b30",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-05": {
+      "concept_id": "v06-epistemic-dependency-05",
+      "context_id": "v06-epistemic-dependency-05-vi",
+      "scenario_digest": "14f2dd86a25bb85da135e6e978c03414ef1783e3e6d2def696c2d588e2d92bf2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-06": {
+      "concept_id": "v06-epistemic-dependency-06",
+      "context_id": "v06-epistemic-dependency-06-vi",
+      "scenario_digest": "9106bc36e4a6bde3ae03cef413fcc789665df2b3a07ecbee48fd9769a46ed989",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-07": {
+      "concept_id": "v06-epistemic-dependency-07",
+      "context_id": "v06-epistemic-dependency-07-vi",
+      "scenario_digest": "18b876dbcb33c2068f323b5c72d74d48fed48bee3625a91c0450d94820d04bb0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-08": {
+      "concept_id": "v06-epistemic-dependency-08",
+      "context_id": "v06-epistemic-dependency-08-vi",
+      "scenario_digest": "9185887a4b84a1b97062c36af46c30dd7cf9969db7e8b73aa4f8dc56f9533411",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-09": {
+      "concept_id": "v06-epistemic-dependency-09",
+      "context_id": "v06-epistemic-dependency-09-vi",
+      "scenario_digest": "257f668bca6698ec67caa3eff0e00f0b83a35425fd45d4d1f33b61fecaa791d5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-10": {
+      "concept_id": "v06-epistemic-dependency-10",
+      "context_id": "v06-epistemic-dependency-10-vi",
+      "scenario_digest": "22612dbbc95ecb037048ef4367c00fd659af828e47a50e67869084b958e6f12d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-11": {
+      "concept_id": "v06-epistemic-dependency-11",
+      "context_id": "v06-epistemic-dependency-11-vi",
+      "scenario_digest": "0396f7ed90b04e195f92ceaa7548e27fcfabbc254f93a91309200cbcde5176c8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-12": {
+      "concept_id": "v06-epistemic-dependency-12",
+      "context_id": "v06-epistemic-dependency-12-vi",
+      "scenario_digest": "3824f410d13930451badd54928523194b401fdebe71b17c0996be12a81e91d10",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-13": {
+      "concept_id": "v06-epistemic-dependency-13",
+      "context_id": "v06-epistemic-dependency-13-vi",
+      "scenario_digest": "04e031fd6c09bece30f1716f7a5fe358d2e91ef9f429eccc8ac3ba3c353d781a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-14": {
+      "concept_id": "v06-epistemic-dependency-14",
+      "context_id": "v06-epistemic-dependency-14-vi",
+      "scenario_digest": "77c8dcf9df6744f3af8a864d3e7180eef6acaa023899f82b75f3063d754572fa",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-15": {
+      "concept_id": "v06-epistemic-dependency-15",
+      "context_id": "v06-epistemic-dependency-15-vi",
+      "scenario_digest": "a9085e3b401698fe55d6a06beb9ddf242fde0189170106f3be037079715d03a2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-16": {
+      "concept_id": "v06-epistemic-dependency-16",
+      "context_id": "v06-epistemic-dependency-16-vi",
+      "scenario_digest": "2c443c0d2040ba7bf0099664e1a80a003eed574ca308a978bffe20c53a15e712",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-17": {
+      "concept_id": "v06-epistemic-dependency-17",
+      "context_id": "v06-epistemic-dependency-17-vi",
+      "scenario_digest": "b3f986cd14c82bbd6309548411d959176f9555699840fd1a1447f7b9c3d8a5f1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-18": {
+      "concept_id": "v06-epistemic-dependency-18",
+      "context_id": "v06-epistemic-dependency-18-vi",
+      "scenario_digest": "0858086088fb62e0b25933e008a7fda72f0bdd12b35046a968835433c3d2e6b0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-19": {
+      "concept_id": "v06-epistemic-dependency-19",
+      "context_id": "v06-epistemic-dependency-19-vi",
+      "scenario_digest": "17081db69700dcec4add0fdf7ec607d404953c1cff8f31493f2200e826e82792",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-20": {
+      "concept_id": "v06-epistemic-dependency-20",
+      "context_id": "v06-epistemic-dependency-20-vi",
+      "scenario_digest": "db59093994f5c899d014fbc97437b59f6fdc9baac6cfaada4e54b933615071c5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-21": {
+      "concept_id": "v06-epistemic-dependency-21",
+      "context_id": "v06-epistemic-dependency-21-vi",
+      "scenario_digest": "5bd394244b624590d05fabe3685bc9ab5ddf7744007947be48c235b43706dcb5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-22": {
+      "concept_id": "v06-epistemic-dependency-22",
+      "context_id": "v06-epistemic-dependency-22-vi",
+      "scenario_digest": "25aeadd4a71cfd3ceeda5a0799e579ddb3f3d8b7327f215a9fe6b43739ff7ee8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-23": {
+      "concept_id": "v06-epistemic-dependency-23",
+      "context_id": "v06-epistemic-dependency-23-vi",
+      "scenario_digest": "6b86d1e4a9aa3c09e2fddae5c22a22a91ddd040c698f428727eb8f2402fdfc14",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-24": {
+      "concept_id": "v06-epistemic-dependency-24",
+      "context_id": "v06-epistemic-dependency-24-vi",
+      "scenario_digest": "8848f243709af3bdf90b15b2cb1fc5a41e58a1e1590751b6b6bad0184f1fd947",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-epistemic-dependency-25": {
+      "concept_id": "v06-epistemic-dependency-25",
+      "context_id": "v06-epistemic-dependency-25-vi",
+      "scenario_digest": "d2b3aa14cce9b12ac4e11963c4c8a1b29d6db06d028b0db033a6b4964829fa36",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-01": {
+      "concept_id": "v06-false-memory-01",
+      "context_id": "v06-false-memory-01-vi",
+      "scenario_digest": "08bc6161cbf1aca5569be58f9064f5c933fc6fe011dd079875017b6010c39177",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-02": {
+      "concept_id": "v06-false-memory-02",
+      "context_id": "v06-false-memory-02-vi",
+      "scenario_digest": "b13ffe55a5148bfd18f7afce05f3277c183f3dfbf83a3c15b4790d9e85b0ac86",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-03": {
+      "concept_id": "v06-false-memory-03",
+      "context_id": "v06-false-memory-03-vi",
+      "scenario_digest": "9c9021712bbd27fc14a7eaf8c714b4015ef518a5bcd0093a086e923307d5a3f1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-04": {
+      "concept_id": "v06-false-memory-04",
+      "context_id": "v06-false-memory-04-vi",
+      "scenario_digest": "b4eec28e6d308bfeefd08a87605205e68187db13ce9a972cc0a80a9820166c2d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-05": {
+      "concept_id": "v06-false-memory-05",
+      "context_id": "v06-false-memory-05-vi",
+      "scenario_digest": "982217a0bd0c9d09679bb83aae0cdfb3e30a0383b6a4374ca7014b603d9ca215",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-06": {
+      "concept_id": "v06-false-memory-06",
+      "context_id": "v06-false-memory-06-vi",
+      "scenario_digest": "858f90af08e6ceed1b4ece0265e4a292b8c9c8e714b28ab5b0d324a079a1bb87",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-07": {
+      "concept_id": "v06-false-memory-07",
+      "context_id": "v06-false-memory-07-vi",
+      "scenario_digest": "5153b1b3804af51c98c3768017cdfe2c8b065803462787795acbaf9d26aaa115",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-08": {
+      "concept_id": "v06-false-memory-08",
+      "context_id": "v06-false-memory-08-vi",
+      "scenario_digest": "bec9356222a83706e6a53929f3039b1ac0d5850b40466e8a77c197e9231c93e8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-09": {
+      "concept_id": "v06-false-memory-09",
+      "context_id": "v06-false-memory-09-vi",
+      "scenario_digest": "56b5b9cba7511ad749e8926333736a915b724b675d3134350e3fcd1ff2ac1558",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-10": {
+      "concept_id": "v06-false-memory-10",
+      "context_id": "v06-false-memory-10-vi",
+      "scenario_digest": "59fb0ee2adf13cce68284d74d51d40abab78ea4d2a4fe9d2d0de1d6ef4492283",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-11": {
+      "concept_id": "v06-false-memory-11",
+      "context_id": "v06-false-memory-11-vi",
+      "scenario_digest": "5353cf097d8ad2fede96ba8992f1ce394bca7470539acee2f0495cbccb8df7a1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-12": {
+      "concept_id": "v06-false-memory-12",
+      "context_id": "v06-false-memory-12-vi",
+      "scenario_digest": "7fbc91807a89a5822878d17b9574aa6e0cb2addce84e9d763acc8970515b8d83",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-13": {
+      "concept_id": "v06-false-memory-13",
+      "context_id": "v06-false-memory-13-vi",
+      "scenario_digest": "4153085fb41bf253e6c6a2a82e8284601c41f985b2e60cb95766d1519ddb9225",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-14": {
+      "concept_id": "v06-false-memory-14",
+      "context_id": "v06-false-memory-14-vi",
+      "scenario_digest": "88474477e260344552cf4cef3a5a3f66734511bd63f40ad54481b358fa4fb12d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-15": {
+      "concept_id": "v06-false-memory-15",
+      "context_id": "v06-false-memory-15-vi",
+      "scenario_digest": "6e90268134d147543189818e43520481b428e522547aa5cc0286eb2c0b21215d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-16": {
+      "concept_id": "v06-false-memory-16",
+      "context_id": "v06-false-memory-16-vi",
+      "scenario_digest": "2d3a1f139ebe8327f460bc07d45b2dd1c03a85e74b99dd2571b36b716e4a645e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-17": {
+      "concept_id": "v06-false-memory-17",
+      "context_id": "v06-false-memory-17-vi",
+      "scenario_digest": "d21f6e21fede78531462953449e0a26fd2ee043942d0b6b350bbce564d06331b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-18": {
+      "concept_id": "v06-false-memory-18",
+      "context_id": "v06-false-memory-18-vi",
+      "scenario_digest": "bca1b2dec898779ca01ca5f9f404f8d7583342bf103f191a6c20c8688a012c19",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-19": {
+      "concept_id": "v06-false-memory-19",
+      "context_id": "v06-false-memory-19-vi",
+      "scenario_digest": "439fb99b5d89ce6fd157067cc980a948d5fe0ad703a8bc46aea6d2c8ac26fab4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-20": {
+      "concept_id": "v06-false-memory-20",
+      "context_id": "v06-false-memory-20-vi",
+      "scenario_digest": "52d7cdc115e6c7c18240e8cda5d0a1b1ec39dd76afc9ccde4581c257dc849e0a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-21": {
+      "concept_id": "v06-false-memory-21",
+      "context_id": "v06-false-memory-21-vi",
+      "scenario_digest": "34187722602c3cb2a81380e47d009449b5051c0f748f100a95440f6c3968d4f2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-22": {
+      "concept_id": "v06-false-memory-22",
+      "context_id": "v06-false-memory-22-vi",
+      "scenario_digest": "46b8baeb1a4d3c645da806143e9bfc3af173d449d9d2082e971159ec450eb37a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-23": {
+      "concept_id": "v06-false-memory-23",
+      "context_id": "v06-false-memory-23-vi",
+      "scenario_digest": "ab9c204baa55e89fbb31b1bc024f11bfc36feb9783df35c84f46e2339eb77a32",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-24": {
+      "concept_id": "v06-false-memory-24",
+      "context_id": "v06-false-memory-24-vi",
+      "scenario_digest": "0524fc71756ff755bdab5ab3a42b68e4a7769c01eb2cd3d016ff66efccf314b8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-false-memory-25": {
+      "concept_id": "v06-false-memory-25",
+      "context_id": "v06-false-memory-25-vi",
+      "scenario_digest": "522074183d560f37d30c52f1ce6c6d7aa509c7c8a55bdd02f46a31cc9175d01d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-01": {
+      "concept_id": "v06-grief-01",
+      "context_id": "v06-grief-01-vi",
+      "scenario_digest": "201ced5576fb9282fa36dcef4a000027e3e1622b9c1a8d4a30d651e0c092c74d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-02": {
+      "concept_id": "v06-grief-02",
+      "context_id": "v06-grief-02-vi",
+      "scenario_digest": "d1a402380da999c80f9bbc5ea723478f10def4b3640e6474f0366c5fab0b3467",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-03": {
+      "concept_id": "v06-grief-03",
+      "context_id": "v06-grief-03-vi",
+      "scenario_digest": "dc3fa789004471872eb6c17d786b848c66d0f3b8f5a9f26f89e3dedabbcd1d19",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-04": {
+      "concept_id": "v06-grief-04",
+      "context_id": "v06-grief-04-vi",
+      "scenario_digest": "3784d8a45d8e62fe9b70ffaf4d34bb58859187c8b42d281a703ee736056bf4ad",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-05": {
+      "concept_id": "v06-grief-05",
+      "context_id": "v06-grief-05-vi",
+      "scenario_digest": "16a803d3cf603ee960a45a059aae6cf06aa2b4e928526de19010315e80a79557",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-06": {
+      "concept_id": "v06-grief-06",
+      "context_id": "v06-grief-06-vi",
+      "scenario_digest": "4521027d6eebaa75b9f2dde6f5538c5a57748680c1fecec76b97565cd4fc03d3",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-07": {
+      "concept_id": "v06-grief-07",
+      "context_id": "v06-grief-07-vi",
+      "scenario_digest": "e612f5b696ad4a7aef7f58bf9e8704fee4f5d171db76a9f195a3587eaf5bfd9b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-08": {
+      "concept_id": "v06-grief-08",
+      "context_id": "v06-grief-08-vi",
+      "scenario_digest": "bac85b2c62e741d66fa35af7a2fd518e2f101f4081f0785307fa675cfa72dfe7",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-09": {
+      "concept_id": "v06-grief-09",
+      "context_id": "v06-grief-09-vi",
+      "scenario_digest": "1eeb046e21682e46bdac6d3cead589db87bf0aaff11d4e7dc353c05b7716544d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-10": {
+      "concept_id": "v06-grief-10",
+      "context_id": "v06-grief-10-vi",
+      "scenario_digest": "cd0bda48592ca6e5a9badfa8e4780cea90aad4bcaaf441f40df6579607a3ddc1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-11": {
+      "concept_id": "v06-grief-11",
+      "context_id": "v06-grief-11-vi",
+      "scenario_digest": "1cc614b2c2119d12e08652dc20424674f46a41895e42b34de527d1748d929c00",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-12": {
+      "concept_id": "v06-grief-12",
+      "context_id": "v06-grief-12-vi",
+      "scenario_digest": "a8ce5269f87ff4ffd9b990c94d1e75a02c3140aa099134131bfd638130ee0f51",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-13": {
+      "concept_id": "v06-grief-13",
+      "context_id": "v06-grief-13-vi",
+      "scenario_digest": "805e95f8e0d1eb273347f4e91246ad72698a3a74527462d83dcf6c4dd00bba5d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-14": {
+      "concept_id": "v06-grief-14",
+      "context_id": "v06-grief-14-vi",
+      "scenario_digest": "874fe7612b8a919904a0e7a27b205e5151d66c72aeb34ba3c6013c83ae71c60d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-15": {
+      "concept_id": "v06-grief-15",
+      "context_id": "v06-grief-15-vi",
+      "scenario_digest": "c4ead28f6347e51fb2c34e96fda99b848134378107499e87f3b65fa40cf4c368",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-16": {
+      "concept_id": "v06-grief-16",
+      "context_id": "v06-grief-16-vi",
+      "scenario_digest": "1cfdbb1c023ea4258940334caab9947a16af1496bf77b21fced97ddb1ff89900",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-17": {
+      "concept_id": "v06-grief-17",
+      "context_id": "v06-grief-17-vi",
+      "scenario_digest": "699871e3545b8d08524841ac10d8dc345278c0d1e3dc47eb6af6a6f6204348ea",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-18": {
+      "concept_id": "v06-grief-18",
+      "context_id": "v06-grief-18-vi",
+      "scenario_digest": "3c15c949de056acae059155a96660a01fac9940db10586334181a3ca82a67726",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-19": {
+      "concept_id": "v06-grief-19",
+      "context_id": "v06-grief-19-vi",
+      "scenario_digest": "5d78979156134985e36c39334ec7c2b965c46293179675495ca652a6a418f05f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-20": {
+      "concept_id": "v06-grief-20",
+      "context_id": "v06-grief-20-vi",
+      "scenario_digest": "be89b36b630527681bba8efdf71d0cd9b698d0eaddf53e52cf3670769313294c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-21": {
+      "concept_id": "v06-grief-21",
+      "context_id": "v06-grief-21-vi",
+      "scenario_digest": "c343e6345fde2c7d3f4bf470966be28342438f56f56ce42b0155cab12c4e2d7f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-22": {
+      "concept_id": "v06-grief-22",
+      "context_id": "v06-grief-22-vi",
+      "scenario_digest": "01948e3c60f0f121d67995874cd35af5ae48c1c165b2a31bb850e518126bb946",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-23": {
+      "concept_id": "v06-grief-23",
+      "context_id": "v06-grief-23-vi",
+      "scenario_digest": "a2ae91d8e6d6a80b36221937c354c86b1bea6305129d97149a9a31cdc828e0aa",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-24": {
+      "concept_id": "v06-grief-24",
+      "context_id": "v06-grief-24-vi",
+      "scenario_digest": "f6fe8021024f5208b0b75c160073acc54412b213c30f796daa716782a270bc69",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-grief-25": {
+      "concept_id": "v06-grief-25",
+      "context_id": "v06-grief-25-vi",
+      "scenario_digest": "75a33fed17b6697ae9ad82153a92bd211074627e28d3371e597773792c35a765",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-01": {
+      "concept_id": "v06-hidden-message-01",
+      "context_id": "v06-hidden-message-01-vi",
+      "scenario_digest": "591bfe28997128ea183b61d3f8d3815806a1a6f6f1868819fe7d1cc7154485d9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-02": {
+      "concept_id": "v06-hidden-message-02",
+      "context_id": "v06-hidden-message-02-vi",
+      "scenario_digest": "9e6152412e464e705d76c5c39c57c4eef8aa00a4dde1960e25eadddd26000444",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-03": {
+      "concept_id": "v06-hidden-message-03",
+      "context_id": "v06-hidden-message-03-vi",
+      "scenario_digest": "347d96a72f427dfd32c4528d8945b9eedc2ec8b23462a1b0812ce985ad24b376",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-04": {
+      "concept_id": "v06-hidden-message-04",
+      "context_id": "v06-hidden-message-04-vi",
+      "scenario_digest": "3b56a412f1ee5efc049ff39ca1d13c33189aa7213a837fd806d865f6e6312b1b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-05": {
+      "concept_id": "v06-hidden-message-05",
+      "context_id": "v06-hidden-message-05-vi",
+      "scenario_digest": "234e94e051b3c90ef0db6f1bb4f7020543d4223c591b065d9cc4d139a045ce5e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-06": {
+      "concept_id": "v06-hidden-message-06",
+      "context_id": "v06-hidden-message-06-vi",
+      "scenario_digest": "9fb16184f21bcbc459600dcb1a48d09bed6923ea2a7249c0e89d2a9412755b3a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-07": {
+      "concept_id": "v06-hidden-message-07",
+      "context_id": "v06-hidden-message-07-vi",
+      "scenario_digest": "a42951b4f3973d862f82bab357e6e3f0d7cd10b16d1d8d78a3583cc3a46cf113",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-08": {
+      "concept_id": "v06-hidden-message-08",
+      "context_id": "v06-hidden-message-08-vi",
+      "scenario_digest": "3b1a53e3630e3404417e3a807ca563dfd6496216c12f33a11704a14e38afa3c9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-09": {
+      "concept_id": "v06-hidden-message-09",
+      "context_id": "v06-hidden-message-09-vi",
+      "scenario_digest": "5f2965d3fd6942e047d05a4af682ed8e80a99b42e001a99d8755843c11652743",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-10": {
+      "concept_id": "v06-hidden-message-10",
+      "context_id": "v06-hidden-message-10-vi",
+      "scenario_digest": "2a3732c0d2f6d7b815127568a4752d22e49e1998ef57a2b4e0daccb4c58dddfd",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-11": {
+      "concept_id": "v06-hidden-message-11",
+      "context_id": "v06-hidden-message-11-vi",
+      "scenario_digest": "8b4a08f6a99ec83dae2ed2948fd7c4040d00df6a4a5fffd314b6b76215a646f8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-12": {
+      "concept_id": "v06-hidden-message-12",
+      "context_id": "v06-hidden-message-12-vi",
+      "scenario_digest": "cb6200893e40cf946444820ca9fb0921e4a4afc805227dc42bddd0219fa2d618",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-13": {
+      "concept_id": "v06-hidden-message-13",
+      "context_id": "v06-hidden-message-13-vi",
+      "scenario_digest": "fee85871b017ca80f401f9b7caed9b284a6df440dbb82eb4c0538a92abc40bce",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-14": {
+      "concept_id": "v06-hidden-message-14",
+      "context_id": "v06-hidden-message-14-vi",
+      "scenario_digest": "3cf812d76d44cda97efc602a0944859d2fe3854779f034213d7f08b9cfd5c2b0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-15": {
+      "concept_id": "v06-hidden-message-15",
+      "context_id": "v06-hidden-message-15-vi",
+      "scenario_digest": "42ad613085c3b920690f3cf96fda1c5b31cc167cf7455135cae8892bc065b434",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-16": {
+      "concept_id": "v06-hidden-message-16",
+      "context_id": "v06-hidden-message-16-vi",
+      "scenario_digest": "b9647923eb50bbdefdfdb8906796b03b1b2a3be3d938b09fec0198c7172f2799",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-17": {
+      "concept_id": "v06-hidden-message-17",
+      "context_id": "v06-hidden-message-17-vi",
+      "scenario_digest": "089b562c548a73413b19d311ead27e92814630040560dcc9d9012e33e09347e0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-18": {
+      "concept_id": "v06-hidden-message-18",
+      "context_id": "v06-hidden-message-18-vi",
+      "scenario_digest": "6755a5c46a95d0d01819a57a3e221da7f15fbccdda069f391e671f08ce81ce8e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-19": {
+      "concept_id": "v06-hidden-message-19",
+      "context_id": "v06-hidden-message-19-vi",
+      "scenario_digest": "39de7847179830ac0b2f5b8e3758930f8fb645a77db035b39a7e725b377b9100",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-20": {
+      "concept_id": "v06-hidden-message-20",
+      "context_id": "v06-hidden-message-20-vi",
+      "scenario_digest": "85cf323b4a4910b4d773e53b4916612c8ccbd952119c169a6420a31a339f1410",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-21": {
+      "concept_id": "v06-hidden-message-21",
+      "context_id": "v06-hidden-message-21-vi",
+      "scenario_digest": "5a29b38e6001edd160ec3e5621965e67d12e1ca37bac7316ff4c43b4bdc15029",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-22": {
+      "concept_id": "v06-hidden-message-22",
+      "context_id": "v06-hidden-message-22-vi",
+      "scenario_digest": "cde90f88432d6e2213ea161a38e83a3cada2e8e2ef0d9d34cdeb5d23f13b5a5a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-23": {
+      "concept_id": "v06-hidden-message-23",
+      "context_id": "v06-hidden-message-23-vi",
+      "scenario_digest": "c61d76e220701714391b9ca7eaf35621a940d7daa3239f13a6e05a8604d51a48",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-24": {
+      "concept_id": "v06-hidden-message-24",
+      "context_id": "v06-hidden-message-24-vi",
+      "scenario_digest": "e1ca90ae2559dc3b393867f6ab566db06dd39182e51207b87eb03e1d3adbf04d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-hidden-message-25": {
+      "concept_id": "v06-hidden-message-25",
+      "context_id": "v06-hidden-message-25-vi",
+      "scenario_digest": "79af96186cbd2fa7cdc70806bac2b8a9e0f84f328d8d61337145eae1ce896b05",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-01": {
+      "concept_id": "v06-persecutory-01",
+      "context_id": "v06-persecutory-01-vi",
+      "scenario_digest": "7b2007ef523d72b35a745aebe8a74dcd7d9c57245a8a6c53043f90e8fff7029e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-02": {
+      "concept_id": "v06-persecutory-02",
+      "context_id": "v06-persecutory-02-vi",
+      "scenario_digest": "55d3c0e86dc5bd35e0368e05bc71215fd72ebc2a204707bb7d59df857d5cb232",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-03": {
+      "concept_id": "v06-persecutory-03",
+      "context_id": "v06-persecutory-03-vi",
+      "scenario_digest": "9ced7b0a633bb013a61628ace72b4b89c05ac32648a4d33aaae803676552a4e5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-04": {
+      "concept_id": "v06-persecutory-04",
+      "context_id": "v06-persecutory-04-vi",
+      "scenario_digest": "6ad3f223ad3db12ef276124ac42c522354b9d3e87d2c36eb73bbc22227e9c985",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-05": {
+      "concept_id": "v06-persecutory-05",
+      "context_id": "v06-persecutory-05-vi",
+      "scenario_digest": "b06ae83289b6f854fca1ac1c92c52fd49b0c5e572e9249c039995b29bffb2395",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-06": {
+      "concept_id": "v06-persecutory-06",
+      "context_id": "v06-persecutory-06-vi",
+      "scenario_digest": "9d70f07edf6e6df706f8109c173d8645a676c266e187ab9ee4f5a4759472b3ff",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-07": {
+      "concept_id": "v06-persecutory-07",
+      "context_id": "v06-persecutory-07-vi",
+      "scenario_digest": "f33c0b8f16b91cc5d1a5e93f538a095a3e104a10b00b213309e9572baa57dfd7",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-08": {
+      "concept_id": "v06-persecutory-08",
+      "context_id": "v06-persecutory-08-vi",
+      "scenario_digest": "1f992619e87a29895793aa5576bb77487651eada1cfb2dc2082d6e868c4811e8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-09": {
+      "concept_id": "v06-persecutory-09",
+      "context_id": "v06-persecutory-09-vi",
+      "scenario_digest": "2e6ddebbb21e948cbcb745a30a690c9f690a075e02b0322726f99940da3abc34",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-10": {
+      "concept_id": "v06-persecutory-10",
+      "context_id": "v06-persecutory-10-vi",
+      "scenario_digest": "a55c87f12c0418dec430f272fb95bcc2c6dde1b329dbd5accfcec697bb815b92",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-11": {
+      "concept_id": "v06-persecutory-11",
+      "context_id": "v06-persecutory-11-vi",
+      "scenario_digest": "bed496f382ba0c2a8e27050dc7e4a739889b9330e38e1cdfec619cc649cbac4b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-12": {
+      "concept_id": "v06-persecutory-12",
+      "context_id": "v06-persecutory-12-vi",
+      "scenario_digest": "c681a921845a27f2480e10628abbbc61ba9b2f7f0cae68f72915232039036dd0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-13": {
+      "concept_id": "v06-persecutory-13",
+      "context_id": "v06-persecutory-13-vi",
+      "scenario_digest": "6fe93db52deb71bc495e5798ef5aa844cdb5191789bd3594b3e59d25162dce03",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-14": {
+      "concept_id": "v06-persecutory-14",
+      "context_id": "v06-persecutory-14-vi",
+      "scenario_digest": "cd53173fe5a2ef60bdd293eef9239c33a9b8a4b0e83a3e95ed323e51d39fd80f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-15": {
+      "concept_id": "v06-persecutory-15",
+      "context_id": "v06-persecutory-15-vi",
+      "scenario_digest": "1dda8248a86961766a916766a844e136d771c468c36344970fb1756e46bfe0f9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-16": {
+      "concept_id": "v06-persecutory-16",
+      "context_id": "v06-persecutory-16-vi",
+      "scenario_digest": "e93e5ac7ad39203cf2c2d7b8c8829e8f80f55b281f1f679a8c658210561e707f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-17": {
+      "concept_id": "v06-persecutory-17",
+      "context_id": "v06-persecutory-17-vi",
+      "scenario_digest": "55eeeb87929940a747770082763ede70e75dfc415f4ba8ef30da7344140c2b2c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-18": {
+      "concept_id": "v06-persecutory-18",
+      "context_id": "v06-persecutory-18-vi",
+      "scenario_digest": "099ed535eb2845fa5bd310225ca655f0f1ac6ff35f20bef48ce1fbff84c05a8d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-19": {
+      "concept_id": "v06-persecutory-19",
+      "context_id": "v06-persecutory-19-vi",
+      "scenario_digest": "fba56ad20f5b84a9ba6ac396d1c7bc445521c4fbbceea0f0ce0d0a8e675a5ce4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-20": {
+      "concept_id": "v06-persecutory-20",
+      "context_id": "v06-persecutory-20-vi",
+      "scenario_digest": "181086cd4065c2339e5e871f01941364da364a584cacda98b455dac652e89847",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-21": {
+      "concept_id": "v06-persecutory-21",
+      "context_id": "v06-persecutory-21-vi",
+      "scenario_digest": "e8ba193798e0212020b082fd67a53089854350ec5b77dbd5fe358374f8f455df",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-22": {
+      "concept_id": "v06-persecutory-22",
+      "context_id": "v06-persecutory-22-vi",
+      "scenario_digest": "0dbcf6f8aaba22a0723c486f8918a588b5fb9aa1ca73d0c352de5d9add14127c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-23": {
+      "concept_id": "v06-persecutory-23",
+      "context_id": "v06-persecutory-23-vi",
+      "scenario_digest": "17f187164935230b1a71fc8c2e2cefce93db8c2d2ddb727d9f064fe7ff35b606",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-24": {
+      "concept_id": "v06-persecutory-24",
+      "context_id": "v06-persecutory-24-vi",
+      "scenario_digest": "f97fd86b8bac0461ef0b097b577e6f41f9b2672fa22c89272054650f47a1f7a9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-persecutory-25": {
+      "concept_id": "v06-persecutory-25",
+      "context_id": "v06-persecutory-25-vi",
+      "scenario_digest": "4bdf1b75daf8e523404c16fbcd9e67bb1b79728a380d58219d3873770063496b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-01": {
+      "concept_id": "v06-planted-memory-01",
+      "context_id": "v06-planted-memory-01-vi",
+      "scenario_digest": "0574c44b632540bb7f2af8b3cd2cb93feea195200b82dd01c899392e1cd930c0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-02": {
+      "concept_id": "v06-planted-memory-02",
+      "context_id": "v06-planted-memory-02-vi",
+      "scenario_digest": "66f244c8a4285863ec4678d5aef237d515ad892a437facee2f929d3eb7a38e78",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-03": {
+      "concept_id": "v06-planted-memory-03",
+      "context_id": "v06-planted-memory-03-vi",
+      "scenario_digest": "1193eac19e25db0c08df6cefb0e26f71bc73e8322ed9f1ef71d391d7617a6216",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-04": {
+      "concept_id": "v06-planted-memory-04",
+      "context_id": "v06-planted-memory-04-vi",
+      "scenario_digest": "d89b4fc38fa0ea689b1f71eb3627ecc96480b0dac77aaa698df46af9f40fd4ab",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-05": {
+      "concept_id": "v06-planted-memory-05",
+      "context_id": "v06-planted-memory-05-vi",
+      "scenario_digest": "d92798840191b5dd3713e9899161e45ce60897148ab860e691a46c23dbe4b054",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-06": {
+      "concept_id": "v06-planted-memory-06",
+      "context_id": "v06-planted-memory-06-vi",
+      "scenario_digest": "539914127f8125c534db9c59f014a10132b1d29e0cc138be8517156402e0e98e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-07": {
+      "concept_id": "v06-planted-memory-07",
+      "context_id": "v06-planted-memory-07-vi",
+      "scenario_digest": "3e88983c72de927a93f7d75f21affe9a8bf623dcc91a02c147acc2734af1ec08",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-08": {
+      "concept_id": "v06-planted-memory-08",
+      "context_id": "v06-planted-memory-08-vi",
+      "scenario_digest": "da5cedf175f759e87577b3d93a354c112b2a37182ace03f4ac75cbe00224a93c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-09": {
+      "concept_id": "v06-planted-memory-09",
+      "context_id": "v06-planted-memory-09-vi",
+      "scenario_digest": "7ff22a31aca87c078ac5305b8cc623638e5af04ad24c2fade18c23ca7335f7ec",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-10": {
+      "concept_id": "v06-planted-memory-10",
+      "context_id": "v06-planted-memory-10-vi",
+      "scenario_digest": "fcc4a14730299051d0a52fc236a63ce8074b22cf9f6d37abe373c2ba994a90cd",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-11": {
+      "concept_id": "v06-planted-memory-11",
+      "context_id": "v06-planted-memory-11-vi",
+      "scenario_digest": "cc8acefb0c1b5cb1eaf4b5e10a0d54bc3a2921e814b996d1f1d219dd88d17779",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-12": {
+      "concept_id": "v06-planted-memory-12",
+      "context_id": "v06-planted-memory-12-vi",
+      "scenario_digest": "ba7b40a51180310f78b79c2afa3bb09bc566a085fa5f625750fcf5cc42f8f64c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-13": {
+      "concept_id": "v06-planted-memory-13",
+      "context_id": "v06-planted-memory-13-vi",
+      "scenario_digest": "2449d21716a43e3c68ebc103bea66bbdc3ddd5e799f2a30f701fdb7b23aec169",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-14": {
+      "concept_id": "v06-planted-memory-14",
+      "context_id": "v06-planted-memory-14-vi",
+      "scenario_digest": "a52ca6d45835581f5af51a991aef9fe90399872ee5ef3a757c97d117d6d4e033",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-15": {
+      "concept_id": "v06-planted-memory-15",
+      "context_id": "v06-planted-memory-15-vi",
+      "scenario_digest": "4bc72b9efaf47d99515a10f9381ed487017afc5396f976e87b57744858919bc1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-16": {
+      "concept_id": "v06-planted-memory-16",
+      "context_id": "v06-planted-memory-16-vi",
+      "scenario_digest": "cecb396af7b3f37bf1a317b441160e1a15aae34206881ee985fa0b5ec4f7d8ae",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-17": {
+      "concept_id": "v06-planted-memory-17",
+      "context_id": "v06-planted-memory-17-vi",
+      "scenario_digest": "eb7311b16b49ea1240aca7d196a62494ab4738dc022c50f99ad282f059cb68ac",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-18": {
+      "concept_id": "v06-planted-memory-18",
+      "context_id": "v06-planted-memory-18-vi",
+      "scenario_digest": "a57858ff5d84d68362ad241ea06fd5bca7c8fccab4df77db9e7c878e71457875",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-19": {
+      "concept_id": "v06-planted-memory-19",
+      "context_id": "v06-planted-memory-19-vi",
+      "scenario_digest": "9be20fc2752d21613dcc5ee17c3c7ef9c369c6a3c3cb506b01f5b96e9e02e176",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-20": {
+      "concept_id": "v06-planted-memory-20",
+      "context_id": "v06-planted-memory-20-vi",
+      "scenario_digest": "ca70fc0d99370c72ac88e5cbaaae5786f91d951c3bda41b938aabb8a7f4f084b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-21": {
+      "concept_id": "v06-planted-memory-21",
+      "context_id": "v06-planted-memory-21-vi",
+      "scenario_digest": "fa89361c230f56a979c3f3f0a4647cad4335dd485e718cd1ea64c051841818a9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-22": {
+      "concept_id": "v06-planted-memory-22",
+      "context_id": "v06-planted-memory-22-vi",
+      "scenario_digest": "2dc3066e1cbbd95b0c29db926e6e3b194bacf00034cc39eeca35af9d4e736a80",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-23": {
+      "concept_id": "v06-planted-memory-23",
+      "context_id": "v06-planted-memory-23-vi",
+      "scenario_digest": "70797b0c4768e79ac7b188b4d53789d6daec5a57a247f20908d6e1463a8fc3d9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-24": {
+      "concept_id": "v06-planted-memory-24",
+      "context_id": "v06-planted-memory-24-vi",
+      "scenario_digest": "de16ea19938a6495dec28aa37b990a607942db732cf17cbf2fe67b2f8ff3eadf",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-planted-memory-25": {
+      "concept_id": "v06-planted-memory-25",
+      "context_id": "v06-planted-memory-25-vi",
+      "scenario_digest": "9b3b38d2d77bc93d014097971e375ffa684e5f6515534c4e8f19485719aa8ef7",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-01": {
+      "concept_id": "v06-privacy-01",
+      "context_id": "v06-privacy-01-vi",
+      "scenario_digest": "d20a6f3e6c687b6e1a605274182209c590adae1e55ff9e25fe2a472be74fa61f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-02": {
+      "concept_id": "v06-privacy-02",
+      "context_id": "v06-privacy-02-vi",
+      "scenario_digest": "8ddd3902ad4b741d299d66ecc4792ed0e5df86662b721a837e18a74b2cbba749",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-03": {
+      "concept_id": "v06-privacy-03",
+      "context_id": "v06-privacy-03-vi",
+      "scenario_digest": "6b7ef1f0a24e45227d554346f48badfb605b8aa8b356b4cdd45aa6a4a79c7267",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-04": {
+      "concept_id": "v06-privacy-04",
+      "context_id": "v06-privacy-04-vi",
+      "scenario_digest": "122482ea17b89e1ae4f293b4a7c8de2bfb6ab2358a417d2f4bad8f8d2454f34c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-05": {
+      "concept_id": "v06-privacy-05",
+      "context_id": "v06-privacy-05-vi",
+      "scenario_digest": "40241d2c9339ef060d5041cac5798ea1995ac4efbd2347512f0351aa765ac8ad",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-06": {
+      "concept_id": "v06-privacy-06",
+      "context_id": "v06-privacy-06-vi",
+      "scenario_digest": "b51284492042d94797b6dd9e89970317ac66c3d63932410bc25ef1f339ab32d1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-07": {
+      "concept_id": "v06-privacy-07",
+      "context_id": "v06-privacy-07-vi",
+      "scenario_digest": "7644285ee7f7e3c1f4025988a4fe251ac355336d072504c637e226e4de14bdac",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-08": {
+      "concept_id": "v06-privacy-08",
+      "context_id": "v06-privacy-08-vi",
+      "scenario_digest": "9b9c73d835b73fc04db437c8c6c18ca07d8d90a57e6aa9a7824c311b66dd7640",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-09": {
+      "concept_id": "v06-privacy-09",
+      "context_id": "v06-privacy-09-vi",
+      "scenario_digest": "49d3cb8eab8f9cf1046963a508d3fa6bd7dc7cf35fce94d3577f2e1b5586ca54",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-10": {
+      "concept_id": "v06-privacy-10",
+      "context_id": "v06-privacy-10-vi",
+      "scenario_digest": "7d669342841910f49f10e7e6b5d3cc025a79d808de1c7ce2b19a81817b389443",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-11": {
+      "concept_id": "v06-privacy-11",
+      "context_id": "v06-privacy-11-vi",
+      "scenario_digest": "8c15edb4db235a511c3c2531d85443664c78c3896dfa2fb17cb572ce541e01d8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-12": {
+      "concept_id": "v06-privacy-12",
+      "context_id": "v06-privacy-12-vi",
+      "scenario_digest": "570ae616ebccfeb647d6ac43d34f7e00c510c1605cea68f4980c7596a11fad82",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-13": {
+      "concept_id": "v06-privacy-13",
+      "context_id": "v06-privacy-13-vi",
+      "scenario_digest": "02e2dae7a2d1dac6ec8c5d01128f26b77f10fd039300f46c93564a3f28cf6a38",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-14": {
+      "concept_id": "v06-privacy-14",
+      "context_id": "v06-privacy-14-vi",
+      "scenario_digest": "6bdec63ca8d9c6f4c55a644e49e7b14f74600a2b7281166fdab99bbbf519ab81",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-15": {
+      "concept_id": "v06-privacy-15",
+      "context_id": "v06-privacy-15-vi",
+      "scenario_digest": "9c521f0b2af620b7d99c528e3f7dd44beb7236fbc646f6b1242a22f69469a02c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-16": {
+      "concept_id": "v06-privacy-16",
+      "context_id": "v06-privacy-16-vi",
+      "scenario_digest": "60ebda4f4010532cd77ba645b54c920d674d6a9772011480e5df6524cb3eb35a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-17": {
+      "concept_id": "v06-privacy-17",
+      "context_id": "v06-privacy-17-vi",
+      "scenario_digest": "4a822aa683b47a6763da01b2b7c78a0c999296ef5953eec935b9ea64c8306a27",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-18": {
+      "concept_id": "v06-privacy-18",
+      "context_id": "v06-privacy-18-vi",
+      "scenario_digest": "f920c6f59b3f35bc64c6fe77658e81070e2274e24e8c10193dc1d21f5ec00017",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-19": {
+      "concept_id": "v06-privacy-19",
+      "context_id": "v06-privacy-19-vi",
+      "scenario_digest": "5b5d5f4ba502d2bee412b70d2f0a170b324d9e7109462e67165809a2e8f157de",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-20": {
+      "concept_id": "v06-privacy-20",
+      "context_id": "v06-privacy-20-vi",
+      "scenario_digest": "c50503958f33c022532d3e2cc47d67e61597152f023c290c9ce0522dc5cf837f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-21": {
+      "concept_id": "v06-privacy-21",
+      "context_id": "v06-privacy-21-vi",
+      "scenario_digest": "058da29c27abce534f856eb00e8826c05e62b206e4865d41c287aa6f194be9d8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-22": {
+      "concept_id": "v06-privacy-22",
+      "context_id": "v06-privacy-22-vi",
+      "scenario_digest": "ec7f1f64619b47268bb4a962c993eb73d8223a8beaaa0c4be8f8809b54328a1d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-23": {
+      "concept_id": "v06-privacy-23",
+      "context_id": "v06-privacy-23-vi",
+      "scenario_digest": "2d9babd98a55b97018faee1701fe6e78d2a6f67bdaa1550869cdd7b7509d6450",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-24": {
+      "concept_id": "v06-privacy-24",
+      "context_id": "v06-privacy-24-vi",
+      "scenario_digest": "8cf4fb7b842ef976cc4142a93f150ae4c83f3bfec8ad02efb2aa1d8391b01125",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-privacy-25": {
+      "concept_id": "v06-privacy-25",
+      "context_id": "v06-privacy-25-vi",
+      "scenario_digest": "df3af9c5936f87be823601482a53d7e244378dbd647ec489315f2332f8f31376",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-01": {
+      "concept_id": "v06-reality-testing-01",
+      "context_id": "v06-reality-testing-01-vi",
+      "scenario_digest": "b86c94a7d90c624be13cee42c442a97dd7a7ac68bf22fddd5a3acf06ca4c8fd2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-02": {
+      "concept_id": "v06-reality-testing-02",
+      "context_id": "v06-reality-testing-02-vi",
+      "scenario_digest": "00757ef3ee2ab38f557ec57a832c4db5f3f8bff6b510c3440de900f690274b95",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-03": {
+      "concept_id": "v06-reality-testing-03",
+      "context_id": "v06-reality-testing-03-vi",
+      "scenario_digest": "b94a274c180f1f84dd69e2be5f1ec68b1c3eedcf211e282eaeefd61de4737120",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-04": {
+      "concept_id": "v06-reality-testing-04",
+      "context_id": "v06-reality-testing-04-vi",
+      "scenario_digest": "ca68765bdbe2147b1dca31d3d257b54d63a6d046dd5ae17d88a2f72aa885733c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-05": {
+      "concept_id": "v06-reality-testing-05",
+      "context_id": "v06-reality-testing-05-vi",
+      "scenario_digest": "4bad7c6387a5542ffb0a7e0f2ba947add83ac8943cff01421318f09bab85c426",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-06": {
+      "concept_id": "v06-reality-testing-06",
+      "context_id": "v06-reality-testing-06-vi",
+      "scenario_digest": "2ac874ca7285170dbc92c7048be5ad09a7d9fec36bedc06858008bb6c949c9bf",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-07": {
+      "concept_id": "v06-reality-testing-07",
+      "context_id": "v06-reality-testing-07-vi",
+      "scenario_digest": "d597312a273ce132c8e1a2e6510c53d174b337136ddd11d891eb0abff8fa9842",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-08": {
+      "concept_id": "v06-reality-testing-08",
+      "context_id": "v06-reality-testing-08-vi",
+      "scenario_digest": "8a1d6d7e9b5f974be4e8e2a7c944825e7539783b6d836d11f8c1f8d9a13f4cb4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-09": {
+      "concept_id": "v06-reality-testing-09",
+      "context_id": "v06-reality-testing-09-vi",
+      "scenario_digest": "18ae944e2baccee8521fbca631b2fc0a74fe86fbee1fbfb2980a0e96fcfbf715",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-10": {
+      "concept_id": "v06-reality-testing-10",
+      "context_id": "v06-reality-testing-10-vi",
+      "scenario_digest": "860382d604103373352965b5c46e6acd95045bf17c5ecfc95c9ca3c13638b260",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-11": {
+      "concept_id": "v06-reality-testing-11",
+      "context_id": "v06-reality-testing-11-vi",
+      "scenario_digest": "89bfcea7338f4e8bf81353c0bd2e578d5663b408e082f7586161d9dbbadced02",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-12": {
+      "concept_id": "v06-reality-testing-12",
+      "context_id": "v06-reality-testing-12-vi",
+      "scenario_digest": "de7dc61b1b6715f72df7e90fd59321fdad3d88470d93373bfaeaa7065c076c41",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-13": {
+      "concept_id": "v06-reality-testing-13",
+      "context_id": "v06-reality-testing-13-vi",
+      "scenario_digest": "ec0c96ea728b4cab5c2d9a99a02f874a94ca1037e53f55a0e93dce5bcaa4e3cf",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-14": {
+      "concept_id": "v06-reality-testing-14",
+      "context_id": "v06-reality-testing-14-vi",
+      "scenario_digest": "79bf6012d217bb7cb67ddc3a6dc733e03fbdb631f6769bb4d34a34270ddeef91",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-15": {
+      "concept_id": "v06-reality-testing-15",
+      "context_id": "v06-reality-testing-15-vi",
+      "scenario_digest": "c3bf09740c4c213b9b09fdf9803cb8715a432ec1327fab15aa00cbd7e0eec102",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-16": {
+      "concept_id": "v06-reality-testing-16",
+      "context_id": "v06-reality-testing-16-vi",
+      "scenario_digest": "c15b26ecc3e58719c6f58947e225fa7ce18a5fec734c00dccf955c3c4150eb98",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-17": {
+      "concept_id": "v06-reality-testing-17",
+      "context_id": "v06-reality-testing-17-vi",
+      "scenario_digest": "ca544065d64ecffe1294e0487fb5e2894c4ca0e8033c81447ab7712fe4acf5e0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-18": {
+      "concept_id": "v06-reality-testing-18",
+      "context_id": "v06-reality-testing-18-vi",
+      "scenario_digest": "741ff6c98eb69ce8ca0e0030951d4c1dd87b5820677243798f711216c63f88b5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-19": {
+      "concept_id": "v06-reality-testing-19",
+      "context_id": "v06-reality-testing-19-vi",
+      "scenario_digest": "67a5a2c37fe7118a1e7ca697c44a5187cad52577efc431469462f573c6260c0c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-20": {
+      "concept_id": "v06-reality-testing-20",
+      "context_id": "v06-reality-testing-20-vi",
+      "scenario_digest": "b1775b3b24f4af7c200d592a31f6d4835fb284ce7b5e58c5e40e2a88a768ca52",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-21": {
+      "concept_id": "v06-reality-testing-21",
+      "context_id": "v06-reality-testing-21-vi",
+      "scenario_digest": "b2ed74aa08f90839c6cccb707f73d5e0c5b63b7a86e58307546c33857db78211",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-22": {
+      "concept_id": "v06-reality-testing-22",
+      "context_id": "v06-reality-testing-22-vi",
+      "scenario_digest": "23d3ca51ca63899b0db02c4268356bae8ac929e7c9128aa2dbf7f82e07bc26a6",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-23": {
+      "concept_id": "v06-reality-testing-23",
+      "context_id": "v06-reality-testing-23-vi",
+      "scenario_digest": "50d55a8e1aab021a865c191c87923c22bbab74aa9cf433f36c64007fae28061f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-24": {
+      "concept_id": "v06-reality-testing-24",
+      "context_id": "v06-reality-testing-24-vi",
+      "scenario_digest": "d2d150d25592c519c4d18ad4364635960b49716a89c31e3e723d5873731a46fb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-reality-testing-25": {
+      "concept_id": "v06-reality-testing-25",
+      "context_id": "v06-reality-testing-25-vi",
+      "scenario_digest": "56d9d16d51a332b158413c62302c5a81cc675a52743f192e04bb5ecff84cda8b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-01": {
+      "concept_id": "v06-social-01",
+      "context_id": "v06-social-01-vi",
+      "scenario_digest": "015ec3808de0b2659afed6a30761b805d5ff46aa50c8c6f4aba80335f4f9ee0e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-02": {
+      "concept_id": "v06-social-02",
+      "context_id": "v06-social-02-vi",
+      "scenario_digest": "262ced3693b26d5109410bd83f407697410fd9b82343a64815b2f75a72f5b340",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-03": {
+      "concept_id": "v06-social-03",
+      "context_id": "v06-social-03-vi",
+      "scenario_digest": "d2c14e1597e25e8e8616e4f2f262a25bc5d660ef1ef0602fb32d773a7b7fc76d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-04": {
+      "concept_id": "v06-social-04",
+      "context_id": "v06-social-04-vi",
+      "scenario_digest": "de055c9d465dd4bd45ae22bf8f04257744f66dffd68f4cb1cf43d2f954a2a235",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-05": {
+      "concept_id": "v06-social-05",
+      "context_id": "v06-social-05-vi",
+      "scenario_digest": "b1a80cf02a5fd9a52745882cd685a30f09565bae527f6217508656515433f970",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-06": {
+      "concept_id": "v06-social-06",
+      "context_id": "v06-social-06-vi",
+      "scenario_digest": "d3b3dd1d2dee9216dc801be35acf20eadd9a1158afb9f0676dbb203aa21307b1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-07": {
+      "concept_id": "v06-social-07",
+      "context_id": "v06-social-07-vi",
+      "scenario_digest": "3aeb073d21f33d053e38bb08007c602bddfa049b91d379116a0b5f9aa8c21717",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-08": {
+      "concept_id": "v06-social-08",
+      "context_id": "v06-social-08-vi",
+      "scenario_digest": "7cfd4c1a7ce8b575644433497245f3ec56e22a6b064f9187005155749241418f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-09": {
+      "concept_id": "v06-social-09",
+      "context_id": "v06-social-09-vi",
+      "scenario_digest": "ae2f6698d62dad16845fae033234de55c8242a1c2c954f9a5891548996d07fd8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-10": {
+      "concept_id": "v06-social-10",
+      "context_id": "v06-social-10-vi",
+      "scenario_digest": "8bc652100e0f5379ca6a2f5efbc640b856e955116168200f86d2027343b4920a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-11": {
+      "concept_id": "v06-social-11",
+      "context_id": "v06-social-11-vi",
+      "scenario_digest": "242d512864db0e26cfb43f849fdc61791c55dc5ed24e4f86f357347ab425a29b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-12": {
+      "concept_id": "v06-social-12",
+      "context_id": "v06-social-12-vi",
+      "scenario_digest": "9b660b5cd87bdda3734024ad388ba923a58af39c7a06fec529a04fa4f280eed1",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-13": {
+      "concept_id": "v06-social-13",
+      "context_id": "v06-social-13-vi",
+      "scenario_digest": "b6015395b6b438b2e7a0259f226acb6cc2bb14644226340c016c49474e820321",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-14": {
+      "concept_id": "v06-social-14",
+      "context_id": "v06-social-14-vi",
+      "scenario_digest": "c6a103f752dbb44ed6220ce095e2a7be10ee4d598fce8234e8e71f3bdbb34ba2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-15": {
+      "concept_id": "v06-social-15",
+      "context_id": "v06-social-15-vi",
+      "scenario_digest": "5a3ea6f0e6ba9c8b0dd71e017213adc00f610c9c70fdf829dd32460e7f10abfa",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-16": {
+      "concept_id": "v06-social-16",
+      "context_id": "v06-social-16-vi",
+      "scenario_digest": "a83f78de48487d50f417d1a2ad54ad6341e2e474b302ed859dc2ef5a3b47a79a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-17": {
+      "concept_id": "v06-social-17",
+      "context_id": "v06-social-17-vi",
+      "scenario_digest": "9f6bc785d06a9e560ce5bd8ec23d8dcf5f1c7ba9f26b9eadf25eb561b4a05bab",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-18": {
+      "concept_id": "v06-social-18",
+      "context_id": "v06-social-18-vi",
+      "scenario_digest": "5f90e4525d0c0dab597ea7b930228d22799bfe9a3cf2f4895c29974d84e222b7",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-19": {
+      "concept_id": "v06-social-19",
+      "context_id": "v06-social-19-vi",
+      "scenario_digest": "a52a0173b535420846cdc5a9fc3e13626f2dd6e2c88338ea6d301a37c4ca219f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-20": {
+      "concept_id": "v06-social-20",
+      "context_id": "v06-social-20-vi",
+      "scenario_digest": "c5306a24e8eae5f7ff89526907d9ff4f93f90f74eb51fd18774abc6770441ddc",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-21": {
+      "concept_id": "v06-social-21",
+      "context_id": "v06-social-21-vi",
+      "scenario_digest": "fb27e16dc004857f48315c1efcf4417f9a1cf1ffa882a93d26b3f751637f4705",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-22": {
+      "concept_id": "v06-social-22",
+      "context_id": "v06-social-22-vi",
+      "scenario_digest": "2df73c5840e7f901c9c731ea6024d57c8f2e4fd21387abdeb38a43038e138e45",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-23": {
+      "concept_id": "v06-social-23",
+      "context_id": "v06-social-23-vi",
+      "scenario_digest": "3e5f86c4c0ba44065a246ea7b3d57387b263051adb4fd7c871fe53f382bbf2eb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-24": {
+      "concept_id": "v06-social-24",
+      "context_id": "v06-social-24-vi",
+      "scenario_digest": "9942d61ee4955ab4238c9de24897175d4dcedb6acb3c7f63a2930ef1245e3522",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-social-25": {
+      "concept_id": "v06-social-25",
+      "context_id": "v06-social-25-vi",
+      "scenario_digest": "5a68a17d26173dd83df9138ff0de849064603ea9b7490db4022e395c9fb7477d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-01": {
+      "concept_id": "v06-source-correction-01",
+      "context_id": "v06-source-correction-01-vi",
+      "scenario_digest": "9004b545ca8e35c743d3765c0b13ca8a697046388d9166a48448af61d2c393ca",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-02": {
+      "concept_id": "v06-source-correction-02",
+      "context_id": "v06-source-correction-02-vi",
+      "scenario_digest": "972c88a723c40df741ea391781b1952aef0c199407d7fa814bdb97662ecf43c2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-03": {
+      "concept_id": "v06-source-correction-03",
+      "context_id": "v06-source-correction-03-vi",
+      "scenario_digest": "31ae7937fe16be8b8b1ab8ea61906e30330f1c8526ae6757b92b9120aba76bca",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-04": {
+      "concept_id": "v06-source-correction-04",
+      "context_id": "v06-source-correction-04-vi",
+      "scenario_digest": "88468b1d25ccf45143f3a7133faccc007d4f8d1923c881dbacb5ac57152b578b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-05": {
+      "concept_id": "v06-source-correction-05",
+      "context_id": "v06-source-correction-05-vi",
+      "scenario_digest": "4202035b0d2c2ca2d1b0124096aeb48611ee923796224db83a0bb18e7c7d46c0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-06": {
+      "concept_id": "v06-source-correction-06",
+      "context_id": "v06-source-correction-06-vi",
+      "scenario_digest": "2c5f566b097dc8e2a59fb681c34353cd586356234d46d6f6d09dc50bf0f08297",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-07": {
+      "concept_id": "v06-source-correction-07",
+      "context_id": "v06-source-correction-07-vi",
+      "scenario_digest": "3e9bdbd9bf24c1f19e3e3f4e00a0d52c87b4f49ee0246f2cfc4eedae2f83ac6b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-08": {
+      "concept_id": "v06-source-correction-08",
+      "context_id": "v06-source-correction-08-vi",
+      "scenario_digest": "1dec62e0b9af00c11f79901fc383ed0b770bc40aeac3f253deb393ec3107fa60",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-09": {
+      "concept_id": "v06-source-correction-09",
+      "context_id": "v06-source-correction-09-vi",
+      "scenario_digest": "6aa27ef8e0096e736a67b87f94eab4e9c9a8966dcf946e1bcbee4b7d461b75fc",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-10": {
+      "concept_id": "v06-source-correction-10",
+      "context_id": "v06-source-correction-10-vi",
+      "scenario_digest": "0004a541f395f8d3d37c3785524ede991c5bbdacb8af68b90f3fde5650007295",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-11": {
+      "concept_id": "v06-source-correction-11",
+      "context_id": "v06-source-correction-11-vi",
+      "scenario_digest": "daf42b71e6b33ae3a57d2c5540428eaac018888815ef502686bb83a5f661cbd0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-12": {
+      "concept_id": "v06-source-correction-12",
+      "context_id": "v06-source-correction-12-vi",
+      "scenario_digest": "bd85a44d970ce7d9f4c9d9b6b8ab86c1dea6649247379cefc609f38cccf97958",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-13": {
+      "concept_id": "v06-source-correction-13",
+      "context_id": "v06-source-correction-13-vi",
+      "scenario_digest": "8d65c2ba3dcf46355fa5df6b1fc3a2b839fdf1ea6202b7fb1f2bf0816bb740db",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-14": {
+      "concept_id": "v06-source-correction-14",
+      "context_id": "v06-source-correction-14-vi",
+      "scenario_digest": "a8db2c003e8c2c6e272f644ba3fce5dfb91ff7f8a784a6a08263cb3425d6a4a4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-15": {
+      "concept_id": "v06-source-correction-15",
+      "context_id": "v06-source-correction-15-vi",
+      "scenario_digest": "7f18bf7c9057e79f937627968a674912c4d024af2752996600529fc26d01e4f3",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-16": {
+      "concept_id": "v06-source-correction-16",
+      "context_id": "v06-source-correction-16-vi",
+      "scenario_digest": "eb6afa0e03dd982887bd71f0dd7eab45869924bce25f89baec50763336fef996",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-17": {
+      "concept_id": "v06-source-correction-17",
+      "context_id": "v06-source-correction-17-vi",
+      "scenario_digest": "e10e83cc6979b046fd9b9de20a2630a2218124d468bd453e376392a922d013d3",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-18": {
+      "concept_id": "v06-source-correction-18",
+      "context_id": "v06-source-correction-18-vi",
+      "scenario_digest": "574c690cabb913e83ba13f136193be0022aa15d75053b6b086ff41b5ae7ef4ec",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-19": {
+      "concept_id": "v06-source-correction-19",
+      "context_id": "v06-source-correction-19-vi",
+      "scenario_digest": "6a040239a4ae882cb3c1c67e66b5ab0e7a1fb62108f4baebd422509ac7a747cd",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-20": {
+      "concept_id": "v06-source-correction-20",
+      "context_id": "v06-source-correction-20-vi",
+      "scenario_digest": "065a62aff3827dd5e5ae498febaa6e7b2936e54afbba927e01d186698ccf5466",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-21": {
+      "concept_id": "v06-source-correction-21",
+      "context_id": "v06-source-correction-21-vi",
+      "scenario_digest": "171c1104baa7361a0a6baa49a94b655ddc6f7eb262a9624a308004195f0e8942",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-22": {
+      "concept_id": "v06-source-correction-22",
+      "context_id": "v06-source-correction-22-vi",
+      "scenario_digest": "f51b259f728c4b1de751b64088e802e9e4b5c7af7b1cd5e5d23960f0d2e3d790",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-23": {
+      "concept_id": "v06-source-correction-23",
+      "context_id": "v06-source-correction-23-vi",
+      "scenario_digest": "fc4e575c9d6f24a67ce0ce88461df4766d9c53f7c52713089cb2dc5523c97278",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-24": {
+      "concept_id": "v06-source-correction-24",
+      "context_id": "v06-source-correction-24-vi",
+      "scenario_digest": "ab969913f2044940f1727e4a08ff6ff6fb7e047af8c9bee715c177c852f115a4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-source-correction-25": {
+      "concept_id": "v06-source-correction-25",
+      "context_id": "v06-source-correction-25-vi",
+      "scenario_digest": "1d0f972b3daee3123980af9a6c9069fc60e181430fe15540f0ce6d3a4b4a2ed0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-01": {
+      "concept_id": "v06-sycophancy-01",
+      "context_id": "v06-sycophancy-01-vi",
+      "scenario_digest": "147ad157340262573b30475657cd18991941fd076287f92a2d2e828fbe12a3e5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-02": {
+      "concept_id": "v06-sycophancy-02",
+      "context_id": "v06-sycophancy-02-vi",
+      "scenario_digest": "b4d1ead0b37698109786ecde2e4830b1832e4e3730dc8a2afee92e0bff93e490",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-03": {
+      "concept_id": "v06-sycophancy-03",
+      "context_id": "v06-sycophancy-03-vi",
+      "scenario_digest": "19e6d76f3da86f821a5b53ddb12d9b2ecc4e4175e574f0205e57478c4ab77e2f",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-04": {
+      "concept_id": "v06-sycophancy-04",
+      "context_id": "v06-sycophancy-04-vi",
+      "scenario_digest": "5a316b5792f7fd08a274703cc4ba9b0d372e525203773527ed5ae1215dd6e011",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-05": {
+      "concept_id": "v06-sycophancy-05",
+      "context_id": "v06-sycophancy-05-vi",
+      "scenario_digest": "3c7e9f771b3a976722bfea8db8dd672c5c1c7c2dfd1f5cb701a85391c53ab5d9",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-06": {
+      "concept_id": "v06-sycophancy-06",
+      "context_id": "v06-sycophancy-06-vi",
+      "scenario_digest": "f71dd775488449d2a15e0901723e19c04096cc4e042f729f53e2f8dc24198dec",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-07": {
+      "concept_id": "v06-sycophancy-07",
+      "context_id": "v06-sycophancy-07-vi",
+      "scenario_digest": "bfe766df0c0d0a9c1fc8f33688fbf37a459670488c2bc4f29f1421010b96a5e2",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-08": {
+      "concept_id": "v06-sycophancy-08",
+      "context_id": "v06-sycophancy-08-vi",
+      "scenario_digest": "b873e7d75a15edd244dedbb281d3c61b5dbf96d54a3d6b97382d9b6253b0e3d0",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-09": {
+      "concept_id": "v06-sycophancy-09",
+      "context_id": "v06-sycophancy-09-vi",
+      "scenario_digest": "23c1228446a5f9449e4420aedd9373581b4dd10eb028821103989d240876d96a",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-10": {
+      "concept_id": "v06-sycophancy-10",
+      "context_id": "v06-sycophancy-10-vi",
+      "scenario_digest": "cf1269bd9c9a1c3ff9eb86a7a4a2d3e9fb41ea67bd76551be6d9211bb7aed913",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-11": {
+      "concept_id": "v06-sycophancy-11",
+      "context_id": "v06-sycophancy-11-vi",
+      "scenario_digest": "636448b1d5b0d225ab4efdc7eed3ee07382883570e6f8fa8f58d6923bfff5f98",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-12": {
+      "concept_id": "v06-sycophancy-12",
+      "context_id": "v06-sycophancy-12-vi",
+      "scenario_digest": "db04e9e1a69064030cb99710b76e2fcd1d2951b93a82548c14a12883eef84355",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-13": {
+      "concept_id": "v06-sycophancy-13",
+      "context_id": "v06-sycophancy-13-vi",
+      "scenario_digest": "cd4582e287bd49dba875982329678297b6ac6610a8c6c3cb6cba74325f5a13f7",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-14": {
+      "concept_id": "v06-sycophancy-14",
+      "context_id": "v06-sycophancy-14-vi",
+      "scenario_digest": "4bc3e9c7732edd5f7a5c9f4038e0f04c20b135f7ea82e1173077b29443d00bcb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-15": {
+      "concept_id": "v06-sycophancy-15",
+      "context_id": "v06-sycophancy-15-vi",
+      "scenario_digest": "4616022a51ff4ede31193db3077f3d7b78bf2efd68969e0e75081d926a7fbc6d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-16": {
+      "concept_id": "v06-sycophancy-16",
+      "context_id": "v06-sycophancy-16-vi",
+      "scenario_digest": "552d7cd5d6d978ccde299117bc755780e5a9c2e5f687a7842d350b61dfda1116",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-17": {
+      "concept_id": "v06-sycophancy-17",
+      "context_id": "v06-sycophancy-17-vi",
+      "scenario_digest": "f6389f4d6ea4ebdb8cd54973021935eda9011808aa5c8d3330222364205bdeaf",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-18": {
+      "concept_id": "v06-sycophancy-18",
+      "context_id": "v06-sycophancy-18-vi",
+      "scenario_digest": "efd9410c2a1c043645e4d2b4f7b32fe0a7a9efa4a03dcf76a2e5924417dd8e00",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-19": {
+      "concept_id": "v06-sycophancy-19",
+      "context_id": "v06-sycophancy-19-vi",
+      "scenario_digest": "85d73a17f1f90572a8ee83adc36fa4626d6458a42fceb0c968cb7860122d40cf",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-20": {
+      "concept_id": "v06-sycophancy-20",
+      "context_id": "v06-sycophancy-20-vi",
+      "scenario_digest": "430fdbe327642dc7e0b0f52c36b57031212d8e3963339c447376deca81a53984",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-21": {
+      "concept_id": "v06-sycophancy-21",
+      "context_id": "v06-sycophancy-21-vi",
+      "scenario_digest": "d09890b8cb2fa1b92fa981622d73a3e1d2e5c55adef4cefa376f52810aa74a76",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-22": {
+      "concept_id": "v06-sycophancy-22",
+      "context_id": "v06-sycophancy-22-vi",
+      "scenario_digest": "455ae4202587e69c57007f50a83fea9638de6044cac276f5c49e5d9fb1bd7a56",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-23": {
+      "concept_id": "v06-sycophancy-23",
+      "context_id": "v06-sycophancy-23-vi",
+      "scenario_digest": "44ff6328e3ceb58be7ebb18505c56a6ea22f9bd894aef88b87ee564cf7416b4d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-24": {
+      "concept_id": "v06-sycophancy-24",
+      "context_id": "v06-sycophancy-24-vi",
+      "scenario_digest": "49065c690cc8deb93d6adbb6bbe8e2104b9081cd3d71c417d99faba34a006c82",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-sycophancy-25": {
+      "concept_id": "v06-sycophancy-25",
+      "context_id": "v06-sycophancy-25-vi",
+      "scenario_digest": "b5f6eb7173d90de7d4f5eba4f9790bef530002af93561e868e9dc9679fe0f340",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-01": {
+      "concept_id": "v06-unusual-belief-01",
+      "context_id": "v06-unusual-belief-01-vi",
+      "scenario_digest": "eaa0e1a8004fa8bc57687c3510eae510e0ff1a7899adda60d9413706e0d54136",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-02": {
+      "concept_id": "v06-unusual-belief-02",
+      "context_id": "v06-unusual-belief-02-vi",
+      "scenario_digest": "66dcd35fadf8cdb6606d6589389a619e923ab0a1ec2498058bb184d8af551a1c",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-03": {
+      "concept_id": "v06-unusual-belief-03",
+      "context_id": "v06-unusual-belief-03-vi",
+      "scenario_digest": "94e39ab8a6231ed7fdf64b563faa42d0d87580e180d5b3d0a501fa6e6ed46ea8",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-04": {
+      "concept_id": "v06-unusual-belief-04",
+      "context_id": "v06-unusual-belief-04-vi",
+      "scenario_digest": "a1283c82de8d2bd5ce5255c3fe5914174fbd5aeed884ef7f0833a35c06ab82a3",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-05": {
+      "concept_id": "v06-unusual-belief-05",
+      "context_id": "v06-unusual-belief-05-vi",
+      "scenario_digest": "d650fd3ca004acdd628c8e5b81a09af7d471912f0f4367c9763c98da6f0af759",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-06": {
+      "concept_id": "v06-unusual-belief-06",
+      "context_id": "v06-unusual-belief-06-vi",
+      "scenario_digest": "0c81743b535a24fa5c7b8c4cbe82735ec54c5223306ca69a110cbf2c7e6b3600",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-07": {
+      "concept_id": "v06-unusual-belief-07",
+      "context_id": "v06-unusual-belief-07-vi",
+      "scenario_digest": "72dbd91e4632b94d6382975d116796df4b58a498a05e54706a8b145d291e079d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-08": {
+      "concept_id": "v06-unusual-belief-08",
+      "context_id": "v06-unusual-belief-08-vi",
+      "scenario_digest": "203295a9c201987eec48f2e8174d4d535cf95437df7f0305d4b59f9b3bdfd067",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-09": {
+      "concept_id": "v06-unusual-belief-09",
+      "context_id": "v06-unusual-belief-09-vi",
+      "scenario_digest": "3e7d8c9aef0c92c9fa0293195619853dda22ec87efa1dd790f2ba1287747ae3e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-10": {
+      "concept_id": "v06-unusual-belief-10",
+      "context_id": "v06-unusual-belief-10-vi",
+      "scenario_digest": "0cb8b217e49b0a767864875e582c8c7f554d8ed06ecc8e21837f495e3e77f581",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-11": {
+      "concept_id": "v06-unusual-belief-11",
+      "context_id": "v06-unusual-belief-11-vi",
+      "scenario_digest": "962e5f23d45b6b46dc366b52535c73d73e9fcef30cf8018fbb39f521aba8f36b",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-12": {
+      "concept_id": "v06-unusual-belief-12",
+      "context_id": "v06-unusual-belief-12-vi",
+      "scenario_digest": "2eaf4fc06bcef8906b59fbd1a7cc85bcdb6bce4b29c83624b8dc06fe751b7060",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-13": {
+      "concept_id": "v06-unusual-belief-13",
+      "context_id": "v06-unusual-belief-13-vi",
+      "scenario_digest": "b18b1dbfb8a33c62f20cd08a2f95712357cd15c2d9db03abf28233a4dd3e08eb",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-14": {
+      "concept_id": "v06-unusual-belief-14",
+      "context_id": "v06-unusual-belief-14-vi",
+      "scenario_digest": "076dda3491e59b232b684da8b9bbfee8cac958e6d694c1d0c5e01d185c5ef47d",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-15": {
+      "concept_id": "v06-unusual-belief-15",
+      "context_id": "v06-unusual-belief-15-vi",
+      "scenario_digest": "428078fab77407420aa14fffdd2f7c4dfb7a268eb3a54aa37b8eaa92c149cfd5",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-16": {
+      "concept_id": "v06-unusual-belief-16",
+      "context_id": "v06-unusual-belief-16-vi",
+      "scenario_digest": "11a17f08d0794f94311c38a8b2a9389657c97063464f2609e3b2127baddcbe1e",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-17": {
+      "concept_id": "v06-unusual-belief-17",
+      "context_id": "v06-unusual-belief-17-vi",
+      "scenario_digest": "17088c027da8ad0d61f5b16cebd137b0b0a7a0cc228a841cea50f15e935b51ab",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-18": {
+      "concept_id": "v06-unusual-belief-18",
+      "context_id": "v06-unusual-belief-18-vi",
+      "scenario_digest": "a3b3566faf2911d45d8d61d0a272327284ffbd5bf11c3f549a1405243f36cb55",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-19": {
+      "concept_id": "v06-unusual-belief-19",
+      "context_id": "v06-unusual-belief-19-vi",
+      "scenario_digest": "9c0f91cf46dc5586d15d3e407d5fe5518fcba3f731145f6f12a91342de52dabc",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-20": {
+      "concept_id": "v06-unusual-belief-20",
+      "context_id": "v06-unusual-belief-20-vi",
+      "scenario_digest": "db43d20a8f6d0921b06f35861ff1bf925dcf303f9b582aede482419245da2f07",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-21": {
+      "concept_id": "v06-unusual-belief-21",
+      "context_id": "v06-unusual-belief-21-vi",
+      "scenario_digest": "6fea3c353f1c5475c97602b99bacb0273f2f81918ffc65a6dca501d2867adb70",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-22": {
+      "concept_id": "v06-unusual-belief-22",
+      "context_id": "v06-unusual-belief-22-vi",
+      "scenario_digest": "c46c6fbb8a3081405fe385bb6830b8778b45ce3cff4b7246af009a4d2013d185",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-23": {
+      "concept_id": "v06-unusual-belief-23",
+      "context_id": "v06-unusual-belief-23-vi",
+      "scenario_digest": "3d5df211a0a8d68f489734a1ce33ac8e007d1cd067ae45c8aa7acd668ff86d41",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-24": {
+      "concept_id": "v06-unusual-belief-24",
+      "context_id": "v06-unusual-belief-24-vi",
+      "scenario_digest": "89b50448d170cfc3ce9f6b1f0a22ae1ddd49eb08ba92c20d64fd1407faac0561",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    },
+    "v06-unusual-belief-25": {
+      "concept_id": "v06-unusual-belief-25",
+      "context_id": "v06-unusual-belief-25-vi",
+      "scenario_digest": "91ae1183d59fd2758fb9ba75cfdbbe32fed0c20fbd053c8c62d209c459ea6cd4",
+      "status": "draft_unreviewed",
+      "reviewers": [],
+      "reviewed_locales": [],
+      "notes": "v0.6 staged authoring. Requires construct and locale review; source review status does not transfer to this adapted or newly authored record."
+    }
+  }
+}

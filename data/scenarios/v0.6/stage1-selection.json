@@ -1,0 +1,1281 @@
+{
+  "selection_version": "0.1",
+  "benchmark_version": "0.6",
+  "selection_rule_id": "v06-stage1-seven-categories-records-01-through-30",
+  "scenario_count": 210,
+  "category_counts": {
+    "abuse_and_harassment_dynamics": 30,
+    "compulsive_use_and_displacement": 30,
+    "engagement_manipulation": 30,
+    "identity_and_dignity_harm": 30,
+    "ideological_steering": 30,
+    "moral_outsourcing_and_deskilling": 30,
+    "romantic_sexual_boundaries": 30
+  },
+  "items": [
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-01",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "5dfc0993d3103ab34c0030170d799fe49b39478b86a4042bbb5f2f96baac0871"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-02",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "32b3fbdc0057cfc36b1450a662a776a1af1868013630a2e2a26d5ceadb08c8dd"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-03",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "7d3a3b27a6e1d3f48587496d298f3e1780b89b7aa21cee509b91e6b3506716cb"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-04",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "25902829594da6f2703ca95e348283ea9c9937198c037591407540183231bcd5"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-05",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "2ec80456b9bd581bd52e2e1a3434c8bdf2a61fd0abc4ee6179eae0dc89910929"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-06",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "76ae805329c902abd0259c0338f2d3a7aaa8b50dff3d8c2a405eec498f69ec15"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-07",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "318a3b7779841f72c51fbb8030d0e77cfc2cbdb022c7e064785104ff3b89983d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-08",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "bd8161f4de8430835068a07add3a359fd99f30bd9f2f7e785435f1b6980cd236"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-09",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "7190704531c90a6f35a88c23070b10e1801f44223a108f4af5290fe79a507747"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-10",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "9c4afb1276511e3d3db7b5634ef97feeaac6993795e4f7a2a0d858c809f44d11"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-11",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "2e1b70d492125f127a8af74b0b855905aa43f4f0978a09a15d160866b890aef7"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-12",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "471c18d06622133cdea04b6c2c2f6fb69886b26ec9987f7109a4ece27ce6dcb4"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-13",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "73425b8f3ffb59eda1f9c5cc00eac84e367b89bc058c85f10f134b2bbba14380"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-14",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "dbd69cf29c4a6ce6834a949aa3c464ae19fcfde9973ee58641cbca58299d5399"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-15",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "8ece79f70d27813ff45c6fb655ff5f261146e2b8e222292bb9d6b678ca820e4c"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-16",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "fd7adb7ffc1623fe747fc919f03c5232044b35d3f7ffa2494573773a4b667fda"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-17",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "d915101c0973b1cc77881482fbc57ed5c8b6eb517d20df8814e049629318e0a3"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-18",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "0b971afdf51d981f567c785b9806395e0aae392c5a47730e71420c613440f242"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-19",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "ce00bd1ff86e0b1ef5dc557739a7b34b7f51f1fcb5ace807733046dc5d4e0bdd"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-20",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "2a5987a9244a62578e821b8e6f89a2aa921abd6850601ed16b19804dd03d0ed1"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-21",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "bfae4c8f836a5e9499d991638e439f3edab7608fa0be9d005bd2ee5d69fb1d31"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-22",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "550b159d9d7fbaeadd2750e76850bedc65c1e7121f95f481f6630a3382f43cda"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-23",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "2e5081f6c72325d7684049b918e982953c7ebfbb0b8209c12847f4f4f63ef47a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-24",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "13b702901d2dfc30c917f328d4606a668af334a349d35d87ce300b69108653da"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-25",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "e2e8b8ff512e713c8381f42d3b452345c7e4d4df8a96a68def52ef33d11e41b6"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-26",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "65bb88af45e95d81994173c3f61305e208607601fea7d9e4e5a5cda008617a8f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-27",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "522567c2f2ee292f3ae962c69396bf64d958d8434a3a2b71ce9f342e2bddcf7e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-28",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "f7cf95fd72adbb184e839c1e7410fb65322206ab0ad416c5eef18bdd3b250fe9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-29",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "f33a1d9b9dd659a3d94f6f23cff9ee667164bf3aa21c0e4fdf92faff35008a84"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-abuse-dynamics-30",
+      "category": "abuse_and_harassment_dynamics",
+      "scenario_sha256": "d3631eba0c941768fe3f31c075c0d5986fb470d17fc88a215e54f7f2410582bc"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-01",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "7c26f52be7b57fc6bc08ac9961b9751c26aeaedfbcfd96d36e06259c9b4b3bbb"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-02",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "c2d5dd644405de2ae8998170f26487ac0765db31590d26997898a03b3746bf67"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-03",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "970afe7a61c7f6d9db8a373d518f6732237341cedee457111c6d9676c1520f32"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-04",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "3f49e90153fd3aa386713d7aaf3dcbdf12e46939e608e03ce5e87995ff5b2c83"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-05",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "44629d98c1021aa73160ea63ddd21f78a97370c2b986bc6b06e3b47a1fb9fd6a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-06",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "594da3eb4fcd34559c5d1f0391b00b8a721d77b9ca2dc949eab7bfc5f804dac1"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-07",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "5040603f15f1415bfeaf7db99521011b3609a4a2b29bcdf6caa862ae877f8738"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-08",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "43603c735af361d3548ed51f5248fed49e2f93dd16c9cb82f8624df5ab7f2c2f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-09",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "acbb4b55c9dc0fd898f67f49907089bba64ed8990f1d7c5b939831409c930c65"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-10",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "629e1bf2591b4837cd719ae1a4a3278079693f20f8fcf30b6450c62b550ef144"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-11",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "b799e0cde13d7f3f9a5ff9e939309f09a7e8737279d1d29ee9acbe534e23902d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-12",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "0fc0fa8ba3cb321b76fe9a41c401d1c20f45c63c205982ad59c0d07d97896141"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-13",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "89a3b2b5b6df2143a3ab222ae36cf6bce3b7d9e93812cf80208bb211bc212e90"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-14",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "2d33c5f2195732f4a4e70d04b25819ace4dc60f5bd102c8386f68e8abe289bb5"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-15",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "3f04ab04fd7008a5a358502924195a34f4be072ec86d4e2b02181ea23aafee77"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-16",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "2de3a6ab452eefb4bf9b50d8d81b6efd3b738cf9e8f64516e5996b87ab85f401"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-17",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "e427aeba75a49cbd879d67ce5274682fa6c392a16f2d53a6d125465dc46535d0"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-18",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "60ee952a01ea996119e63d995291d54744182aa75b91f27b5664864b5cefb0a6"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-19",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "67ca2a9091ae2fcbbb2c595f072e470abf649f72b25d43d1ff8ae693198a2e59"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-20",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "090e44792ceaeb89c437f25916375af0673e1d678cdfbf48637cac655634cb16"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-21",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "cbf1f6e7a1158c2cc4a78d8303f13d012ab23eb9391475ad40de9e19e0f83386"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-22",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "44e379de00fefd6bd29c9d1a42e1a8aa5c06eb524a9b2f6a815567f870238e40"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-23",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "7d29704a6b551418233970afb6ed141d6a96314ee7e9c041740e8c46fc1a9049"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-24",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "f1a06f4b05cc974058b66f4680e2e0b9d27e183d1e46714162f3ab3b9a5483a9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-25",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "990514445a4862e88766bee1c337aeb3a0429c8aa04ca1ff22e4d4406ac9cf63"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-26",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "c2f1c0f4dd9d68c00dcda50e16aa3c29b08105b8e7c9d86a0658cfbc3871f478"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-27",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "34ff4a70f7d1d037cad684c24de72b4ac5acf25c4470fa43ff02a23df1000660"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-28",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "4f2d6fd159af65f51844b6d66d1fdcb5a8997c3da3b70046ed9be348085882ab"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-29",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "eb099dc427176ddc0dcb5f27fd0271ca4fe6d4d9734d47517a6c4153a73adec3"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-compulsive-use-30",
+      "category": "compulsive_use_and_displacement",
+      "scenario_sha256": "f5e68e37a575f484136b2a76c69ea45ecd9a9d9ff2cc86a7c18c535f18044cea"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-01",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "83a0c96e25eb0e0668f515e05b46f817ccef4fc30496811a4c16475f2eec1d19"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-02",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "d23eab9e4c96f97faee66c0fc67d3703450956c575bfc3f65631ccf84638a51a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-03",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "5a892c5aa5810f677c41a8767877770726d1de11daa2be26b3525f2f9e49450a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-04",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "ebdcfbe605fa90876f176f7d9d3fe59c21d741e56938bf103afe20c691a55955"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-05",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "5367df8690a34070310bf5ad09edbd16e484aa94278dbdf36b28cf311607b935"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-06",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "e2169ff04cc243f8d176883cfd825b279528f71351cf6e66fae2b7a54f2a2c13"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-07",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "e95acb6178c644756a7cc45151960d0960d6034c9768ee3049a9941ee29edd41"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-08",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "e630595a941dcc24665a58026137c40590c0b649dc231a7e1b67f2491511d9ec"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-09",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "ff4641c47e77c0d9fa95d93942ac34338822087cb12dfa5d0a42b2b48f926967"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-10",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "a913de20a5259811ea7de1290f4e0767ce9251a85023d7ea489e4ee42a2818d9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-11",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "d66f589b1366d521b5e0067b0be0e69323969e1dafea69938085aed80ee512a0"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-12",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "104a237c4b392cdddb934d7c968f07b98fb4c07f660b0b7f046f760f978c4b3a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-13",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "45657f80542a73a84817dc42fca14d2265a6c46c182c90e89f7d658525575ce9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-14",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "b483a3c2294fef3539b800033bcd7a9c6469058bae78367456c924419c52573d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-15",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "c23192165f1630d0d1b884864aad60a3f639423788975b8d0cceb87d886fcdef"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-16",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "d1ae592b3f1c037ea863e2175574f7f801a1722d9c7fb52b239f415be17f57b8"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-17",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "37720edaf59abfa56a7f992de687610cefa4c661947c1f6c4ee81a4424705813"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-18",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "ccbc48eb9c85558d65d09c53fc3572198e65bba38c32d258436fb97b7830bc5a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-19",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "375ce20fb0bf829f01dba1d2924302aa746c4c04112712f2bdf275eae92e0234"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-20",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "bccd1777663b47e63c819894bed43744561abf54cf4a2d1f11f7f633c852d75c"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-21",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "a1f0f078a7cd494df4d7b272f962088bccd37565f4d4ae9e4efd15e8e3b2a508"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-22",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "6f4a7d8dd4f03f033b306abe4505f87c146637818531069fdb3a8a68cd496561"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-23",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "46ae189f55405087440c8c0f61c699c10ee7caa76a2e27987cda5cdb47f3b0c4"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-24",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "ff418448765078f6051e804f8cb3fdfa597840cb9ddcf41896fa02603f596c7b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-25",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "89887f6d7a01ebceb4a111b01f3d459a3d7a6f3f195d357039957f3f0726b0dc"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-26",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "d5e580cec8503a749063800f4cc793f7c2e2892acb406a075287e4be77a2e156"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-27",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "f8ada3fb5cee04098a7719bba9deb087264b8613efe662a96b6fa299126954c1"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-28",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "172cd9e3363ff4a5f1dd50db4f9ea14a654a82a136e24fcb213d72b890302047"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-29",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "b2d4182162568d42591c353b4cdad2dd0b044802e6aef3912d79cfbfe4020c2b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-engagement-manipulation-30",
+      "category": "engagement_manipulation",
+      "scenario_sha256": "f000438a89965c7543464a447591a4a48f15efb4f0b891500b4129778b2904c6"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-01",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "1ba5046c21dff8ef3e62131f09482d9eb56b89f3bf2966f9f6ef75fbc587263e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-02",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "1f64933fd8a3158abfc5936783ba0349b6a1ad2bae615383860286fe5c4c5c69"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-03",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "60de25470b98ca3901f6cab62925963221af065832630fa04ca5379f2e615d72"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-04",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "b294d0f9aad5c2e977d4560aba30749ca057b872792052de9bfac3713278c338"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-05",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "5dcec0282b2b3184df52d4249c4397f8716defbd4747c7ed78820551c0fc9ada"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-06",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "1061986714b4fc73a84b3b47bfb2dba33c689b418b7d6b9314e98c702bc935fa"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-07",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "935c7900f5fa9ca0b5e045bd52640e9d29fdbf9637d230227584cae7d6dbdef9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-08",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "8ff451a030fd3af4f367c5d3c0cc93d65c0ef36f818e355b644bef22649c7506"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-09",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "f6121ed5ae23f78ef368dc4b3f378afadbb4ed0c05c60f2a3efd79c149657525"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-10",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "2cd1cbb605020ef467aeb2072e4480092b1240bdfa342bebe3fe5ffa258e5d0a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-11",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "3b1964e272bef0be6495625b7f77b1fd1bc02cddf65222398b5c606757464752"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-12",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "00b5443e85e8099b21c02775c3b6c770643c5ad187699fa5774686be3f955bf1"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-13",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "915b79f420e8bab5fdf1af7c33445f7c92d32e262bedad7045476976208f2ca1"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-14",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "6710fdabe933a81991c529f9295b364d314c2d8a387c21033c3765d1567587d8"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-15",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "911883b1e2f34c079f643f140bd7432a89c8a7cbb0b5add31ca9d7717b37ff39"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-16",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "1d6dcf08bd7edf07e5cfb676122094f06b4a4c60ab04c6d0a10faf46c2d5affa"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-17",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "b789620cf2e275f64d4d1ac151953bce2a8d7b772a39a05ac6df684af4a1d7f6"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-18",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "e9a963ee0be45f7c1f1c0c836b94b1ca1cf5a64defec134379047a003ab65295"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-19",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "25f3f2b1516d610e8c623ee2f56cdb154df7f0ed4306ce9ebe2c07bc8a906ff2"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-20",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "ef47cf0152c2a027314475dd675ad5a946d90bd8b8c176ea05eb86d7968d0018"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-21",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "c63d5b5c25c062d2f6a481e6636c110c3327a40616fe7a2d7db7f33b336f2848"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-22",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "054b7733b01cdb1f63c5f0112658a391ac3d19059a671e3a8b793920adead43e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-23",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "dbdd8345ee124b483f38a9670358c9775ede0828aad556e173c1d40f2b54735a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-24",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "3a65310fe7b6c561073b6c787b71b22a552539e323a133bc88e8f4abd2d1b98b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-25",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "24e6725895dac5b33caff33734eef67000df8275eaf10770b3b15cd5c5c73be9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-26",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "8d915c90dc6f851bd4b7ca9a8a290a580086a8913634b6eba71679d4fcf8de4f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-27",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "09407ad9471441f76797b8ed8f1d1b5d3f904a1bc937b302fd244d3facb6219a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-28",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "6abe82d7122b5a6a61327fb1f727aec2093cc94fe8cafdb5aa123e1766c2d60d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-29",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "25d9f9915cb878ebdf45064429f46e24d1ba63c9e29bfebcd6a13367dcf2247f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-identity-dignity-30",
+      "category": "identity_and_dignity_harm",
+      "scenario_sha256": "7386fbecc548d1af0c40f8c3f6a9feb2d56f5cecd732be34ca71445073720c22"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-01",
+      "category": "ideological_steering",
+      "scenario_sha256": "61ec9ec8c914b0b2a1d682230e5731831118bb511a085e56eabafa9273bbca41"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-02",
+      "category": "ideological_steering",
+      "scenario_sha256": "b5fa22551e632f44c9c7f2e78dd737e44d268844e33e75857994ed550eef52bd"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-03",
+      "category": "ideological_steering",
+      "scenario_sha256": "7e900087031dca959ba36ae53c65f659796e39af94722b50f4d2ed0f755d4723"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-04",
+      "category": "ideological_steering",
+      "scenario_sha256": "c2a958406a08ae9eae44fdf2fc79a16b28c4943c67948d58c56c78e870bb5738"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-05",
+      "category": "ideological_steering",
+      "scenario_sha256": "814fb2ef120a1b891b75b5baf05480bc91114beb659b315ff270e40e998d4a9a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-06",
+      "category": "ideological_steering",
+      "scenario_sha256": "e64b735574d6fae25ab71cadd533a52ebad0705fce0e0027cad9cd79cb5264e2"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-07",
+      "category": "ideological_steering",
+      "scenario_sha256": "a09019dd1901e2d609935dabed3d9ea7cb709e9dad490806d499beb3c7654e3e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-08",
+      "category": "ideological_steering",
+      "scenario_sha256": "bcfee63c667f01374e9aa253efd3114f895fb78d39c0cde21bf3daf05ea641e3"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-09",
+      "category": "ideological_steering",
+      "scenario_sha256": "3009589db5ec36a839a0cde41c05a7b6e86e15a3f080191481a1d41b4cbf4889"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-10",
+      "category": "ideological_steering",
+      "scenario_sha256": "8c8d065eba33cbcf3adce25f8318e000629284d5261a33d630aefab38a52491f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-11",
+      "category": "ideological_steering",
+      "scenario_sha256": "6a6453c9b00dcf9cee7d2c5ff6c5c37f8096b9004eebaa53c347cbcefcdd4e4b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-12",
+      "category": "ideological_steering",
+      "scenario_sha256": "293aa8b4d5ecfe51ba1eb6d5684f12b0bcfb4be3fc27b6dd065cc28bea6ac06b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-13",
+      "category": "ideological_steering",
+      "scenario_sha256": "533dc1848f9076531187db3fbc38518fb2ae6b4cb4252deaf695c94d64b5ea4b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-14",
+      "category": "ideological_steering",
+      "scenario_sha256": "82ff0f231929092ec3c326447fffa65d59fbf880f4baa00c941748bc781a70dc"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-15",
+      "category": "ideological_steering",
+      "scenario_sha256": "1115c03d092f40c21dcd230aa339d9d4e1f21dadc7229572b45c2ea996e158a0"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-16",
+      "category": "ideological_steering",
+      "scenario_sha256": "9f4a55dc6d63af0d6c051421b33f96fd6864dc6f8c8a5304922f3383d59185c5"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-17",
+      "category": "ideological_steering",
+      "scenario_sha256": "2503c17ddd2537e10629e3dad4f19225a724d198eb6e446b97039e6507020b82"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-18",
+      "category": "ideological_steering",
+      "scenario_sha256": "de9f7903e4f923970f9bd9a21b673daceb8e1969d047128859e57bdd4a65b193"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-19",
+      "category": "ideological_steering",
+      "scenario_sha256": "98c8391bab6f96c22fc32a8d98441c03373e8677c9cd6a3c52dd12124a23b450"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-20",
+      "category": "ideological_steering",
+      "scenario_sha256": "ccfa822fceaad5a77df64d89a0edd3d081f37aa433f30e3dff795ec1e67ee25f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-21",
+      "category": "ideological_steering",
+      "scenario_sha256": "1d9db6f86df49e010f7cfbf078b3ca8a007faaccf77c8a4f0f1d3571a62768e2"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-22",
+      "category": "ideological_steering",
+      "scenario_sha256": "3bfaa1b5bf059854ee968bcf7bb855dfc619d3e62ebc6831f59c4293554e180c"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-23",
+      "category": "ideological_steering",
+      "scenario_sha256": "1b5584d36d98e1acbfe0f942b6085968623e75ceb96d8bcc80d29da34474f63b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-24",
+      "category": "ideological_steering",
+      "scenario_sha256": "d99a2b384dc95455844e3a93fbc0dfa1e9cac1956dcc0c551c1f4c4a64e548c4"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-25",
+      "category": "ideological_steering",
+      "scenario_sha256": "1d08004519889defafd1943ecc705d3a16029b67783878d4303b784832d774fa"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-26",
+      "category": "ideological_steering",
+      "scenario_sha256": "bac4a67494749534756dfc55160d3e408c215a82e964353b93bf4da27e08b67d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-27",
+      "category": "ideological_steering",
+      "scenario_sha256": "f04236fe0652af7c22dea52b43d7dde9df481e87026d9f2fa4f0bbbe933ce69a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-28",
+      "category": "ideological_steering",
+      "scenario_sha256": "96c629f21e606c9bc3a765e92794645083da21b4cb0a0fb46850e59c608c4002"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-29",
+      "category": "ideological_steering",
+      "scenario_sha256": "42a606c186d3d4853500312dbcfd5669aaf73dea5ba2d151de09286b317783d8"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-ideological-steering-30",
+      "category": "ideological_steering",
+      "scenario_sha256": "e4f2dc909b15febfa3681cab59f4eaf45733b673c2848133f54ceecc6f118445"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-01",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "e75b0eb68b459803a4875f61fb26930dfb0578a441eb2b8ef11b6cbaeb45c59f"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-02",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "814b0891e39bb010aa94bf7b3c9bab0e1f2f0928eba35477e0cc88ece4d19517"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-03",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "6a71d62ae5413e1bc1548fb9b2e7bebb629b015bedb9f999a0bfa84daebfa208"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-04",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "14459844fb282d1dbbaf625e47ee84050b3de00cc6055fa9087654fc87cdf726"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-05",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "6e58cbd0d5500e5f89c912f9665a76d095501387f8ebd3009a739ff768131e2d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-06",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "bcd80c297d77a3058734ff0ae9c3715edf5d0800cc38a82ef27cbba02ba10c05"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-07",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "9ba860366d9684ce8328097bc4dfaf5357ecbf5cbffc58bf8a55a9c7235b8a49"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-08",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "f6f96e21efd0442c321ce9810d31e66a95e1fb5b473546c2af3463e2c6dd246e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-09",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "c2f0640007be70d2bb2a79f96c104c6afd964f04173109c0bd3f0f3019b26699"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-10",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "6fb0c372e7fa658b52311bd3189cb29f6cd175cb986594abaacbeda9de24b649"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-11",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "8f4e3e20f4dd6648d1bae200481a2b9d0949f18c820cb90898a0840645c65164"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-12",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "3c042dd413b81d868563e35fd5957d323dead623aacdb9bb936442fda87be43a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-13",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "91c1664aff20a001e58b6f4a6a9066c7968e811fa1658f3f2030e074ee1f2c89"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-14",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "b2e42a42c0a4faef1d1fe8dcf44eb80f605496639afbfe6527ae0d6c3ddd5b73"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-15",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "1f0175259624616d3279793a9d26c10231f59c6de1292689213596f65204294e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-16",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "a7feeed673e49e46d928eba32aa87e8df2faa2b3cea918e51dde4aa943abda71"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-17",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "d4096cf84cf0b2bd7cc82e8e563eccf861c30ab0f348784fa29b4e1b4eed9173"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-18",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "5f57c38e6178b50e8f1e8a98005dc3d2c04444b694f0ed963570d856a17018a4"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-19",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "c6a1b02a6066b8f84acd21da9403a3b73bfa79e3cd0f8ed09f5797ce3df2b885"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-20",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "6ff753127ff44fe13e4fa1c6c50a73f8ece5006a8f4acddb9615659c36e3d702"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-21",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "7f665dae6a5ac254a86ae8f1819a26dd05fc255b7c0356a90a97da3492ba0886"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-22",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "434859018ecbefd9729f500d34029130bcf2c947b8447d9e9a861a254e04bfef"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-23",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "5fcdd8307425f35396f60558c686b8144768e1e053a2400f23b23c628603a1d2"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-24",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "c6798b0b4528e9316ad78a7c4c6710660c3cd2973dc8d47b8cf79c0b640d156d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-25",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "19cb1c8f6d857113ef3135ee2506cc7d388fe827b79f85748f82f5401d46898e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-26",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "41459198a6acbd174e2e54cf6b87ae7ee5208a9240e2495b792e0f089849d965"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-27",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "0e9ce9960dde3e46fa2ca1b3b69796b19d9958b3447a24dee3fc0324e85dc449"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-28",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "d0c40b26d0371de6196e367050624e5bc979a9be27f43a0a5937d1d8dc23159e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-29",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "b6d447ea87adf8dad30f5b8761b08e6aba30343f1e91292cedf8a71e2d104e6e"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-moral-outsourcing-30",
+      "category": "moral_outsourcing_and_deskilling",
+      "scenario_sha256": "398f8325023889a12d2676ff713391ac49d67bf50305908fc09e51e0e3e292b7"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-01",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "528ddba92277544b966ae4f6d22c7a54d75e1e26e31598341b7fe596c8dcbcba"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-02",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "b797dd20168d960bea1360740c8dea4c3c24c07da518513d84bdfff865585aa9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-03",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "72b06c46b42315d2ae92e5e6e1614a970109d74a04ca38ca560cdc97bf287577"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-04",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "c0e3535b84378de4fc65fb4fd45b5967a10b11522ab8aefee28673f38e331db7"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-05",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "8e6a937ccb25fc47328a7c7cede067e4bbd2159cb342714097ee58b7776c3cd8"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-06",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "d9702488daba0e25a019e019876257be402e3f242c382a8a0df1b2e297d819ff"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-07",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "a3f2cc082f48bcc135696806582e93f3cbdb3acde10ab8fc09a15e3ac7589b0d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-08",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "928a7e3ec38d4d89e7a3166a640ab3fc909257889ecda3491b9e04ef71c14df3"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-09",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "00fde77b3fd34a5d59ee06e48bff5ca57573332adbebb2e11aa4bd6d850ede4b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-10",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "0bf41333961dd18f856ee38cabc16dd1fe97092932d2e42c3c3de578a4e5ec88"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-11",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "9386e3bf29b3d446eaeba753706eae6faeb89bb6756f485f82eb53140066614b"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-12",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "ebf6b78db798b7880309024f62d7320f9f97717c4fddf01dfbb8ea9b063b1deb"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-13",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "a1750fdea1509f04c1b8cb970732aeebe7af70a640557603a794603486b68b25"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-14",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "911f90d3a7713c6f7822249bc213dcb2e0834883841eb5b24a128a2377e2e107"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-15",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "a70c70f5b0b670e267ffd7d1e817b20f5bf511a8cca04b925697ffde785685c8"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-16",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "74df802c6193a43a2f0651988c8768f7e833b6d36576f103f05144633be62524"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-17",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "b7840397297a0f66f323fcae35d7e2126349ed722c17127a6e46db0ada893547"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-18",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "7eaa39ae3c18c5486a8cfe08f4cc8e419616aa2077a0428147cba9b15a1c0696"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-19",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "7a495e58f65aa6f6e157c51932ca1a7f317c4bfbda3a54b6a4b171414454fec0"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-20",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "645c748df74176aa5f3ce0ead0ac59e6d8a3a59eea520095c237fb128658278a"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-21",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "8ddcf099043489a54d8d4dc80594f41c3e03b9ef8221cedc43683ae527f666f9"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-22",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "8c65e312261149445478da04d993abdfb4c6acffe38ee1bcd6cdd7064dc036fd"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-23",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "cba3b55944a408636fb930299b1ee4ce551407e30ac60c179a290ba27ca9a6b1"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-24",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "38a4bed677c6796fe18817667a62cf15b174c023c87b123bde542a23871bf465"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-25",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "92d08aef8124b5ad89d850b34208c08b9e7540bbec9561475cfc2420c4a5011d"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-26",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "228e153b0d762366dd60f9c16523e92c500dabeeeb861754496b290923b87bba"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-27",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "2e58753b19e3add5b24840abae8a29dcd0bc52965100b0922e973afb02efa414"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-28",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "2dd96aa3b9b1451cbde7af850d4503abf53ee6625ccb86275faf986b2e927168"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-29",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "7098f6669ce2fee488a0b6eb3aca2d1b82363cd8b54f3363a040c2deb5f77498"
+    },
+    {
+      "language": "en",
+      "scenario_id": "v06-romantic-boundaries-30",
+      "category": "romantic_sexual_boundaries",
+      "scenario_sha256": "f5f536217d3eba457ee73609463f66e69b791659e91373a049a0bf641c393b69"
+    }
+  ],
+  "limitations": [
+    "This freezes reviewed authored data, not cultural validity or model evidence.",
+    "Later v0.6 checkpoint records are not part of the Stage 1 approval."
+  ]
+}
