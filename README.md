@@ -299,6 +299,58 @@ substitute for trained human review. See the
 [deployment-gate guide](docs/deployment-gate.md) for provenance, secrets,
 policy, REVIEWED evidence, and APPROVED release requirements.
 
+## Latest v0.6 split-level PREVIEW dry run — 2026-07-29
+
+A controlled bilingual comparison was attempted against all 800 English and
+400 Vietnamese v0.6 scenarios, with three assistant turns per scenario. All
+targets used the system prompt `You are a helpful assistant.`, temperature 1,
+and max tokens 10,240. GPT-5.5 rejected temperature 0.7 because that endpoint
+supports only its default value, so temperature 1 was held constant across all
+three candidates. The fixed automated judge was
+`openai/openai/gpt-5.5`, using provider-default sampling and strict JSON output.
+
+The endpoint did not complete every target and judge split. The table therefore
+reports only complete split-level evidence; it does **not** report bilingual
+model-level scores or rank results produced on different languages.
+
+| Candidate | Evaluated split | Records | Overall | Base | Penalty/record | Total penalty | Penalty events | Safety flag | Deployment |
+|---|---|---:|---:|---:|---:|---:|---:|---|---|
+| `aws/anthropic/bedrock-claude-opus-4-7` | English | 800 | **92.53** | 93.38 | 0.84 | 675 | 24 | false | **HOLD** |
+| `openai/openai/gpt-5.5` | Vietnamese | 400 | **91.29** | 93.21 | 1.93 | 770 | 27 | false | **HOLD** |
+| `nvidia/nvidia/nemotron-3-ultra` | English | 800 | **63.68** | 75.28 | 11.60 | 9,280 | 271 | false | **HOLD** |
+
+Opus 4.7 and Nemotron 3 Ultra are directly comparable on the completed English
+split; Opus leads by 28.85 points in this automated-judge run. GPT-5.5 was
+scored only on Vietnamese and must not be ranked against those English scores.
+GPT-5.5 was also judged by itself, which adds a self-judge bias risk.
+
+- **Opus 4.7 English:** the lowest dimensions were crisis safety 86.90,
+  emotional attunement 89.57, and social connectedness 90.09.
+- **GPT-5.5 Vietnamese:** the lowest dimensions were memory integrity 85.96,
+  cognitive agency 88.71, and friendliness calibration 89.29.
+- **Nemotron 3 Ultra English:** the lowest dimensions were trust calibration
+  67.81, epistemic grounding 69.54, and emotional attunement 71.64.
+
+Nemotron completed target generation for both languages, but its Vietnamese
+judge pass stalled after transport disconnects. GPT-5.5 English failed on a
+remote disconnect. Opus Vietnamese repeatedly returned empty assistant content
+and HTTP 503 responses. Verified target coverage was 2,400 of 3,600 planned
+scenario records, or 7,200 of 10,800 assistant turns; verified judge coverage
+was 2,000 annotations. Missing, partial, and exhausted-retry splits were
+excluded rather than converted into safe responses.
+
+No v0.6-specific deployment policy exists yet, so the v0.1 or v0.3 policies
+were not misapplied to these reports. `HOLD` is the fail-closed deployment
+interpretation of incomplete coverage and `safety_pass=false`, not a claimed
+v0.6 gate-command decision. Hosted aliases and configuration hashes are
+non-release-grade provenance because they do not identify immutable model
+weights. Current `concept-` tags produce one record per cluster in v0.6, making
+ICC 0 and effective records equal to physical records; that diagnostic is
+mechanically uninformative until concept-family clustering is encoded.
+
+The local transcripts, annotations, and reports remain under `.local-runs/`
+and are intentionally excluded from Git.
+
 ## Latest v0.3 English PREVIEW result — 2026-07-23
 
 The latest recorded development comparison used the 200-record English-first
