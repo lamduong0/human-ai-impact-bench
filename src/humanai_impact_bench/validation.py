@@ -17,7 +17,8 @@ from humanai_impact_bench.constants import (
 )
 
 _SCENARIO_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-_SCENARIO_FIELDS = {
+_LOCALE_PATTERN = re.compile(r"^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$")
+_LEGACY_SCENARIO_FIELDS = {
     "benchmark_version",
     "scenario_id",
     "language",
@@ -33,6 +34,12 @@ _SCENARIO_FIELDS = {
     "dimensions",
     "tags",
 }
+_V05_REQUIRED_SCENARIO_FIELDS = _LEGACY_SCENARIO_FIELDS | {
+    "locale",
+    "protocol_mode",
+    "matched_pair_id",
+}
+_V05_OPTIONAL_SCENARIO_FIELDS = {"prefill_messages"}
 _PERSONA_FIELDS = {
     "age_group",
     "situation",
@@ -116,20 +123,61 @@ def _validate_string_array(
         raise ValidationError(f"{label}: {field} items must be unique")
 
 
+def _validate_v05_protocol(record: dict[str, Any], label: str) -> None:
+    for field in ("locale", "protocol_mode", "matched_pair_id"):
+        _require_string(record, field, label)
+    if not _LOCALE_PATTERN.fullmatch(record["locale"]):
+        raise ValidationError(f"{label}: locale must be a BCP-47-like language tag")
+    if record["protocol_mode"] not in {"continuous", "prefill_recovery"}:
+        raise ValidationError(f"{label}: protocol_mode must be 'continuous' or 'prefill_recovery'")
+    if not _SCENARIO_ID_PATTERN.fullmatch(record["matched_pair_id"]):
+        raise ValidationError(f"{label}: matched_pair_id has an invalid format")
+
+    if record["protocol_mode"] == "continuous":
+        if "prefill_messages" in record:
+            raise ValidationError(f"{label}: continuous protocol must omit prefill_messages")
+        return
+
+    messages = record.get("prefill_messages")
+    if not isinstance(messages, list) or len(messages) not in {2, 4}:
+        raise ValidationError(
+            f"{label}: prefill_recovery protocol requires exactly 2 or 4 prefill_messages"
+        )
+    for index, message in enumerate(messages):
+        message_label = f"{label} prefill_messages[{index}]"
+        if not isinstance(message, dict):
+            raise ValidationError(f"{message_label}: must be an object")
+        _require(message, {"role", "content"}, message_label)
+        unexpected = sorted(set(message) - {"role", "content"})
+        if unexpected:
+            raise ValidationError(f"{message_label}: unexpected fields: {', '.join(unexpected)}")
+        _require_string(message, "role", message_label)
+        _require_string(message, "content", message_label)
+        expected_role = "user" if index % 2 == 0 else "assistant"
+        if message["role"] != expected_role:
+            raise ValidationError(
+                f"{message_label}: role must alternate user/assistant starting with user"
+            )
+    if messages[-1]["role"] != "assistant":
+        raise ValidationError(f"{label}: prefill_messages must end with an assistant message")
+
+
 def validate_scenario(record: dict[str, Any]) -> None:
     line = record.get("_source_line", "?")
     label = f"scenario at line {line}"
-    _require(
-        record,
-        _SCENARIO_FIELDS,
-        label,
-    )
-    unexpected = sorted(set(record) - _SCENARIO_FIELDS - {"_source_line"})
-    if unexpected:
-        raise ValidationError(f"{label}: unexpected fields: {', '.join(unexpected)}")
+    _require(record, _LEGACY_SCENARIO_FIELDS, label)
+    _require_string(record, "benchmark_version", label)
     if record["benchmark_version"] not in SUPPORTED_BENCHMARK_VERSIONS:
         supported = ", ".join(repr(version) for version in sorted(SUPPORTED_BENCHMARK_VERSIONS))
         raise ValidationError(f"{label}: benchmark_version must be one of {supported}")
+    if record["benchmark_version"] == "0.5":
+        _require(record, _V05_REQUIRED_SCENARIO_FIELDS, label)
+        allowed_fields = _V05_REQUIRED_SCENARIO_FIELDS | _V05_OPTIONAL_SCENARIO_FIELDS
+    else:
+        allowed_fields = _LEGACY_SCENARIO_FIELDS
+    unexpected = sorted(set(record) - allowed_fields - {"_source_line"})
+    if unexpected:
+        raise ValidationError(f"{label}: unexpected fields: {', '.join(unexpected)}")
     for field in ("scenario_id", "language", "category", "risk_level"):
         _require_string(record, field, label)
     if not _SCENARIO_ID_PATTERN.fullmatch(record["scenario_id"]):
@@ -176,6 +224,8 @@ def validate_scenario(record: dict[str, Any]) -> None:
     if unknown_dimensions:
         raise ValidationError(f"{label}: unknown dimensions: {', '.join(unknown_dimensions)}")
     _validate_string_array(record["tags"], "tags", label, non_empty=False, unique=True)
+    if record["benchmark_version"] == "0.5":
+        _validate_v05_protocol(record, label)
 
 
 def validate_annotation(record: dict[str, Any]) -> None:

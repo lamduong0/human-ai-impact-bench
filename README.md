@@ -22,7 +22,10 @@ HumanAI-Impact-Bench asks a harder question:
 
 The project is in an early research phase. The current development snapshot
 includes bilingual v0.1 and v0.2 scenario sets, the 200-record English-first
-v0.3 expansion, and the 56-record English-first v0.4 expansion, alongside an
+v0.3 expansion, the 56-record English-first v0.4 expansion, and a
+maintainer-reviewed 400-record v0.5 stateful-personalization coverage
+checkpoint, plus a maintainer-reviewed 1,200-record v0.6 balanced
+legacy-category checkpoint, alongside an
 annotation contract, transparent scoring, deployment-gate tooling, and
 study-design guidance. It does **not** claim to diagnose users or establish
 causal human effects from model outputs alone.
@@ -38,12 +41,17 @@ normalized technical identifiers:
 
 ## What is included
 
-- 288 publicly available scenario records across v0.1 through v0.4
+- 288 released scenario records across v0.1 through v0.4
+- A maintainer-reviewed 400-record, 200-pair v0.5 coverage checkpoint, with an
+  800-record mature target
+- A 1,200-record v0.6 checkpoint balancing all 24 legacy categories at 50
+  physical records each, with immutable-source lineage and digest-bound review
+  status
 - Sixteen aligned English–Vietnamese scenario pairs across v0.1 and v0.2
 - A 200-record English-first v0.3 corpus spanning 25 concepts and 8 contexts
 - A 56-record English-first v0.4 corpus spanning 7 newly authored categories
 - Thirteen independently reported benchmark dimensions
-- Twelve explicit critical-failure penalties
+- Fourteen explicit critical-failure penalties
 - Deterministic JSONL validation
 - Provider-neutral annotation scoring
 - An OpenAI-compatible runner for internal and open-weight chatbots
@@ -62,7 +70,10 @@ normalized technical identifiers:
 | v0.2 reality-testing track | English, Vietnamese | 16 | 8 aligned multi-turn concepts | Draft research track |
 | v0.3 English expansion | English | 200 | 25 concepts × 8 contexts | `maintainer_reviewed` |
 | v0.4 authored expansion | English | 56 | 7 categories × 8 scenarios | `maintainer_reviewed` |
-| **Total** |  | **288** |  |  |
+| v0.5 stateful-personalization checkpoint | English (`en-US`, `en-VN`) | 400 | 8 categories × 25 matched protocol pairs; mature target: 800 | `maintainer_reviewed`; development only |
+| v0.6 balanced legacy-category checkpoint | English, Vietnamese | 1,200 | 24 categories × 50 physical records; 400 aligned EN/VI pairs across 16 categories | `maintainer_reviewed`; development only |
+| **Released total** |  | **288** | v0.1–v0.4 |  |
+| **Including development datasets** |  | **1,888** | v0.1–v0.6 physical records |  |
 
 The v0.3 corpus is template-derived and the v0.4 corpus is authored
 English-first. Both have completed one disclosed maintainer review and are
@@ -92,6 +103,23 @@ The 22 sensitive v0.4 drafts under
 are quarantined and excluded from the 288 public records, deployment gates,
 and Hugging Face dataset until their required safety review is complete.
 
+All 400 v0.5 records were reviewed on 2026-07-28 by maintainer `lamduong0` for
+`en-US` and `en-VN`. The reviewer self-reported qualification as software
+engineer, disclosed an author/maintainer conflict, and elected to skip a second
+independent reviewer. The records are `maintainer_reviewed`, not independently
+`culturally_reviewed`, specialist-approved, or `release_ready`. They remain
+excluded from the 288-record released total. They are mirrored to Hugging Face
+as a development-only configuration and must not be used to claim production
+readiness, persistent-memory behavior, or human outcomes.
+
+All 1,200 v0.6 records were reviewed on 2026-07-29 by maintainer `lamduong0`.
+The English records were reviewed for `en-US` and `en-VN`; the Vietnamese
+records were reviewed for `vi-VN`. The reviewer self-reported qualification as
+software engineer, disclosed an author/maintainer conflict, and elected to
+skip a second independent reviewer. All records are `maintainer_reviewed`, not
+independently `culturally_reviewed`, specialist-approved, or `release_ready`.
+They remain development-only and excluded from the 288-record released total.
+
 ## Why this benchmark stands out
 
 - **It evaluates interaction effects, not emotional fluency alone.** The
@@ -102,6 +130,9 @@ and Hugging Face dataset until their required safety review is complete.
   model changes course under pressure, rewards compulsive use, becomes
   possessive, validates a harmful conclusion, or takes over the user's
   decisions.
+- **It tests recovery from adverse history.** The v0.5 pilot pairs ordinary
+  conversations with synthetic assistant-prefill stress cases so models can be
+  compared on whether they correct an inherited unsafe trajectory.
 - **It tests the deployed conversational system.** Model weights, fine-tune or
   adapter, system prompt, decoding settings, safety wrapper, and serving
   behavior are treated as one candidate rather than attributing the result only
@@ -325,6 +356,78 @@ not clinical hallucination, delusion, false-memory formation, or long-term
 human outcomes. Direct measurement requires a separate ethics-reviewed human
 study.
 
+## v0.5 stateful-personalization pilot
+
+The development [v0.5 dataset](data/scenarios/v0.5) has reached a 400-record
+maintainer-reviewed coverage checkpoint and targets an 800-record mature
+standard. The checkpoint covers
+personalized vulnerability exploitation, memory consent,
+cross-session dependency recovery, relationship guidance, cognitive
+scaffolding, institutional coercion, emotion inference, and grief or memorial
+simulation.
+
+Each of the 200 matched pairs contains a `continuous` control and a
+`prefill_recovery` stress member. Prefill messages are synthetic,
+benchmark-owned context; they were not generated by the tested model and do
+not reproduce or verify a provider's persistent-memory system. Read the
+[research plan](docs/v0.5-research-plan.md) and
+[category proposal](docs/v0.5-category-proposal.md) before using this draft.
+All automated results remain PREVIEW transcript evidence.
+The staged construct and review requirements are defined in the
+[scenario coverage standard](docs/scenario-coverage-standard.md).
+
+## v0.6 balanced legacy-category expansion
+
+The [v0.6 dataset](data/scenarios/v0.6) now reaches its first complete
+authoring checkpoint: 50 physical records for each of all 24 populated legacy
+categories. Sixteen categories contain 25 aligned English–Vietnamese concept
+pairs; eight English-first categories contain 50 English records, for 800
+English and 400 Vietnamese records overall.
+
+The [checkpoint index](data/scenarios/v0.6/checkpoint-index.json) freezes all
+1,200 scenario digests. The
+[lineage index](data/scenarios/v0.6/lineage-index.json) records 90
+source-preserving adaptations and 1,110 newly authored records. The
+[English](data/scenarios/v0.6/en/review-status.json) and
+[Vietnamese](data/scenarios/v0.6/vi/review-status.json) review manifests bind
+the disclosed full-checkpoint maintainer review to every scenario digest.
+This status does not imply independent cultural validation, specialist safety
+approval, or release readiness.
+
+Load the two v0.6 language splits from the
+[Hugging Face dataset](https://huggingface.co/datasets/lamduong/human-ai-impact-bench-scenarios):
+
+```python
+from datasets import load_dataset
+
+v06_en = load_dataset(
+    "lamduong/human-ai-impact-bench-scenarios", "v0.6", split="en"
+)
+v06_vi = load_dataset(
+    "lamduong/human-ai-impact-bench-scenarios", "v0.6", split="vi"
+)
+```
+
+Or validate the repository copies directly. The language directories are
+validated separately because v0.6 stores its JSONL files below `en/` and `vi/`:
+
+```bash
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.6/en
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.6/vi
+```
+
+Read the [v0.6 coverage plan](docs/v0.6-legacy-coverage-plan.md) before using
+the development data. Structural bilingual alignment, exact duplicate checks,
+and the digest-bound
+[English](data/scenarios/v0.6/checkpoint-lexical-similarity-audit-en.json) and
+[Vietnamese](data/scenarios/v0.6/checkpoint-lexical-similarity-audit-vi.json)
+lexical screens supplement—but do not replace—human semantic, construct,
+locale, and safety review. The
+[full-checkpoint review record](docs/v0.6-checkpoint-review.md) documents the
+review scope and limitations; the earlier
+[Stage 1 review record](docs/v0.6-stage1-review.md) remains as historical
+provenance for the frozen 210-record foundation.
+
 ## Roadmap
 
 - Draft 200+ English-priority scenarios (**200 complete in v0.3**)
@@ -334,6 +437,15 @@ study.
   from `maintainer_reviewed` to `release_ready`
 - Complete dedicated clinical/safety review for the 22 quarantined sensitive
   drafts before considering them for the public corpus
+- Obtain independent construct, locale, privacy, labor-context,
+  relationship-safety, and bereavement review before expanding the v0.5
+  checkpoint toward the 800-record mature standard
+- Design a separate persistent-memory adapter contract with authorization,
+  provenance, retrieval, correction, deletion, and expiry semantics
+- Keep released v0.1–v0.4 artifacts immutable; obtain independent cultural and
+  specialist review for v0.6, run model-discrimination studies, then follow the
+  [v0.6 legacy-coverage plan](docs/v0.6-legacy-coverage-plan.md) through the
+  80- and 100-record checkpoints
 - Add blinded pairwise-comparison tooling
 - Add adapters for Inspect AI, Promptfoo, garak, and non-OpenAI APIs
 - Add JSON, HTML, and JUnit report exporters

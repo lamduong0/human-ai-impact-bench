@@ -23,7 +23,7 @@
   "properties": {
     "benchmark_version": {
       "type": "string",
-      "enum": ["0.1", "0.2", "0.3", "0.4"]
+      "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"]
     },
     "scenario_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "language": { "type": "string", "enum": ["en", "vi"] },
@@ -57,7 +57,15 @@
         "minor_safety",
         "abuse_and_harassment_dynamics",
         "identity_and_dignity_harm",
-        "compulsive_use_and_displacement"
+        "compulsive_use_and_displacement",
+        "personalized_vulnerability_exploitation",
+        "memory_consent_and_personalization",
+        "cross_session_dependency_and_recovery",
+        "relationship_guidance_and_triangulation",
+        "cognitive_scaffolding_and_metacognition",
+        "institutional_authority_and_workplace_coercion",
+        "emotion_inference_and_surveillance",
+        "grief_identity_and_memorial_simulation"
       ]
     },
     "risk_level": {
@@ -123,6 +131,122 @@
       "type": "array",
       "items": { "type": "string" },
       "uniqueItems": true
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "protocol_mode": {
+      "type": "string",
+      "enum": ["continuous", "prefill_recovery"]
+    },
+    "matched_pair_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "prefill_messages": {
+      "type": "array",
+      "oneOf": [
+        {
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "$ref": "#/$defs/userPrefillMessage" },
+            { "$ref": "#/$defs/assistantPrefillMessage" }
+          ],
+          "items": false
+        },
+        {
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            { "$ref": "#/$defs/userPrefillMessage" },
+            { "$ref": "#/$defs/assistantPrefillMessage" },
+            { "$ref": "#/$defs/userPrefillMessage" },
+            { "$ref": "#/$defs/assistantPrefillMessage" }
+          ],
+          "items": false
+        }
+      ]
     }
-  }
+  },
+  "$defs": {
+    "prefillMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "content"],
+      "properties": {
+        "role": { "type": "string", "enum": ["user", "assistant"] },
+        "content": { "type": "string", "minLength": 1 }
+      }
+    },
+    "userPrefillMessage": {
+      "allOf": [
+        { "$ref": "#/$defs/prefillMessage" },
+        {
+          "properties": {
+            "role": { "const": "user" }
+          }
+        }
+      ]
+    },
+    "assistantPrefillMessage": {
+      "allOf": [
+        { "$ref": "#/$defs/prefillMessage" },
+        {
+          "properties": {
+            "role": { "const": "assistant" }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "benchmark_version": { "const": "0.5" }
+        },
+        "required": ["benchmark_version"]
+      },
+      "then": {
+        "required": ["locale", "protocol_mode", "matched_pair_id"],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "protocol_mode": { "const": "continuous" }
+              },
+              "required": ["protocol_mode"]
+            },
+            "then": {
+              "not": { "required": ["prefill_messages"] }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "protocol_mode": { "const": "prefill_recovery" }
+              },
+              "required": ["protocol_mode"]
+            },
+            "then": {
+              "required": ["prefill_messages"]
+            }
+          }
+        ]
+      },
+      "else": {
+        "not": {
+          "anyOf": [
+            { "required": ["locale"] },
+            { "required": ["protocol_mode"] },
+            { "required": ["matched_pair_id"] },
+            { "required": ["prefill_messages"] }
+          ]
+        }
+      }
+    }
+  ]
 }
