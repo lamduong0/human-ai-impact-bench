@@ -6,18 +6,7 @@
   "additionalProperties": false,
   "required": [
     "manifest_version",
-    "configuration_sha256",
-    "criteria_document_sha256",
-    "criteria_registered_at",
-    "candidate_families",
-    "run_reports",
-    "judge_sha256",
-    "blind_set_verification",
-    "human_calibration",
-    "agreement_report_sha256",
-    "discrimination_report_sha256",
-    "failure_counts",
-    "earliest_result_at"
+    "configuration_sha256"
   ],
   "properties": {
     "manifest_version": {"const": "0.1"},
@@ -41,7 +30,7 @@
           "candidate_family_id": {"type": "string", "minLength": 1},
           "report_sha256": {"$ref": "#/$defs/digest"},
           "result_at": {"$ref": "#/$defs/timestamp"},
-          "complete": {"const": true}
+          "complete": {"type": "boolean"}
         }
       }
     },
@@ -51,7 +40,7 @@
       "additionalProperties": false,
       "required": ["valid", "scenario_count", "commitment_algorithm", "manifest_sha256"],
       "properties": {
-        "valid": {"const": true},
+        "valid": {"type": "boolean"},
         "scenario_count": {"type": "integer", "minimum": 1},
         "commitment_algorithm": {"const": "sha256-canonical-json-v1"},
         "manifest_sha256": {"$ref": "#/$defs/digest"}
@@ -64,8 +53,8 @@
       "properties": {
         "sample_sha256": {"$ref": "#/$defs/digest"},
         "sample_size": {"type": "integer", "minimum": 1},
-        "blinded": {"const": true},
-        "double_rated": {"const": true},
+        "blinded": {"type": "boolean"},
+        "double_rated": {"type": "boolean"},
         "stratified_by": {
           "type": "array",
           "minItems": 4,
@@ -78,17 +67,20 @@
       }
     },
     "agreement_report_sha256": {"$ref": "#/$defs/digest"},
+    "agreement_passed": {"type": "boolean"},
     "discrimination_report_sha256": {"$ref": "#/$defs/digest"},
+    "discrimination_passed": {"type": "boolean"},
     "failure_counts": {
       "type": "object",
       "additionalProperties": false,
       "required": ["failed_scenarios", "retry_count", "missing_results"],
       "properties": {
-        "failed_scenarios": {"const": 0},
+        "failed_scenarios": {"type": "integer", "minimum": 0},
         "retry_count": {"type": "integer", "minimum": 0},
-        "missing_results": {"const": 0}
+        "missing_results": {"type": "integer", "minimum": 0}
       }
     },
+    "failure_counts_report_digest": {"$ref": "#/$defs/digest"},
     "earliest_result_at": {"$ref": "#/$defs/timestamp"}
   },
   "$defs": {

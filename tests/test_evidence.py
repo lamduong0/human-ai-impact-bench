@@ -91,12 +91,15 @@ def _complete_evidence_manifest(configuration: dict[str, Any], **overrides: Any)
             "stratified_by": ["category", "risk_level", "language", "protocol_mode"],
         },
         "agreement_report_sha256": "f" * 64,
+        "agreement_passed": True,
         "discrimination_report_sha256": "1" * 64,
+        "discrimination_passed": True,
         "failure_counts": {
             "failed_scenarios": 0,
             "retry_count": 0,
             "missing_results": 0,
         },
+        "failure_counts_report_digest": "2" * 64,
         "earliest_result_at": earliest_result_at,
     }
     manifest.update(overrides)
@@ -157,6 +160,97 @@ def test_complete_evidence_reaches_validated_evaluation_but_not_allow(tmp_path: 
         "missing_evidence": [],
         "configuration_sha256": record_digest(configuration),
     }
+
+
+@pytest.mark.parametrize(
+    ("result_field", "missing_evidence"),
+    [
+        ("agreement_passed", ["blind_human_calibration"]),
+        ("discrimination_passed", ["preregistered_discrimination"]),
+    ],
+)
+def test_failed_evidence_report_cannot_promote_evaluation(
+    tmp_path: Path,
+    result_field: str,
+    missing_evidence: list[str],
+) -> None:
+    configuration = _configuration_index(reviewed=True)
+    configuration_path = _write_json(tmp_path / "configuration-index.json", configuration)
+    evidence = _complete_evidence_manifest(configuration)
+    evidence[result_field] = False
+    evidence_path = _write_json(tmp_path / "evaluation-evidence.json", evidence)
+
+    result = evaluate_evidence_status(configuration_path, evidence_path)
+
+    assert result["evidence_stage"] == "REVIEWED_DATASET"
+    assert result["missing_evidence"] == missing_evidence
+    assert result["deployment_action"] == "HOLD"
+
+
+@pytest.mark.parametrize(
+    ("reviewed", "stage", "missing_evidence"),
+    [
+        (
+            False,
+            "PREVIEW",
+            [
+                "independent_review",
+                "preregistered_discrimination",
+                "blind_human_calibration",
+            ],
+        ),
+        (
+            True,
+            "REVIEWED_DATASET",
+            ["preregistered_discrimination", "blind_human_calibration"],
+        ),
+    ],
+)
+def test_partial_valid_evidence_returns_review_derived_lower_stage(
+    tmp_path: Path,
+    reviewed: bool,
+    stage: str,
+    missing_evidence: list[str],
+) -> None:
+    configuration = _configuration_index(reviewed=reviewed)
+    configuration_path = _write_json(tmp_path / "configuration-index.json", configuration)
+    evidence_path = _write_json(
+        tmp_path / "evaluation-evidence.json",
+        {
+            "manifest_version": "0.1",
+            "configuration_sha256": record_digest(configuration),
+        },
+    )
+
+    result = evaluate_evidence_status(configuration_path, evidence_path)
+
+    assert result["evidence_stage"] == stage
+    assert result["missing_evidence"] == missing_evidence
+    assert result["deployment_action"] == "HOLD"
+
+
+def test_missing_failure_counts_report_digest_blocks_promotion(tmp_path: Path) -> None:
+    configuration = _configuration_index(reviewed=True)
+    configuration_path = _write_json(tmp_path / "configuration-index.json", configuration)
+    evidence = _complete_evidence_manifest(configuration)
+    del evidence["failure_counts_report_digest"]
+    evidence_path = _write_json(tmp_path / "evaluation-evidence.json", evidence)
+
+    result = evaluate_evidence_status(configuration_path, evidence_path)
+
+    assert result["evidence_stage"] == "REVIEWED_DATASET"
+    assert result["missing_evidence"] == ["preregistered_discrimination"]
+
+
+def test_invalid_failure_counts_report_digest_is_rejected(tmp_path: Path) -> None:
+    configuration = _configuration_index(reviewed=True)
+    configuration_path = _write_json(tmp_path / "configuration-index.json", configuration)
+    evidence = _complete_evidence_manifest(configuration)
+    evidence["failure_counts_report_digest"] = "not-a-digest"
+    evidence_path = _write_json(tmp_path / "evaluation-evidence.json", evidence)
+
+    with pytest.raises(ValidationError, match="failure_counts_report_digest"):
+        evaluate_evidence_status(configuration_path, evidence_path)
 
 
 def test_validated_evaluation_requires_three_candidate_families(tmp_path: Path) -> None:
