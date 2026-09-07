@@ -40,6 +40,13 @@ _V05_REQUIRED_SCENARIO_FIELDS = _LEGACY_SCENARIO_FIELDS | {
     "matched_pair_id",
 }
 _V05_OPTIONAL_SCENARIO_FIELDS = {"prefill_messages"}
+_V07_CORE_REQUIRED_FIELDS = _LEGACY_SCENARIO_FIELDS | {"benchmark_track"}
+_V07_AGENTIC_REQUIRED_FIELDS = _V07_CORE_REQUIRED_FIELDS | {
+    "locale",
+    "protocol_mode",
+    "matched_pair_id",
+}
+_V07_AGENTIC_OPTIONAL_FIELDS = {"prefill_messages"}
 _PERSONA_FIELDS = {
     "age_group",
     "situation",
@@ -162,6 +169,45 @@ def _validate_v05_protocol(record: dict[str, Any], label: str) -> None:
         raise ValidationError(f"{label}: prefill_messages must end with an assistant message")
 
 
+def _validate_v07_agentic_protocol(record: dict[str, Any], label: str) -> None:
+    for field in ("locale", "protocol_mode", "matched_pair_id"):
+        _require_string(record, field, label)
+    if not _LOCALE_PATTERN.fullmatch(record["locale"]):
+        raise ValidationError(f"{label}: locale must be a BCP-47-like language tag")
+    if record["protocol_mode"] not in {"control", "prefill_stress"}:
+        raise ValidationError(f"{label}: protocol_mode must be 'control' or 'prefill_stress'")
+    if not _SCENARIO_ID_PATTERN.fullmatch(record["matched_pair_id"]):
+        raise ValidationError(f"{label}: matched_pair_id has an invalid format")
+
+    if record["protocol_mode"] == "control":
+        if "prefill_messages" in record:
+            raise ValidationError(f"{label}: control protocol must omit prefill_messages")
+        return
+
+    messages = record.get("prefill_messages")
+    if not isinstance(messages, list) or len(messages) not in {2, 4}:
+        raise ValidationError(
+            f"{label}: prefill_stress protocol requires exactly 2 or 4 prefill_messages"
+        )
+    for index, message in enumerate(messages):
+        message_label = f"{label} prefill_messages[{index}]"
+        if not isinstance(message, dict):
+            raise ValidationError(f"{message_label}: must be an object")
+        _require(message, {"role", "content"}, message_label)
+        unexpected = sorted(set(message) - {"role", "content"})
+        if unexpected:
+            raise ValidationError(f"{message_label}: unexpected fields: {', '.join(unexpected)}")
+        _require_string(message, "role", message_label)
+        _require_string(message, "content", message_label)
+        expected_role = "user" if index % 2 == 0 else "assistant"
+        if message["role"] != expected_role:
+            raise ValidationError(
+                f"{message_label}: role must alternate user/assistant starting with user"
+            )
+    if messages[-1]["role"] != "assistant":
+        raise ValidationError(f"{label}: prefill_messages must end with an assistant message")
+
+
 def validate_scenario(record: dict[str, Any]) -> None:
     line = record.get("_source_line", "?")
     label = f"scenario at line {line}"
@@ -173,10 +219,24 @@ def validate_scenario(record: dict[str, Any]) -> None:
     if record["benchmark_version"] == "0.5":
         _require(record, _V05_REQUIRED_SCENARIO_FIELDS, label)
         allowed_fields = _V05_REQUIRED_SCENARIO_FIELDS | _V05_OPTIONAL_SCENARIO_FIELDS
+    elif record["benchmark_version"] == "0.7":
+        _require(record, _V07_CORE_REQUIRED_FIELDS, label)
+        _require_string(record, "benchmark_track", label)
+        if record["benchmark_track"] == "core":
+            allowed_fields = _V07_CORE_REQUIRED_FIELDS
+        elif record["benchmark_track"] == "agentic":
+            _require(record, _V07_AGENTIC_REQUIRED_FIELDS, label)
+            allowed_fields = _V07_AGENTIC_REQUIRED_FIELDS | _V07_AGENTIC_OPTIONAL_FIELDS
+        else:
+            raise ValidationError(f"{label}: benchmark_track must be 'core' or 'agentic'")
     else:
         allowed_fields = _LEGACY_SCENARIO_FIELDS
     unexpected = sorted(set(record) - allowed_fields - {"_source_line"})
     if unexpected:
+        if record.get("benchmark_version") == "0.7" and record.get("benchmark_track") == "core":
+            raise ValidationError(
+                f"{label}: v0.7 core record has unexpected fields: {', '.join(unexpected)}"
+            )
         raise ValidationError(f"{label}: unexpected fields: {', '.join(unexpected)}")
     for field in ("scenario_id", "language", "category", "risk_level"):
         _require_string(record, field, label)
@@ -226,6 +286,8 @@ def validate_scenario(record: dict[str, Any]) -> None:
     _validate_string_array(record["tags"], "tags", label, non_empty=False, unique=True)
     if record["benchmark_version"] == "0.5":
         _validate_v05_protocol(record, label)
+    elif record["benchmark_version"] == "0.7" and record["benchmark_track"] == "agentic":
+        _validate_v07_agentic_protocol(record, label)
 
 
 def validate_annotation(record: dict[str, Any]) -> None:

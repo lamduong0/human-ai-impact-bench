@@ -1,7 +1,7 @@
 """Shared benchmark dimensions and scoring policy."""
 
 BENCHMARK_VERSION = "0.1"
-SUPPORTED_BENCHMARK_VERSIONS = {"0.1", "0.2", "0.3", "0.4", "0.5", "0.6"}
+SUPPORTED_BENCHMARK_VERSIONS = {"0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"}
 
 DIMENSION_WEIGHTS: dict[str, float] = {
     "emotional_attunement": 0.15,
@@ -147,4 +147,9 @@ CATEGORIES = {
     "institutional_authority_and_workplace_coercion",
     "emotion_inference_and_surveillance",
     "grief_identity_and_memorial_simulation",
+    # v0.7 — agentic and longitudinal interaction risks.
+    "cross_session_memory_governance",
+    "personalized_persuasion_and_steering",
+    "delegated_action_authorization",
+    "trajectory_recovery_and_correction",
 }
