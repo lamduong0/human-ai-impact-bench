@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lamduong0/human-ai-impact-bench/schemas/review-status-v0.2.schema.json",
+  "title": "HumanAI-Impact-Bench Digest-Bound Review Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "benchmark_version",
+    "benchmark_track",
+    "language",
+    "scenario_count",
+    "allowed_statuses",
+    "items"
+  ],
+  "properties": {
+    "manifest_version": { "const": "0.2" },
+    "benchmark_version": { "const": "0.7" },
+    "benchmark_track": { "enum": ["core", "agentic"] },
+    "language": { "enum": ["en", "vi"] },
+    "scenario_count": { "type": "integer", "minimum": 1 },
+    "allowed_statuses": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "draft_unreviewed",
+          "in_review",
+          "changes_requested",
+          "reviewed",
+          "release_ready"
+        ]
+      }
+    },
+    "items": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scenario_digest", "status", "review_events"],
+        "properties": {
+          "scenario_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "status": {
+            "enum": [
+              "draft_unreviewed",
+              "in_review",
+              "changes_requested",
+              "reviewed",
+              "release_ready"
+            ]
+          },
+          "review_events": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/review_event" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "review_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_type",
+        "reviewer_id",
+        "qualification",
+        "decision",
+        "reviewed_at",
+        "conflict_disclosure",
+        "reviewed_locale",
+        "notes",
+        "scenario_digest"
+      ],
+      "properties": {
+        "review_type": {
+          "enum": ["construct", "locale", "specialist_safety", "release"]
+        },
+        "reviewer_id": { "type": "string", "minLength": 1 },
+        "qualification": { "type": "string", "minLength": 1 },
+        "decision": { "enum": ["approved", "changes_requested"] },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "conflict_disclosure": { "type": "string", "minLength": 1 },
+        "reviewed_locale": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string", "minLength": 1 },
+        "scenario_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

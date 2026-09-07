@@ -10,6 +10,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from humanai_impact_bench.review import validate_v07_review_manifest
 from humanai_impact_bench.validation import ValidationError, load_scenarios
 
 REVIEWED_STATUSES = {"culturally_reviewed", "release_ready"}
@@ -68,6 +69,8 @@ def validate_review_manifest(
     else:
         scenarios = load_scenarios(scenario_source)
     manifest = _load_manifest(manifest_path)
+    if manifest.get("manifest_version") == "0.2":
+        return validate_v07_review_manifest(scenarios_path, manifest)
     required = {
         "manifest_version",
         "benchmark_version",
