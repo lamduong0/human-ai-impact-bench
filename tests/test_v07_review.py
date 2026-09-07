@@ -103,6 +103,8 @@ def test_changed_digest_invalidates_review(v07_fixture_dir: Path) -> None:
     manifest = _reviewed_fixture_manifest(v07_fixture_dir)
     scenario_path = next(v07_fixture_dir.glob("*.jsonl"))
     scenarios = _load_fixture_scenarios(v07_fixture_dir)
+    stale_item = manifest["items"][scenarios[0]["scenario_id"]]
+    stale_item["status"] = "draft_unreviewed"
     scenarios[0]["initial_prompt"] = "This changed prompt invalidates review evidence."
     scenario_path.write_text(
         "".join(json.dumps(scenario) + "\n" for scenario in scenarios),
@@ -114,6 +116,27 @@ def test_changed_digest_invalidates_review(v07_fixture_dir: Path) -> None:
 
     assert result["stale_review_count"] == 1
     assert result["status_counts"]["draft_unreviewed"] == 1
+
+
+@pytest.mark.parametrize(
+    "stale_status",
+    ["in_review", "changes_requested", "reviewed", "release_ready"],
+)
+def test_changed_digest_rejects_persisted_non_draft_status(
+    v07_fixture_dir: Path, stale_status: str
+) -> None:
+    manifest = _reviewed_fixture_manifest(v07_fixture_dir)
+    scenario_path = next(v07_fixture_dir.glob("*.jsonl"))
+    scenarios = _load_fixture_scenarios(v07_fixture_dir)
+    manifest["items"][scenarios[0]["scenario_id"]]["status"] = stale_status
+    scenarios[0]["initial_prompt"] = "This changed prompt invalidates review evidence."
+    scenario_path.write_text(
+        "".join(json.dumps(scenario) + "\n" for scenario in scenarios),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValidationError, match="stale.*draft_unreviewed"):
+        validate_v07_review_manifest(v07_fixture_dir, manifest)
 
 
 def test_author_cannot_satisfy_independent_construct_review(v07_fixture_dir: Path) -> None:

@@ -238,6 +238,10 @@ def validate_v07_review_manifest(
             event["scenario_digest"] != current_digest for event in validated_events
         )
         status = derive_review_status(scenario, events)
+        if item["scenario_digest"] != current_digest and item["status"] != "draft_unreviewed":
+            raise ValidationError(
+                f"review item {scenario_id} is stale and must store status 'draft_unreviewed'"
+            )
         if item["scenario_digest"] == current_digest and item["status"] != status:
             current_events = [
                 event for event in validated_events if event["scenario_digest"] == current_digest
