@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from collections import defaultdict
 from copy import deepcopy
@@ -32,6 +33,24 @@ def _write_jsonl(path: Path, records: list[dict]) -> None:
     )
 
 
+def _scenario_set_digest(records: list[dict]) -> str:
+    ordered = sorted(
+        records,
+        key=lambda record: (
+            record["language"],
+            record["category"],
+            record["scenario_id"],
+        ),
+    )
+    payload = json.dumps(
+        ordered,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode()
+    return hashlib.sha256(payload).hexdigest()
+
+
 @pytest.fixture
 def v07_small_fixture(tmp_path: Path, scenario_factory) -> Path:
     root = tmp_path / "v0.7"
@@ -51,6 +70,7 @@ def v07_small_fixture(tmp_path: Path, scenario_factory) -> Path:
         ("agentic", "en", "trajectory_recovery_and_correction"),
         ("agentic", "vi", "trajectory_recovery_and_correction"),
     )
+    configuration_records = {}
     for track, language, category in configuration_specs:
         records = []
         for index in range(25):
@@ -84,6 +104,7 @@ def v07_small_fixture(tmp_path: Path, scenario_factory) -> Path:
                 )
             records.append(scenario_factory(**overrides))
 
+        configuration_records[(track, language)] = records
         source_dir = root / track / language
         _write_jsonl(source_dir / f"{category}.jsonl", records)
         _write_json(
@@ -100,7 +121,16 @@ def v07_small_fixture(tmp_path: Path, scenario_factory) -> Path:
             "benchmark_version": "0.7",
             "candidate_count": 0,
             "candidates": [],
+            "configuration_sha256": {
+                "v0.7-agentic-en": _scenario_set_digest(configuration_records[("agentic", "en")]),
+                "v0.7-agentic-vi-preview": _scenario_set_digest(
+                    configuration_records[("agentic", "vi")]
+                ),
+                "v0.7-core-en": _scenario_set_digest(configuration_records[("core", "en")]),
+                "v0.7-core-vi-preview": _scenario_set_digest(configuration_records[("core", "vi")]),
+            },
             "resolutions": [],
+            "scenario_count": 100,
             "valid": True,
         },
     )
@@ -170,6 +200,33 @@ def test_split_assignment_requires_25_families_per_track_category(
         build_split_index(v07_small_fixture)
 
 
+def test_split_assignment_rejects_invalid_lineage_tags(v07_small_fixture: Path) -> None:
+    path = v07_small_fixture / "core" / "en" / "dependency_boundaries.jsonl"
+    records = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+    records[0]["tags"].remove("derivation-adapted")
+    _write_jsonl(path, records)
+
+    with pytest.raises(ValidationError, match="exactly one non-empty derivation tag"):
+        build_split_index(v07_small_fixture)
+
+
+def test_lineage_rejects_source_record_with_mismatched_benchmark_version(
+    v07_small_fixture: Path,
+) -> None:
+    path = v07_small_fixture.parent / "v0.6" / "en" / "dependency_boundaries.jsonl"
+    source = json.loads(path.read_text(encoding="utf-8"))
+    source.update(
+        benchmark_version="0.5",
+        locale="en-US",
+        protocol_mode="continuous",
+        matched_pair_id="source-pair-001",
+    )
+    _write_jsonl(path, [source])
+
+    with pytest.raises(ValidationError, match="source.*benchmark_version.*0.6"):
+        build_lineage_index(v07_small_fixture)
+
+
 def test_configuration_index_is_reproducible_from_complete_fixture(
     v07_small_fixture: Path,
 ) -> None:
@@ -230,4 +287,41 @@ def test_configuration_index_refuses_stale_draft_review_digest(
     _write_json(path, manifest)
 
     with pytest.raises(ValidationError, match="review digest.*current scenario"):
+        build_configuration_index(v07_small_fixture)
+
+
+def test_configuration_index_refuses_malformed_overlap_audit(
+    v07_small_fixture: Path,
+) -> None:
+    _write_json(
+        v07_small_fixture / "overlap-audit.json",
+        {"benchmark_version": "0.7", "valid": True},
+    )
+
+    with pytest.raises(ValidationError, match="overlap audit.*required fields"):
+        build_configuration_index(v07_small_fixture)
+
+
+def test_configuration_index_refuses_stale_overlap_audit(
+    v07_small_fixture: Path,
+) -> None:
+    path = v07_small_fixture / "overlap-audit.json"
+    audit = json.loads(path.read_text(encoding="utf-8"))
+    audit["configuration_sha256"]["v0.7-core-en"] = "0" * 64
+    _write_json(path, audit)
+
+    with pytest.raises(ValidationError, match="overlap audit.*current scenarios"):
+        build_configuration_index(v07_small_fixture)
+
+
+def test_configuration_index_refuses_unresolved_overlap_candidate(
+    v07_small_fixture: Path,
+) -> None:
+    path = v07_small_fixture / "overlap-audit.json"
+    audit = json.loads(path.read_text(encoding="utf-8"))
+    audit["candidate_count"] = 1
+    audit["candidates"] = [{"candidate_id": "candidate-001"}]
+    _write_json(path, audit)
+
+    with pytest.raises(ValidationError, match="overlap audit.*invalid.*contract"):
         build_configuration_index(v07_small_fixture)

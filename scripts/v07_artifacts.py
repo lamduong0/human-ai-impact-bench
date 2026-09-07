@@ -43,6 +43,25 @@ def record_digest(record: dict[str, Any]) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def scenario_set_digest(records: list[dict[str, Any]]) -> str:
+    """Return a canonical digest for a configuration's exact scenario set."""
+    ordered = sorted(
+        records,
+        key=lambda record: (
+            record["language"],
+            record["category"],
+            record["scenario_id"],
+        ),
+    )
+    payload = json.dumps(
+        ordered,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode()
+    return hashlib.sha256(payload).hexdigest()
+
+
 def single_tag(record: dict[str, Any], prefix: str) -> str:
     """Return the value of exactly one non-empty tag with ``prefix``."""
     tags = record.get("tags")
@@ -126,23 +145,42 @@ def _find_source(
         raise ValidationError(
             f"source v{version}:{language}:{scenario_id} must resolve to exactly one record"
         )
-    return matches[0]
+    path, record = matches[0]
+    if record["benchmark_version"] != version:
+        raise ValidationError(
+            f"source {scenario_id} benchmark_version {record['benchmark_version']!r} "
+            f"does not match tagged version {version!r}"
+        )
+    return path, record
 
 
-def _lineage_item(root: Path, track: str, language: str, record: dict[str, Any]) -> dict[str, Any]:
+def _lineage_tags(record: dict[str, Any]) -> tuple[str, str, str, str | None, str | None]:
     concept_family_id = single_tag(record, "concept-family-")
     context_id = single_tag(record, "context-")
     derivation = single_tag(record, "derivation-")
     if derivation not in {"adapted", "authored-new"}:
         raise ValidationError(f"{record['scenario_id']} has unsupported derivation {derivation!r}")
 
-    source_tags = [
-        tag for tag in record["tags"] if tag.startswith(("source-version-", "source-scenario-"))
-    ]
+    if derivation == "adapted":
+        return (
+            concept_family_id,
+            context_id,
+            derivation,
+            _source_version(record),
+            single_tag(record, "source-scenario-"),
+        )
+    if any(tag.startswith(("source-version-", "source-scenario-")) for tag in record["tags"]):
+        raise ValidationError(
+            f"{record['scenario_id']} authored-new record must not claim a source"
+        )
+    return concept_family_id, context_id, derivation, None, None
+
+
+def _lineage_item(root: Path, track: str, language: str, record: dict[str, Any]) -> dict[str, Any]:
+    concept_family_id, context_id, derivation, version, source_scenario_id = _lineage_tags(record)
     source: dict[str, Any] | None = None
     if derivation == "adapted":
-        version = _source_version(record)
-        source_scenario_id = single_tag(record, "source-scenario-")
+        assert version is not None and source_scenario_id is not None
         source_path, source_record = _find_source(
             root,
             version,
@@ -156,11 +194,6 @@ def _lineage_item(root: Path, track: str, language: str, record: dict[str, Any])
             "scenario_id": source_record["scenario_id"],
             "scenario_sha256": record_digest(source_record),
         }
-    elif source_tags:
-        raise ValidationError(
-            f"{record['scenario_id']} authored-new record must not claim a source"
-        )
-
     return {
         "concept_family_id": concept_family_id,
         "context_id": context_id,
@@ -214,13 +247,13 @@ def build_lineage_index(root: Path = V07_ROOT) -> dict[str, Any]:
 def build_split_index(root: Path = V07_ROOT) -> dict[str, Any]:
     """Assign every concept family to a deterministic public split."""
     records = [
-        (track, language, record)
+        (track, language, record, *_lineage_tags(record)[:2])
         for track, language, configuration in _configurations(Path(root))
         for record in configuration
     ]
     families: dict[tuple[str, str], set[str]] = defaultdict(set)
-    for track, _language, record in records:
-        families[(track, record["category"])].add(single_tag(record, "concept-family-"))
+    for track, _language, record, family, _context in records:
+        families[(track, record["category"])].add(family)
 
     assignments: dict[tuple[str, str, str], str] = {}
     for (track, category), category_families in sorted(families.items()):
@@ -235,14 +268,13 @@ def build_split_index(root: Path = V07_ROOT) -> dict[str, Any]:
             )
 
     items = []
-    for track, language, record in records:
-        family = single_tag(record, "concept-family-")
+    for track, language, record, family, context in records:
         items.append(
             {
                 "benchmark_track": track,
                 "category": record["category"],
                 "concept_family_id": family,
-                "context_id": single_tag(record, "context-"),
+                "context_id": context,
                 "language": language,
                 "scenario_id": record["scenario_id"],
                 "split": assignments[(track, record["category"], family)],
@@ -283,23 +315,65 @@ def _load_required_json(root: Path, name: str) -> tuple[Path, dict[str, Any]]:
     return path, value
 
 
+def _validate_overlap_audit(
+    overlap: dict[str, Any],
+    configurations: list[tuple[str, str, list[dict[str, Any]]]],
+) -> None:
+    required = {
+        "audit_version",
+        "benchmark_version",
+        "candidate_count",
+        "candidates",
+        "configuration_sha256",
+        "resolutions",
+        "scenario_count",
+        "valid",
+    }
+    missing = sorted(required - set(overlap))
+    if missing:
+        raise ValidationError(f"overlap audit is missing required fields: {', '.join(missing)}")
+    if (
+        overlap["audit_version"] != "0.1"
+        or overlap["benchmark_version"] != "0.7"
+        or not isinstance(overlap["candidates"], list)
+        or not isinstance(overlap["resolutions"], list)
+        or not isinstance(overlap["candidate_count"], int)
+        or isinstance(overlap["candidate_count"], bool)
+        or overlap["candidate_count"] != len(overlap["candidates"])
+        or overlap["candidate_count"] != len(overlap["resolutions"])
+        or overlap["valid"] is not True
+    ):
+        raise ValidationError("overlap audit has an invalid v0.7 contract")
+
+    expected_count = sum(len(records) for _track, _language, records in configurations)
+    expected_digests = {
+        CONFIGURATION_NAMES[(track, language)]: scenario_set_digest(records)
+        for track, language, records in configurations
+    }
+    if (
+        overlap["scenario_count"] != expected_count
+        or overlap["configuration_sha256"] != expected_digests
+    ):
+        raise ValidationError("overlap audit does not match current scenarios")
+
+
 def build_configuration_index(root: Path = V07_ROOT) -> dict[str, Any]:
     """Freeze exact scenario, review, lineage, split, and overlap inputs."""
     root = Path(root)
     lineage_path, lineage = _load_required_json(root, "lineage-index.json")
     split_path, split = _load_required_json(root, "split-index.json")
     overlap_path, overlap = _load_required_json(root, "overlap-audit.json")
+    source_configurations = _configurations(root)
     if lineage != build_lineage_index(root):
         raise ValidationError("lineage index does not match current scenarios")
     if split != build_split_index(root):
         raise ValidationError("split index does not match current scenarios")
-    if overlap.get("benchmark_version") != "0.7" or overlap.get("valid") is not True:
-        raise ValidationError("overlap audit must be a valid v0.7 report")
+    _validate_overlap_audit(overlap, source_configurations)
 
     configurations: dict[str, dict[str, Any]] = {}
     all_records: list[dict[str, Any]] = []
     review_status_counts: Counter[str] = Counter()
-    for track, language, records in _configurations(root):
+    for track, language, records in source_configurations:
         source_dir = root / track / language
         manifest_path = source_dir / "review-status.json"
         if not manifest_path.exists():
