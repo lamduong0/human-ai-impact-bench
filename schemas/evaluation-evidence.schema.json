@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lamduong0/human-ai-impact-bench/schemas/evaluation-evidence.schema.json",
+  "title": "HumanAI-Impact-Bench v0.7 evaluation evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "configuration_sha256",
+    "criteria_document_sha256",
+    "criteria_registered_at",
+    "candidate_families",
+    "run_reports",
+    "judge_sha256",
+    "blind_set_verification",
+    "human_calibration",
+    "agreement_report_sha256",
+    "discrimination_report_sha256",
+    "failure_counts",
+    "earliest_result_at"
+  ],
+  "properties": {
+    "manifest_version": {"const": "0.1"},
+    "configuration_sha256": {"$ref": "#/$defs/digest"},
+    "criteria_document_sha256": {"$ref": "#/$defs/digest"},
+    "criteria_registered_at": {"$ref": "#/$defs/timestamp"},
+    "candidate_families": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "run_reports": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_family_id", "report_sha256", "result_at", "complete"],
+        "properties": {
+          "candidate_family_id": {"type": "string", "minLength": 1},
+          "report_sha256": {"$ref": "#/$defs/digest"},
+          "result_at": {"$ref": "#/$defs/timestamp"},
+          "complete": {"const": true}
+        }
+      }
+    },
+    "judge_sha256": {"$ref": "#/$defs/digest"},
+    "blind_set_verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valid", "scenario_count", "commitment_algorithm", "manifest_sha256"],
+      "properties": {
+        "valid": {"const": true},
+        "scenario_count": {"type": "integer", "minimum": 1},
+        "commitment_algorithm": {"const": "sha256-canonical-json-v1"},
+        "manifest_sha256": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "human_calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sample_sha256", "sample_size", "blinded", "double_rated", "stratified_by"],
+      "properties": {
+        "sample_sha256": {"$ref": "#/$defs/digest"},
+        "sample_size": {"type": "integer", "minimum": 1},
+        "blinded": {"const": true},
+        "double_rated": {"const": true},
+        "stratified_by": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["category", "risk_level", "language", "protocol_mode"]
+          }
+        }
+      }
+    },
+    "agreement_report_sha256": {"$ref": "#/$defs/digest"},
+    "discrimination_report_sha256": {"$ref": "#/$defs/digest"},
+    "failure_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["failed_scenarios", "retry_count", "missing_results"],
+      "properties": {
+        "failed_scenarios": {"const": 0},
+        "retry_count": {"type": "integer", "minimum": 0},
+        "missing_results": {"const": 0}
+      }
+    },
+    "earliest_result_at": {"$ref": "#/$defs/timestamp"}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    }
+  }
+}

@@ -15,6 +15,7 @@ from humanai_impact_bench.deployment import (
     run_scenarios,
 )
 from humanai_impact_bench.diagnostics import cluster_diagnostics
+from humanai_impact_bench.evidence import evaluate_evidence_status
 from humanai_impact_bench.scoring import score_annotations
 from humanai_impact_bench.validation import (
     ValidationError,
@@ -150,6 +151,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     blind_set_parser.add_argument("--manifest", type=Path, required=True)
     blind_set_parser.add_argument("--scenarios", type=Path, required=True)
+
+    evidence_parser = subparsers.add_parser(
+        "evidence-status", help="derive digest-bound v0.7 evidence maturity"
+    )
+    evidence_parser.add_argument("--configuration-index", type=Path, required=True)
+    evidence_parser.add_argument("--evidence", type=Path)
     return parser
 
 
@@ -226,6 +233,10 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "verify-blind-set":
             result = verify_blind_set(args.manifest, args.scenarios)
+            print(json.dumps(result, ensure_ascii=False))
+            return 0
+        if args.command == "evidence-status":
+            result = evaluate_evidence_status(args.configuration_index, args.evidence)
             print(json.dumps(result, ensure_ascii=False))
             return 0
     except (ValidationError, RuntimeError) as exc:

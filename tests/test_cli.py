@@ -12,6 +12,7 @@ from typing import Any
 import pytest
 
 from humanai_impact_bench.cli import main
+from humanai_impact_bench.digests import record_digest
 
 
 def write_jsonl(path: Path, records: list[dict[str, Any]]) -> Path:
@@ -184,6 +185,42 @@ def test_verify_blind_set_command_emits_content_free_summary(
     }
     assert captured.err == ""
     assert scenario["initial_prompt"] not in captured.out
+
+
+def test_evidence_status_command_emits_hold(tmp_path: Path, capsys: Any) -> None:
+    configuration = {
+        "index_version": "0.1",
+        "benchmark_version": "0.7",
+        "configuration_count": 1,
+        "scenario_count": 2,
+        "category_counts": {"dependency_boundaries": 2},
+        "language_counts": {"en": 2},
+        "review_status_counts": {"reviewed": 2},
+        "artifacts": {
+            "lineage": {"path": "lineage-index.json", "sha256": "a" * 64},
+            "overlap": {"path": "overlap-audit.json", "sha256": "a" * 64},
+            "split": {"path": "split-index.json", "sha256": "a" * 64},
+        },
+        "configurations": {
+            "v0.7-core-en": {
+                "scenario_count": 2,
+                "review_status_counts": {"reviewed": 2},
+            }
+        },
+    }
+    path = tmp_path / "configuration-index.json"
+    path.write_text(json.dumps(configuration), encoding="utf-8")
+
+    assert main(["evidence-status", "--configuration-index", str(path)]) == 0
+
+    captured = capsys.readouterr()
+    assert json.loads(captured.out) == {
+        "evidence_stage": "REVIEWED_DATASET",
+        "deployment_action": "HOLD",
+        "missing_evidence": ["preregistered_discrimination", "blind_human_calibration"],
+        "configuration_sha256": record_digest(configuration),
+    }
+    assert captured.err == ""
 
 
 @pytest.mark.parametrize("failure", ["invalid-manifest", "missing-scenarios", "count", "digest"])
