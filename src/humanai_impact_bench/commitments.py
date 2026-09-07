@@ -8,8 +8,8 @@ from pathlib import Path
 from typing import Any
 
 from humanai_impact_bench.deployment import load_scenario_source
+from humanai_impact_bench.digests import record_digest
 from humanai_impact_bench.validation import ValidationError
-from scripts.v07_artifacts import record_digest
 
 _MANIFEST_FIELDS = {
     "manifest_version",

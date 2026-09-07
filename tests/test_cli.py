@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import subprocess
+import sys
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -120,6 +123,34 @@ def test_command_reports_validation_errors_to_stderr(
     assert captured.out == ""
     assert "error:" in captured.err
     assert "invalid JSON" in captured.err
+
+
+def test_cli_runs_without_the_repository_scripts_package(
+    tmp_path: Path, scenario_factory: Callable[..., dict[str, Any]]
+) -> None:
+    scenarios_path = write_jsonl(
+        tmp_path / "scenarios.jsonl",
+        [scenario_factory(benchmark_version="0.7", benchmark_track="core")],
+    )
+    source_root = Path(__file__).parents[1] / "src"
+    environment = {**os.environ, "PYTHONPATH": str(source_root)}
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "humanai_impact_bench.cli",
+            "validate",
+            str(scenarios_path),
+        ],
+        cwd=tmp_path,
+        env=environment,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stderr
 
 
 def test_verify_blind_set_command_emits_content_free_summary(

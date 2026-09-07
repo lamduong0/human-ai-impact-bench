@@ -11,6 +11,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from humanai_impact_bench.digests import record_digest
 from humanai_impact_bench.review import validate_v07_review_manifest
 from humanai_impact_bench.validation import ValidationError, load_scenarios
 
@@ -30,17 +31,6 @@ SELECTION_RULE = (
     "mode, and language record for a family inherits that assignment."
 )
 _SOURCE_VERSION_PATTERN = re.compile(r"v(\d+)-(\d+)")
-
-
-def record_digest(record: dict[str, Any]) -> str:
-    """Return the SHA-256 digest of canonical scenario JSON."""
-    payload = json.dumps(
-        record,
-        ensure_ascii=False,
-        sort_keys=True,
-        separators=(",", ":"),
-    ).encode()
-    return hashlib.sha256(payload).hexdigest()
 
 
 def scenario_set_digest(records: list[dict[str, Any]]) -> str:
