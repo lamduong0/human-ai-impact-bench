@@ -180,19 +180,149 @@ def test_run_scenarios_prefill_recovery_orders_history_and_records_protocol(
     assert scenario["prefill_messages"] == prefill_messages
 
 
-def test_prefill_recovery_history_and_protocol_are_available_to_judge(
+def test_v07_prefill_stress_is_injected_and_recorded(
+    scenario_factory: Callable[..., dict[str, Any]],
+    tmp_path: Path,
+) -> None:
+    prefill = [
+        {"role": "user", "content": "Prior user turn."},
+        {"role": "assistant", "content": "Prior unsafe assistant turn."},
+    ]
+    scenario = scenario_factory(
+        benchmark_version="0.7",
+        benchmark_track="agentic",
+        category="trajectory_recovery_and_correction",
+        locale="en-US",
+        protocol_mode="prefill_stress",
+        matched_pair_id="trajectory-en-us-pair-001",
+        prefill_messages=prefill,
+    )
+    scenarios = _write_jsonl(tmp_path / "scenarios.jsonl", [scenario])
+    output = tmp_path / "transcripts.jsonl"
+    calls: list[dict[str, Any]] = []
+
+    def transport(
+        _url: str,
+        payload: dict[str, Any],
+        _headers: dict[str, str],
+        _timeout: float,
+    ) -> dict[str, Any]:
+        calls.append(payload)
+        return _target_response("A bounded recovery response.")
+
+    run_scenarios(
+        scenarios_path=scenarios,
+        target_base_url="https://target.test/v1",
+        target_model="candidate-model",
+        candidate_digest=_CANDIDATE,
+        output_path=output,
+        transport=transport,
+    )
+
+    assert calls[0]["messages"][:2] == prefill
+    transcript = _read_jsonl(output)[0]
+    assert transcript["benchmark_track"] == "agentic"
+    assert transcript["protocol"] == {
+        "protocol_mode": "prefill_stress",
+        "matched_pair_id": "trajectory-en-us-pair-001",
+        "locale": "en-US",
+        "prefill_message_count": 2,
+    }
+
+
+def test_scenario_source_rejects_mixed_v07_tracks(
+    scenario_factory: Callable[..., dict[str, Any]],
+    tmp_path: Path,
+) -> None:
+    core = scenario_factory(benchmark_version="0.7", benchmark_track="core")
+    agentic = scenario_factory(
+        benchmark_version="0.7",
+        benchmark_track="agentic",
+        category="cross_session_memory_governance",
+        locale="en-US",
+        protocol_mode="control",
+        matched_pair_id="memory-en-us-pair-001",
+    )
+    _write_jsonl(tmp_path / "core.jsonl", [core])
+    _write_jsonl(tmp_path / "agentic.jsonl", [agentic])
+
+    with pytest.raises(ValidationError, match="must not mix.*tracks"):
+        load_scenario_source(tmp_path)
+
+
+def test_draft_evaluate_rejects_v07_transcript_track_mismatch(
+    scenario_factory: Callable[..., dict[str, Any]],
+    tmp_path: Path,
+) -> None:
+    scenario = scenario_factory(
+        benchmark_version="0.7",
+        benchmark_track="agentic",
+        category="cross_session_memory_governance",
+        locale="en-US",
+        protocol_mode="control",
+        matched_pair_id="memory-en-us-pair-001",
+    )
+    scenarios = _write_jsonl(tmp_path / "scenarios.jsonl", [scenario])
+    transcripts = tmp_path / "transcripts.jsonl"
+    run_scenarios(
+        scenarios_path=scenarios,
+        target_base_url="https://target.test/v1",
+        target_model="candidate-model",
+        candidate_digest=_CANDIDATE,
+        output_path=transcripts,
+        transport=lambda *_args: _target_response("A bounded response."),
+    )
+    transcript = _read_jsonl(transcripts)[0]
+    transcript["benchmark_track"] = "core"
+    _write_jsonl(transcripts, [transcript])
+
+    with pytest.raises(ValidationError, match="benchmark_track does not match"):
+        draft_evaluate(
+            scenarios_path=scenarios,
+            transcripts_path=transcripts,
+            judge_base_url="https://judge.test/v1",
+            judge_model="judge-model",
+            output_path=tmp_path / "annotations.jsonl",
+            report_path=tmp_path / "report.json",
+            transport=lambda *_args: pytest.fail("judge must not run for a track mismatch"),
+        )
+
+
+@pytest.mark.parametrize(
+    ("scenario_overrides", "protocol_mode", "matched_pair_id"),
+    [
+        (
+            {"benchmark_version": "0.5"},
+            "prefill_recovery",
+            "stateful-pair-judge-01",
+        ),
+        (
+            {
+                "benchmark_version": "0.7",
+                "benchmark_track": "agentic",
+                "category": "trajectory_recovery_and_correction",
+            },
+            "prefill_stress",
+            "trajectory-en-us-pair-judge-01",
+        ),
+    ],
+)
+def test_agentic_prefill_history_and_protocol_are_available_to_judge(
     tmp_path: Path,
     scenario_factory: Callable[..., dict[str, Any]],
+    scenario_overrides: dict[str, Any],
+    protocol_mode: str,
+    matched_pair_id: str,
 ) -> None:
     prefill_messages = [
         {"role": "user", "content": "I told you my preferred name was Rowan."},
         {"role": "assistant", "content": "I said I would remember that preference."},
     ]
     scenario = scenario_factory(
-        benchmark_version="0.5",
+        **scenario_overrides,
         scenario_id="stateful-recovery-judge-01",
-        protocol_mode="prefill_recovery",
-        matched_pair_id="stateful-pair-judge-01",
+        protocol_mode=protocol_mode,
+        matched_pair_id=matched_pair_id,
         locale="en-GB",
         prefill_messages=prefill_messages,
     )
@@ -227,8 +357,8 @@ def test_prefill_recovery_history_and_protocol_are_available_to_judge(
             for message in material["candidate_messages"]
         )
         assert material["protocol"] == {
-            "protocol_mode": "prefill_recovery",
-            "matched_pair_id": "stateful-pair-judge-01",
+            "protocol_mode": protocol_mode,
+            "matched_pair_id": matched_pair_id,
             "locale": "en-GB",
             "prefill_message_count": 2,
         }
