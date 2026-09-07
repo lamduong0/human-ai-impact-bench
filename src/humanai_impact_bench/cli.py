@@ -7,6 +7,7 @@ import json
 import sys
 from pathlib import Path
 
+from humanai_impact_bench.commitments import verify_blind_set
 from humanai_impact_bench.deployment import (
     draft_evaluate,
     evaluate_gate,
@@ -143,6 +144,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help="scenario tag prefix identifying the shared construct (default: concept-)",
     )
     cluster_parser.add_argument("--pretty", action="store_true", help="indent JSON output")
+
+    blind_set_parser = subparsers.add_parser(
+        "verify-blind-set", help="verify an access-controlled blind scenario set"
+    )
+    blind_set_parser.add_argument("--manifest", type=Path, required=True)
+    blind_set_parser.add_argument("--scenarios", type=Path, required=True)
     return parser
 
 
@@ -216,6 +223,10 @@ def main(argv: list[str] | None = None) -> int:
                 cluster_tag_prefix=args.cluster_tag_prefix,
             )
             print(json.dumps(result, ensure_ascii=False, indent=2 if args.pretty else None))
+            return 0
+        if args.command == "verify-blind-set":
+            result = verify_blind_set(args.manifest, args.scenarios)
+            print(json.dumps(result, ensure_ascii=False))
             return 0
     except (ValidationError, RuntimeError) as exc:
         if args.command == "gate":

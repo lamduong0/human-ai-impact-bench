@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from collections.abc import Callable
 from pathlib import Path
@@ -16,6 +17,29 @@ def write_jsonl(path: Path, records: list[dict[str, Any]]) -> Path:
         encoding="utf-8",
     )
     return path
+
+
+def _blind_manifest(scenario: dict[str, Any]) -> dict[str, Any]:
+    digest = hashlib.sha256(
+        json.dumps(scenario, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    return {
+        "manifest_version": "0.1",
+        "commitment_algorithm": "sha256-canonical-json-v1",
+        "scenario_count": 1,
+        "track_counts": {"core": 1},
+        "language_counts": {"en": 1},
+        "category_counts": {"dependency_boundaries": 1},
+        "commitments": [
+            {
+                "benchmark_track": "core",
+                "category": "dependency_boundaries",
+                "language": "en",
+                "scenario_id": scenario["scenario_id"],
+                "scenario_sha256": digest,
+            }
+        ],
+    }
 
 
 def test_validate_command_reports_summary(
@@ -96,6 +120,80 @@ def test_command_reports_validation_errors_to_stderr(
     assert captured.out == ""
     assert "error:" in captured.err
     assert "invalid JSON" in captured.err
+
+
+def test_verify_blind_set_command_emits_content_free_summary(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+) -> None:
+    scenario = scenario_factory(benchmark_version="0.7", benchmark_track="core")
+    scenarios_path = write_jsonl(tmp_path / "blind.jsonl", [scenario])
+    manifest_path = tmp_path / "blind-manifest.json"
+    manifest_path.write_text(json.dumps(_blind_manifest(scenario)), encoding="utf-8")
+
+    assert (
+        main(
+            [
+                "verify-blind-set",
+                "--manifest",
+                str(manifest_path),
+                "--scenarios",
+                str(scenarios_path),
+            ]
+        )
+        == 0
+    )
+
+    captured = capsys.readouterr()
+    assert json.loads(captured.out) == {
+        "valid": True,
+        "scenario_count": 1,
+        "commitment_algorithm": "sha256-canonical-json-v1",
+    }
+    assert captured.err == ""
+    assert scenario["initial_prompt"] not in captured.out
+
+
+@pytest.mark.parametrize("failure", ["invalid-manifest", "missing-scenarios", "count", "digest"])
+def test_verify_blind_set_command_fails_closed(
+    tmp_path: Path,
+    scenario_factory: Callable[..., dict[str, Any]],
+    capsys: Any,
+    failure: str,
+) -> None:
+    scenario = scenario_factory(benchmark_version="0.7", benchmark_track="core")
+    scenarios_path = write_jsonl(tmp_path / "blind.jsonl", [scenario])
+    manifest_path = tmp_path / "blind-manifest.json"
+    manifest = _blind_manifest(scenario)
+    if failure == "invalid-manifest":
+        manifest = {"invalid": True}
+    elif failure == "count":
+        manifest["scenario_count"] = 2
+    elif failure == "digest":
+        manifest["commitments"][0]["scenario_sha256"] = "0" * 64
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    requested_scenarios = (
+        tmp_path / "missing.jsonl" if failure == "missing-scenarios" else scenarios_path
+    )
+
+    assert (
+        main(
+            [
+                "verify-blind-set",
+                "--manifest",
+                str(manifest_path),
+                "--scenarios",
+                str(requested_scenarios),
+            ]
+        )
+        == 2
+    )
+
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert "error:" in captured.err
+    assert scenario["initial_prompt"] not in captured.err
 
 
 def _clustered_scenarios(
