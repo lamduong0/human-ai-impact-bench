@@ -38,7 +38,7 @@
   "review_status_counts": {
     "maintainer_reviewed": 1200
   },
-  "coverage_config_sha256": "2fbba7cbc86999322d3c61ccfb47326119936c4b77746120b1533899157033c7",
+  "coverage_config_sha256": "35d29d987fb3f584498aa742d1358a9c7399a348d4f73106368813732af36177",
   "lineage_index_sha256": "6723a658d145a50cfcb91ead152d59abe6edbcd8d14e65334d594ba9fc4feba5",
   "review_manifest_sha256": {
     "en": "32bdc0079e51a3e98640d24fe60f77f81b5df040397b36d339881384d1d9f4e8",
