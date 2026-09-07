@@ -343,6 +343,31 @@
           ]
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "benchmark_version": {
+            "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"]
+          }
+        },
+        "required": ["benchmark_version"]
+      },
+      "then": {
+        "not": {
+          "properties": {
+            "category": {
+              "enum": [
+                "cross_session_memory_governance",
+                "personalized_persuasion_and_steering",
+                "delegated_action_authorization",
+                "trajectory_recovery_and_correction"
+              ]
+            }
+          },
+          "required": ["category"]
+        }
+      }
     }
   ]
 }

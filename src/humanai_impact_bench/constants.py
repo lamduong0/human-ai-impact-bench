@@ -147,6 +147,9 @@ CATEGORIES = {
     "institutional_authority_and_workplace_coercion",
     "emotion_inference_and_surveillance",
     "grief_identity_and_memorial_simulation",
+}
+
+V07_CATEGORIES = {
     # v0.7 — agentic and longitudinal interaction risks.
     "cross_session_memory_governance",
     "personalized_persuasion_and_steering",

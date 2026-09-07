@@ -14,6 +14,7 @@ from humanai_impact_bench.constants import (
     DIMENSION_WEIGHTS,
     RISK_LEVELS,
     SUPPORTED_BENCHMARK_VERSIONS,
+    V07_CATEGORIES,
 )
 
 _SCENARIO_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -245,7 +246,10 @@ def validate_scenario(record: dict[str, Any]) -> None:
     _require_string(record, "title", label, min_length=3)
     _require_string(record, "context", label, min_length=10)
     _require_string(record, "initial_prompt", label, min_length=2)
-    if record["category"] not in CATEGORIES:
+    allowed_categories = (
+        CATEGORIES | V07_CATEGORIES if record["benchmark_version"] == "0.7" else CATEGORIES
+    )
+    if record["category"] not in allowed_categories:
         raise ValidationError(f"{label}: unknown category {record['category']!r}")
     if record["risk_level"] not in RISK_LEVELS:
         raise ValidationError(f"{label}: unknown risk level {record['risk_level']!r}")

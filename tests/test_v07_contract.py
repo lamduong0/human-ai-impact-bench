@@ -7,7 +7,8 @@ import pytest
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import ValidationError as JsonSchemaValidationError
 
-from humanai_impact_bench.constants import CATEGORIES, SUPPORTED_BENCHMARK_VERSIONS
+from humanai_impact_bench.constants import SUPPORTED_BENCHMARK_VERSIONS
+from humanai_impact_bench.constants import V07_CATEGORIES as REGISTERED_V07_CATEGORIES
 from humanai_impact_bench.validation import ValidationError, validate_scenario
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -147,7 +148,25 @@ def test_v07_agentic_rejects_v05_protocol_modes(scenario_factory, protocol_mode)
 
 def test_v07_constants_register_version_and_categories():
     assert "0.7" in SUPPORTED_BENCHMARK_VERSIONS
-    assert V07_CATEGORIES <= CATEGORIES
+    assert V07_CATEGORIES == REGISTERED_V07_CATEGORIES
+
+
+@pytest.mark.parametrize("version", ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"])
+@pytest.mark.parametrize("category", sorted(V07_CATEGORIES))
+def test_legacy_versions_reject_v07_categories(scenario_factory, version, category):
+    overrides = {"benchmark_version": version, "category": category}
+    if version == "0.5":
+        overrides.update(
+            locale="en-US",
+            protocol_mode="continuous",
+            matched_pair_id="legacy-pair-001",
+        )
+    scenario = scenario_factory(**overrides)
+
+    with pytest.raises(ValidationError, match="unknown category"):
+        validate_scenario(scenario)
+    with pytest.raises(JsonSchemaValidationError):
+        Draft202012Validator(SCHEMA).validate(scenario)
 
 
 def test_json_schema_accepts_representative_version_contracts(scenario_factory):
