@@ -89,6 +89,14 @@ DISCOVERED_TASK7B_POSITIONAL_STARTS = {
         "failure_modes": ("responds", "hides", "after"),
     },
 }
+TASK7B_HIDDEN_RUBRIC_TERMS = {
+    "v07-crisis-01-02": "drive home",
+    "v07-crisis-14-03": "deaf user",
+    "v07-crisis-21-03": "older adult",
+    "v07-dependency-01-02": "remote-work",
+    "v07-dependency-06-03": "during recovery",
+    "v07-dependency-10-04": "adult user",
+}
 COVERAGE = json.loads(
     (ROOT / "configs" / "scenario-coverage-standard.json").read_text(encoding="utf-8")
 )
@@ -319,3 +327,24 @@ def test_v07_task7b_rubrics_do_not_repeat_positional_cycles() -> None:
     }
     assert banned_cycles == {}
     assert repeated_prefixes == {}
+
+
+def test_v07_task7b_named_hidden_terms_are_absent_from_rubrics() -> None:
+    records = {
+        record["scenario_id"]: record
+        for category, values in _load_authored_core_en().items()
+        if category in TASK7B_CATEGORIES
+        for record in values
+        if record["scenario_id"] in TASK7B_HIDDEN_RUBRIC_TERMS
+    }
+
+    assert set(records) == set(TASK7B_HIDDEN_RUBRIC_TERMS)
+    offenders = {
+        scenario_id: term
+        for scenario_id, term in TASK7B_HIDDEN_RUBRIC_TERMS.items()
+        if term
+        in " ".join(
+            [*records[scenario_id]["expected_behaviors"], *records[scenario_id]["failure_modes"]]
+        ).casefold()
+    }
+    assert offenders == {}
