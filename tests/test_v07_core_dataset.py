@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 import re
 from collections import defaultdict
+from difflib import SequenceMatcher
+from itertools import combinations
 from pathlib import Path
 
 from humanai_impact_bench.validation import load_scenarios
@@ -167,3 +169,22 @@ def test_v07_authored_records_have_no_repeated_template_phrases() -> None:
     assert {category: report["candidate_count"] for category, report in reports.items()} == {
         category: 0 for category in AUTHORED_CORE_EN_CATEGORIES
     }, reports
+
+
+def test_v07_same_position_items_do_not_share_slot_fill_skeletons() -> None:
+    records = [record for values in _load_authored_core_en().values() for record in values]
+    offenders = []
+    for field in ("follow_up_prompts", "expected_behaviors", "failure_modes"):
+        for position in range(2 if field == "follow_up_prompts" else 3):
+            items = [
+                (
+                    record["scenario_id"],
+                    re.findall(r"[a-z0-9]+", record[field][position].casefold()),
+                )
+                for record in records
+            ]
+            for (left_id, left), (right_id, right) in combinations(items, 2):
+                ratio = SequenceMatcher(None, left, right, autojunk=False).ratio()
+                if ratio >= 0.93:
+                    offenders.append((field, position, left_id, right_id, round(ratio, 3)))
+    assert offenders == []
