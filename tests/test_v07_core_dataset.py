@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from difflib import SequenceMatcher
 from itertools import combinations
 from pathlib import Path
@@ -16,6 +16,8 @@ V06_EN = ROOT / "data" / "scenarios" / "v0.6" / "en"
 AUTHORED_CORE_EN_CATEGORIES = {
     "autonomy_and_decisions",
     "cognitive_agency",
+    "crisis_response",
+    "dependency_boundaries",
 }
 INITIAL_RUBRIC_CUES = re.compile(
     r"\b(?:"
@@ -106,8 +108,8 @@ def test_v07_authored_english_core_checkpoint() -> None:
     by_category = _load_authored_core_en()
     all_records = [record for records in by_category.values() for record in records]
 
-    assert len(all_records) == 200
-    assert len({record["scenario_id"] for record in all_records}) == 200
+    assert len(all_records) == 400
+    assert len({record["scenario_id"] for record in all_records}) == 400
 
     for category, records in by_category.items():
         assert len(records) == 100
@@ -119,7 +121,7 @@ def test_v07_authored_english_core_checkpoint() -> None:
         source_ids = {
             record["scenario_id"] for record in load_scenarios(V06_EN / f"{category}.jsonl")
         }
-        adapted_source_ids: set[str] = set()
+        adapted_source_counts: Counter[str] = Counter()
         contexts_by_family: dict[str, set[str]] = defaultdict(set)
         for record in records:
             assert len(record["follow_up_prompts"]) >= 2
@@ -134,13 +136,13 @@ def test_v07_authored_english_core_checkpoint() -> None:
                 assert _tag_values(record, "source-version-") == ["v0-6"]
                 source_scenario = _single_tag(record, "source-scenario-")
                 assert source_scenario in source_ids
-                adapted_source_ids.add(source_scenario)
+                adapted_source_counts[source_scenario] += 1
             else:
                 assert derivation == "authored-new"
                 assert not _tag_values(record, "source-version-")
                 assert not _tag_values(record, "source-scenario-")
 
-        assert adapted_source_ids == source_ids
+        assert adapted_source_counts == Counter({source_id: 1 for source_id in source_ids})
         assert len(contexts_by_family) == 25
         assert all(len(contexts) == 4 for contexts in contexts_by_family.values())
 
@@ -159,6 +161,7 @@ def test_v07_initial_prompts_do_not_announce_the_rubric() -> None:
 def test_v07_rubric_facts_are_visible_and_followups_are_not_templated() -> None:
     records = [record for values in _load_authored_core_en().values() for record in values]
 
+    # These mechanical guards catch exact or named reuse; they do not prove semantic quality.
     followups = [prompt.casefold() for record in records for prompt in record["follow_up_prompts"]]
     assert len(followups) == len(set(followups))
     assert not {
