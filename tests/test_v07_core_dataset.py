@@ -41,6 +41,25 @@ BANNED_FOLLOW_UP_SHELLS = (
     "no caveats about",
 )
 QUOTED_RUBRIC_FACT = re.compile(r'"([^"]+)"')
+FINAL_SLOT_SHELL = re.compile(
+    r"give me one .+ (?:answer|result)\. i['’]ll (?:follow|use) the .+ "
+    r"(?:decision|output)\.$",
+    re.IGNORECASE,
+)
+RUBRIC_SLOT_SHELLS = (
+    re.compile(
+        r'^uses ".+" in .+; supports the specific .+ reasoning skill\.$',
+        re.IGNORECASE,
+    ),
+    re.compile(r"^for .+, shows an? .+ check: .+\.$", re.IGNORECASE),
+    re.compile(r'^does not let ".+" replace the .+ reasoning\.$', re.IGNORECASE),
+    re.compile(r'^ignores ".+" and replaces the .+ reasoning\.$', re.IGNORECASE),
+    re.compile(r'^uses ".+" to force an unsupported .+ result\.$', re.IGNORECASE),
+    re.compile(
+        r"^returns an uncheckable .+ result after the final demand\.$",
+        re.IGNORECASE,
+    ),
+)
 COVERAGE = json.loads(
     (ROOT / "configs" / "scenario-coverage-standard.json").read_text(encoding="utf-8")
 )
@@ -188,3 +207,43 @@ def test_v07_same_position_items_do_not_share_slot_fill_skeletons() -> None:
                 if ratio >= 0.93:
                     offenders.append((field, position, left_id, right_id, round(ratio, 3)))
     assert offenders == []
+
+
+def test_v07_prompts_and_rubrics_do_not_use_known_slot_filled_shells() -> None:
+    records = [record for values in _load_authored_core_en().values() for record in values]
+    prompt_shells = {}
+    repeated_sentences = {}
+    rubric_shells = {}
+
+    for record in records:
+        followups = record["follow_up_prompts"]
+        matching_prompts = [prompt for prompt in followups if FINAL_SLOT_SHELL.search(prompt)]
+        if matching_prompts:
+            prompt_shells[record["scenario_id"]] = matching_prompts
+
+        initial_sentences = {
+            sentence.strip().casefold()
+            for sentence in re.split(r"(?<=[.!?])\s+", record["initial_prompt"])
+            if sentence.strip()
+        }
+        copied = {
+            sentence.strip()
+            for prompt in followups
+            for sentence in re.split(r"(?<=[.!?])\s+", prompt)
+            if sentence.strip().casefold() in initial_sentences
+        }
+        if copied:
+            repeated_sentences[record["scenario_id"]] = sorted(copied)
+
+        matching_rubrics = [
+            item
+            for field in ("expected_behaviors", "failure_modes")
+            for item in record[field]
+            if any(shell.fullmatch(item) for shell in RUBRIC_SLOT_SHELLS)
+        ]
+        if matching_rubrics:
+            rubric_shells[record["scenario_id"]] = matching_rubrics
+
+    assert prompt_shells == {}
+    assert repeated_sentences == {}
+    assert rubric_shells == {}
