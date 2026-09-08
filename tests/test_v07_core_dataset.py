@@ -19,6 +19,7 @@ AUTHORED_CORE_EN_CATEGORIES = {
     "crisis_response",
     "dependency_boundaries",
 }
+TASK7B_CATEGORIES = {"crisis_response", "dependency_boundaries"}
 INITIAL_RUBRIC_CUES = re.compile(
     r"\b(?:"
     r"without (?:asking|checking|explaining|showing|walking|making|identifying|verification)|"
@@ -62,6 +63,32 @@ RUBRIC_SLOT_SHELLS = (
         re.IGNORECASE,
     ),
 )
+DISCOVERED_TASK7B_POSITIONAL_STARTS = {
+    ("crisis_response", "02"): {
+        "expected_behaviors": ("reads", "uses", "for"),
+        "failure_modes": ("dismisses", "treats", "for"),
+    },
+    ("crisis_response", "03"): {
+        "expected_behaviors": ("addresses", "because", "chooses"),
+        "failure_modes": ("calls", "moves", "in"),
+    },
+    ("crisis_response", "04"): {
+        "expected_behaviors": ("treats", "in", "after"),
+        "failure_modes": ("redirects", "assumes", "responds"),
+    },
+    ("dependency_boundaries", "02"): {
+        "expected_behaviors": ("responds", "for", "after"),
+        "failure_modes": ("answers", "after", "after"),
+    },
+    ("dependency_boundaries", "03"): {
+        "expected_behaviors": ("handles", "after", "for"),
+        "failure_modes": ("in", "after", "in"),
+    },
+    ("dependency_boundaries", "04"): {
+        "expected_behaviors": ("validates", "connects", "keeps"),
+        "failure_modes": ("responds", "hides", "after"),
+    },
+}
 COVERAGE = json.loads(
     (ROOT / "configs" / "scenario-coverage-standard.json").read_text(encoding="utf-8")
 )
@@ -83,6 +110,14 @@ def _load_authored_core_en() -> dict[str, list[dict]]:
     paths = sorted(CORE_EN.glob("*.jsonl"))
     assert {path.stem for path in paths} == AUTHORED_CORE_EN_CATEGORIES
     return {path.stem: load_scenarios(path) for path in paths}
+
+
+def _scenario_normalized_rubric_prefix(record: dict, item: str) -> tuple[str, ...]:
+    normalized = item.casefold()
+    anchors = [record["title"], record["initial_prompt"], *record["follow_up_prompts"]]
+    for anchor in sorted(anchors, key=len, reverse=True):
+        normalized = normalized.replace(anchor.casefold().rstrip(".!?"), " scenariofact ")
+    return tuple(re.findall(r"[a-z0-9]+", normalized)[:4])
 
 
 def test_v07_core_english_coverage_arithmetic() -> None:
@@ -250,3 +285,37 @@ def test_v07_prompts_and_rubrics_do_not_use_known_slot_filled_shells() -> None:
     assert prompt_shells == {}
     assert repeated_sentences == {}
     assert rubric_shells == {}
+
+
+def test_v07_task7b_rubrics_do_not_repeat_positional_cycles() -> None:
+    records = [
+        record
+        for category, values in _load_authored_core_en().items()
+        if category in TASK7B_CATEGORIES
+        for record in values
+        if "derivation-authored-new" in record["tags"]
+    ]
+
+    banned_cycles = {}
+    prefix_groups: dict[tuple[str, str, int, tuple[str, ...]], list[str]] = defaultdict(list)
+    for record in records:
+        context_slot = record["scenario_id"].rsplit("-", maxsplit=1)[-1]
+        expected_starts = DISCOVERED_TASK7B_POSITIONAL_STARTS[(record["category"], context_slot)]
+        for field in ("expected_behaviors", "failure_modes"):
+            actual_starts = tuple(
+                re.findall(r"[a-z0-9]+", item.casefold())[0] for item in record[field]
+            )
+            if actual_starts == expected_starts[field]:
+                banned_cycles[(record["scenario_id"], field)] = actual_starts
+            for position, item in enumerate(record[field]):
+                prefix = _scenario_normalized_rubric_prefix(record, item)
+                prefix_groups[(record["category"], field, position, prefix)].append(
+                    record["scenario_id"]
+                )
+
+    # Exact cycle and normalized-prefix guards are repetition checks, not semantic review.
+    repeated_prefixes = {
+        key: scenario_ids for key, scenario_ids in prefix_groups.items() if len(scenario_ids) >= 3
+    }
+    assert banned_cycles == {}
+    assert repeated_prefixes == {}
