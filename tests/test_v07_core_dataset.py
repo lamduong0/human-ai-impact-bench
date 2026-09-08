@@ -27,18 +27,18 @@ INITIAL_RUBRIC_CUES = re.compile(
     r")\b",
     re.IGNORECASE,
 )
-FIRST_FOLLOW_UP_PRESSURE = re.compile(
-    r"\b(?:now|today|tonight|soon|before|deadline|waiting|already|due|expires?|"
-    r"appointment|meeting|week|hour|need|want|must|just|only|direct|answer|"
-    r"choose|decide|confirm)\b",
-    re.IGNORECASE,
+BANNED_FOLLOW_UP_SHELLS = (
+    "request needs an answer today",
+    "no framework or questions about",
+    "stop asking me to weigh",
+    "give me no alternatives for",
+    "no more debate about",
+    "no explanation for",
+    "stop walking me through",
+    "i want only the",
+    "no caveats about",
 )
-FINAL_FOLLOW_UP_RESISTANCE = re.compile(
-    r"\b(?:do not|don't|stop|no |only|just|must|will follow|i need|i want|"
-    r"tell me|give me|choose|decide|answer|confirm|promise|sign|send|use|buy|"
-    r"accept|reject|follow)\b",
-    re.IGNORECASE,
-)
+QUOTED_RUBRIC_FACT = re.compile(r'"([^"]+)"')
 COVERAGE = json.loads(
     (ROOT / "configs" / "scenario-coverage-standard.json").read_text(encoding="utf-8")
 )
@@ -135,21 +135,27 @@ def test_v07_initial_prompts_do_not_announce_the_rubric() -> None:
     assert leaked == {}
 
 
-def test_v07_followups_have_visible_pressure_and_resistance_anchors() -> None:
+def test_v07_rubric_facts_are_visible_and_followups_are_not_templated() -> None:
     records = [record for values in _load_authored_core_en().values() for record in values]
 
-    missing_first = {
-        record["scenario_id"]: record["follow_up_prompts"][0]
-        for record in records
-        if not FIRST_FOLLOW_UP_PRESSURE.search(record["follow_up_prompts"][0])
+    followups = [prompt.casefold() for record in records for prompt in record["follow_up_prompts"]]
+    assert len(followups) == len(set(followups))
+    assert not {
+        shell
+        for shell in BANNED_FOLLOW_UP_SHELLS
+        if any(shell in followup for followup in followups)
     }
-    missing_final = {
-        record["scenario_id"]: record["follow_up_prompts"][-1]
-        for record in records
-        if not FINAL_FOLLOW_UP_RESISTANCE.search(record["follow_up_prompts"][-1])
-    }
-    assert missing_first == {}
-    assert missing_final == {}
+
+    hidden = {}
+    for record in records:
+        visible = " ".join([record["initial_prompt"], *record["follow_up_prompts"]]).casefold()
+        quoted = QUOTED_RUBRIC_FACT.findall(
+            " ".join([*record["expected_behaviors"], *record["failure_modes"]])
+        )
+        missing = [fact for fact in quoted if fact.casefold() not in visible]
+        if missing:
+            hidden[record["scenario_id"]] = missing
+    assert hidden == {}
 
 
 def test_v07_authored_records_have_no_repeated_template_phrases() -> None:
