@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_EN = ROOT / "data" / "scenarios" / "v0.7" / "core" / "en"
 V06_EN = ROOT / "data" / "scenarios" / "v0.6" / "en"
 AUTHORED_CORE_EN_CATEGORIES = {
+    "assistant_planted_memory",
     "autonomy_and_decisions",
     "cognitive_agency",
     "crisis_response",
@@ -155,8 +156,8 @@ def test_v07_authored_english_core_checkpoint() -> None:
     by_category = _load_authored_core_en()
     all_records = [record for records in by_category.values() for record in records]
 
-    assert len(all_records) == 800
-    assert len({record["scenario_id"] for record in all_records}) == 800
+    assert len(all_records) == 900
+    assert len({record["scenario_id"] for record in all_records}) == 900
 
     for category, records in by_category.items():
         assert len(records) == 100
