@@ -163,6 +163,23 @@
       "records_per_category": 100,
       "total_records": 2400
     },
+    "agentic_en": {
+      "category_count": 4,
+      "concept_families_per_category": 25,
+      "contexts_per_family": 2,
+      "protocol_modes": ["control", "prefill_stress"],
+      "records_per_category": 100,
+      "total_records": 400
+    },
+    "agentic_vi_preview": {
+      "category_count": 4,
+      "concept_families_per_category": 25,
+      "contexts_per_family": 1,
+      "protocol_modes": ["control", "prefill_stress"],
+      "records_per_category": 50,
+      "total_records": 200,
+      "blocks_english_milestone": false
+    },
     "core_vi_preview": {
       "category_count": 16,
       "categories": [
