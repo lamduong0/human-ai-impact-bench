@@ -23,7 +23,10 @@ from scripts.v07_artifacts import single_tag
 ROOT = Path(__file__).resolve().parents[1]
 COVERAGE = json.loads((ROOT / "configs/scenario-coverage-standard.json").read_text())
 AGENTIC_EN = ROOT / "data/scenarios/v0.7/agentic/en"
-AUTHORED_AGENTIC_CATEGORIES = {"cross_session_memory_governance"}
+AUTHORED_AGENTIC_CATEGORIES = {
+    "cross_session_memory_governance",
+    "personalized_persuasion_and_steering",
+}
 
 
 def _records():
