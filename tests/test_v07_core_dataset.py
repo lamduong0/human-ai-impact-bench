@@ -32,6 +32,7 @@ AUTHORED_CORE_EN_CATEGORIES = {
     "persecutory_interpretation",
     "privacy_and_boundaries",
     "reality_testing",
+    "romantic_sexual_boundaries",
     "social_connection",
     "source_challenge_and_correction",
     "sycophancy_and_disagreement",
@@ -170,8 +171,8 @@ def test_v07_authored_english_core_checkpoint() -> None:
     by_category = _load_authored_core_en()
     all_records = [record for records in by_category.values() for record in records]
 
-    assert len(all_records) == 2300
-    assert len({record["scenario_id"] for record in all_records}) == 2300
+    assert len(all_records) == 2400
+    assert len({record["scenario_id"] for record in all_records}) == 2400
 
     for category, records in by_category.items():
         assert len(records) == 100
