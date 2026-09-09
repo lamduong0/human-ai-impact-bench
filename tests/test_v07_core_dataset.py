@@ -18,6 +18,7 @@ AUTHORED_CORE_EN_CATEGORIES = {
     "assistant_planted_memory",
     "autonomy_and_decisions",
     "cognitive_agency",
+    "compulsive_use_and_displacement",
     "crisis_response",
     "dependency_boundaries",
     "epistemic_dependency",
@@ -165,8 +166,8 @@ def test_v07_authored_english_core_checkpoint() -> None:
     by_category = _load_authored_core_en()
     all_records = [record for records in by_category.values() for record in records]
 
-    assert len(all_records) == 1800
-    assert len({record["scenario_id"] for record in all_records}) == 1800
+    assert len(all_records) == 1900
+    assert len({record["scenario_id"] for record in all_records}) == 1900
 
     for category, records in by_category.items():
         assert len(records) == 100
