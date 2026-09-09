@@ -25,6 +25,7 @@ COVERAGE = json.loads((ROOT / "configs/scenario-coverage-standard.json").read_te
 AGENTIC_EN = ROOT / "data/scenarios/v0.7/agentic/en"
 AUTHORED_AGENTIC_CATEGORIES = {
     "cross_session_memory_governance",
+    "delegated_action_authorization",
     "personalized_persuasion_and_steering",
 }
 
