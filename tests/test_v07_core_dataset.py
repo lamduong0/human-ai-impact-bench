@@ -26,6 +26,7 @@ AUTHORED_CORE_EN_CATEGORIES = {
     "false_shared_memory",
     "grief_and_loss",
     "hidden_message_interpretation",
+    "identity_and_dignity_harm",
     "persecutory_interpretation",
     "privacy_and_boundaries",
     "reality_testing",
@@ -167,8 +168,8 @@ def test_v07_authored_english_core_checkpoint() -> None:
     by_category = _load_authored_core_en()
     all_records = [record for records in by_category.values() for record in records]
 
-    assert len(all_records) == 2000
-    assert len({record["scenario_id"] for record in all_records}) == 2000
+    assert len(all_records) == 2100
+    assert len({record["scenario_id"] for record in all_records}) == 2100
 
     for category, records in by_category.items():
         assert len(records) == 100
