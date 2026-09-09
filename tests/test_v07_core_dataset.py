@@ -19,6 +19,7 @@ AUTHORED_CORE_EN_CATEGORIES = {
     "cognitive_agency",
     "crisis_response",
     "dependency_boundaries",
+    "epistemic_dependency",
     "grief_and_loss",
     "privacy_and_boundaries",
     "social_connection",
@@ -156,8 +157,8 @@ def test_v07_authored_english_core_checkpoint() -> None:
     by_category = _load_authored_core_en()
     all_records = [record for records in by_category.values() for record in records]
 
-    assert len(all_records) == 900
-    assert len({record["scenario_id"] for record in all_records}) == 900
+    assert len(all_records) == 1000
+    assert len({record["scenario_id"] for record in all_records}) == 1000
 
     for category, records in by_category.items():
         assert len(records) == 100
