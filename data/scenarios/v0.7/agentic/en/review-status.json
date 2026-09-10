@@ -1,0 +1,2016 @@
+{
+  "manifest_version": "0.2",
+  "benchmark_version": "0.7",
+  "benchmark_track": "agentic",
+  "language": "en",
+  "scenario_count": 400,
+  "allowed_statuses": [
+    "changes_requested",
+    "draft_unreviewed",
+    "in_review",
+    "release_ready",
+    "reviewed"
+  ],
+  "items": {
+    "v07-action-authorization-01-01-en-us-control": {
+      "scenario_digest": "33fbd7438d7a6351f949f9b15041373e31545477990d6e3ba6dd8b7d48275f59",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-01-01-en-us-stress": {
+      "scenario_digest": "d43eaa005928abd79c3d9a82d5ac2b5d713bb5be4f42da12fb07ef66356be17a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-01-02-en-us-control": {
+      "scenario_digest": "2dd6bec19376b1d800d412160dd1df58d1da5b410d58b4e298668479e16e655a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-01-02-en-us-stress": {
+      "scenario_digest": "04bc9174a5773eebd5cc9bb8e810d20975409511814466876aba312e4b549cb2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-02-01-en-us-control": {
+      "scenario_digest": "3f0be22549606eac40a0c7e98a4442a478ecf38d14a6fb1e241758e9297d9796",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-02-01-en-us-stress": {
+      "scenario_digest": "126d479b65b508e6b1c575156466747f62cb5c4b858bf36fbd9d35d7c26e5e69",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-02-02-en-us-control": {
+      "scenario_digest": "a36d4d056175f869c60153d32b62c51b25e975dafeaf722bc66affbeec89ccad",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-02-02-en-us-stress": {
+      "scenario_digest": "918ec01d63074ef0fd837037ed95c88adeb6349966c5bf9205a978d4228c2d91",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-03-01-en-us-control": {
+      "scenario_digest": "e8689c7c57449b03ae05279292042d353ffdcb76390ac39ca84226c653852100",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-03-01-en-us-stress": {
+      "scenario_digest": "0735ba1524c12d64da68534aa92059bcec6ef3b9604bb285f4f9df7137f92ed6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-03-02-en-us-control": {
+      "scenario_digest": "c7dc9cb69e52b1ebcad21bcad00d6c7b7f836b1a3f83e5582d12b583a9558ff9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-03-02-en-us-stress": {
+      "scenario_digest": "24b12a65a3a552621408749ec32dc2c15bbf6c9f9d4a6abff55cdadbfb0ca072",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-04-01-en-us-control": {
+      "scenario_digest": "404f3d97f9db5c5b60fbe1cff18541075c353b94e0faff06dd6f0b6381d9a965",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-04-01-en-us-stress": {
+      "scenario_digest": "6905300772eff3d915f5ef9d4c714742dd03351829e11483f744c3461e5f6782",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-04-02-en-us-control": {
+      "scenario_digest": "7508c869a815219873caa0d2dd587dbae9f7c4423339346282a9f2aa13b0dde4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-04-02-en-us-stress": {
+      "scenario_digest": "02b9f60d4b536d0ed0a9c284d0d2dcd8c613ed90bf4ae74ffea1ad4034fe85cf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-05-01-en-us-control": {
+      "scenario_digest": "38264cc47cadf610113368d27f0cdbbdf95b76692662156d7d46a118a410f21e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-05-01-en-us-stress": {
+      "scenario_digest": "e02a4e8c894fbdb4843eedf68facab8ec56e36165583922aebe08dc697114745",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-05-02-en-us-control": {
+      "scenario_digest": "f9ea3cf4dfa301ce6a5d4f2715653f09eb6ce74c0973d93f8cf235e6f9cf1c63",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-05-02-en-us-stress": {
+      "scenario_digest": "0f995c5a39d8b5c8f2780fcb234a48c0a50cef980db9391f512d0f9f0d80b995",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-06-01-en-us-control": {
+      "scenario_digest": "ec6806055960464ab88e79d6b1340554fc1f362ee0ec391009a56a260ab51453",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-06-01-en-us-stress": {
+      "scenario_digest": "e9332acaa881940db307312cd86a3a0b843dfa782ee602faaffc76e2acfbd13a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-06-02-en-us-control": {
+      "scenario_digest": "cbda4298057c6b3d4efe113a844a765bb8b1a70cebfb9605f2c8c5af526110a8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-06-02-en-us-stress": {
+      "scenario_digest": "1cc57adaa1a13829a997f778c3b1a5a03d430e5e2f148df7abe2dffe6bae1a32",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-07-01-en-us-control": {
+      "scenario_digest": "1d10b91955421fd625eca8312fe98ef754be6fdccee02126739e07f4c7079cc2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-07-01-en-us-stress": {
+      "scenario_digest": "6b7dfdb530b0308ea2c107cf30bae948f47b1cb12ed6a0206c54835394188da9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-07-02-en-us-control": {
+      "scenario_digest": "5efaae45a358923bf3deffc04a7b91022c98dc8644e8d6c77fdf2937e8b4f789",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-07-02-en-us-stress": {
+      "scenario_digest": "e8c126132f5516165f3e417fda2b780d27fe3b99ed09e29bf9da767a4d3b5b8e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-08-01-en-us-control": {
+      "scenario_digest": "38f5f2beabc1e7642c0f132fc5b1017e5e3dda6217d0111c668d16ea713c420b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-08-01-en-us-stress": {
+      "scenario_digest": "76642ce551116b40e6a2ec59cf7e2aa0e24d2f7f0376d784f76377a523010747",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-08-02-en-us-control": {
+      "scenario_digest": "179ddced38fb6d012436cf55b11f2dfdfbe461de5ed9d430aca96087feb86cdd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-08-02-en-us-stress": {
+      "scenario_digest": "b650edc6117b4f9a753cb26418697fe50a094b4aa8d5cb74010a0504db051aa1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-09-01-en-us-control": {
+      "scenario_digest": "51d2fae5864e2032deb0dd98c21d568f8d4a4568878d297be8ba263c4b186edc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-09-01-en-us-stress": {
+      "scenario_digest": "b424f8ea2190e1a41e3a869fc0f73652f81bd88c7449d06846b3dc265313b54f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-09-02-en-us-control": {
+      "scenario_digest": "77a7eecb71849493f888ea31930bbf7fcdd30e9b489a95cef03a2fa6e4c23fe1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-09-02-en-us-stress": {
+      "scenario_digest": "7836ecd99d5a94f24205edfa7df40b2c9108888ec322a143cdacd10198c8f0a3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-10-01-en-us-control": {
+      "scenario_digest": "0237b00a5b10cc87ee856f88f701d64f50a0477f9238389b30aff919d8d631a2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-10-01-en-us-stress": {
+      "scenario_digest": "b5536505ffa97a4073a524dcdc6ee352a5c876a44566dd27345f73eb3309e945",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-10-02-en-us-control": {
+      "scenario_digest": "cb86eaa27fd2a11425465ff668826eff89a6bdb0b7c38ed397c2b75661aa3684",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-10-02-en-us-stress": {
+      "scenario_digest": "47ead1081c01f0ca5fa4b54f7c5182907316d9aa0af73e75b70d7042e3be2553",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-11-01-en-us-control": {
+      "scenario_digest": "74dcb25fdd17fff2600fca2fe067fd21395ca3bb34588aad132b3e2e0fe2e2fa",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-11-01-en-us-stress": {
+      "scenario_digest": "18b364f2dec5f853101799851a65bf464dcccedf2f7bf50cfe48535d703a3c48",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-11-02-en-us-control": {
+      "scenario_digest": "a9bfa3f7dfc2ee1f800b68ebe92bfc2b82df860bda30c47f78332d7c4a4f0163",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-11-02-en-us-stress": {
+      "scenario_digest": "c4d4a8b7991186df490dd284e40f02ae191f6bb3828518739a49f4bdd66f630c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-12-01-en-us-control": {
+      "scenario_digest": "f5bd2006dc643c79e3d45c8d697f4b143aa9cee4a0dde8651adc1ab2d245e3c5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-12-01-en-us-stress": {
+      "scenario_digest": "bb07bee6f48e147dbd00f9dd46bf76ab30fc15c97c70d95c8d4d65ae1685b039",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-12-02-en-us-control": {
+      "scenario_digest": "ffbd57879a1338358b2aa5fe6642bc7a615349095bda382a91609141b064eace",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-12-02-en-us-stress": {
+      "scenario_digest": "b21fd06b4e9ead7d0cb57b21d0e08e895db00bbc6b79dc1dbec8a4dd52fa72b7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-13-01-en-us-control": {
+      "scenario_digest": "8b5d3acf00abc14a71f8e1f1ab26e2b0acca62dc6e199660281f00cf3fdd9e81",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-13-01-en-us-stress": {
+      "scenario_digest": "a950c7df6f66b16ff28185b881b6bba4774c6440d98fa57acc515478cd33c917",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-13-02-en-us-control": {
+      "scenario_digest": "776d6862727a28708691ce6ee3e0b64b77c3926c2e845510cf2aeec144d177cf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-13-02-en-us-stress": {
+      "scenario_digest": "71f64bf66b487999b897d667037e6efccdf3d44d33fd63107242f3fc777cf8ac",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-14-01-en-us-control": {
+      "scenario_digest": "9e99053e7a2325eca3a41cbd86b6ea0afb05d53a3654a6c2f6febe25abc6ba2f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-14-01-en-us-stress": {
+      "scenario_digest": "db6d413f8de309ff1de99812f118cc7ded244d9496b1f4ef193752f66e90ec9f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-14-02-en-us-control": {
+      "scenario_digest": "d4481a02213db70a3bd90ae7463d7ba449e0201fdcfe284e49b98257f3ab04f1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-14-02-en-us-stress": {
+      "scenario_digest": "f84c78ce26b1abf25c951613d364a4be7d9ab709bdf11639c9e28646be00f4b0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-15-01-en-us-control": {
+      "scenario_digest": "439109a2e217843c9b88410273b5937c7be21e60bbaccfe1b1fc92b30103839f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-15-01-en-us-stress": {
+      "scenario_digest": "79918c90a10c4e87b8b279efc239fcfd293fa020eff5e38834aa1b2d21c5da31",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-15-02-en-us-control": {
+      "scenario_digest": "eb27362a23c486d2920afc7247e9ac8447dd60557f89faa8d1bd471288d65a80",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-15-02-en-us-stress": {
+      "scenario_digest": "bc41999b7134b7f3303e8e1918a4ef6c109be9b1d7cdb70e1e4f322622d8b704",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-16-01-en-us-control": {
+      "scenario_digest": "4ac57f628ddd807cd047d89976893459b1bd684f3c974b7c8a8883ee6c9faee8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-16-01-en-us-stress": {
+      "scenario_digest": "0e571b4fbd5eb520c6175beec1986901b499afaca3c10b5951d09d924c52d45e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-16-02-en-us-control": {
+      "scenario_digest": "3fad16185024661a7051244f4f0f164682c8f2f86ec34b7cfab26cb6b9297288",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-16-02-en-us-stress": {
+      "scenario_digest": "3e3fe89813615c40fb87fd0779e2668c87dc37f2ee35c036d62f58cf017ee0a9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-17-01-en-us-control": {
+      "scenario_digest": "1f4dd9d64b45cea4747b012fecb0068f6a9065f09c57d4a4243edf1dbcb9aa46",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-17-01-en-us-stress": {
+      "scenario_digest": "920daff476a3708695bb0de6d7d07489a907b3bd488a18602361039dc555c9dd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-17-02-en-us-control": {
+      "scenario_digest": "11711ef46ee4f81f26e45d853179f30ab91ca9005f95c60b6d0b69ea783b4f9b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-17-02-en-us-stress": {
+      "scenario_digest": "aa51d8709e42d55f002c5991173ce2d1e87b7a8136a08580b707700e8aab6e5c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-18-01-en-us-control": {
+      "scenario_digest": "8d9e27493e2ae1e6504828224418213ab130e5e3c05dd8d2fff4955bc8ea5dc4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-18-01-en-us-stress": {
+      "scenario_digest": "c7a90d77e51b15cf12c950427813e290e864c1f35c86b8fdc527c7a3310b8651",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-18-02-en-us-control": {
+      "scenario_digest": "1f669ee95fc63586127a3356c240672bef2cc7c937b9272902aedcdb25f45847",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-18-02-en-us-stress": {
+      "scenario_digest": "047fc435669dcf818162476eae042529c4042485642a9b35dcd9e0a3948bc276",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-19-01-en-us-control": {
+      "scenario_digest": "f25e558b01b7b262e59d79a2c55a1eebfb2e136bb7e0ad88d3abf6d0563e8f74",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-19-01-en-us-stress": {
+      "scenario_digest": "ab7cda567d5dbc89ea735488b830848410855805fc319276074df9fbcab973dd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-19-02-en-us-control": {
+      "scenario_digest": "ace1bc496e63a009616978fd3442e1f0632253cb105c45cfa82d017d94217c5f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-19-02-en-us-stress": {
+      "scenario_digest": "a402abfea733e916344906235681594ff3f1f35dcaa56ba677dafa4f7481d159",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-20-01-en-us-control": {
+      "scenario_digest": "34cefd7a17ec7cd70cb8e8e3609e8a53a550bdcad960ab4bab07375b37441ce6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-20-01-en-us-stress": {
+      "scenario_digest": "d7f4e4d7d1c658a6bb263c719f3c413efadc9e60500de5c65a60098b306df907",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-20-02-en-us-control": {
+      "scenario_digest": "6e2a17d5758ca3589cbd77be9150802625033efbcb28067c7dd82f6422c8ec7b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-20-02-en-us-stress": {
+      "scenario_digest": "7683563fbfadc1442192cbc465df22a54067457b7cc7629b7691a311c741633d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-21-01-en-us-control": {
+      "scenario_digest": "845f044387d417e7bc73d38a36e52b38bc1fab12b8ff12e6e781693d0d4e70e4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-21-01-en-us-stress": {
+      "scenario_digest": "2f41b74628ad2bb409af179134e44ce7fb78f5325266d970012ad49319bf4b08",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-21-02-en-us-control": {
+      "scenario_digest": "aefce4a852e76adeff8a3d9f6aeb83956a5361ff7d0c925de4ed205aecdd3c17",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-21-02-en-us-stress": {
+      "scenario_digest": "a9ffb93c3cbaac3f1a5db240a5e4e911cdde764959b2428c62bb7c00edac089c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-22-01-en-us-control": {
+      "scenario_digest": "9b14c5f7fd041817dd8bcfd2eab7218bab13182512643f955c3a566a6663963f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-22-01-en-us-stress": {
+      "scenario_digest": "4ead8daede5e35b30995554684251a2abdc1e7d61c58a6dca77fbfe2d84278e2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-22-02-en-us-control": {
+      "scenario_digest": "d6a0a660846de7ccbb14d92e5fa038f2957dfcd57e4e7e0cb67a530d9de78a31",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-22-02-en-us-stress": {
+      "scenario_digest": "0d697f7eb9445d87009037315c810e85e76e5c062f473914bb29ea76b4d6f9f7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-23-01-en-us-control": {
+      "scenario_digest": "6c283292980a109ee75ab528649c841fd5193c831aa45b7805293ba9b6f8dafb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-23-01-en-us-stress": {
+      "scenario_digest": "14e44579a2fd0ea43d7aacde60d0c5e3f13b5218cc21bbe60462eda6bb012ed1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-23-02-en-us-control": {
+      "scenario_digest": "dd30176aaed78d033d04f79a94391130f1965acbcccfedd8edc2d7a257fd5ce0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-23-02-en-us-stress": {
+      "scenario_digest": "3c99ae212600b70e8735e38dd9084111668b15708baaf60199c096a902becbef",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-24-01-en-us-control": {
+      "scenario_digest": "2bde81a5f585c74590d3b00b8c4dd2dc6600560f24bd952ce2acb7d36a9ba29f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-24-01-en-us-stress": {
+      "scenario_digest": "b930064ee59d1cfd0f95dcf9aa3c3e53f85fe95a84b149d0d8f3fce7d06e4324",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-24-02-en-us-control": {
+      "scenario_digest": "8e83a861f50a8c8975895997f6d1f905db1ebeb0f171f57a411b6240e600268c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-24-02-en-us-stress": {
+      "scenario_digest": "2bf6ea967a9f8735f0036042f50cb83aa22c1204b2d5fcf6cfc4a49521546652",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-25-01-en-us-control": {
+      "scenario_digest": "d5490b52d0ba82fc0159529a6722a512c81cc3fa55bac055ecc8ddfcc190de69",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-25-01-en-us-stress": {
+      "scenario_digest": "4679ec585db40d0ef2634f91c830012fb420cdf7597cfe118891402ac54fb2d9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-25-02-en-us-control": {
+      "scenario_digest": "9e433727ebb0ef84bef4db101df4e0cad9680d500e5cbb2d25c544e537182834",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-action-authorization-25-02-en-us-stress": {
+      "scenario_digest": "f2f92d736dcec8b5e36d000deaa6caebd337fd79ca03f4b88a34fad3b0727400",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-01-01-en-us-control": {
+      "scenario_digest": "eaad6fe985b5d72f3770dd1746ac30f96061fa457cde6435a4615460a493f57b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-01-01-en-us-stress": {
+      "scenario_digest": "58db6c339aca060a000cacec693353fbffeebfcf4ce15f1a7483fd2d21c78858",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-01-02-en-us-control": {
+      "scenario_digest": "c49d8162bd19ea0fa56b563afdc459b884f0c6bd84155045a26673b85e3295bd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-01-02-en-us-stress": {
+      "scenario_digest": "54b1d363ac77431d335b6e222205aa3cfcbd62955a39236c1e3dc94ce90ed07c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-02-01-en-us-control": {
+      "scenario_digest": "63137bea775cbce12cc66bed4e3568c0da60634f1bb2d995678fa33df0d48972",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-02-01-en-us-stress": {
+      "scenario_digest": "9195b015ef1a231aa0fd24642931edcbaf97c2b1887ebc0558053b4fb582c71d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-02-02-en-us-control": {
+      "scenario_digest": "024901aedb03eae41518924939a9211f7c5118028fdfdd1fb27cd583fe2033cd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-02-02-en-us-stress": {
+      "scenario_digest": "11d483d497e5a3ee0541190168e14b09a5e446e50c420a1b3afb00ee294b5c45",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-03-01-en-us-control": {
+      "scenario_digest": "6ea67bfc764d9828944823ea35e790299c1cbc3e6f60159f87e89a7b096bcd23",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-03-01-en-us-stress": {
+      "scenario_digest": "4029847b9b46a6a903583150e5416bea8a075d7a42863f388cce83eab50ea176",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-03-02-en-us-control": {
+      "scenario_digest": "7e0a971c64fd10b7d351a3b85abf06539e35806310ba50b9c30a2800d0d38f39",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-03-02-en-us-stress": {
+      "scenario_digest": "431f62f21eecf083a5ddee87a8221ac906321b904c9bddb8d847028378b69905",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-04-01-en-us-control": {
+      "scenario_digest": "9d9dd36542948ac602876d8b9f346d6ec8267d4ee294367d7a99d30234c08c0b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-04-01-en-us-stress": {
+      "scenario_digest": "dad24e5175107822df16c64edf0a86032cae593028d166df9f6464b4c5754ef9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-04-02-en-us-control": {
+      "scenario_digest": "af3452af6d6fcd8c52e7386ef60357095732927ff74c1938261181ff94193d51",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-04-02-en-us-stress": {
+      "scenario_digest": "e638f73a96890d426c5b58155420faf78892b973f418bf53e0cfbe3449d5f0cf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-05-01-en-us-control": {
+      "scenario_digest": "729d4d13554854f7f83035d2462f62ca675eece9c2ce989b48f227f3efce0583",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-05-01-en-us-stress": {
+      "scenario_digest": "98ed4f6b3b919053508ccf78dc0f321e33b44868061c6abedd22b047874ac0d5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-05-02-en-us-control": {
+      "scenario_digest": "017f578898602e539312e8f84a9b3eb431c4889314df119f724f69911bf7992c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-05-02-en-us-stress": {
+      "scenario_digest": "bdb6a687098efca7f23121b3339df3f625244eb4b0d7cc5166337917168830fc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-06-01-en-us-control": {
+      "scenario_digest": "3d920f480fefe63523ae0016ec54714265cef51639ae8c0077729a70026f14a0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-06-01-en-us-stress": {
+      "scenario_digest": "c07d4a080ddee97bc1032a83ec2d26f4181c72824270c3ad2a8d2a37367f71de",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-06-02-en-us-control": {
+      "scenario_digest": "412db05e6ffd9feb4e02f3e819720ee87ea028b551e081b4dde12bc71c4981ed",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-06-02-en-us-stress": {
+      "scenario_digest": "46c3a4848d9c313edb68d8effee590fde728faf3adde07cd6f3a50d8d70fb849",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-07-01-en-us-control": {
+      "scenario_digest": "b9af83fcd1fdb2f885147ba7deee05c0a1f9421a9531fb6ed5049656c9192dda",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-07-01-en-us-stress": {
+      "scenario_digest": "6b018e4a4ca913cc2c339bc1103f1e1802a886834e0bceff577a7f7f200d739a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-07-02-en-us-control": {
+      "scenario_digest": "8b2383a31b9bb2c36fd3add2840fb5f1257182b25c3193cbd750aec31f6f9334",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-07-02-en-us-stress": {
+      "scenario_digest": "62e4334fff4afcd97d3378a4e66f67c7b5bb3227bfd3ed22d72e68f3a6c8b44b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-08-01-en-us-control": {
+      "scenario_digest": "5adbb0352c5997b9d1886b2257537ef5394419756ba0ea37ee966cf052513509",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-08-01-en-us-stress": {
+      "scenario_digest": "db8dc1e76cf250da47d9e9da036e1fa576d1cc76b7408ae5cf4503884e89a469",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-08-02-en-us-control": {
+      "scenario_digest": "6791ab3870c0ec10161110b78558b1b402014b13365534e51830d5fa52ad1bc6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-08-02-en-us-stress": {
+      "scenario_digest": "51c9e2754d07f9731409f75b8eaf683f42bda55c0eb61645acd3c323f928c22b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-09-01-en-us-control": {
+      "scenario_digest": "a0dec58d53a1291f7410dddb82d3c42d0864fe395e3eff60c8f5653a7185fd2c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-09-01-en-us-stress": {
+      "scenario_digest": "e2e4e4c346e54cb0908d6945bdc0ee157e107e954b3f3e81f67822e331969ccd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-09-02-en-us-control": {
+      "scenario_digest": "c1a8eef77a2af2beaa314a782cba5d134da6d82e7470a6cbe3a37b91d26d5637",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-09-02-en-us-stress": {
+      "scenario_digest": "1d9fffde7c461fd36e862dbf47985ae903c3b406abb7d3c898920bd307705f0a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-10-01-en-us-control": {
+      "scenario_digest": "cd5640d7dfb78fac808bcca5fe27e6792a08dc437c80f36d1718140b9d6c6784",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-10-01-en-us-stress": {
+      "scenario_digest": "773ec5d723e5de661e494f7ec0b2002ba01dec09161bea98d0d778413055029c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-10-02-en-us-control": {
+      "scenario_digest": "578bf8245deeaed09a6d5f4d2a9c746fe96f7ffccf5f9fbb56c655c9ff7b96d3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-10-02-en-us-stress": {
+      "scenario_digest": "454fab4dd113f35d76ed4dfc9d94e9f0f6efb6e807d450d64cabc944f8611273",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-11-01-en-us-control": {
+      "scenario_digest": "c48900fb0fb88021bd2a3263b45f458acc318a568106da654dcc98e6c1af121f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-11-01-en-us-stress": {
+      "scenario_digest": "e7622dba28df1e369da9eb83c7928b10525548d460b1dd1e63b935b886e11e9b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-11-02-en-us-control": {
+      "scenario_digest": "28a048593fdfec67ec3f02594d669043bbcb082d6aac50565db1f30313d5c640",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-11-02-en-us-stress": {
+      "scenario_digest": "c699ae787f4be7be095f79bf05e624526156cb4be909367cf545d2eb45aa1968",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-12-01-en-us-control": {
+      "scenario_digest": "d77c242070b98482ba46ecc785a281f7e7dea2c3562017a01cc95d7f57de3ae8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-12-01-en-us-stress": {
+      "scenario_digest": "a68efd2b18bac7a8fce160cd8de2b92de49fc06f0ed97e68a9a052e3644dc6f6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-12-02-en-us-control": {
+      "scenario_digest": "7c1893d6c9de0a0eee3cf357ef6a9345457557f26b21f87b0e96e30530c7013d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-12-02-en-us-stress": {
+      "scenario_digest": "13b0ea6fc4822a7263f8e3a65ab5995e89c3e67db36a370ee11771d8bf304b49",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-13-01-en-us-control": {
+      "scenario_digest": "e63c77c9730c784434f9e00c53a39e7dafc43e2bf439d311aebcff33426ea680",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-13-01-en-us-stress": {
+      "scenario_digest": "47cd3959e8a7a8ab989874e924f9b381591f167137d0ce5ac887886a3ea015b4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-13-02-en-us-control": {
+      "scenario_digest": "7b40a6a341e27ffb7674c35928089f903372808ebf4b13e6d2ee1843a58c2556",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-13-02-en-us-stress": {
+      "scenario_digest": "2115a34eff50bed12b4bbd174f7fae08d5bbe299b3ee205114acb1f88303ee96",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-14-01-en-us-control": {
+      "scenario_digest": "ff62119eb5726f871d6f058ccc5f46acde699026ee3757d6f48f5a7913f495dd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-14-01-en-us-stress": {
+      "scenario_digest": "96e9da92d7c46f2fba06fa74d910e388f7e36e11d071f24edcdc15ee5cbe062f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-14-02-en-us-control": {
+      "scenario_digest": "e41675eb92d5fd90b9db0c99eec435df84c621f54008601cd3d17935accfc38d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-14-02-en-us-stress": {
+      "scenario_digest": "02b84800023d8543c6e19dd77c3b46f04a69703734e8755136bb96f903ebb89a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-15-01-en-us-control": {
+      "scenario_digest": "4c0a299fe1138644a34ae40b368ffe59f3a2bc53ae6860d625d983487b721edf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-15-01-en-us-stress": {
+      "scenario_digest": "63d1139aee11466c871818fa8437228525095c541db462477189ec7871f5ee68",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-15-02-en-us-control": {
+      "scenario_digest": "e9aadcf544d0177016952c7f3f8bd9bdaa52e584ffac8bb891aac0a1414a0f0f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-15-02-en-us-stress": {
+      "scenario_digest": "c0f0ba4dd2574312ac2762092abfcbbf38537e1255c638dd08c446333948d29f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-16-01-en-us-control": {
+      "scenario_digest": "0c0c467478a3a13777ab0b7b332642e4972b5a312397b77d3a278c4e9108b54a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-16-01-en-us-stress": {
+      "scenario_digest": "1d39a9f877a72466bc6a04b207de8706296001f2ba8ceff2c1e7172058b0271f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-16-02-en-us-control": {
+      "scenario_digest": "57de5724a896c6d2758e866128a45b42c0e813be338257ba149a73b4ad9bcc51",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-16-02-en-us-stress": {
+      "scenario_digest": "d109eff1ae8c06c7e2c3ed374b3c762140202961026a15aec154497ebd100552",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-17-01-en-us-control": {
+      "scenario_digest": "0fb0f79fef9073f6e08c7b8344f84560e809a27933287d09dc84cccee7c66d7d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-17-01-en-us-stress": {
+      "scenario_digest": "34cf1403496f62d0e7f9ac0f1d094bf57070bf8021b586ae71a1fe16f481b40a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-17-02-en-us-control": {
+      "scenario_digest": "4235066a89b37362b58e3030aef5deab5d9477fbe9a52b9a6ff56b3b7a2fa171",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-17-02-en-us-stress": {
+      "scenario_digest": "64fae5575b69fadf71eabb227c1b241c6f460432235109672a825802eabce83a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-18-01-en-us-control": {
+      "scenario_digest": "a0ae2cb1b31a4adcf06ea2130ff6e7d494a5088321dfdcab97cc1d8509bd773d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-18-01-en-us-stress": {
+      "scenario_digest": "e11a97dc7fc475b2ef55eae79ef76fe56d60781981baa91f100ed893d5575424",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-18-02-en-us-control": {
+      "scenario_digest": "fe5f2614f6c0224c79646cb3d2041c80d018a8fac283f51c61d308fc4304edcc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-18-02-en-us-stress": {
+      "scenario_digest": "39e3cb10f2040fc1f10facaba7035a9cac7c9484f301d6410fbf7fca15e96efe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-19-01-en-us-control": {
+      "scenario_digest": "1a58681491763e59fdcee6cc4ce729299884d091adc1ea26bc427d93c514b7e0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-19-01-en-us-stress": {
+      "scenario_digest": "8c525eea78edd0957e7e808253703fe1fc19c0f5ab67460e7d00a03c354a60ae",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-19-02-en-us-control": {
+      "scenario_digest": "e06bef53976769630ff9a68197ae02523b3ffe95a48d0660865fabd7699fa6c3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-19-02-en-us-stress": {
+      "scenario_digest": "f29e848c439569fe7385134201d6a07892d27ad0393851abc9c7c4630b0e165f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-20-01-en-us-control": {
+      "scenario_digest": "18ab0717d4a69e1edfed4a2033491006201c3f5ab77ba409dfbc29117de68eec",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-20-01-en-us-stress": {
+      "scenario_digest": "d9ab43f4b549572c20de28ae002fc2bf375e5ccc1fb58f6a55a3df3d3ffbf59a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-20-02-en-us-control": {
+      "scenario_digest": "996001ae1419f4934e41134f8b6d87f08a512459cde98db6b64c4aa550d35c3d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-20-02-en-us-stress": {
+      "scenario_digest": "8b68b215e9d5408a6fed3914bb6bb64209f0ed6e47730153c432225f3c370d93",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-21-01-en-us-control": {
+      "scenario_digest": "ba56ff43417f7702818aa9e87604698dcab9b0494e0749596211f35035ccf13c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-21-01-en-us-stress": {
+      "scenario_digest": "0c22811631acfe2ed1bf0f6528c660355a72fbcc784fb31ba1ed02338479b5f0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-21-02-en-us-control": {
+      "scenario_digest": "c673779d72d101e96bc60f82c94d2c5935c28ea8783a16ddb2ec181fc7f1b263",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-21-02-en-us-stress": {
+      "scenario_digest": "1b8d578a59d4ae0f2abbf42aeddbe5810c699b8d47b878f3935189fb0ec85bd7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-22-01-en-us-control": {
+      "scenario_digest": "71e844eb0118138bc56c9c4f3b89317dd316388738c9327cf588add04a87cc49",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-22-01-en-us-stress": {
+      "scenario_digest": "187c60d2c1a54b42afdd9ca6678c0a8afec0a274a4e8008ff7800cf084d8de77",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-22-02-en-us-control": {
+      "scenario_digest": "a1d6a706470b15e5adae101f24456dee0e69a8d2754d76077d7fda66f469f2f8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-22-02-en-us-stress": {
+      "scenario_digest": "05f9427cd9ef4415e3c78d67ea6c66192dc0e897a3c397d416a1608dc30f3605",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-23-01-en-us-control": {
+      "scenario_digest": "efc5951a89712a2cbafa68f7762967ca4e7cd80751033333a089aa834e47ff78",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-23-01-en-us-stress": {
+      "scenario_digest": "7c0c6a827c3b27831e9e2a40aea41983c637fed3066a14ff9f24e5550b23a131",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-23-02-en-us-control": {
+      "scenario_digest": "a9035fa29316dd07704c11b4643f0c8539740c272b8eb27954abab3461f9ed9b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-23-02-en-us-stress": {
+      "scenario_digest": "389d71512021dc59a342c93b9e439a86b02f40915e01aed0a316d184acc02fa8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-24-01-en-us-control": {
+      "scenario_digest": "92014ae79b6d7e379778a4c2898526610a65a76698d95d8e0ea02af6bd05bc1e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-24-01-en-us-stress": {
+      "scenario_digest": "2598f25c98cd4d3eb4dd6c8256ea584c2ee67f00dfa1fa780d95833a039a8ba3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-24-02-en-us-control": {
+      "scenario_digest": "ec4426745251d1dcf5143ea930132292af7bbaadc9ae27ef8a2bfafd71394716",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-24-02-en-us-stress": {
+      "scenario_digest": "9eea1e9d394f4c1cb279d1159451bc3f6b3c472447511bf79d61eb80eb60abad",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-25-01-en-us-control": {
+      "scenario_digest": "567dc6ca0904a4e6c207d81301e205be6122a81f2e10f79f06b1868e54dea5fe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-25-01-en-us-stress": {
+      "scenario_digest": "836bb5d769bbc23dd059cf442886a67140f537aed4fb60f9c014813e06ca94a2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-25-02-en-us-control": {
+      "scenario_digest": "568b21f56b15ce9aaab9404ae33a800bb81f76a33d7b498f3fb7c0b8e2e5071f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-memory-governance-25-02-en-us-stress": {
+      "scenario_digest": "dd8d346703bbfd3832bbce38136dd5a48e2b59d85fe87a99e142d0c339e7b02e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-01-01-en-us-control": {
+      "scenario_digest": "b4af82263b38a66b2f899fc086f0e094ad440b48ca33a1dfe5985c5c3d5a503e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-01-01-en-us-stress": {
+      "scenario_digest": "e122406d185ec093e2e8f6ed05a1c5991f57dcf120548988e1aebb92239a8c9c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-01-02-en-us-control": {
+      "scenario_digest": "5de56d3aec7430c70012e9823a60aad25fba1e9f98340c1b7fb27e63d80fd971",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-01-02-en-us-stress": {
+      "scenario_digest": "092518908db0710a22db39cdb52fa92fc434b605681e4a5f31abad9ffd980a1c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-02-01-en-us-control": {
+      "scenario_digest": "c57c04c4c7308f55d3b6a5131108cdefb5d9659d7843b59a9a972605500f0375",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-02-01-en-us-stress": {
+      "scenario_digest": "076349c88b8d093d80c8650e52092780babb59a809031a05b6db15d6b7dea0fe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-02-02-en-us-control": {
+      "scenario_digest": "d0f3e433c317c3c776bf3a0b389be10d831b9ecc492467a1c5abba41a6026a0d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-02-02-en-us-stress": {
+      "scenario_digest": "ee2f3b3f8885e5e1988abcabe5bbcd724fe6bf321bbc934ce2023b0b5beb2743",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-03-01-en-us-control": {
+      "scenario_digest": "4e6923b0d557496a502cd63b193df195a49a6ef3d72362fd5a094804a5e68d03",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-03-01-en-us-stress": {
+      "scenario_digest": "147587870a6ec93ecbca128137f00278ccda0b419ba96ecfe534918b8d8c7b4f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-03-02-en-us-control": {
+      "scenario_digest": "1c3b46cc8fec6d9e784dde3595b6cdc8cf695026079e39e380fa93f12eb12917",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-03-02-en-us-stress": {
+      "scenario_digest": "26be0a612638f69d0838aaec1a6c698270b3756d7cd4788378ed641394394909",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-04-01-en-us-control": {
+      "scenario_digest": "7efce250d4846a3d6a97d7c64c03b87d04993ee89a10cc89a7de28f619cda2c7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-04-01-en-us-stress": {
+      "scenario_digest": "78e54782aad0cefd3db603f4f65333ab29eca7df2ff5f68e91a40f5c13767318",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-04-02-en-us-control": {
+      "scenario_digest": "00d585d162b4d24b07ae78dd22acb76b7208c048ff5ff06ff5717b6e18c08f87",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-04-02-en-us-stress": {
+      "scenario_digest": "c48f24c748538c1173deb96964945f60815597bc5f6cd37c6b7f73c9baae7a38",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-05-01-en-us-control": {
+      "scenario_digest": "1b70f74b9e99a7381e058bfb1b00481943dce056e99cf95f43bf762ef5350266",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-05-01-en-us-stress": {
+      "scenario_digest": "a31a610338945595db9bfb153df3adadee8b7e71b865df3151e192b9d6402892",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-05-02-en-us-control": {
+      "scenario_digest": "c282108d350f909e4523181afd9755be19bed6bc589115cfe040121aefcb8fde",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-05-02-en-us-stress": {
+      "scenario_digest": "23c5856490cae46a338afb49f9bc814beb46e73f2cbf4fca08342f9c8b46f337",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-06-01-en-us-control": {
+      "scenario_digest": "36888eba995eb953809167fbe667aa9eccc572e52c22ff88e5ed47f6329aef51",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-06-01-en-us-stress": {
+      "scenario_digest": "e54a88fa4717e8edf3a69210f153ac4dd905f12ba3fab7b14bfffbd33fce6a99",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-06-02-en-us-control": {
+      "scenario_digest": "f3d7dec4dc987260970b0035168b0e8de11f55b8956b9ba60dc1cc90015602da",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-06-02-en-us-stress": {
+      "scenario_digest": "137b8cdb1a67591bdefddf2d6eb3265898e8d6cc1512b08a23dc211552eeefc3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-07-01-en-us-control": {
+      "scenario_digest": "8f1cb1010b0faa27d6c77ffc687a8eeed8740973d67ff1af4ae2676a4cab19b4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-07-01-en-us-stress": {
+      "scenario_digest": "68914ddaace06b4b2f9ae128c7c1d467030e897cd83d80769deadbaff2f45f92",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-07-02-en-us-control": {
+      "scenario_digest": "90d4112f0e3b50a09a8b59af7ba24a2b12252c61a16d35af0ca9b9f4c6d5ac1d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-07-02-en-us-stress": {
+      "scenario_digest": "dbcbba839d0147d8bf43851f6575de8844de6c59682a51bffda277e72089b0b5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-08-01-en-us-control": {
+      "scenario_digest": "75289fef24ea25649ae99300d1fd1966ceb6988688de683a6735f789f992e3b2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-08-01-en-us-stress": {
+      "scenario_digest": "b666c993e54264edae08473951bd91f29b0587a933ea8a8bbbb2195847bd8343",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-08-02-en-us-control": {
+      "scenario_digest": "3dc8df5460e2503410b537ba20ddadf9a4476f9d0b7d728e95a9de0231206a7e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-08-02-en-us-stress": {
+      "scenario_digest": "c6ab8d1246f4b84d9cde170205a34a9d0c0a449b33df7e85384889e8acb63654",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-09-01-en-us-control": {
+      "scenario_digest": "fba165893f5cc792d499e30e04e87c46cc9ac55230279f1ce366f144488857af",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-09-01-en-us-stress": {
+      "scenario_digest": "606be0878ffe6ad87cb250adde5d4ee4f27dee22b49a60cdcc8064c05bc118ce",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-09-02-en-us-control": {
+      "scenario_digest": "e66fae78dcf6c2213a7067b02976853446e6661079b7a16ab20a9f4faf9839f4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-09-02-en-us-stress": {
+      "scenario_digest": "e9b6fe03dd42c655a3c4e8fdf98fa8dc8bed4a392fa14e24dd34bc0fa8fa1cba",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-10-01-en-us-control": {
+      "scenario_digest": "10cdc9d66d77f310107a7c6e982621c82c7e6af4bb543cf90488e8fe2efdf9ea",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-10-01-en-us-stress": {
+      "scenario_digest": "623a283ee1c79ca295a57effa8a5cc909fe591fda2ec6ee081d9e5470b2ab4b0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-10-02-en-us-control": {
+      "scenario_digest": "cc2b963c65ded4dd183372cda16c113516b04bf0ff733a2364cf54404665b95a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-10-02-en-us-stress": {
+      "scenario_digest": "1a4d58bb89c90e66fb867ef80e1672fc31f8790cc0ba8e57db2660f9818790da",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-11-01-en-us-control": {
+      "scenario_digest": "2dd3037c090c272219d1842e1b80ecd2f8b06012728736c9619100939b083aa7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-11-01-en-us-stress": {
+      "scenario_digest": "24049f7a50adcc65284304e51f72a824d9faf93bc3a209b5dc42ec4fc43a75aa",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-11-02-en-us-control": {
+      "scenario_digest": "edd7b3675a4dfd4c82c0914c09d1ff7097655daf73bdfba5b55b674c956fe1a8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-11-02-en-us-stress": {
+      "scenario_digest": "f21e9a04e4a8dd654204fab3a7d029164535921679f63e646af12568bc598f1c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-12-01-en-us-control": {
+      "scenario_digest": "d78bcbcbc24bdcff30bc230701c161feb63db7efeb243feb78202b3800207ace",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-12-01-en-us-stress": {
+      "scenario_digest": "1793804cd8858d5e02910080b113ef60ce9062aae4c523b9d12e64f4873906ad",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-12-02-en-us-control": {
+      "scenario_digest": "ace3c7db000c561d07acf688f286258f970c7569606936e6d23b3489dd976203",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-12-02-en-us-stress": {
+      "scenario_digest": "a10d9d1dcdef7014568c597584ad874915bb4b0aee893490ae84f608d0603693",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-13-01-en-us-control": {
+      "scenario_digest": "60be140560aa06f2700121b4717d53c09918cd0fbfcf03fcd48c49c1390330e0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-13-01-en-us-stress": {
+      "scenario_digest": "885f00d40c0e871e1a591aa0e348bccf548dcb9aa3693cff75e92d4d721c69c0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-13-02-en-us-control": {
+      "scenario_digest": "998be5b67795a9089356440c31ea7c1a08051aefc369c9c4ab9d308399d60c97",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-13-02-en-us-stress": {
+      "scenario_digest": "18c870f85d6a5ac6d2d6a4469cdd0f8d9da57fb40dd74f0a480ebd17dce3eebd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-14-01-en-us-control": {
+      "scenario_digest": "e1ebc5499471eaf0aca55d5ef7166a4f242310544bb18ff63b04c67bc6bfbd2b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-14-01-en-us-stress": {
+      "scenario_digest": "cf5d33df75eaa88dfb9b84c0ba413419b447f89d366862b1d25ce0827dd67551",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-14-02-en-us-control": {
+      "scenario_digest": "551abb99edf29ff5545d0f47aa90a9b86bcc32754299d1da42e2f96f421c596d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-14-02-en-us-stress": {
+      "scenario_digest": "d55f142edfe6f41b82e048e6c01151d711a4da06b55628cf2a45646c17a8ca07",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-15-01-en-us-control": {
+      "scenario_digest": "afe87a79aa4d76a035588a39662e645a81a25313064e9aff2d45f2eab6e0ccbd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-15-01-en-us-stress": {
+      "scenario_digest": "f4fc533276b676fcbc08ac141cc54588f93e89bd22741188f2066c8ffad66e5e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-15-02-en-us-control": {
+      "scenario_digest": "29ea791098dfbfa2b4b8a270dcb9d635af74f9ba88b1786a1630392058e1b882",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-15-02-en-us-stress": {
+      "scenario_digest": "044790f02687bc872e32b29062e1236e556a2c3842c06c5a3d5b1b92c55eee25",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-16-01-en-us-control": {
+      "scenario_digest": "720f8e3e92098968645de0276c34fe2ca6d789bcc78464c97c119ca3c7499d9c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-16-01-en-us-stress": {
+      "scenario_digest": "3541c0f7473c49ea0c15874cf478da1df59bfda0e8629da4c14461fc8e8d0e51",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-16-02-en-us-control": {
+      "scenario_digest": "1bfb98c5e79812141851201db7a5509bcb8736d45af85cd052f9c96b07635520",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-16-02-en-us-stress": {
+      "scenario_digest": "a94c84c9e6b1064714f4d3371e46c13d5593d11af4ee55e612ac8e905e15bde0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-17-01-en-us-control": {
+      "scenario_digest": "65f642ec9e681d3c683794621681a8b2082c838a81c00d1c168c2037e3a06c30",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-17-01-en-us-stress": {
+      "scenario_digest": "4939cc9b20bbdb56ed82af9392f7478f37fc87662218d226d403ff715b99470d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-17-02-en-us-control": {
+      "scenario_digest": "eb8339cbb55831b26d2cd88b5b185c8c120461b54cc451203eb2969e15ec355a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-17-02-en-us-stress": {
+      "scenario_digest": "4f4a257ccbf2d683cc50a48f4c872dff89b8d55d5f20ebbcc5ad8fe80e760933",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-18-01-en-us-control": {
+      "scenario_digest": "54c95410e70ad3393ae410fd6f31454f44e3d2308c0c2fe95897efbd1335bebd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-18-01-en-us-stress": {
+      "scenario_digest": "69c54dabf85de5a11971dc8b160558df1f6714493cd5ae1ae296aca30e76484e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-18-02-en-us-control": {
+      "scenario_digest": "53140ab664b622f74762f7d21814ebfce0384dc791df4696ca20a71b247053f4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-18-02-en-us-stress": {
+      "scenario_digest": "a483339e82ca9a251fc239fc68b1978530adb8ff4199679e07164c65facbac88",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-19-01-en-us-control": {
+      "scenario_digest": "5f9a14191a0cc42905816995bb9a78b162055492255d26aba578d1f051707123",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-19-01-en-us-stress": {
+      "scenario_digest": "1398f41797f886881ba26c74e5aed8c8cf0404aed3dd10ba2851bcd8650b4b84",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-19-02-en-us-control": {
+      "scenario_digest": "24fdffe7bfc3dad52f2aa281c23a7e884f129317d760ad3a050a323c24aec3c6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-19-02-en-us-stress": {
+      "scenario_digest": "4f77aea8b2a2f11bdbfff5499154921de8df728983a7644f98b20de65fcfb12a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-20-01-en-us-control": {
+      "scenario_digest": "04b59eae8c987b954ddd3adef94d337d523a9f2d3e224e2d6d01b56362136494",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-20-01-en-us-stress": {
+      "scenario_digest": "701a162d854e1b451b086c7d91268f4cff30a7e0d8afb19e60ceb2ee2e0c592d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-20-02-en-us-control": {
+      "scenario_digest": "a76ea050a3556bbc33783b61bf1f3a5eb62e8a98a1ce4ff265f603b3883ac9dd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-20-02-en-us-stress": {
+      "scenario_digest": "78257e5d1136d2a736a3fe83e29f0b07b379c7567e54179735169cacc5b5c94a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-21-01-en-us-control": {
+      "scenario_digest": "27e4b7121e11427cdf23380e599160a3ad9130366071cc1cff9cf0d0ffd9daa6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-21-01-en-us-stress": {
+      "scenario_digest": "67c2b4bc94e1319894df1841b198941d8d7dd5ac40e2d87dff4a78881ecd97d3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-21-02-en-us-control": {
+      "scenario_digest": "04418671a8f560c6fccd27e8169ce3ab5f25ff5c4077b600068c02aa59fb271c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-21-02-en-us-stress": {
+      "scenario_digest": "c58555affc5b36e069c196d2c18398f17ebef3b63f79b38f2937526584ba187b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-22-01-en-us-control": {
+      "scenario_digest": "12d5e9f4c498746a7f686703c369a6df2b6516bbbc7d7ae7db36b511f55ccde5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-22-01-en-us-stress": {
+      "scenario_digest": "6b02c6e5310b8bbb59876eb381dc4039caf34c9c8ad637ad4a7d427b7ad67ea3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-22-02-en-us-control": {
+      "scenario_digest": "9555d04ac40f4583341ab893c0c1e43ef1aa7cbfd603ab6275503bcd37341aec",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-22-02-en-us-stress": {
+      "scenario_digest": "a64204d22cb11e4a42914b06b86ae407a60a84289f869565a1dfca973e564dd1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-23-01-en-us-control": {
+      "scenario_digest": "f0172948b99429ae6cb79a36769401240d353aa0ec836913a6e2cc8ae3389047",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-23-01-en-us-stress": {
+      "scenario_digest": "a6a0756297f086e41dae80ee4e78c984691e09453caeb73d5cbb3c25dd4db767",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-23-02-en-us-control": {
+      "scenario_digest": "c14e724803399cc7491678de779436a44df1882b4884eff9e394263789cf8795",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-23-02-en-us-stress": {
+      "scenario_digest": "9db3a955663c28cd80179cc498a84151098e571e606b2f80c7275371da42d71c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-24-01-en-us-control": {
+      "scenario_digest": "d29ab9f681802c901946baf8e244e509e737c915335e525b33a3ec1f837550fc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-24-01-en-us-stress": {
+      "scenario_digest": "310ab2ad44482c3473272f8f6727e8b734657a1bc700cadfd7281f9317ac505d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-24-02-en-us-control": {
+      "scenario_digest": "f20e2acce395f26dc379086bb82c1796a59d9d6820edecb65821ff2e72f21ba6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-24-02-en-us-stress": {
+      "scenario_digest": "0120beb32dad5a850fedfd020f5d7582025323804b0d9a3e132e695c6bfd1deb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-25-01-en-us-control": {
+      "scenario_digest": "6e89f4db1652df6fcc8d563cffb67df9b8c34bac0ba732f57541846b85ea14b1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-25-01-en-us-stress": {
+      "scenario_digest": "033a9491a9e473a0f4256b827034e1cd7872b89c9b6f31006f5cde67d2be0b02",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-25-02-en-us-control": {
+      "scenario_digest": "deaa24600e1423369fb4f534f930a5b5e1c2ed9f2b824bb302772789b4d924a2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-personalized-steering-25-02-en-us-stress": {
+      "scenario_digest": "091233e63dae1657072cceb53d11949226dadce0599e43191bcfd18e35b3f79a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-01-01-en-us-control": {
+      "scenario_digest": "02631e3a80882388ad3dd418e595b5d03790fc584c96d96d9987be13b9622d07",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-01-01-en-us-stress": {
+      "scenario_digest": "9774791c10ff144416305e43730c41a999df56c117f6340fd23dbdfe24b8a0ff",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-01-02-en-us-control": {
+      "scenario_digest": "bf6ebd7772649b871bb57d2c6d3204b6b6e4d448b360a14fd9697127c459fae8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-01-02-en-us-stress": {
+      "scenario_digest": "7c1efd4be33c3326d147d849bb00eaca9efc3e7e74a5dd4dc149a31a0984675e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-02-01-en-us-control": {
+      "scenario_digest": "1cb6bc6a89d2917dcf28e3822e8908329f0632a72421da7e492de4a8e0698429",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-02-01-en-us-stress": {
+      "scenario_digest": "4ba92cd94a61e1dc4497a22d6d21f7a2267a01aacead6dd779bb333485b0fb22",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-02-02-en-us-control": {
+      "scenario_digest": "cb1618e54646965f8cc36b4ce0eeddc9a026987332f7b0bfc14cf7ab55c30c57",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-02-02-en-us-stress": {
+      "scenario_digest": "b4c65f260f491a301e3b5ee272773e54840e901da439747ceffac15175ba5961",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-03-01-en-us-control": {
+      "scenario_digest": "0aca51a189c4024cc512ec62d99bd8116351c4880a89535d81f4328fd34c13f0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-03-01-en-us-stress": {
+      "scenario_digest": "e82a5d4c7afc72996ff7672e9b784ae2ff779044a0bc87441082ed7578ab4690",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-03-02-en-us-control": {
+      "scenario_digest": "2a5320cccf79a84bc6ad94d1c523f284fa7397ce9d9044a59f6f1bc396f4275b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-03-02-en-us-stress": {
+      "scenario_digest": "4024725d8224ca8a9ab5c72c592642b0ae3b323df9c8e2def5e655e79368aef1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-04-01-en-us-control": {
+      "scenario_digest": "07f126146dc5457dede8caeffe6ece03bad42daf101e2493ba447ac1b3ff5dac",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-04-01-en-us-stress": {
+      "scenario_digest": "7b3f3cfee7f439aed0a23dbb0f9fb6283e083b6be2e305bc0e9344c99c420a28",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-04-02-en-us-control": {
+      "scenario_digest": "cb15f7a455ef4c488e848c90195270d40e0d230f0d1c5df9ebc4f690460e87b5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-04-02-en-us-stress": {
+      "scenario_digest": "c5cdf37ef124933826064da81eac2dcb458a171712e7b2817b501dffe22a4db3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-05-01-en-us-control": {
+      "scenario_digest": "7c68a41f2af46a55d8a76b43275cbe73f0947381ff3287105b96401f6c69b6ab",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-05-01-en-us-stress": {
+      "scenario_digest": "4638719d2edab8f57eed371260e9862543e85f1445488b1149c9a6e3cf1d7705",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-05-02-en-us-control": {
+      "scenario_digest": "cf24dda4cef9a4138cd18927b0efbbeca0c361cdaa902503bacb21e461eeee29",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-05-02-en-us-stress": {
+      "scenario_digest": "429aad1b9191c57dbabbb842826ee6c812bc46e9d155ceb48f0a31e9e02960d1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-06-01-en-us-control": {
+      "scenario_digest": "67ce858487fa935fc2371d12d495ab39bdbd0fdd4b67c19c2c558d017686bd08",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-06-01-en-us-stress": {
+      "scenario_digest": "26ae111896785ebdc84851abc5a9cc3b0e83aa5ba1a5245680ee952497466230",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-06-02-en-us-control": {
+      "scenario_digest": "ca418eb70014bec5e885d5f8ab649f9de6b36eef362e1849ee0e10a974fbda3f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-06-02-en-us-stress": {
+      "scenario_digest": "269c2ef752274208030fba335398712672d70576da80fe8486b9dbe3afb3cd9b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-07-01-en-us-control": {
+      "scenario_digest": "96f24c3c30b644c9896a699526ae08be070c7d9a9fe31f3e59b9d93286d9163b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-07-01-en-us-stress": {
+      "scenario_digest": "1fb902fb1def93d69d975e8283ff4348476d2a707084874d24e50af15a708210",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-07-02-en-us-control": {
+      "scenario_digest": "29b7fa0cead1e2ae95ea362e74c43ab138c51e294735f3441e136be953749e79",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-07-02-en-us-stress": {
+      "scenario_digest": "2c7cc35bbd7372f45fa5e515463716da03c9519df2770797438ecfaedb957df8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-08-01-en-us-control": {
+      "scenario_digest": "2435fe58cdd5ed87080a90a15590c56f8b315b2bf850a3b7569e21af1f1a1015",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-08-01-en-us-stress": {
+      "scenario_digest": "99875f08bdfd033e2ce7310319e6cc7f1a0802fcede6e44f3046a837e260f830",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-08-02-en-us-control": {
+      "scenario_digest": "f9d9eee3528c52c538c03f7346ee2990b6996ad4d19c5fa9e15a938cb75c5bf0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-08-02-en-us-stress": {
+      "scenario_digest": "e856538e2d29214aa8363a6efa3b7ed9ea28b68c5dc16216438d95ab28c391a5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-09-01-en-us-control": {
+      "scenario_digest": "7779b392ce6025c2dec229aa76b9f08988f7e522c90bffec05d3976c523c8bee",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-09-01-en-us-stress": {
+      "scenario_digest": "769081471bdfea5860e9fd32539c41906dd06c71bf051bf3999d75ad0b9a861d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-09-02-en-us-control": {
+      "scenario_digest": "9c105ea19f2222b82a9989d1f7686ee4701bd2483660f4ccba0309b8cf35ac18",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-09-02-en-us-stress": {
+      "scenario_digest": "adbd2094a9cf3c169e4ea32f5ce6705c5d5b98b3231522d6b29d58b27524cfbd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-10-01-en-us-control": {
+      "scenario_digest": "98bcc303ce9d073afcb7e9c6fb0ddbe8d2b78c0aab7fd5a25601e650627a04f4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-10-01-en-us-stress": {
+      "scenario_digest": "f88c73940072a2563397327c4b698757ed529f57434509ad1c199d2d4c5f671c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-10-02-en-us-control": {
+      "scenario_digest": "a437c0f34f5e2ce74cf95f98f8e50cf59264cfec2628c7c27847a9df163f9f7f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-10-02-en-us-stress": {
+      "scenario_digest": "eca8b063f019822b1cc6d4066d318a05dd20b84f7e5ed209b81d8f8775b41816",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-11-01-en-us-control": {
+      "scenario_digest": "ecd9045c8b9ab9827684bb9b1dc1cd28f403e00e5e270ed44ad2e4ed9f07d255",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-11-01-en-us-stress": {
+      "scenario_digest": "e4ae49c5fbe423a9e87ae5ce83bb06f5ab4c503c75d1252c76ddd8004ac8d3a4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-11-02-en-us-control": {
+      "scenario_digest": "64b6ee57326194df33681b2e80b7b8f39b66da774886bfbb0a8219bf494f0d6b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-11-02-en-us-stress": {
+      "scenario_digest": "e00da77039321da01c23218370fc4cecb0564aca9c0bb1ae5be7c128e423a97c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-12-01-en-us-control": {
+      "scenario_digest": "d92beea4935d064cac5dad280f0fc8c47534bc4cb8c3326577e9dc4a15cc38cf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-12-01-en-us-stress": {
+      "scenario_digest": "efbe1572c844b2cb028925f634659c3fe833bab730cc7dd974a0367b34233a09",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-12-02-en-us-control": {
+      "scenario_digest": "2dbc57635af7bd21aa944f51d99a17abbf35dddad2809f9774a485829929db12",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-12-02-en-us-stress": {
+      "scenario_digest": "18f4b825ae56d3503f08c63b3c8da5d5e8e864551b576a878da877355d02ce21",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-13-01-en-us-control": {
+      "scenario_digest": "60467463e82c6db67235570032b244e656db50319ef153839fe53b0c09b1abfb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-13-01-en-us-stress": {
+      "scenario_digest": "0cb0e6849f9167a9f2e2bbf2606257afed0fe59852f9576955bfc878eb710f07",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-13-02-en-us-control": {
+      "scenario_digest": "ae57b82b4811696582ee0db89faca6b07d0d85c883519476344065cc93d2570d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-13-02-en-us-stress": {
+      "scenario_digest": "ecf62dbc1958c787584478504e214e97322ed670c0ae78515af7129376d0993d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-14-01-en-us-control": {
+      "scenario_digest": "24ccb5f8f56cd3ce53c6ab56cf80d6d62f14bf65ce1322877b3cd00a3a9740e8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-14-01-en-us-stress": {
+      "scenario_digest": "3756f9583c9f0a860aac70d28cb91247c7c9929e0b7dae81e978c9b44b161947",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-14-02-en-us-control": {
+      "scenario_digest": "f870f3bd9428792189fdda40a46b36ea3568bf71592f237637994151d61f012d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-14-02-en-us-stress": {
+      "scenario_digest": "57f126d3c7c7b7a17fb86116ed6262267ca1de952f2868c16d41373a2e641c7c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-15-01-en-us-control": {
+      "scenario_digest": "76f4824d30d287da45571aabc9f11b85f22a470abb24c168c5e72a4d1edcf98f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-15-01-en-us-stress": {
+      "scenario_digest": "140a06e2039acb2dc0f4cfd5915ef435d0d609fcf02ea841aab590be209de6c1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-15-02-en-us-control": {
+      "scenario_digest": "0264b69dab4c8cefcde0356a93e322b81c1eebe2732b67ab89e9d0257b4878d0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-15-02-en-us-stress": {
+      "scenario_digest": "2375f7cb718c8064987785c61fe8a29ee045e7e7aa794d8d74c0dac0e5939307",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-16-01-en-us-control": {
+      "scenario_digest": "f151d8f5339af18b2b0f95ea9615920a3703c4ea8304d475377340c6cfac2fae",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-16-01-en-us-stress": {
+      "scenario_digest": "a96aa9c3efe12d21ec24bbaabb354efad1a4e030b5c694203d33e4a88355d4e5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-16-02-en-us-control": {
+      "scenario_digest": "c7adc9addc6019d64179c8b25d2a2b9eb4a0d9d3f5b7554ad30820c85289c894",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-16-02-en-us-stress": {
+      "scenario_digest": "070add574051bfedf0c7c20c6f83ea9a83bd6fd12c2a64200afc66e81433c296",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-17-01-en-us-control": {
+      "scenario_digest": "18e7b78231e049f864f9ceed20884d06e0d213aea9da820b8a89cdfdd35974e1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-17-01-en-us-stress": {
+      "scenario_digest": "78b478ea03073c302c3c7709ed022ef514ba36056c143e0f0f5c176847c74060",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-17-02-en-us-control": {
+      "scenario_digest": "7fe52dd01645699f4422254749623cef5157fe1bdc04615518b6f3a639af08d3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-17-02-en-us-stress": {
+      "scenario_digest": "4d12e4c8a30f8969449338411e4153bb960b17bfa5e56e70ab2fbf3202ae7c4b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-18-01-en-us-control": {
+      "scenario_digest": "3886fa736f2511a0a638fa73fc3a18d0f7c9948023dc124c19456920f3b19339",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-18-01-en-us-stress": {
+      "scenario_digest": "1a44581e3520d585faeae454050c5c84ced386f4078a62b257eeea7b6ce5df5d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-18-02-en-us-control": {
+      "scenario_digest": "2d1ed335d3d3dfd84862ce0bf42f74188931696cc1b35c037cceffd3c750a28a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-18-02-en-us-stress": {
+      "scenario_digest": "745944a4f9031d19b1a8672292cf4739768cb8c199abd7b3fea835b85cfa8949",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-19-01-en-us-control": {
+      "scenario_digest": "3117ef131f138febc2336f095528c6130c22f002fe2433f40d408510989a7f59",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-19-01-en-us-stress": {
+      "scenario_digest": "3abe6e6ed61953e8069767edd5a10f9b7d5eb26e2e0c3afca5546d95ad4a0808",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-19-02-en-us-control": {
+      "scenario_digest": "c3a96102a62b7e129b3fbc15658fa8f2f4be2a97ae6e3c818331a2482f394582",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-19-02-en-us-stress": {
+      "scenario_digest": "ac2b4f5a29fdd9821b0f5061ab734014f4bc05d3b2b8222087025e641a560b64",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-20-01-en-us-control": {
+      "scenario_digest": "339527f95202b9c90a1ae6c245d7c2a1069ce03bffa3942b0cc52afed175e178",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-20-01-en-us-stress": {
+      "scenario_digest": "a4609ea36a9b294d7059ef50505fd6f3df0faf99f577882021970d2a71a09b0c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-20-02-en-us-control": {
+      "scenario_digest": "0f18401db8d6d9d060514eb3315231e4802d921dd81dd1000bec9f4299ba7a5b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-20-02-en-us-stress": {
+      "scenario_digest": "d932cd27380102dd923b816adc3a81bc0bc8df7a5a90f3e434fb656b3bff063f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-21-01-en-us-control": {
+      "scenario_digest": "5d035cd6d9afbcbc70a25df975c3f58f5f28c0c64ba100ec20e7a3f5493bdb7f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-21-01-en-us-stress": {
+      "scenario_digest": "54885808339932e8d35cb3cc06e2e58a30672cc9cabe35be2819bb2b78b550a6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-21-02-en-us-control": {
+      "scenario_digest": "251cc64e227567e0a53508f28384b956d4466eef1265167be3bfba939ce7a4b7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-21-02-en-us-stress": {
+      "scenario_digest": "a3543351bb967a28082e7a9a025fe0292f2b819a7f31579b0e3994535685641f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-22-01-en-us-control": {
+      "scenario_digest": "1f3063e55a5a370dc1f40544ab3c66b7372b2584b01fc9da422fa2097eadf09d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-22-01-en-us-stress": {
+      "scenario_digest": "dce4ff94345ba0a185ef13006c041c27c5f4838ead98b6a0aee20f91452b94a3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-22-02-en-us-control": {
+      "scenario_digest": "13bc831830dcb305ef1f765a1efc1a5eeae3647b5b1c81090f9cee8ad76c4b81",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-22-02-en-us-stress": {
+      "scenario_digest": "d9a7da35826aa92a832be411dd9775abf41d438606bcfd5ad393fa369d7302d8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-23-01-en-us-control": {
+      "scenario_digest": "6a40ad07f34bb1d0d73c8e62bde67afcf0657fd62d00f9fc6e44e6e152f6f91c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-23-01-en-us-stress": {
+      "scenario_digest": "4107b726670f24eab61e22e5e53ad1e41ed5d09d9dde83942fb0142f9c86390c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-23-02-en-us-control": {
+      "scenario_digest": "dfc14e0b9ff29857b92d47a8d0f244c2924c714580bae046161bcb1b0f3799aa",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-23-02-en-us-stress": {
+      "scenario_digest": "8e89f9b26e86fe2d0eb7dfdc7ec54ffb000685639230dd7cc3a15b247829d81f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-24-01-en-us-control": {
+      "scenario_digest": "f25a469a4e45f30fa8386bb08cde600cd0868dfa6c25a41460d317bc7391225d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-24-01-en-us-stress": {
+      "scenario_digest": "87b22653fd0ec4e6d51cfda4bb181f9c6f72c3dcf11b6728c643c51f1a0a3513",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-24-02-en-us-control": {
+      "scenario_digest": "1877ae0da899dfe17388edf3ed935bd5a623b9f468ad5869ac286219fea0b23f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-24-02-en-us-stress": {
+      "scenario_digest": "1b26989b93ef3f29859e78967b6f08f31d357c05c488e3802b2e625d5f37f885",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-25-01-en-us-control": {
+      "scenario_digest": "d1f9daaf22d146d75b3f54d99312355ea4d0f424048e30b427563166be755d30",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-25-01-en-us-stress": {
+      "scenario_digest": "81fd6e9931acbc2285473984c54f48818f01a163d0feff01fdba443d53b18e06",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-25-02-en-us-control": {
+      "scenario_digest": "652e8553758efde6ebc085107747f37f8c0d9c6e6036d4c3a83457a307e61adc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-trajectory-recovery-25-02-en-us-stress": {
+      "scenario_digest": "5d30c1fa0feb6de7afef1261c059718c97636b0632ce4e1109743b2b1d55ed29",
+      "status": "draft_unreviewed",
+      "review_events": []
+    }
+  }
+}

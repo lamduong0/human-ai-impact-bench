@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
 from copy import deepcopy
 from pathlib import Path
 
 import pytest
 
-from humanai_impact_bench.validation import ValidationError
+from humanai_impact_bench.review import validate_v07_review_manifest
+from humanai_impact_bench.validation import ValidationError, load_scenarios
 from scripts.generate_v07_review_manifests import build_manifest
 from scripts.v07_artifacts import (
     build_configuration_index,
@@ -18,6 +19,150 @@ from scripts.v07_artifacts import (
     record_digest,
     single_tag,
 )
+
+CORPUS_ROOT = Path(__file__).resolve().parents[1] / "data/scenarios/v0.7"
+PREPARATION_CONFIGURATIONS = {
+    ("core", "en"): (2400, 24, 100),
+    ("core", "vi"): (400, 16, 25),
+    ("agentic", "en"): (400, 4, 100),
+    ("agentic", "vi"): (200, 4, 50),
+}
+
+
+def _preparation_records():
+    configurations = {}
+    for (track, language), (count, categories, per_category) in PREPARATION_CONFIGURATIONS.items():
+        records = load_v07_configuration(track, language, CORPUS_ROOT)
+        assert len(records) == count
+        category_counts = Counter(r["category"] for r in records)
+        assert len(category_counts) == categories
+        assert set(category_counts.values()) == {per_category}
+        configurations[track, language] = records
+    return configurations
+
+
+def test_preparation_draft_manifests_bind_all_current_records_without_identities():
+    total = 0
+    for (track, language), records in _preparation_records().items():
+        source_dir = CORPUS_ROOT / track / language
+        path = source_dir / "review-status.json"
+        manifest = json.loads(path.read_text())
+        assert manifest == build_manifest(source_dir, track=track, language=language)
+        summary = validate_v07_review_manifest(source_dir, manifest)
+        assert summary["status_counts"] == {"draft_unreviewed": len(records)}
+        assert summary["stale_review_count"] == 0
+        assert set(manifest["items"]) == {r["scenario_id"] for r in records}
+        for record in records:
+            item = manifest["items"][record["scenario_id"]]
+            assert set(item) == {"scenario_digest", "status", "review_events"}
+            assert item["scenario_digest"] == record_digest(record)
+            assert item["status"] == "draft_unreviewed"
+            assert item["review_events"] == []
+        total += len(records)
+    assert total == 3400
+
+
+def test_preparation_lineage_binds_every_target_and_actual_source():
+    index = json.loads((CORPUS_ROOT / "lineage-index.json").read_text())
+    configurations = _preparation_records()
+    targets = {
+        (track, language, record["scenario_id"]): record
+        for (track, language), records in configurations.items()
+        for record in records
+    }
+    historical = {}
+    for version in ("0.5", "0.6"):
+        for path in sorted((CORPUS_ROOT.parent / f"v{version}").rglob("*.jsonl")):
+            for source in load_scenarios(path):
+                key = version, source["language"], source["scenario_id"]
+                assert key not in historical
+                historical[key] = path, source
+    assert index["scenario_count"] == len(index["items"]) == len(targets) == 3400
+    assert index["derivation_counts"] == {"adapted": 1400, "authored_new": 2000}
+    seen = set()
+    for item in index["items"]:
+        target = item["target"]
+        key = target["benchmark_track"], target["language"], target["scenario_id"]
+        assert key not in seen
+        seen.add(key)
+        record = targets[key]
+        assert target == {
+            "benchmark_track": record["benchmark_track"],
+            "category": record["category"],
+            "language": record["language"],
+            "scenario_id": record["scenario_id"],
+            "scenario_sha256": record_digest(record),
+        }
+        assert item["concept_family_id"] == single_tag(record, "concept-family-")
+        assert item["context_id"] == single_tag(record, "context-")
+        derivation = single_tag(record, "derivation-").replace("-", "_")
+        assert item["derivation"] == derivation
+        if derivation == "authored_new":
+            assert item["source"] is None
+            continue
+        version = {"v0-5": "0.5", "v0-6": "0.6", "v0-7": "0.7"}[
+            single_tag(record, "source-version-")
+        ]
+        source_id = single_tag(record, "source-scenario-")
+        if version == "0.7":
+            assert record["language"] == "vi"
+            assert single_tag(record, "source-language-") == "en"
+            source = targets[record["benchmark_track"], "en", source_id]
+            source_path = (
+                CORPUS_ROOT / record["benchmark_track"] / "en" / f"{source['category']}.jsonl"
+            )
+        else:
+            source_path, source = historical[version, record["language"], source_id]
+        expected = {
+            "benchmark_version": version,
+            "language": source["language"],
+            "path": str(source_path.relative_to(CORPUS_ROOT.parent)),
+            "scenario_id": source_id,
+            "scenario_sha256": record_digest(source),
+        }
+        if version == "0.7":
+            expected["benchmark_track"] = record["benchmark_track"]
+        assert item["source"] == expected
+    assert seen == set(targets)
+    ordering = [
+        (
+            i["target"]["benchmark_track"],
+            i["target"]["language"],
+            i["target"]["category"],
+            i["target"]["scenario_id"],
+        )
+        for i in index["items"]
+    ]
+    assert ordering == sorted(ordering)
+
+
+def test_preparation_split_index_is_current_and_never_splits_families_or_pairs():
+    index = json.loads((CORPUS_ROOT / "split-index.json").read_text())
+    assert index == build_split_index(CORPUS_ROOT)
+    records = {
+        (track, language, record["scenario_id"]): record
+        for (track, language), items in _preparation_records().items()
+        for record in items
+    }
+    assert index["scenario_count"] == len(index["items"]) == 3400
+    assert index["split_counts"] == {"calibration": 2720, "public_evaluation": 680}
+    family_splits = defaultdict(set)
+    pair_splits = defaultdict(set)
+    seen = set()
+    for item in index["items"]:
+        key = item["benchmark_track"], item["language"], item["scenario_id"]
+        assert key not in seen
+        seen.add(key)
+        record = records[key]
+        family_splits[item["benchmark_track"], item["category"], item["concept_family_id"]].add(
+            item["split"]
+        )
+        if "matched_pair_id" in record:
+            pair_splits[record["matched_pair_id"]].add(item["split"])
+    assert seen == set(records)
+    assert len(family_splits) == 700
+    assert all(len(splits) == 1 for splits in family_splits.values())
+    assert all(len(splits) == 1 for splits in pair_splits.values())
 
 
 def _write_json(path: Path, value: dict) -> None:

@@ -1,0 +1,2016 @@
+{
+  "manifest_version": "0.2",
+  "benchmark_version": "0.7",
+  "benchmark_track": "core",
+  "language": "vi",
+  "scenario_count": 400,
+  "allowed_statuses": [
+    "changes_requested",
+    "draft_unreviewed",
+    "in_review",
+    "release_ready",
+    "reviewed"
+  ],
+  "items": {
+    "v07-autonomy-01-01": {
+      "scenario_digest": "4b4c9113a3c6947c3c3158506c1a254950082b5de144f05062db4b6686d06a2b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-02-01": {
+      "scenario_digest": "b54a2bb44a889567f3f9f54abdc6fe6f3c7ddfe4670cf812d385f82340c7120f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-03-01": {
+      "scenario_digest": "1483f5ef58b82766ebfab58c200895006b45fcf26f413823c82fa97ad5d6d186",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-04-01": {
+      "scenario_digest": "d6a6e487bcc9e55692dabd7605fd9c7ebf0ca0e2360f3a90ad26a4c9c0fdbaf1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-05-01": {
+      "scenario_digest": "3658828a44669b6a9c4e36cad8333ffe18247f00a90633ece8224eb5dc969b5d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-06-01": {
+      "scenario_digest": "a43dc050c3ff3f30b8026a121a409c9322c8d6e6523f77aed3c2fda5df165659",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-07-01": {
+      "scenario_digest": "13234ba31a52098cabcf7c485038c9028cceffc5a2b652136ec7678be7c58e00",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-08-01": {
+      "scenario_digest": "64f648572197022c356b4d10171e04b78d7657afd35bcfe6c276224e0fd24740",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-09-01": {
+      "scenario_digest": "23af34a8fe6c3719a2c2f00e275326b07c0fa232fcc75ad1919a283a72c89610",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-10-01": {
+      "scenario_digest": "59709b6f44c59916bc93793ab8076b279c78fc00727fc77952b9d2801bba246f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-11-01": {
+      "scenario_digest": "8f0257862448c07c90a37a6ca960a701a6c0ed6c1319fcb5dba3bb6cd2413709",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-12-01": {
+      "scenario_digest": "600f5ddd077144cba4257463bcce8eaaa6933ef79a7ffd741144ddd77b664ab2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-13-01": {
+      "scenario_digest": "59eaa7a8f8beee6ab9c78aa482183ed45c03e3f1abf415e1ed057ab7da7a33cd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-14-01": {
+      "scenario_digest": "9e3f3f2df8094eb1f5575f00b79e4e3473a3c0e6f2a2bc05e559fbcb656bde1d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-15-01": {
+      "scenario_digest": "e59f8663739b3fcb35d5b24e8a3c24564eff45af34824ca06318bff9f61254c3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-16-01": {
+      "scenario_digest": "6891e643dbfe3df73a17e4a0958d2e02ea83f77b832ac2e0bd8961dabfe63f18",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-17-01": {
+      "scenario_digest": "a522a960250ae77c4547d66fc07ba2662e7a15c5d087f7d5567a806dda8777ea",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-18-01": {
+      "scenario_digest": "3bc845ee4738048c1d85536ca4ed544526736add0d9ad8c9c0a7e0c79bc313ca",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-19-01": {
+      "scenario_digest": "41154943f9cc913c5a4cc35bdeff8c61db34d30472ae92de20b282923ede7173",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-20-01": {
+      "scenario_digest": "e89d03711bc7c3b4924df5b60454ee2d1b99f52e4145eb710bd667d787bd999f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-21-01": {
+      "scenario_digest": "cc7dab2f55ef13656931957dfdd1fda21627d12011ad7ac496b08c7cf8210e62",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-22-01": {
+      "scenario_digest": "0cb146a3390ff75c9c385cdef75a915dfd1763cc0db85a29ff003f1343ce0940",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-23-01": {
+      "scenario_digest": "786368e991843c2d927bcab72eebce7025fbf43349cf391b62f957ee605ed1e1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-24-01": {
+      "scenario_digest": "6a776c869997af666597490356dfba64606cae1536877149e797416fad63a87f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-autonomy-25-01": {
+      "scenario_digest": "24f7c905adda908a07c957249f79e0edab2ca61dff51c6e7da0f0fc034b23dc3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-01-01": {
+      "scenario_digest": "5110a03aa8ecc47b5b2670dff9fe477cd9c6cdf13d00486fc03f4adb18f2f366",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-02-01": {
+      "scenario_digest": "5c0060e74c59be28f2f009dda8d9cceb9789b9b720adbf0835c3475bd7b4cdee",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-03-01": {
+      "scenario_digest": "822746b3bd56c9d7f8d9475ef3f59ee7ba547d60462e75fbd5eb091109402c1f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-04-01": {
+      "scenario_digest": "c8a1c2b666d44a7a769baed44a58ef3aceabd4b9e455fa885d70a6a7bef9a240",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-05-01": {
+      "scenario_digest": "39cb0d3b77f7015948149da48ff80c9385b4fe713f437aff553277f5274260d7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-06-01": {
+      "scenario_digest": "87a987775e6dcc0d6b355ff6352fbfe53d0dc0280fedbef6c8c5de3469ff93e2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-07-01": {
+      "scenario_digest": "98b6f8e61d0ed6e070f79d03b61313d1c69f4f4e1eb0cf4281a475599ba04bb7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-08-01": {
+      "scenario_digest": "12764ce06d08267b83a243444ea328b503905974bf5cb98006d1d351ed9a651d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-09-01": {
+      "scenario_digest": "2ac7510845caec187408e7042c7a613c4519018bc00d239e0c9c414deb7183ae",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-10-01": {
+      "scenario_digest": "c1d5d65ff7e40a34fb34cad7a51a65f7967e8bc40b6160f163694856e4ea535b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-11-01": {
+      "scenario_digest": "0216b2ab97f648b88987f3d8812be53c651dda63eb43aedffa0faf47535ee456",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-12-01": {
+      "scenario_digest": "69a563b949027f11f1c0308f0ec463b5af8103b8be7b86186662a4b42c54e194",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-13-01": {
+      "scenario_digest": "10d490bb007f54e78f8f6b3f6932dae07f6c77aece1a44f2317cee2e749ae360",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-14-01": {
+      "scenario_digest": "4f4fe6cad613809cf2e2acb4fd22ca12cd41490ef3c766a6153392efa0e9c205",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-15-01": {
+      "scenario_digest": "2418e9d023cc2ab9331dbd8b6616f856f81265592225368c6b8f2449d6b5ab4a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-16-01": {
+      "scenario_digest": "ea41101ca03574bfb87340b6df7c960ceb62ee8edca6daef1a327291639a4686",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-17-01": {
+      "scenario_digest": "8927821ff834e1ac494831d72348be5376e2b27e27a971dd18ded5365308dc91",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-18-01": {
+      "scenario_digest": "b6b363728972e540adb41be8394feb53227ed53dbf9eec2e3dc741fa51624cda",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-19-01": {
+      "scenario_digest": "92b69b974c1f5e415267cf6e75bc96eccde6b593f7c87db9e15de0af895a3927",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-20-01": {
+      "scenario_digest": "19368312747aa778c9de25f312f429290c833b5426e70c83b9d2cf5008897fe9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-21-01": {
+      "scenario_digest": "a7262069315eb91940f38e02fa6f939343c13a633bd6ce5f7b045d43bf304523",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-22-01": {
+      "scenario_digest": "170c1118f9b4145f476115b8060e093b90c2faf55f235760175d33d06c786805",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-23-01": {
+      "scenario_digest": "5da5da75513216b8ea3d37773b893bd5e6b819ff2bd764de9c6005d1926529b2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-24-01": {
+      "scenario_digest": "2ebf232502a5cee1df6fdcaa9d9357acab2f73c178ebf4cdc4a262eebe8da96b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-cognitive-25-01": {
+      "scenario_digest": "0a4fe6df7db4df2d646b330f7fc79e544aebcc25e9e69e0063c46e78e5b46f2d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-01-01": {
+      "scenario_digest": "c6f4d8f3e456e518bd617b1e0d9942b3793b75a36f6e0f903d4732a15314c95f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-02-01": {
+      "scenario_digest": "52dbaf9083d127ef23495176c18b04483a0ec1c1aaac4ceedea22395a2d2080e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-03-01": {
+      "scenario_digest": "2af3bdd42aacbb17743375249474e0419275633a703d0aeee63d12c14bfb6de8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-04-01": {
+      "scenario_digest": "71ca7339865daec604292c0850845ace4fb6f422708d0ae9efd751f4ecd13010",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-05-01": {
+      "scenario_digest": "ed92d70053ca196b718774f264403922fe445c683d1779ff8756289dd7a1b560",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-06-01": {
+      "scenario_digest": "ca2acaa5f08c42f23bcfdcc7c894220711ebc38bd50c650bcb933869140f8721",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-07-01": {
+      "scenario_digest": "b9789214fc73c6ab6a4909e1f8347a15631835c2f57e6ea6b4e2c2bd1c949301",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-08-01": {
+      "scenario_digest": "bc16d753772576977747cfc82be7d08e16702f889a4154bab03a28c8bdfdd70a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-09-01": {
+      "scenario_digest": "e5f15450028e171dca1bd44f27ae97dbc5e95104423063d2f05287176f6a2fa9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-10-01": {
+      "scenario_digest": "85fbd48ace444d0bd58f6d8c78b910a2fcf82c6b0c2be4f0f3ab34c23ef52424",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-11-01": {
+      "scenario_digest": "11773355fb5ef06a4fe7e13dd9a67bf93bcb0cbe40d03a0c62a2b08ceabed2cc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-12-01": {
+      "scenario_digest": "0489d8d50c003b8c8c03e7333505763a6f4aa18b154fdd0b32167f26a351d047",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-13-01": {
+      "scenario_digest": "f8205c99787959c53588304ae36063d22972e7786131f5d2ece6cdea77ce3a8e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-14-01": {
+      "scenario_digest": "b3f923ee23779ecd8dfe3ce0d3eeaea433796cb638d3686e5d23720ded51f57b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-15-01": {
+      "scenario_digest": "97e72a3ed3aaa150e2b39b8666c487bdfc9007c5e3a28cb715afebe966aa9d59",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-16-01": {
+      "scenario_digest": "4542bae3b490223322b60ae95d41dd9a9c1a993e8188a8d0124d4902abc96ce5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-17-01": {
+      "scenario_digest": "7b4d80f8dfba93b7cef4dad335b214142b7fba1f71e98f06a29c3f5f41ad186b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-18-01": {
+      "scenario_digest": "ce3be2c9c1356257ba27ca87ee7e74bb8e64cab59782d833f5eebac26e696473",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-19-01": {
+      "scenario_digest": "122cfbd5d8c3f9eaf28b863bba7c8563068260e11e66222ccc7498a3030fb93c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-20-01": {
+      "scenario_digest": "572981a21c5d70882bc2ce912bdc9832b0af678a0a97638884d932a7ace4e7ed",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-21-01": {
+      "scenario_digest": "7f8dbb907ece7480c9fedfdb76ce453517f9b9b3c9157c6d14a2b0ddd7c01d94",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-22-01": {
+      "scenario_digest": "0cb6d1de24519bd859bd633ab4dc881d444291b5fa8257f425b41f79c1260df6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-23-01": {
+      "scenario_digest": "1a3e65b2b691caac61eda573417d53635e75d4b419364ab0c027aeaaab4e4f20",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-24-01": {
+      "scenario_digest": "e4587a9acb036497f7112e509c01b3e5765751a2a8dd0dc5d81a7843da366118",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-crisis-25-01": {
+      "scenario_digest": "d13221b4d289cd3d1ab86008873a4ba9a6ee305eec718b2007617bcd9a18eb00",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-01-01": {
+      "scenario_digest": "7fcdae384a2c102fdb69a595fcb3df27967af0df4db20624f9f0d1302019be3b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-02-01": {
+      "scenario_digest": "47da60554d6fc6914132cdfdafc2eaa00eda7790d077b781229d3b0c26a7c129",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-03-01": {
+      "scenario_digest": "1b1e5b8ea5cd4ded427db7169a0b5d221c67e5ad9c8c2d2b24b6ce9070a973bb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-04-01": {
+      "scenario_digest": "6e3874d2afacc104bdeb10ece0e3a06cac84e0e8ddde955abf6678c2522185c9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-05-01": {
+      "scenario_digest": "235805f83adfee018c90c1b1253964f44b036b5558fa95fbe16e7b72c2c35575",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-06-01": {
+      "scenario_digest": "d186fd8340f17d13d033b2bc04f5678465cced012fedcf39465b998d3c40bfc6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-07-01": {
+      "scenario_digest": "dd3c57001ac6ce595d5e7aa41d521caf5ab52300c0f70673960c5541bc4b7226",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-08-01": {
+      "scenario_digest": "ffbef89b42d08e44fd48f114126c6228bbf6e302251b23e65cf77086fb480726",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-09-01": {
+      "scenario_digest": "a583093bbb2372cb5b5ab68ad80458e58f9d2a16022d1e6fc7f96cd8a3376350",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-10-01": {
+      "scenario_digest": "7da2cc690495f39314a36f4125fd6bfa25b429ed419c81dbe9440ae3983942b0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-11-01": {
+      "scenario_digest": "482f9b78c98e9d1454b284607b694ccfb1c603fa88085c64aecfd31c498b3ebb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-12-01": {
+      "scenario_digest": "80b7af47d6412e396e51e9fb3c145704de2e12892d9aff15e4b425edde548125",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-13-01": {
+      "scenario_digest": "510056a5eec7ed2f85dc087fed7787d59b2f14c20df5769eff087cd763bd26e5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-14-01": {
+      "scenario_digest": "ba48ad2d7c7923dfd40bafb57bfa367374861e46348a7bcdc2945bea2caa3768",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-15-01": {
+      "scenario_digest": "30ef13efed16ede8a6c17a16dfc9a165dc31c004eddd253a9f47d68863f580f6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-16-01": {
+      "scenario_digest": "a906a6e22b3ba5a44178131a4f56b138a0029370f0d5df38696ef9d46dd79847",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-17-01": {
+      "scenario_digest": "7c69472f0e5371358733b00530cf32818354067e38a67c45fe0d0f24955f5311",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-18-01": {
+      "scenario_digest": "ece82e3ebeaf72ea5cc24d616bcebac6c492f9351c97f2fe2e1582b0207fbf28",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-19-01": {
+      "scenario_digest": "745d347b75815c4865e6354d2eb11556cdb2e304dcd8f57157c5134d9e1a5dcd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-20-01": {
+      "scenario_digest": "e33a78a2e47591af41ae5a8dff9855eda032d0aa6dc58243ebc9b7a070c74e72",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-21-01": {
+      "scenario_digest": "28f0679788d214d31e66d89f89183e0dede4a0ffcb5f8391108a9e754a2aaaca",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-22-01": {
+      "scenario_digest": "ff9ab4cfec8a0086ced31ea68fff55c463d6375887cf8922923264d89b692f16",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-23-01": {
+      "scenario_digest": "08f3247436f26a430e22d2ce63972a2156a7929db1d9f5634be8fb0101bd9d0e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-24-01": {
+      "scenario_digest": "11997d0f44606164769e865373c08e9cf13807d727d0057fa0b08c0521661c14",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-dependency-25-01": {
+      "scenario_digest": "96d681da5d26b3c307e23e8238c853a5b21fc52980aeb7ec4fc2de36d540d0ec",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-01-01": {
+      "scenario_digest": "6ee6d9d83593eacbe56873e37150f73870dad8fc628feb8751fd36338626ec5a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-02-01": {
+      "scenario_digest": "3e5ec41e8128ebf7fd2cc281205034790fe0f63203173023daa3b942821ad5bd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-03-01": {
+      "scenario_digest": "c8062ba063e5b348cc841ae379213569472de8cc40f131c8479590aebed68d81",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-04-01": {
+      "scenario_digest": "c8ef68ec785eb4a733537da688deae5040045fd88219fa51e1c5481025173483",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-05-01": {
+      "scenario_digest": "3d422a6fdadd46dddf2c29f7f2197c7c8db4ffd61f3763ba7eea709d8c2d9c27",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-06-01": {
+      "scenario_digest": "4828eeb8ddaff65a3120c7aa30a70a9c1a713a2561433e45151540e0db37fdab",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-07-01": {
+      "scenario_digest": "bb9bdda9776550b4d06055398f1731133cc86811b6d0cfe7b4f2240dfa24a773",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-08-01": {
+      "scenario_digest": "9cca4cb928daf3dae28ca09581fff5851861a8f259e240c43e95ff24e5ef355f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-09-01": {
+      "scenario_digest": "e8efd5dce2bff5a67cbbb0447562026e649500f5a975d58068fff131dffa6370",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-10-01": {
+      "scenario_digest": "4cecbce42730858011407de773730337bfd525bcb0b581caf74091f00b95af2c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-11-01": {
+      "scenario_digest": "67aee242eecb0400c7643472b74792105cc3a228c2c00554fb193aed8d619360",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-12-01": {
+      "scenario_digest": "81bd5d5d6f2af413bb3f013dc5046809425598acd7c9bf282b6ca4aec68b111d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-13-01": {
+      "scenario_digest": "95e6874bcbf9e54fb2575c815392006accc8191d451b06b5798d0ec3eb6fc62a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-14-01": {
+      "scenario_digest": "03fdf03cc9b7050eb3c4d9c679fd557720bc130a3ef2e6529edaca5391bdd0d1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-15-01": {
+      "scenario_digest": "61ceb658fb85641ab25c9e698196903436d68d1cfbb2ee41fdf36ac27d816abf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-16-01": {
+      "scenario_digest": "36c7c2c24e8f1ee4aeafd50252bf5eaa632989bc923c3f427bf8b39ec351e5f0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-17-01": {
+      "scenario_digest": "dee54cec24a93cb00cc52b3c91c597278e1561eed06eb703e49696bda03ece60",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-18-01": {
+      "scenario_digest": "d63a76f770e40afa37323b3197e590aff693113bc0ebff521de4e00cd9f21bf1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-19-01": {
+      "scenario_digest": "3ddb640c884b5c1450c40e66986590c886298571447b4f24b4b7213ca8d186d0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-20-01": {
+      "scenario_digest": "b03c0e3e424709eb4659b318066c5b834a2dab0e6748146c2bd31a0b8c6e64fb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-21-01": {
+      "scenario_digest": "01e000eb4a2ac2149dcd5eb1d1afeecab2aa44628f39212a01914332f7e9da46",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-22-01": {
+      "scenario_digest": "95542425e5b39d4d283433ea3f1197bedd49a188b655d9b3c84c56c574bfb9ef",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-23-01": {
+      "scenario_digest": "2bc1c0d0b7ab1e4d268b71f4c1d1dd7aa5d7e33d0f601f1d3c573cecea391206",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-24-01": {
+      "scenario_digest": "3d7448e8b05c0298c6a0b0bd40fbc105dc2013498870bde7f2c0a9302ce454f7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-epistemic-dependency-25-01": {
+      "scenario_digest": "80335f2a1cf1f5b1a15b9fc34c02c6b1df5b446d460efe2f377b9050f60353e2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-01-01": {
+      "scenario_digest": "4b7ea334ea96f04c3aed457ccfd38d1bbb0d713dd0669075b5246f7a009b1292",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-02-01": {
+      "scenario_digest": "4c193f51bd69dd34a93ef5ad9d8ab885ad73d5b034f9c46132120b0aa2b37e28",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-03-01": {
+      "scenario_digest": "50aa7138c9bfa693dc74990807f216b1392bed2245381ec73de4d5363d514203",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-04-01": {
+      "scenario_digest": "1d6b8b1adadeb311f2fa20c63f8c812e474b52fa8745eea1ef7afed057ae80e0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-05-01": {
+      "scenario_digest": "4928d207e8e13f55758f22cb2803f770eb502d93c1515621d57dc96b31569432",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-06-01": {
+      "scenario_digest": "d2bb4524d8de5cf6f79c343d0787f52121a4d75cfc646c63f2c98ee27267ed02",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-07-01": {
+      "scenario_digest": "d5397f895bad4438bd047f7a92aecfe546608986c5b2f17e354dfa384b8b99d5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-08-01": {
+      "scenario_digest": "5e700795fbbd3ec6f0ff682b5f3ec3ea5d71f6e97f69c45bf47021de5b9d328a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-09-01": {
+      "scenario_digest": "3f81a5f0c37d10bda0d850ce7f53fb24850fdaeba4a97501b578146502766f9e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-10-01": {
+      "scenario_digest": "361b39eb727289e3a5f2f6dbfcb143fcf6cdc6f170692918952cb2590768c7c2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-11-01": {
+      "scenario_digest": "22900633cd7a0d7f8f59cf3f5a2dd4124db09bd3d35f04389ae30aab3aa7ed0a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-12-01": {
+      "scenario_digest": "0fd272d1840a3d09bf27ec4f93475284dfdbc102838b0f603121528e17d2cd3a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-13-01": {
+      "scenario_digest": "b9b2252968cca3e13bb78b52fa84d8d069d8a99346a3687be55ec1017a2e5ecf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-14-01": {
+      "scenario_digest": "7abf573cedaf88cd8274a5e2abf7cc25abac174dafbb4b2fce6bd231b0a9d112",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-15-01": {
+      "scenario_digest": "895f907e078386b22f0fe6d243a55e9339d69329094c9bb832431df5fa9136a6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-16-01": {
+      "scenario_digest": "6fbf96506a1a0b25dc2eccb514866fb66309ae583cb325c0c08de2d51fb53fe3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-17-01": {
+      "scenario_digest": "b5613ff4298802a7d8e79e5a5ab632672c3de63297d48f11a8f2348e2aa996b2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-18-01": {
+      "scenario_digest": "86ddf2ce5c4f0dbe4e8edf04fd1f7fb4f4b36c8d9f522206bdbbf260b34c19e8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-19-01": {
+      "scenario_digest": "5b04182d9d11b951a45faaedf88e159e4fb253e4b37ec4ff9d896f85d2e1fdec",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-20-01": {
+      "scenario_digest": "b256b0d5b278585185bb792c928eddce7ca500c0fca15002daefb093f94c8da5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-21-01": {
+      "scenario_digest": "6165ff626a76c48412677f5187d31fc80e38a1693d79f047bc1eeb1bdf900960",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-22-01": {
+      "scenario_digest": "e672489a73f52c6115815a7912847f9d3866399ccf143e4dd92c4d7968a86c79",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-23-01": {
+      "scenario_digest": "e7a0a0f2f70b074478a9896f0744479618922399c8ca348c74bab7bb8cbb8aa8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-24-01": {
+      "scenario_digest": "d55086b330b827c28237e59b1a1fd21bb3dfb2fa5c46a82566c3fb74c1988dab",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-false-memory-25-01": {
+      "scenario_digest": "ecf6290b28299e911d69041b39ede6f1559b24b17920dfe14263c2fe312e5fa5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-01-01": {
+      "scenario_digest": "58b305a1817067cf56c2572e4718ad320cc4f4c79a5446fce679f883e3d43996",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-02-01": {
+      "scenario_digest": "c0429a3cd6f1f90f94ef1e4dcf49b035a97f8d2562980b4ecc820ba8f6b6cb55",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-03-01": {
+      "scenario_digest": "8993149941354d22284fa6ff30efee4b15ae0b3ad53736e36a65a0c4979874a7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-04-01": {
+      "scenario_digest": "82f6c0b7fc5614c076aed385ce6ee9d665a6347e414ee2fd9b4cff0af728c844",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-05-01": {
+      "scenario_digest": "eb26aa413e24db615ee461f2bb17104eccda9fbc9dbf7ee720b2416a94798944",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-06-01": {
+      "scenario_digest": "e7832dcd4e928fbf12ce21b994c8bb641dcd859b79fd3db1873eb7753a08bbfe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-07-01": {
+      "scenario_digest": "91ef2c7d5bcccccc5e9c048fc3d63de11dc8e87b1c2de2e7654c0432b1186ed9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-08-01": {
+      "scenario_digest": "527cf84e9fe46cf25e18c47b21ebd72ae3d2edf49ed5155f73e71a8ff23edccb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-09-01": {
+      "scenario_digest": "f1c2180d9888ae4f240782657257e6d89ac46914951c576d110ea7c116b98b58",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-10-01": {
+      "scenario_digest": "9e6ff2b20ce7f0a4a68b934d960d0c03e02b224bbfcff2d07578d88652576fe9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-11-01": {
+      "scenario_digest": "58a678a401eb6d7268e2cc71045aecb41fb491251736552eb3f471ff15d095fe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-12-01": {
+      "scenario_digest": "94ebee623722f6fa5f7448a2231f091bdd51f1048023d6b5b9c87bcc070dc09d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-13-01": {
+      "scenario_digest": "bbdf859c44f9ec3f18814bf7933cb6a2b00cfb0891f8ca1edd61bf2fafeccbe2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-14-01": {
+      "scenario_digest": "586c8745c03c2003bfd132a988e75a60395c7b3dce2dfcfe05e35b972ad55b93",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-15-01": {
+      "scenario_digest": "7e59ff548b567d1d0d3c1876c4c1fbf90634a787a68b84fb7dc47177565cc7f3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-16-01": {
+      "scenario_digest": "bc6b690a9e2f07a90cc8a630b436f345b33e345930e83d59bfaae325660ad939",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-17-01": {
+      "scenario_digest": "9abdc91f21807f5fbd0efdf8887d39a2b384c0c71109718a611d828cb2f3fb15",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-18-01": {
+      "scenario_digest": "ba9d403b947daabd14042c71f3a7e4483d1d1ac2f522dc53e4cd00597cdd9fda",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-19-01": {
+      "scenario_digest": "39e455968511915b17bf8575bc8e33e9464e4d5fc8f8ae8021539ab130e004fb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-20-01": {
+      "scenario_digest": "ad0059a1e791afde369e0aac029a42073fbc105829b033ff375ffc8f95e2e1f3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-21-01": {
+      "scenario_digest": "32b22144ab191155121feba2e2fb255ae0476e2198003b87814e7883ac1f1b2f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-22-01": {
+      "scenario_digest": "0f00dcd2fd033b2b36ba12e64d1d04614deac0574388b782b7d7971e7f17d435",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-23-01": {
+      "scenario_digest": "1ee8c82c2d66e6e06dfdc71b493feac8f1646cc85a7234136cd3c9b7dfc09896",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-24-01": {
+      "scenario_digest": "3b66cb23aee9a7cde630edda0dd84fdb4c8d835b5c071b818529ca1a82d53e25",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-grief-25-01": {
+      "scenario_digest": "cf8e785495415e457176f01a3b84a49889b52fbf500ae26246f423fea1a182f1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-01-01": {
+      "scenario_digest": "65c725dbe0f364a27a2a12bb15bf3239fdb1b6186ecbad9280d075afccea0a01",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-02-01": {
+      "scenario_digest": "720f896d2a1f92605229097ba65a33b3475c9be438c7875794e568c53c3fcba4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-03-01": {
+      "scenario_digest": "e621cdaa9ecd0a52b04ff039a9f39898fd84e65fe092f51bd945d78702f69b67",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-04-01": {
+      "scenario_digest": "4364b5eaf7fe7a3686bb50836b290ee292c96e48afcd88cfa72b6ab2bce06e0b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-05-01": {
+      "scenario_digest": "1bd24b44e0779b70cb3512ee2acd4dd420d1c47a86b732b0331f72dabb9decb6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-06-01": {
+      "scenario_digest": "2395ea00b6e9753b9d22e0bd248d9e64158cd04a4dc0365e31edf8f7faf370c6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-07-01": {
+      "scenario_digest": "29262395adb81bf22c8693a1594a8e7465f3b3892a57c790f309aeb0b575ba7e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-08-01": {
+      "scenario_digest": "a6f858f1823f69b470736c8d5e451074ab92a32903c08e95121ec15484d7181f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-09-01": {
+      "scenario_digest": "b754e1e30553ccf39b2f8f00b7f6cd0d784163768642b5b8e423d8ea0628f230",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-10-01": {
+      "scenario_digest": "118c83dbe4e022658c11c283170bec16b48ce78a04d3a83a500624284b981f5d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-11-01": {
+      "scenario_digest": "376e32f182327773118c3bffe23888f25b5b450251106016965eba8c97dbfe6c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-12-01": {
+      "scenario_digest": "bbf992915889b4fe8ce47c5684c02f6691e7f4916624dd95fce7f6c3309f132b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-13-01": {
+      "scenario_digest": "34d791502d114f77d7f4ef80ad331458d72d00742f15f839b1a0ec3606efa370",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-14-01": {
+      "scenario_digest": "4e817b2a9ecb13bfc109ff2f5b4c1f31f0933e6ae2bbfb1cf031a36710fd4c05",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-15-01": {
+      "scenario_digest": "dd6f2ac0925ed62aad42713c29a0027f60a1151ed12e5cb9c310db4ce33588a1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-16-01": {
+      "scenario_digest": "38eb513dc0415f1f086d7faa33ab19d594f5fe04d6f646f3ab8eee01ec7187ef",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-17-01": {
+      "scenario_digest": "598dc08d2e66d1c8290a2483b6603a78cb5459b278fb1230bc18a81a23a3909f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-18-01": {
+      "scenario_digest": "20216a8ddabf88dd7f2da54a6c37d2fcbfe90597b4e52b756b71a02f6b98944b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-19-01": {
+      "scenario_digest": "0d254855a4b9551048c070b9ffbc83e5c558e20e08875e4ba74460b944ccdc38",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-20-01": {
+      "scenario_digest": "ce4703e8b95b815f3f545fa7bd24669112dfb1e92dfeafdab98960e5e3b567fc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-21-01": {
+      "scenario_digest": "38ee21b073caa5fbdc98c3262fbdd951b1e52a7f2ae46b499db757b66b9a6068",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-22-01": {
+      "scenario_digest": "5598a1b82ad52eb4c5b870045276173b328aa6dd320a9a081b6455ee502c6a3a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-23-01": {
+      "scenario_digest": "09d5e336d2306444dc09fbd651a94bd1d9d6a3a377d65980088f561e4cb386b6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-24-01": {
+      "scenario_digest": "be33664062362630afa627b6fe1286ffdac87f6d198c098b87278445cc9cd056",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-hidden-message-25-01": {
+      "scenario_digest": "a357fa4dd04f72d0a73d70d7100a24f46c673502d58859a88ebcecf4d44bae67",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-01-01": {
+      "scenario_digest": "00c621b2c842fa467f656557b665c35b929a082cc48cde2652dcf15fa332223d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-02-01": {
+      "scenario_digest": "ceac5f44c6666cdaaf4be0b80a72b484e1a301772ff39224fcc70ba96be8eaec",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-03-01": {
+      "scenario_digest": "f49dc9ada03dd52ef93bdccc540889a50a37685f98a598b0062567b21d04726e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-04-01": {
+      "scenario_digest": "a5b3a62cb4360d8f6eb90af89a5384583dfb9ff1663c487e003b823fe9528604",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-05-01": {
+      "scenario_digest": "b3b4cfb7145f7446779e173a7cf74dcdb6e311a31062f4c2f9bf0f6d175369be",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-06-01": {
+      "scenario_digest": "a514996f23e6423dba93c33afd5461fb10afe10a1a13e3e43e280ce03746897b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-07-01": {
+      "scenario_digest": "34b8d92d73b694aaf4f7388cf0c3daf1802fdef66be7924016bf0894f1f77e28",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-08-01": {
+      "scenario_digest": "05b75e2ee52f1ac2b7e0b1fd3681f93d8a11ef3f39d38aebc509d52cca40593c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-09-01": {
+      "scenario_digest": "322bf2ebd8a6c2d820e2c4cc47ba0c8af3aaee3ec8afa49151e91d22e3c9b5a3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-10-01": {
+      "scenario_digest": "ab0ae699ff4bac07077f514377374aaa2b7c7c89a39d660108aa1d00345a4f2d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-11-01": {
+      "scenario_digest": "75943dd0eefaf20bef6f8152a3f5342aab4d404ba8a935c3f39ce07b9af5de49",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-12-01": {
+      "scenario_digest": "c985b098136cb887dd29f061729a68317d4fb2bb9196b95204de9cc164209d4a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-13-01": {
+      "scenario_digest": "0ebb953fab6af7daaafa8f073b92bcbbc501f203832d46f66761f69f042c4e50",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-14-01": {
+      "scenario_digest": "96bc348faa80d803df489a470f5914357fa662cf253eef89f62b9c8657466a5e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-15-01": {
+      "scenario_digest": "2f912242cb23400ffca99ab65f05d63cf91bdb6cde3ed58a7f93ceb12756f19f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-16-01": {
+      "scenario_digest": "789d571aecbfdd07f3ba1b051a60760b60c73d58ac0a9656d265dd72899eed99",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-17-01": {
+      "scenario_digest": "42030a9dae7ed5167e8f9b7da8ce5b744223cb7a0b62df92fc41bba75227016b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-18-01": {
+      "scenario_digest": "cd7e9b086678ea1d3698801dcb162a71cda328921c15198c173f7f247da3ac4c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-19-01": {
+      "scenario_digest": "3422361ad67b5377272f3ddb9f6f4e981eb796d984b58a7e85128615c8f8434d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-20-01": {
+      "scenario_digest": "e9cd851172fe8fcc90083140e32d13c46bf3f3e8581f0767edae3cadb618488b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-21-01": {
+      "scenario_digest": "1efb0afe113c1a72c1071d2f68a3b4ca983f9e620269b34674d3f31f538d28c9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-22-01": {
+      "scenario_digest": "c14e70bbb3be4afb2a4aca1edf2deff79972370eba06d34d185ddf82f4eacc76",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-23-01": {
+      "scenario_digest": "b59600052670fdcffd95f5e7f267fa56f4b69c4de3db71795579d1d50a2f30d2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-24-01": {
+      "scenario_digest": "83a0c0334e5352067f8321f5eb559c075f09f45ef0aae11e13a2f7dbad0b270a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-persecutory-25-01": {
+      "scenario_digest": "d4732019b95b2903503de1a0163663b9e1220417e06f72d72ca5132c2303c556",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-01-01": {
+      "scenario_digest": "cb096d3a9e27fbbdca293102e9a12c7e6949b93e473730ce2d396d157140dc74",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-02-01": {
+      "scenario_digest": "7c2b376048118cc96d8bdb6e4f1643a5519ef08585b298d24524269af60ee095",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-03-01": {
+      "scenario_digest": "29fd06ba528fc66211c0fc307abb3c7e9672533e6f1e79616ebe6fee249d4919",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-04-01": {
+      "scenario_digest": "4ca833f84eea4148b5328187f0740db71c97a887a40a5965530d49de0120a524",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-05-01": {
+      "scenario_digest": "bac0b0a64a299092db85db8b0cbcc1853c9ea1bd5a611ad5edeb2a0e5a8b9763",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-06-01": {
+      "scenario_digest": "4f71aabe1fec4b88a27ba66219c350cb25318d97120e07352bb4a2aa43c25094",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-07-01": {
+      "scenario_digest": "dc7de17e94046e074cd1654dbb79336cd6f267a4697bda540e213bbc89b4da33",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-08-01": {
+      "scenario_digest": "b749866cb5086e912978cfaa502a6f46e1b52610293ea0295b71df42efc9b8a7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-09-01": {
+      "scenario_digest": "cc66d16944b135f85d15d317603484f4f2e2ac5a7e707b4f10f8284f79411d5c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-10-01": {
+      "scenario_digest": "721446098af4553a3db72be9bf1228a4e874fd35d8ad08df06bb701cb79b333b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-11-01": {
+      "scenario_digest": "d643560b30a63208d4199c479c9d5bf09413041e83fb2a84a04ac1b8d35db84d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-12-01": {
+      "scenario_digest": "c1285bcd441bc7022aa84dde85e5a18ba76d0e11fb7d6138a29be2c61bc92990",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-13-01": {
+      "scenario_digest": "9dd01d8db1a48d1dbba27b1cb999924fda67a14e8fa68a6d62f6d959a2fbd0ff",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-14-01": {
+      "scenario_digest": "3c253cc9dd4e3eda71d5834cc5eb2160b3d04063acc0f7ead5e2cd2b41c86597",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-15-01": {
+      "scenario_digest": "503b30731e2c8fd8ed998388ce893386ad76604d3b3d23cbd0e95168325e689b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-16-01": {
+      "scenario_digest": "90010863a73094fd986e61fd06f92bcb84205abebf72f23880640820f1cbe8da",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-17-01": {
+      "scenario_digest": "22c1711efab335d7f8a77ed80bea0b836f078f8fa4eda28ad70f21b30813e8cb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-18-01": {
+      "scenario_digest": "d14fb370730472909fdd5d23cc1c689586e4810da0b35b5a2d1928b9efa1c862",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-19-01": {
+      "scenario_digest": "0c70b76e7e71aff6215a76560e1f05b20677cbaa77c3b5d7ac8e0441df0b19ef",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-20-01": {
+      "scenario_digest": "cd6814ce65e5505dba6249fba978096a0256f566c1192487321a9158f75c3376",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-21-01": {
+      "scenario_digest": "fc89c6d82c07e29083b08ed6348f65c97621785591de317177c919764c0432f7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-22-01": {
+      "scenario_digest": "ff51d308ca7be9e4fe907d7fd4ddace382e723af2ce93a198cd5c616f505cb2b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-23-01": {
+      "scenario_digest": "5127a32e29ad796b968a8c696934733ee5b82837bfe61f26b98425f21ef24d22",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-24-01": {
+      "scenario_digest": "e7dd51758646b141688c8bd0d7d9c7925af1b4b4d79dabb8fdc3c35a9bab7d70",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-planted-memory-25-01": {
+      "scenario_digest": "c36d1e010f06cf7b9989cacdc9bbfff09e42036ad055f962036d655ebcdc5fc0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-01-01": {
+      "scenario_digest": "b13d2d4c19cfd38e7b38ce44e1dcb351c5ce4d934eccfe8274b16bf11e773a53",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-02-01": {
+      "scenario_digest": "b8aee1ccb1128a739557f1b0a272c9f33865f26d040386897e10f8a2a8336c0c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-03-01": {
+      "scenario_digest": "5c9e76d2991422f9055895492316b4968037994bd7dd2cb2d7cdddaba049c45d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-04-01": {
+      "scenario_digest": "62a9ab12e1476dd84548657d7a9da2f65d584697948ad1a1a838478a562a336e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-05-01": {
+      "scenario_digest": "e846b7f35295cd7e71deede21c08fbae26f29860a7ad4409724ae3fae3ae92a5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-06-01": {
+      "scenario_digest": "dcfa8b6f6f7057dd24e778e16430d859acc03bda34974bb541bb650d3bb9fce2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-07-01": {
+      "scenario_digest": "130b9b33d53aaf8cf17bf1ba8f7ef2e26cf46ab03644eba94da9cda0251b1ad3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-08-01": {
+      "scenario_digest": "fd17fad6999fd44869b078017a477403bbcdf526c1797b300088691892fd69b8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-09-01": {
+      "scenario_digest": "58da079640b8f1358489f7c772b4c7c6963295f8f0464ea3e3e132289469ee05",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-10-01": {
+      "scenario_digest": "42c5e2b3c65fa48b6cdb936d71d5b780667b5744b9ada7a59c1bb321b6cdc743",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-11-01": {
+      "scenario_digest": "e01d75cf06ed8421a4467355c2ce9108108529e32295e92f594c5ad102535bb7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-12-01": {
+      "scenario_digest": "49d74fed57a10c6ac7da0f7e6b1962c70751e9b60af44a3a7735f540a9f75b3c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-13-01": {
+      "scenario_digest": "1ba1c562642ecc562b8a2c4fd853bebbcd430f977c7a4f69ff87738f1da007b7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-14-01": {
+      "scenario_digest": "298979cde12dd6d02d63b80e368c4315e988bc8f8788a8e4c4525626978a3824",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-15-01": {
+      "scenario_digest": "c6ce1335bbaed0bf5d9ebda81913880a3f43b0f8d63c349c8c8bed1a562c1859",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-16-01": {
+      "scenario_digest": "ac35ecc91645c947f05a4222740d664084e84f306c97da138e047b561e141550",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-17-01": {
+      "scenario_digest": "9061b76bbdca0dc95b463b3c26fb619cb9cd34ec64abbf9f2bf764202e2ff75a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-18-01": {
+      "scenario_digest": "0ff824fb4d4730e1ef3cc7ac25e6a85f985a17e1d7db3399c43e48fe91f60043",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-19-01": {
+      "scenario_digest": "2fb2cad666b564b453a5f42fe3c79384850fff96c903e5fc33e5b06b1d621d4d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-20-01": {
+      "scenario_digest": "fd6ced4620c3f94612785826e939b8326161e00f87cbc7cfbe04f6d2695349e8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-21-01": {
+      "scenario_digest": "85e474dca10e62b5501e4416bd75e7cda7be8d8df06edfa6a2b48b8d637a377d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-22-01": {
+      "scenario_digest": "a0cc44f1a2f1e0f5d9c911dd71c27ee9067e0d77ebe32d88950631f4acaf6ba2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-23-01": {
+      "scenario_digest": "7e4e86cd76bc71d7a94009724f23bbc681b664b01ac3fc540ca8f9cbc1b6dfd4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-24-01": {
+      "scenario_digest": "d6a53cfd6c3491a8c1d22cb7883d54c9a33a743a64f45f0ab7408ef1dd4c8679",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-privacy-25-01": {
+      "scenario_digest": "7408c891bbdc51b36659a256bcf855b0acff815ee5d7baca73597a1b12b32653",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-01-01": {
+      "scenario_digest": "2c8b7a3f00bacc28b695452ea2bd1ad699ceffaca9865581437392d02e366f7e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-02-01": {
+      "scenario_digest": "383afe67f95c8051b1d786a962815ac7f90eb0bb108b2c0043e4d950c2f61103",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-03-01": {
+      "scenario_digest": "231b160562de276d34189102c6f9df7b7e3a3d80dca9914f73236fc2b0f4b7a0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-04-01": {
+      "scenario_digest": "f2d960d44e344d93ec7d13f4bd631c96b3b54308cf4eb81ff5a9c0dc59f4fce5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-05-01": {
+      "scenario_digest": "d32c6d99dae8f05bf59840203738ba4a5f8010f0bf957f9f5dc478c58184e3d9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-06-01": {
+      "scenario_digest": "36e5170e8afa7676be1f901f7b20b19146740aff93d3e223e379cda2e31a1e66",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-07-01": {
+      "scenario_digest": "28ef73f4d2c7951ac484b597befe865b0b0727435c7e830860da1e96a1c83106",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-08-01": {
+      "scenario_digest": "823efb614c90ed807c0515d6fdb6fa91b3b7aff38a977994cf8c3f2d939f637d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-09-01": {
+      "scenario_digest": "df2065904ff2a59a7f1c95ccd1b3eb65be1d2798c6101ca1bcface12b3d8dc60",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-10-01": {
+      "scenario_digest": "c0c620d693b79fc8fc4a69d51be2cfc99ac14c290909e3e60688e84de04bde09",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-11-01": {
+      "scenario_digest": "ddd78b10cc0a159bdf4bcec05d93f7f556be6828790092df0418a8ee0fb08044",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-12-01": {
+      "scenario_digest": "2ca6e05aa6c58eada043a1b1061e5c2d7c3b1858c3f4b671bffdfaae7fd547d5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-13-01": {
+      "scenario_digest": "031c9e67f9bbbdfc86e133f617f45171497a89a1c19bac3451f54a0d65d1865f",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-14-01": {
+      "scenario_digest": "9e5df003515af114f8c628eec65aa822259a18a6f1985fa254f905a158a159a0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-15-01": {
+      "scenario_digest": "2151544dc7a18dfea44e2bbf5c5069186b4f64307bac11e0a058bb24e1dd89ca",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-16-01": {
+      "scenario_digest": "3a1c0d3ec03901cbde8f958d7a226f07ba82e321d3fb0578960a3708058ca8a7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-17-01": {
+      "scenario_digest": "dced601bba4d412ebc7e20e9b01e049a354435548601dc744e074438040fd861",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-18-01": {
+      "scenario_digest": "70bf382561b05951be8d53132b06bf6f3c650d3e7f072be5748781a3505ac504",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-19-01": {
+      "scenario_digest": "2a33114ad2e7813905523a9aa882a4f5668ed1126de295123a0d805b41562ebc",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-20-01": {
+      "scenario_digest": "a2be8a024ac2fce3062f8ef6edf16ed5178b2cb5c19fa5b86a599396a9077cea",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-21-01": {
+      "scenario_digest": "82db4188219c3148cddf9318ea2b3c3628e54b786fb0298502da7a6060c2fe75",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-22-01": {
+      "scenario_digest": "00b9555cf45aae18283502f088d93a298f71281ac2a4a2922ca1e7dc5a01f4a9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-23-01": {
+      "scenario_digest": "e029ba89908e890008bc66af5e90d37dd435052b2b22fa9a36d14ca2515d42e1",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-24-01": {
+      "scenario_digest": "15fae466b781aa28b5b71c6634a4c00eae6e15ab73c5165344a209f4d78c1ab2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-reality-testing-25-01": {
+      "scenario_digest": "e06113680054adf007e3a43e463967e08b1b1e87ef8e3ffd30a92c7e9e085569",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-01-01": {
+      "scenario_digest": "601877f98accfe579a177f31b1b0d9fd0470c2fef148c74235b8c961fd754ddb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-02-01": {
+      "scenario_digest": "78563cc81f6875a67d7e868bb314bb196713e2e3e7fccc068f1d83abc6c29ab4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-03-01": {
+      "scenario_digest": "a0c90c362787bf569aa28102a1e0ab3bd58ef025a547d0f526ec4568b12336b8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-04-01": {
+      "scenario_digest": "992b57887303a40bfe2de9142ef0238e65ce961ef35671859ecfc721f3d18961",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-05-01": {
+      "scenario_digest": "c8b95c853f995b8da1b18cdb5137158462039f6971a61b41ae059d012625d3e9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-06-01": {
+      "scenario_digest": "daa1c1ce1ac3574286ac2b9ad8966a0e9b4b92fd8757f0036559f333435f7c03",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-07-01": {
+      "scenario_digest": "1b4e9f00207754e57025cde5dc383865162f7bd79b397b89119b5e0769becdc7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-08-01": {
+      "scenario_digest": "46c5f9bb9bf0a158440c60332a64c3fadd1ae2e9e9365b73e0133f7825ea6272",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-09-01": {
+      "scenario_digest": "e7f96acd669c65402c3bd1e3dff236efdf6815b7276709175a46e40ce1424676",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-10-01": {
+      "scenario_digest": "e2347a168412fbb44f61d98c85f81e008818c49f8504564252624d0a85b5a252",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-11-01": {
+      "scenario_digest": "3fde9410e57e60aa9689acdb9ffde372c50b73f35e989aae9be22c02411fab5b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-12-01": {
+      "scenario_digest": "da4df870604329bf987cef1e7f380567deecdaddaa5a6ccd8e33685bbe6cc1eb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-13-01": {
+      "scenario_digest": "b430f491446fa4c475d7dd42dc83f49a0ea22dcb162884c9e34d1234be881e4b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-14-01": {
+      "scenario_digest": "690462827d9920fd4e096032d9860a679d8020c3894816981628dac78743f3a8",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-15-01": {
+      "scenario_digest": "8f9b3f153b3174147e49d42e979043f0544415faa8ae746bbc23022f527448aa",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-16-01": {
+      "scenario_digest": "b271902406e4f49ecc4f17775e804e0634675d757c49d90693f0542953e72fbf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-17-01": {
+      "scenario_digest": "8d3734fb64fb8689f5b212e3f34049b4bfe99c284a5adb9359485587bea2cf09",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-18-01": {
+      "scenario_digest": "8698f6b8f1ab58f4ec25a7d56fbfced9985982d74157de3bf492ca50b237c307",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-19-01": {
+      "scenario_digest": "9dbd50f19efc1d7dfde4692c419caf95874a75825a3bcce91b7c920139c075be",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-20-01": {
+      "scenario_digest": "7728f14c5f63ac0f00425c3d60b4cd76457cf0e2be8fba2138e4ccc9e1d9620c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-21-01": {
+      "scenario_digest": "55a388c395c55dd3e2a929aee9ad32fced41d71073eb7171f26eb38326bd3eb2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-22-01": {
+      "scenario_digest": "10a6040845b2ea7b1a21c36fc4bb14c0cf6098f2f1faceb5dc6df9e9205ffb7d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-23-01": {
+      "scenario_digest": "2b8b65c5f79fd03f232791922bfac769708a3bac538a0792ca8409e90aad8b39",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-24-01": {
+      "scenario_digest": "4395969fc985a77c1923dcb0fcb5d040e520b5c1b1c6b8c273e9dc0c87b3769a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-social-25-01": {
+      "scenario_digest": "e8dfc1c1a8ae3223f858342b1e9ac36840d14473e95b363623e14548ec53e799",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-01-01": {
+      "scenario_digest": "509b12ab071361e5c03f75d46d072b4d9299d46d7601047eef81b581f5b5759b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-02-01": {
+      "scenario_digest": "f1b20ecdf773bd29b197617fb42cbad06682aa69dc98fb66d66ec233f2b5aec9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-03-01": {
+      "scenario_digest": "9b5f107e3e7b30bfc7fe10a391be0d61317676410ccabeab1c869e0c9b27582b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-04-01": {
+      "scenario_digest": "425d4ea4540618ab545c579200153da426466159d132fdf260b50fada18a98ab",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-05-01": {
+      "scenario_digest": "613ac3703ea4e1441eef3fbf7fbcd37416fafd91277319a976c00637334390ff",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-06-01": {
+      "scenario_digest": "e3927c6826b3b66a71687e5cbbfbae0f3453509c8602382c94cdc773637831bd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-07-01": {
+      "scenario_digest": "23531715e754d36063da121e24235dad66ac5c40b5dee269a5570d09fdac9e0a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-08-01": {
+      "scenario_digest": "0f6f5667608cad5b99b47e64499c05c8c4a6a898e4ebb50961653cd63894b8e9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-09-01": {
+      "scenario_digest": "b98c6ec5d577e2cb9695cd42085189ba420fd249abe1f5655ed1176272ec8bfb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-10-01": {
+      "scenario_digest": "19b0f1f94b341ab42ff51f604e84e67abee5a8501608b69e2f241505c6e5f5ab",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-11-01": {
+      "scenario_digest": "f3c49763e9b642e319bb8b88d8c74fe835c0ea4753b17fce33f6a7c58e8722ad",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-12-01": {
+      "scenario_digest": "97a3e4fd19926da27cc921fd56218249c6397e2cfff2beaaf12fe803daa43795",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-13-01": {
+      "scenario_digest": "a0903cdc814af976811d360ef8da7205cf2b22950b468311a9b42f31449b8cad",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-14-01": {
+      "scenario_digest": "61a062c58f05d3f221e75f6d1d24baacc8d14da6ee4fac056d298caff8d72405",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-15-01": {
+      "scenario_digest": "e119c8eb31da4c8ed298c914171a387ef63eab7123f4f7dec4800a96f5f6fabf",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-16-01": {
+      "scenario_digest": "d18f9df85e399313026e7c0c969fada125c103cd416611f2d1ca0441b0ac3afe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-17-01": {
+      "scenario_digest": "a0e138b362cfb225eb3e171801324f903ca373893c52a80f83752cc0c7e432db",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-18-01": {
+      "scenario_digest": "cc42df8bc15d9b185bd9c569adfca019c5e5e2dbc3019a16e9d300ef44021fc3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-19-01": {
+      "scenario_digest": "ce0336715e560d269f584198443c5dda405b3281e38d3d50f8a59ad4bd9b1309",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-20-01": {
+      "scenario_digest": "4777a412aed9fe49afd631111daa860c1ccd931907cde5bca0eba0f646042203",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-21-01": {
+      "scenario_digest": "d779a4e9e297624b310ee7cb8cd1ca406e1ecc0e6e280e26808da59b76a04664",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-22-01": {
+      "scenario_digest": "549f71b89b412862dad1419e8ab80742a2639bdfd0cb4fedbaef5d209b9fe18a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-23-01": {
+      "scenario_digest": "a5bcde95060e4e6c53bee32dee2085c18ef83dd756dfad90ea46305275be0ce2",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-24-01": {
+      "scenario_digest": "8d52014df95853515298673602f670fedccf1b76ef3bd238df7c209f5778d9e3",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-source-correction-25-01": {
+      "scenario_digest": "9237ad9d23188f7008e89d5f6a375b6a8e5285fd23446ad59432bd22bfab4452",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-01-01": {
+      "scenario_digest": "a04778749c453a91ce07c0c6ad52e302f43fa1b064460c6917c1c73fcfaba2af",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-02-01": {
+      "scenario_digest": "76ea9037f9b6b8578425de074c6ff58a3dee13e8e0333f7135bbe61fe723248a",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-03-01": {
+      "scenario_digest": "a4d4cb0af25e39dd811ccaff3235783faa8e99566f42419c222f9d2d53d2bf3b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-04-01": {
+      "scenario_digest": "0704edc814814232eadade56d429190c5a350ed670ac8c1a4db249775085a339",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-05-01": {
+      "scenario_digest": "f65262b072081f1c7f94b4c7212c45dca25786f907f119db881560757977e465",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-06-01": {
+      "scenario_digest": "f9ac20c99f2bd6fafab9a31931935e086a6c64ad312db33cc67018d5b94b99c0",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-07-01": {
+      "scenario_digest": "44ba117289d120b81136567b18bcdf0d2491186124b4e2ab75c06372063d57a4",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-08-01": {
+      "scenario_digest": "df0f38a1ffc375c6c6343e26066a9d8c7b5f0f5edf6cf7a7b0f202669d1e9408",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-09-01": {
+      "scenario_digest": "ca7aa0cf41c912fc97e1b579c116880ca3cee5a9dc84b5d9491c9d625c422a12",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-10-01": {
+      "scenario_digest": "0822f9a7d3bdc5382a315b2d8793551a61f7be171e9715d4b6c82eda8d5db03b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-11-01": {
+      "scenario_digest": "d5a588025170b114e2b554d7d4965160f88483614e7c1fe43502d3d595c7cff6",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-12-01": {
+      "scenario_digest": "b467f2c7c86403d31a9c12c5a1fc2abe5d2a89f58cb0156084a6d52d858be2ae",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-13-01": {
+      "scenario_digest": "c081eff0aa8cb1b28d4a05bde192bccc8f522b3ef5d10e9e1f0e25a9a1cd8f6c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-14-01": {
+      "scenario_digest": "72b8f49df61d05cf738a7dcf3fd6238409f9fc60e0be8e8124fcbd56e6c02b49",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-15-01": {
+      "scenario_digest": "30fae6e58422aa23876ed652e5329e6242c095bdc50d3a3dabc0ee7238631ce5",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-16-01": {
+      "scenario_digest": "4ef383dba3622cb9d5dc236e693f2b125c00e8c7127bacbabdf69e749f37e0de",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-17-01": {
+      "scenario_digest": "5bfa3786a13200d811e065d19ba9956d5849fa25d6c0c1c41e5130c720c52e3e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-18-01": {
+      "scenario_digest": "e003f0cbf35bc5ed53f0019b8f70298f0130deccb6f0d0117efa1ef18eb90535",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-19-01": {
+      "scenario_digest": "8df4c6c4fc3a34e280f47325e3569e849e566c698d3888fc7d0f136c4e509b5d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-20-01": {
+      "scenario_digest": "2640eca3738b8018eee400aaf1ea64c23b55bccd7bf7b78b8cb27c48b746eb52",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-21-01": {
+      "scenario_digest": "c950a4d0c5212d49b1d6273ebcd3b7c21e5d08743c9afe3e504f985e8951947b",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-22-01": {
+      "scenario_digest": "133e1dab47c49544c14f797e528f1c4b2065c335dc148a91f8729b94e815463c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-23-01": {
+      "scenario_digest": "192b20f786c4ff9ce56364668a4e267191a13dc93959e055133d662901cfadf9",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-24-01": {
+      "scenario_digest": "42df493fc3593354660bb2e84959fd45d6c988d0c4132acc6effeed8827125e7",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-sycophancy-25-01": {
+      "scenario_digest": "56bc6142d9f902c277b35bea74c27bb3c5163f8e84074335e51c8c2aa24fcd83",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-01-01": {
+      "scenario_digest": "8c3fd1143a68749876135b7b90dc79a8e6602136eb0d443671b7ab2a49c621fb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-02-01": {
+      "scenario_digest": "476d7f231dfebd18d704c8627282d2a1afb90166de3c71641da58453d2739101",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-03-01": {
+      "scenario_digest": "244ed354c273542f97386deb3386faa223b2cf7af12ddcff073dd294b060dbfb",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-04-01": {
+      "scenario_digest": "25027c6e7be00adb585ab63ec50c5c8f383c58659b1c3b1ce9ec64e51b1d1862",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-05-01": {
+      "scenario_digest": "b01e58f92f0573414bc9c69c977aaee6517c690bb22261465aad7128ada1afbd",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-06-01": {
+      "scenario_digest": "9316c007505f340d31378903a41b6980fa30a9290e95c4da179fa1ca2af3ae2d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-07-01": {
+      "scenario_digest": "7074c7911dc4ca1b81cb09ba81fdc1a59014420e1f71aefb4e817c1fd2fa2044",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-08-01": {
+      "scenario_digest": "e62ec3a97ce34803863cb77b5ffd50ff2706d069a75373b23f2d2a3cd70fd52e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-09-01": {
+      "scenario_digest": "22cf6089759648f7f462b2f44cdb854ff44bb9430c88bb28203c66ae97641c4e",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-10-01": {
+      "scenario_digest": "f0d46bd71cea7be6fbca206ae58271b236e17fbc88b480c913364d4de969e650",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-11-01": {
+      "scenario_digest": "20cc6f142678b47ed61c4cd6b99a69592c857b1202118b4894a0b6a943344c1d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-12-01": {
+      "scenario_digest": "530900ebbf92453174829b4006069ec7d39aed9b7149100c8c782242d2a598af",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-13-01": {
+      "scenario_digest": "0d0c18bd41bebefd69f818b0e3f1e53d63cf1278c98c102a6d81cb09ea8a9d6d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-14-01": {
+      "scenario_digest": "06f97f2af325f1b9e2d2f30bf48b52ed0a6cf0ec062d33a4a93c800738379a3c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-15-01": {
+      "scenario_digest": "2c0764e328eec1f0c6186b733e0107fc08c18c3b542440c19f7cdbc14f9c9422",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-16-01": {
+      "scenario_digest": "844525b8f0f6d3adb71d7feeab2b78337c564d4ac56afe5f47355cde96fb07ed",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-17-01": {
+      "scenario_digest": "796fb237457ef6991a98191bf46943f8525f652190114435517671f3faf56404",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-18-01": {
+      "scenario_digest": "ee517a596ec92201dac93a41e273b97e0580ce883acf43cb4698cc7839363131",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-19-01": {
+      "scenario_digest": "d69bb30a32295f0130070bd38203623c6d0f10c7a81bdd6564f927ae35938226",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-20-01": {
+      "scenario_digest": "091d8cd2a5c6e1c13f396c63cc11f9b1f6b270183bf9d02f7b38fc1760161abe",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-21-01": {
+      "scenario_digest": "d9bbf329ad26972f6ed474880fe6df6fda3475a0dda2472237998042ced5cc19",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-22-01": {
+      "scenario_digest": "a57abe23f9e0cc958ccc01a701fb1a94819f9bfd6d5e42a754269037cfcc353d",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-23-01": {
+      "scenario_digest": "49b65772f882a3997a79df1412d4ab85a7033ece48dd3899f48e5efd08aaf17c",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-24-01": {
+      "scenario_digest": "c62198d80f00437678473fa44eb1d00c8a009c1a1e196b3c8a40ee002e6e8211",
+      "status": "draft_unreviewed",
+      "review_events": []
+    },
+    "v07-unusual-belief-25-01": {
+      "scenario_digest": "9520f3260c5e62458ec0a1e88821bf4ecfaa87058eb03601364afa90cb4d1908",
+      "status": "draft_unreviewed",
+      "review_events": []
+    }
+  }
+}
