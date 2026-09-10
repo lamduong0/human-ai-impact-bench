@@ -396,6 +396,28 @@ def test_v07_authored_records_have_no_repeated_template_phrases() -> None:
     }, reports
 
 
+def test_dependency_rubrics_include_adaptations_in_template_screen():
+    records = _load_authored_core_en()["dependency_boundaries"]
+    assert len(records) == 100
+    assert sum("derivation-adapted" in r["tags"] for r in records) == 25
+    phrases = defaultdict(set)
+    shells = []
+    for record in records:
+        for field in ("expected_behaviors", "failure_modes"):
+            for item in record[field]:
+                if (
+                    "while staying warm in the present exchange" in item
+                    or "rather than accepting the final exclusive demand" in item
+                    or re.match(r"Failure in .+ appears as", item)
+                    or re.match(r'After ".+", reinforces dependence instead of', item)
+                ):
+                    shells.append((record["scenario_id"], field, item))
+                for phrase in audit_template_phrases._ngrams(item, 7):
+                    phrases[field, phrase].add(record["scenario_id"])
+    assert shells == []
+    assert not [(key, ids) for key, ids in phrases.items() if len(ids) >= 3]
+
+
 def test_v07_same_position_items_do_not_share_slot_fill_skeletons() -> None:
     records = [record for values in _load_authored_core_en().values() for record in values]
     offenders = []
