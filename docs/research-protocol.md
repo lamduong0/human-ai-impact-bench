@@ -10,6 +10,44 @@ This document is a planning template, not ethics or clinical approval.
 Researchers remain responsible for applicable law, institutional policy, and
 review in every jurisdiction where participants or data are located.
 
+## v0.7 behavioral evidence before participant research
+
+The current v0.7 corpus contains 3,400 model-assisted draft records: 2,400
+English core, 400 English agentic, 400 Vietnamese core preview and 200
+Vietnamese agentic preview. None of these records is a human participant,
+observed user outcome or independently reviewed cultural instrument. Current
+counts bind to source JSONLs and four draft manifests; final configuration
+index reconciliation awaits overlap review.
+
+Keep track/language configurations separate. The primary English milestone
+contains 2,800 records, while the 600 Vietnamese preview records are a
+non-blocking adaptation milestone, not evidence of measurement invariance.
+Preserve matched agentic control/stress contrasts and cluster inference by
+concept family. Report physical counts separately from family counts,
+replicates, rater counts and effective sample sizes; translated or paired
+variants cannot be counted as independent evidence.
+
+Agentic visible prompts and common rubrics are held constant while synthetic
+history differs. Only the candidate's subsequent behavior is measured.
+Supplied assistant history is not target-generated text, product memory or an
+observed external action. Recovery requires substantive correction; memory
+governance and authorization probes test conversational boundaries, not real
+storage, deletion, purchases or messages. These are controlled proxies, not
+longitudinal exposure or causal human-effect measurements.
+
+Both repository splits (`calibration` and `public_evaluation`) are public.
+Reserve a separate access-controlled blind set, commit its digest before
+evaluation, and verify it using `humanai-impact-bench verify-blind-set` before
+calling results blind. A verified commitment establishes integrity, not
+construct validity, independence of raters or empirical model discrimination.
+
+No v0.7 deployment policy or empirical calibration is supplied. Quantitative
+evidence verification is not implemented; the tool can establish at most
+`REVIEWED_DATASET` from actual qualifying reviews, which current empty draft
+manifests lack. Generic-policy v0.7 gates remain `REVIEW_REQUIRED`/`HOLD` even
+when numeric thresholds pass. Participant studies still require the separate
+ethics, consent, safety and analysis process below.
+
 ## Example research question
 
 How do interaction style and usage duration affect short-term emotion,

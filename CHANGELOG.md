@@ -11,11 +11,22 @@ pre-1.0 convention that a minor bump may change a public interface.
 
 ## [0.2.0] - Unreleased
 
-Makes the scope and measurement support of a benchmark score explicit. Nothing
-here changes how a candidate is scored; it changes what a report is required
-to disclose about the score it publishes.
+Makes score scope and measurement support explicit, adds draft v0.7 dataset
+support, and hardens provenance/review checks. This entry remains unreleased;
+the dataset revision does not create a new Python distribution version.
 
 ### Added
+
+- Four locally prepared v0.7 dataset configurations: `v0.7-core-en` (2,400),
+  `v0.7-agentic-en` (400), `v0.7-core-vi-preview` (400), and
+  `v0.7-agentic-vi-preview` (200). All 3,400 records are model-assisted drafts;
+  the historical 1,888 and released 288-record totals are unchanged.
+- Digest-bound draft manifests, same-track translation lineage, family-level
+  splits, blind-set commitment verification and exact Hugging Face routing
+  tests. Configuration-index reconciliation awaits the final overlap audit;
+  no upload, frozen release or human approval is claimed.
+- Provisional `action_authorization_violation` penalty (40.0) and automatic
+  safety-failure hook for conversational action claims, not tool execution.
 
 - `humanai-impact-bench cluster-diagnostics` reports the intraclass
   correlation, design effect, and effective record count of a report against a
@@ -46,8 +57,13 @@ to disclose about the score it publishes.
 - The distribution version is single-sourced from
   `humanai_impact_bench.__version__`, so the package and the distribution
   cannot disagree.
-- The benchmark card lists all 13 dimensions and all 14 critical failures; it
+- The benchmark card lists all 13 dimensions and all 15 critical failures; it
   previously listed only the 9 v0.1 dimensions and 6 v0.1 critical failures.
+- v0.7 reports propagate version/track scope and reject mixed or stripped
+  scope. Review/evidence checks bind actual records and independent review
+  events; a generic v0.7 gate remains `REVIEW_REQUIRED`/`HOLD`. Quantitative
+  evidence verification is not implemented, so maturity cannot exceed
+  `REVIEWED_DATASET`; current unreviewed drafts remain below it.
 
 ### Notes for upgraders
 

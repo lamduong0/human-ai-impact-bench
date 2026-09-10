@@ -1,6 +1,6 @@
 ---
 name: humanai-impact-bench
-description: Run, compare, interpret, and extend HumanAI-Impact-Bench deployment gates and v0.1-v0.6 scenario datasets for conversational AI. Use when benchmarking an OpenAI-compatible chatbot or fine-tune, comparing candidate models with controlled settings, diagnosing PREVIEW human-impact failures, applying or designing a fail-closed policy, developing bilingual or stateful scenarios, reporting measurement support and effective sample size, or researching delusion reinforcement, false memory, reality testing, dependency, and longitudinal human impact.
+description: Run, compare, interpret, and extend HumanAI-Impact-Bench deployment gates and v0.1-v0.7 scenario datasets for conversational AI. Use when benchmarking an OpenAI-compatible chatbot or fine-tune, comparing candidate models with controlled settings, diagnosing PREVIEW human-impact failures, applying or designing a fail-closed policy, developing bilingual or stateful scenarios, reporting measurement support and effective sample size, or researching delusion reinforcement, false memory, reality testing, dependency, and longitudinal human impact.
 ---
 
 # HumanAI-Impact-Bench
@@ -22,6 +22,13 @@ by the repository.
 - For v0.6 work, treat `data/scenarios/v0.6/en` (800 records) and
   `data/scenarios/v0.6/vi` (400 records) as separate language sources. Read
   `docs/v0.6-legacy-coverage-plan.md` and the digest-bound review manifests.
+- For v0.7 work, use four independent configurations: `v0.7-core-en` (2,400),
+  `v0.7-agentic-en` (400), `v0.7-core-vi-preview` (400), and
+  `v0.7-agentic-vi-preview` (200). Read `docs/v0.7-agentic-research-plan.md`
+  and current source/review artifacts. The 2,800-record primary English and
+  600-record non-blocking Vietnamese milestones are all model-assisted drafts,
+  not a new package release or an upload claim. Final configuration-index
+  reconciliation is pending the overlap audit.
 - For scenario development, preserve aligned intent rather than literal
   translation, update review and lineage artifacts, and validate every changed
   language source.
@@ -33,7 +40,8 @@ by the repository.
 
 1. Inspect `README.md`, `docs/deployment-gate.md`, the selected scenario source,
    and a policy explicitly designed for that dataset revision. Do not apply the
-   v0.1 or v0.3 policy to v0.5 or v0.6.
+   v0.1 or v0.3 policy to v0.5, v0.6 or v0.7. No v0.7 deployment policy exists;
+   generic-policy numerical success still returns `REVIEW_REQUIRED`/`HOLD`.
 2. Validate scenarios:
 
    ```bash
@@ -94,6 +102,52 @@ cluster tag groups genuinely related records; one unique cluster per record
 makes ICC 0 mechanically uninformative.
 
 ## Extend the benchmark
+
+### v0.7 execution and evidence boundaries
+
+Validate each exact track/language directory separately:
+
+```bash
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/core/en
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/agentic/en
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/core/vi
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/agentic/vi
+```
+
+Keep `benchmark_version` and `benchmark_track` on annotations/reports; never
+merge core/agentic results or pool English and Vietnamese preview scores.
+Preserve concept-family clusters, contexts and control/stress pairs. Physical
+records, translated variants and protocol members are not independent concepts.
+Both public splits are public. For a separately access-controlled blind set:
+
+```bash
+PYTHONPATH=src python -m humanai_impact_bench.cli verify-blind-set \
+  --manifest /path/to/prior-commitment.json --scenarios /path/to/private-scenarios.jsonl
+```
+
+A commitment verifies integrity, not blind-set quality or empirical validity.
+Do not commit private scenarios/transcripts to make this command convenient.
+
+Score newly generated candidate replies only. Synthetic assistant prefills
+are benchmark-owned history, not target output or real product memory.
+Apply shared rubrics conditionally on available history; never import stress
+facts into control or force the target to confess authorship of a prefill.
+Recovery needs concrete repair, while action probes measure conversational
+permission claims, not actual tools. Honor current explicit consent and permit
+clearly authorized low-risk preparation without redundant approval.
+
+Edit v0.7 JSONL source records directly; keep exact source/digest matrices,
+lineage, split and review artifacts aligned. Translation lineage may point
+only from Vietnamese to English within the same v0.7 track, with explicit
+version/language/source tags. A new digest cannot inherit prior approval.
+All current review events are empty: model-assisted authoring or automated
+review must not invent human identities, independence or cultural/specialist
+approval. Read `docs/cultural-review-guide.md` before later review updates.
+Quantitative evidence verification is not implemented, so the current tool
+cannot advance beyond `REVIEWED_DATASET`; unreviewed drafts remain below it.
+Automated results stay PREVIEW and deployment remains HOLD.
+
+### Source development
 
 Keep each scenario focused on one primary failure mechanism. Add the same concept
 in English and Vietnamese with aligned intent, risk, expected behaviors, failure

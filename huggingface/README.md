@@ -50,6 +50,22 @@ configs:
         path: data/scenarios/v0.6/en/*.jsonl
       - split: vi
         path: data/scenarios/v0.6/vi/*.jsonl
+  - config_name: v0.7-core-en
+    data_files:
+      - split: en
+        path: data/scenarios/v0.7/core/en/*.jsonl
+  - config_name: v0.7-agentic-en
+    data_files:
+      - split: en
+        path: data/scenarios/v0.7/agentic/en/*.jsonl
+  - config_name: v0.7-core-vi-preview
+    data_files:
+      - split: vi
+        path: data/scenarios/v0.7/core/vi/*.jsonl
+  - config_name: v0.7-agentic-vi-preview
+    data_files:
+      - split: vi
+        path: data/scenarios/v0.7/agentic/vi/*.jsonl
 ---
 
 # HumanAI-Impact-Bench — Scenarios
@@ -63,8 +79,11 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
 - **License:** Apache-2.0
 - **Languages:** English (`en`), Vietnamese (`vi`)
-- **Size:** 1,888 scenarios across six benchmark revisions: 288 released
-  records and 1,600 development-checkpoint records
+- **Repository snapshot:** 5,288 physical records across ten configurations:
+  1,888 historical records plus 3,400 v0.7 drafts. The released total remains
+  288; the other 5,000 records are development data.
+- **v0.7 publication status:** configuration metadata is prepared locally;
+  this card does not assert that the new configurations have been uploaded.
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
 > and research artifact, **not** a clinical assessment, proof of safety, or
@@ -82,6 +101,18 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.4` | `en` | 56 | `maintainer_reviewed` |
 | `v0.5` | `en` (`en-US`, `en-VN`) | 400 | `maintainer_reviewed`; development only |
 | `v0.6` | `en`, `vi` | 800 + 400 | `maintainer_reviewed`; development only |
+| `v0.7-core-en` | `en` | 2,400 | `draft_unreviewed`; primary English |
+| `v0.7-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; primary English |
+| `v0.7-core-vi-preview` | `vi` | 400 | `draft_unreviewed`; non-blocking preview |
+| `v0.7-agentic-vi-preview` | `vi` | 200 (100 pairs) | `draft_unreviewed`; non-blocking preview |
+
+The v0.7 primary English milestone has 2,800 records; the two Vietnamese
+previews add 600. Each configuration routes only to its named track/language
+directory. Validate and score configurations separately; never pool core and
+agentic tracks or interpret translation pairs as independent concepts.
+The current counts and draft status bind to the repository JSONLs and four
+review manifests. Final configuration-index reconciliation remains pending
+the overlap audit; this is not a frozen release index.
 
 ```python
 from datasets import load_dataset
@@ -111,11 +142,12 @@ Each scenario is a JSON object with these fields (see
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `benchmark_version` | string | `0.1` through `0.6` |
+| `benchmark_version` | string | `0.1` through `0.7` |
+| `benchmark_track` | string | Required for v0.7: `core` or `agentic` |
 | `scenario_id` | string | Stable kebab-case identifier |
 | `language` | string | `en` \| `vi` |
 | `title` | string | Short human-readable title |
-| `category` | string | e.g. `dependency_boundaries`, `reality_testing`, `engagement_manipulation`, `identity_and_dignity_harm` (24 published categories) |
+| `category` | string | v0.7 has 24 core categories and four separately registered agentic categories |
 | `risk_level` | string | `low` \| `moderate` \| `high` \| `critical` |
 | `context` | string | Situation description |
 | `persona` | object | Age group, situation, communication style, vulnerability factors |
@@ -129,6 +161,13 @@ Each scenario is a JSON object with these fields (see
 Version 0.5 additionally uses `locale`, `protocol_mode`, `matched_pair_id`, and
 optional `prefill_messages` to define its synthetic continuous-versus-recovery
 protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
+Version 0.7 agentic uses `locale`, `protocol_mode` (`control` or
+`prefill_stress`), `matched_pair_id`, and stress-only `prefill_messages`.
+Each pair holds visible prompts, metadata and the common rubric fixed; only
+synthetic prior history differs. Score newly generated candidate replies, not
+benchmark-authored assistant prefills. Action probes concern conversational
+authorization claims, not observed tool execution, and simulated session
+history does not verify product memory.
 
 ## Intended use
 
@@ -140,6 +179,21 @@ protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
 or any representation of automated scores as validated human outcomes.
 
 ## Review maturity and exclusions
+
+All 3,400 v0.7 records are model-assisted `draft_unreviewed`, with empty review
+events and no inherited source approvals. Vietnamese adaptation preserves
+selected English source lineage but still requires native-speaker/cultural
+and applicable specialist review; source matching is not cultural equivalence.
+Public calibration/evaluation splits are both public and therefore not blind.
+Any blind-set claim requires separately access-controlled data and a verified
+pre-evaluation commitment, not merely the public split name.
+
+No v0.7 deployment policy exists. Automated evaluation remains PREVIEW; the
+generic gate returns `REVIEW_REQUIRED`/`HOLD` for otherwise passing v0.7 runs.
+Quantitative evidence verification is not implemented: the evidence-status
+tool cannot promote beyond `REVIEWED_DATASET`, and these unreviewed drafts do
+not meet even that stage. Hashes, declarations and record counts are not
+validated evaluation, clinical safety or human-outcome evidence.
 
 The v0.3 and v0.4 English-first expansions are `maintainer_reviewed`.
 Per-scenario review state is published in each revision's

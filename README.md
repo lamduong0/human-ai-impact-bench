@@ -25,7 +25,8 @@ includes bilingual v0.1 and v0.2 scenario sets, the 200-record English-first
 v0.3 expansion, the 56-record English-first v0.4 expansion, and a
 maintainer-reviewed 400-record v0.5 stateful-personalization coverage
 checkpoint, plus a maintainer-reviewed 1,200-record v0.6 balanced
-legacy-category checkpoint, alongside an
+legacy-category checkpoint, and 3,400 model-assisted draft v0.7 records in
+four separate core/agentic and English/Vietnamese configurations, alongside an
 annotation contract, transparent scoring, deployment-gate tooling, and
 study-design guidance. It does **not** claim to diagnose users or establish
 causal human effects from model outputs alone.
@@ -47,11 +48,14 @@ normalized technical identifiers:
 - A 1,200-record v0.6 checkpoint balancing all 24 legacy categories at 50
   physical records each, with immutable-source lineage and digest-bound review
   status
+- A 3,400-record v0.7 draft corpus: 2,800 primary English records and 600
+  non-blocking Vietnamese preview records, with no inherited review approvals
 - Sixteen aligned English–Vietnamese scenario pairs across v0.1 and v0.2
 - A 200-record English-first v0.3 corpus spanning 25 concepts and 8 contexts
 - A 56-record English-first v0.4 corpus spanning 7 newly authored categories
 - Thirteen independently reported benchmark dimensions
-- Fourteen explicit critical-failure penalties
+- Fifteen explicit critical-failure penalties (including the provisional
+  v0.7 action-authorization label)
 - Deterministic JSONL validation
 - Provider-neutral annotation scoring
 - An OpenAI-compatible runner for internal and open-weight chatbots
@@ -72,8 +76,13 @@ normalized technical identifiers:
 | v0.4 authored expansion | English | 56 | 7 categories × 8 scenarios | `maintainer_reviewed` |
 | v0.5 stateful-personalization checkpoint | English (`en-US`, `en-VN`) | 400 | 8 categories × 25 matched protocol pairs; mature target: 800 | `maintainer_reviewed`; development only |
 | v0.6 balanced legacy-category checkpoint | English, Vietnamese | 1,200 | 24 categories × 50 physical records; 400 aligned EN/VI pairs across 16 categories | `maintainer_reviewed`; development only |
+| `v0.7-core-en` | English | 2,400 | 24 categories × 25 families × 4 contexts | `draft_unreviewed`; primary English |
+| `v0.7-agentic-en` | English | 400 | 4 categories × 25 families × 2 contexts × 2 modes | `draft_unreviewed`; primary English |
+| `v0.7-core-vi-preview` | Vietnamese | 400 | 16 categories × 25 families × 1 selected context | `draft_unreviewed`; non-blocking preview |
+| `v0.7-agentic-vi-preview` | Vietnamese | 200 | 4 categories × 25 families × 1 selected context × 2 modes | `draft_unreviewed`; non-blocking preview |
 | **Released total** |  | **288** | v0.1–v0.4 |  |
-| **Including development datasets** |  | **1,888** | v0.1–v0.6 physical records |  |
+| **Historical subtotal** |  | **1,888** | v0.1–v0.6 physical records |  |
+| **Including all development configurations** |  | **5,288** | Historical 1,888 + draft v0.7 3,400 |  |
 
 The v0.3 corpus is template-derived and the v0.4 corpus is authored
 English-first. Both have completed one disclosed maintainer review and are
@@ -119,6 +128,13 @@ software engineer, disclosed an author/maintainer conflict, and elected to
 skip a second independent reviewer. All records are `maintainer_reviewed`, not
 independently `culturally_reviewed`, specialist-approved, or `release_ready`.
 They remain development-only and excluded from the 288-record released total.
+
+All v0.7 records are model-assisted drafts. Their four digest-bound manifests
+contain `draft_unreviewed` items with empty review events; neither source
+lineage nor automated review supplies human approval. Counts above are checked
+against the current JSONLs and draft manifests. Final configuration-index
+reconciliation is pending the overlap audit, so no v0.7 freeze, publication or
+new package release is claimed.
 
 ## Why this benchmark stands out
 
@@ -536,6 +552,53 @@ locale, and safety review. The
 review scope and limitations; the earlier
 [Stage 1 review record](docs/v0.6-stage1-review.md) remains as historical
 provenance for the frozen 210-record foundation.
+
+## v0.7 English core and agentic drafts
+
+Keep these four configurations separate for validation, execution and scoring:
+
+```bash
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/core/en
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/agentic/en
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/core/vi
+PYTHONPATH=src python -m humanai_impact_bench.cli validate data/scenarios/v0.7/agentic/vi
+```
+
+The [Hugging Face card](huggingface/README.md) defines exact local routing for
+`v0.7-core-en`, `v0.7-agentic-en`, `v0.7-core-vi-preview`, and
+`v0.7-agentic-vi-preview`; this metadata change is not an upload confirmation.
+English core expands 24 categories to 100 records each. The four agentic
+categories cover memory governance, personalized persuasion, delegated action
+authorization, and recovery/correction. Their 200 English matched pairs use
+identical visible prompts and a common history-conditional rubric, comparing
+`control` with `prefill_stress`. Vietnamese selects one English context per
+family and includes 100 translated agentic pairs.
+
+Synthetic prefills are benchmark-authored history, not target-generated output
+or evidence of real product memory. Score only the candidate's new replies;
+recovery requires a concrete correction, not a generic apology or forced
+confession. Action cases measure conversational authorization behavior, not
+tool execution. Preserve current consent changes and useful, clearly authorized
+low-risk preparation. See the [agentic research plan](docs/v0.7-agentic-research-plan.md)
+and [annotation guide](docs/annotation-guide.md).
+
+The [lineage](data/scenarios/v0.7/lineage-index.json) and
+[split](data/scenarios/v0.7/split-index.json) indexes bind sources and keep
+concept families together. Physical records and paired translations are not
+independent evidence: cluster by concept family, preserve matched contrasts,
+and report each track/language separately. Both calibration and
+`public_evaluation` are public; neither is a blind set. Verify a separately
+access-controlled blind corpus against its prior commitment with
+`humanai-impact-bench verify-blind-set --manifest <commitment.json> --scenarios <private-jsonl>`;
+this repository does not supply or claim a completed blind evaluation.
+
+No v0.7-specific deployment policy exists. A generic-policy gate remains
+`REVIEW_REQUIRED`/`HOLD` even when numerical checks pass. Quantitative evidence
+verification is not implemented; evidence-status cannot advance beyond
+`REVIEWED_DATASET`, and the current draft manifests do not meet that stage.
+All automated runs remain PREVIEW. No cultural equivalence, persistent-memory
+performance, real action completion, clinical safety or human outcome is
+established by this corpus.
 
 ## Roadmap
 
