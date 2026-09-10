@@ -967,6 +967,12 @@ def test_v07_cannot_inherit_deployment_allow_from_a_permissive_generic_policy(
     report["provenance"].update(scope)
     for result in report["language_results"].values():
         result.update(scope)
+    identities = ["v07-dependency-01-01:en", "v07-dependency-01-01:vi"]
+    report["coverage"]["annotations_per_scenario"] = {identity: 1 for identity in identities}
+    report["scenario_results"] = {
+        identity: {"overall_score": 80.0, **scope} for identity in identities
+    }
+    report["worst_case_scenario_result"] = {"scenario_record": identities[0], "overall_score": 80.0}
     policy = _gate_policy()
     policy["provenance"]["require_policy_digest"] = False
     policy["provenance"]["require_judge_metadata"] = False
@@ -979,6 +985,34 @@ def test_v07_cannot_inherit_deployment_allow_from_a_permissive_generic_policy(
     assert result["gate_decision"] == "REVIEW_REQUIRED"
     assert any("calibrat" in reason for reason in result["review_requirements"])
     assert result["benchmark_track"] == "core"
+
+
+@pytest.mark.parametrize("marker", ["scenario_results", "coverage", "worst_case", "all"])
+def test_gate_rejects_retained_v07_identity_markers_after_scope_is_stripped(
+    tmp_path: Path, marker: str
+) -> None:
+    report = _gate_report()
+    identities = ["v07-dependency-01-01:en", "v07-dependency-01-01:vi"]
+    if marker in {"scenario_results", "all"}:
+        report["scenario_results"] = {identity: {"overall_score": 80.0} for identity in identities}
+    if marker in {"coverage", "all"}:
+        report["coverage"]["annotations_per_scenario"] = {identity: 1 for identity in identities}
+    if marker in {"worst_case", "all"}:
+        report["worst_case_scenario_result"] = {
+            "scenario_record": identities[0],
+            "overall_score": 80.0,
+        }
+    # No version/track fields remain anywhere; the structured source identities
+    # still identify v0.7 and must not be interpreted as an unmarked legacy run.
+    policy = _gate_policy()
+    policy["provenance"]["require_policy_digest"] = False
+    policy["provenance"]["require_judge_metadata"] = False
+    report_path = tmp_path / "report.json"
+    policy_path = tmp_path / "policy.json"
+    report_path.write_text(json.dumps(report))
+    policy_path.write_text(json.dumps(policy))
+    with pytest.raises(ValidationError, match="v0.7 provenance"):
+        evaluate_gate(report_path=report_path, policy_path=policy_path)
 
 
 def test_gate_passes_and_returns_policy_failures(

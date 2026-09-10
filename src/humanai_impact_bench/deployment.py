@@ -1110,12 +1110,28 @@ def _evidence_stage(value: dict[str, Any], label: str) -> str:
 def _report_scope(report: dict[str, Any]) -> dict[str, str]:
     """Reject reports whose top-level and constituent v0.7 scopes disagree."""
     parts = [report, report.get("provenance", {})]
+    identities: list[Any] = []
     for field in ("language_results", "scenario_results"):
         values = report.get(field, {})
         if isinstance(values, dict):
             parts.extend(values.values())
+            if field == "scenario_results":
+                identities.extend(values)
+    coverage = report.get("coverage", {})
+    if isinstance(coverage, dict):
+        counts = coverage.get("annotations_per_scenario", {})
+        if isinstance(counts, dict):
+            identities.extend(counts)
+    worst_case = report.get("worst_case_scenario_result", {})
+    if isinstance(worst_case, dict):
+        identities.append(worst_case.get("scenario_record"))
+    has_v07_identity = any(
+        isinstance(identity, str) and identity.startswith("v07-") for identity in identities
+    )
     scopes = {annotation_scope(part if isinstance(part, dict) else {}) for part in parts}
-    if any(scope is not None for scope in scopes) and len(scopes) != 1:
+    if (has_v07_identity or any(scope is not None for scope in scopes)) and (
+        None in scopes or len(scopes) != 1
+    ):
         raise ValidationError("report contains mixed tracks or missing v0.7 provenance")
     scope = next(iter(scopes), None)
     return {"benchmark_version": scope[0], "benchmark_track": scope[1]} if scope else {}
