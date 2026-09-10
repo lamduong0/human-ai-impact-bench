@@ -1,3 +1,4 @@
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -64,6 +65,35 @@ def test_v07_huggingface_routes_exact_configurations_and_current_draft_records()
         )
         total += count
     assert total == 3400
+
+
+def test_huggingface_v07_matches_frozen_configuration_index():
+    root = ROOT / "data/scenarios/v0.7"
+    index = json.loads((root / "configuration-index.json").read_text())
+    configs = _configs()
+    assert set(index["configurations"]) == set(CONFIGURATIONS)
+    for name, (track, language, count, categories, per_category) in CONFIGURATIONS.items():
+        summary = index["configurations"][name]
+        assert (summary["benchmark_track"], summary["language"]) == (track, language)
+        assert summary["scenario_count"] == count
+        paths = sorted(ROOT.glob(configs[name]["data_files"][0]["path"]))
+        assert summary["files"] == [
+            {
+                "path": str(path.relative_to(root)),
+                "scenario_count": len(load_scenarios(path)),
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            }
+            for path in paths
+        ]
+        assert len(paths) == categories
+        assert summary["category_counts"] == dict.fromkeys((p.stem for p in paths), per_category)
+        assert summary["language_counts"] == {language: count}
+        assert summary["review_status_counts"] == {"draft_unreviewed": count}
+        manifest = root / track / language / "review-status.json"
+        assert summary["review_manifest"] == {
+            "path": str(manifest.relative_to(root)),
+            "sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
+        }
 
 
 def test_all_huggingface_routes_exclude_quarantine_and_preserve_historical_counts():

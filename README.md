@@ -132,9 +132,10 @@ They remain development-only and excluded from the 288-record released total.
 All v0.7 records are model-assisted drafts. Their four digest-bound manifests
 contain `draft_unreviewed` items with empty review events; neither source
 lineage nor automated review supplies human approval. Counts above are checked
-against the current JSONLs and draft manifests. Final configuration-index
-reconciliation is pending the overlap audit, so no v0.7 freeze, publication or
-new package release is claimed.
+against the current JSONLs, draft manifests and
+[configuration index](data/scenarios/v0.7/configuration-index.json). This
+locally frozen snapshot binds the reviewed overlap dispositions and current
+artifact digests; it is not publication, human approval or a new package release.
 
 ## Why this benchmark stands out
 

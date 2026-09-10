@@ -23,8 +23,9 @@ the dataset revision does not create a new Python distribution version.
   the historical 1,888 and released 288-record totals are unchanged.
 - Digest-bound draft manifests, same-track translation lineage, family-level
   splits, blind-set commitment verification and exact Hugging Face routing
-  tests. Configuration-index reconciliation awaits the final overlap audit;
-  no upload, frozen release or human approval is claimed.
+  tests. The locally frozen configuration index binds the current corpus,
+  review manifests and resolved overlap audit; no upload, package release or
+  human approval is claimed.
 - Provisional `action_authorization_violation` penalty (40.0) and automatic
   safety-failure hook for conversational action claims, not tool execution.
 

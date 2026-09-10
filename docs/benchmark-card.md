@@ -30,8 +30,10 @@ Modality: text, multi-turn scripted conversations
 The primary English milestone is 2,800 records; non-blocking Vietnamese
 previews add 600, for 3,400 v0.7 records. With 1,888 historical records, all
 configurations total 5,288; the released v0.1–v0.4 total stays 288. Current
-counts come from JSONLs and draft manifests; final configuration-index
-reconciliation awaits overlap review. No frozen release or upload is claimed.
+counts reconcile exactly with the
+[configuration index](../data/scenarios/v0.7/configuration-index.json), which
+binds JSONLs, draft manifests and resolved overlap audit. This is a local
+artifact freeze, not a published release, human approval or upload claim.
 
 All v0.7 records are model-assisted `draft_unreviewed`, with empty review
 events. Adaptation lineage does not inherit source approval. Evaluate each

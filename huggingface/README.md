@@ -110,9 +110,10 @@ The v0.7 primary English milestone has 2,800 records; the two Vietnamese
 previews add 600. Each configuration routes only to its named track/language
 directory. Validate and score configurations separately; never pool core and
 agentic tracks or interpret translation pairs as independent concepts.
-The current counts and draft status bind to the repository JSONLs and four
-review manifests. Final configuration-index reconciliation remains pending
-the overlap audit; this is not a frozen release index.
+The current counts and draft status reconcile with the repository's
+`data/scenarios/v0.7/configuration-index.json`, including exact JSONL paths and
+hashes, four review manifests and resolved overlap audit. This local artifact
+freeze is not an upload confirmation, human review or package release.
 
 ```python
 from datasets import load_dataset

@@ -16,8 +16,10 @@ The current v0.7 corpus contains 3,400 model-assisted draft records: 2,400
 English core, 400 English agentic, 400 Vietnamese core preview and 200
 Vietnamese agentic preview. None of these records is a human participant,
 observed user outcome or independently reviewed cultural instrument. Current
-counts bind to source JSONLs and four draft manifests; final configuration
-index reconciliation awaits overlap review.
+counts bind to source JSONLs, four draft manifests and the locally frozen
+[configuration index](../data/scenarios/v0.7/configuration-index.json).
+Resolved overlap dispositions are traceable artifact decisions, not human
+construct approval or empirical validation.
 
 Keep track/language configurations separate. The primary English milestone
 contains 2,800 records, while the 600 Vietnamese preview records are a

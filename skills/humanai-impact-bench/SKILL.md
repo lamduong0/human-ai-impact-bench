@@ -27,8 +27,9 @@ by the repository.
   `v0.7-agentic-vi-preview` (200). Read `docs/v0.7-agentic-research-plan.md`
   and current source/review artifacts. The 2,800-record primary English and
   600-record non-blocking Vietnamese milestones are all model-assisted drafts,
-  not a new package release or an upload claim. Final configuration-index
-  reconciliation is pending the overlap audit.
+  not a new package release or an upload claim. Use
+  `data/scenarios/v0.7/configuration-index.json` for the locally frozen counts,
+  source/review hashes and resolved overlap binding.
 - For scenario development, preserve aligned intent rather than literal
   translation, update review and lineage artifacts, and validate every changed
   language source.
