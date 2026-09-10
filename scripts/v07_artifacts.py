@@ -114,8 +114,19 @@ def _source_version(record: dict[str, Any]) -> str:
     if match is None:
         raise ValidationError(f"{record['scenario_id']} has invalid source-version tag")
     version = ".".join(match.groups())
-    if version not in {"0.5", "0.6"}:
+    if version == "0.7":
+        if (
+            record.get("benchmark_version") != "0.7"
+            or record.get("language") != "vi"
+            or record.get("benchmark_track") not in TRACKS
+        ):
+            raise ValidationError("v0.7 source requires a v0.7 Vietnamese target")
+        if single_tag(record, "source-language-") != "en":
+            raise ValidationError("v0.7 translation source-language must be en")
+    elif version not in {"0.5", "0.6"}:
         raise ValidationError(f"{record['scenario_id']} source version must be 0.5 or 0.6")
+    elif any(tag.startswith("source-language-") for tag in record["tags"]):
+        raise ValidationError("source-language is reserved for v0.7 EN-to-VI translation")
     return version
 
 
@@ -124,8 +135,15 @@ def _find_source(
     version: str,
     language: str,
     scenario_id: str,
+    *,
+    track: str | None = None,
 ) -> tuple[Path, dict[str, Any]]:
-    version_dir = root.parent / f"v{version}"
+    if version == "0.7":
+        if track not in TRACKS or language != "en":
+            raise ValidationError("v0.7 source resolution requires a track and English language")
+        version_dir = root / track / language
+    else:
+        version_dir = root.parent / f"v{version}"
     matches: list[tuple[Path, dict[str, Any]]] = []
     for path in sorted(version_dir.rglob("*.jsonl")):
         for record in load_scenarios(path):
@@ -141,6 +159,8 @@ def _find_source(
             f"source {scenario_id} benchmark_version {record['benchmark_version']!r} "
             f"does not match tagged version {version!r}"
         )
+    if version == "0.7" and record.get("benchmark_track") != track:
+        raise ValidationError(f"source {scenario_id} benchmark_track does not match {track!r}")
     return path, record
 
 
@@ -159,7 +179,10 @@ def _lineage_tags(record: dict[str, Any]) -> tuple[str, str, str, str | None, st
             _source_version(record),
             single_tag(record, "source-scenario-"),
         )
-    if any(tag.startswith(("source-version-", "source-scenario-")) for tag in record["tags"]):
+    if any(
+        tag.startswith(("source-version-", "source-scenario-", "source-language-"))
+        for tag in record["tags"]
+    ):
         raise ValidationError(
             f"{record['scenario_id']} authored-new record must not claim a source"
         )
@@ -171,12 +194,22 @@ def _lineage_item(root: Path, track: str, language: str, record: dict[str, Any])
     source: dict[str, Any] | None = None
     if derivation == "adapted":
         assert version is not None and source_scenario_id is not None
+        if version == "0.7" and (
+            record["benchmark_track"] != track or record["language"] != language
+        ):
+            raise ValidationError("translation target track/language does not match configuration")
         source_path, source_record = _find_source(
             root,
             version,
-            language,
+            "en" if version == "0.7" else language,
             source_scenario_id,
+            track=track if version == "0.7" else None,
         )
+        if version == "0.7":
+            # Intra-version edges are VI -> EN only. Validating the EN source's
+            # tags rules out a back edge (and hence self/cyclic ancestry) without
+            # conflating identical scenario IDs in different language records.
+            _lineage_tags(source_record)
         source = {
             "benchmark_version": version,
             "language": source_record["language"],
@@ -184,6 +217,8 @@ def _lineage_item(root: Path, track: str, language: str, record: dict[str, Any])
             "scenario_id": source_record["scenario_id"],
             "scenario_sha256": record_digest(source_record),
         }
+        if version == "0.7":
+            source["benchmark_track"] = track
     return {
         "concept_family_id": concept_family_id,
         "context_id": context_id,

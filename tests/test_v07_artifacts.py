@@ -188,6 +188,153 @@ def test_split_assignment_keeps_concept_family_together(v07_small_fixture: Path)
     )
 
 
+def _translate_first_record(root: Path, track: str = "core", *, same_id: bool = False):
+    category = "dependency_boundaries" if track == "core" else "trajectory_recovery_and_correction"
+    source = load_v07_configuration(track, "en", root)[0]
+    path = root / track / "vi" / f"{category}.jsonl"
+    records = [json.loads(line) for line in path.read_text().splitlines()]
+    target = records[0]
+    if same_id:
+        target["scenario_id"] = source["scenario_id"]
+    target["tags"] = [
+        tag for tag in source["tags"] if not tag.startswith(("derivation-", "source-"))
+    ] + [
+        "derivation-adapted",
+        "source-version-v0-7",
+        "source-language-en",
+        f"source-scenario-{source['scenario_id']}",
+        "requires-cultural-review",
+    ]
+    _write_jsonl(path, records)
+    return path, records, source
+
+
+@pytest.mark.parametrize("track", ["core", "agentic"])
+@pytest.mark.parametrize("same_id", [False, True])
+def test_v07_translation_lineage_binds_same_track_english_source(
+    v07_small_fixture: Path, track: str, same_id: bool
+) -> None:
+    path, records, source = _translate_first_record(v07_small_fixture, track, same_id=same_id)
+    index = build_lineage_index(v07_small_fixture)
+    translated = next(
+        item
+        for item in index["items"]
+        if item["target"]["language"] == "vi"
+        and item["target"]["benchmark_track"] == track
+        and item["target"]["scenario_id"] == records[0]["scenario_id"]
+    )
+    assert translated["source"] == {
+        "benchmark_version": "0.7",
+        "benchmark_track": track,
+        "language": "en",
+        "path": f"v0.7/{track}/en/{path.name}",
+        "scenario_id": source["scenario_id"],
+        "scenario_sha256": record_digest(source),
+    }
+    if track == "core":
+        ancestor = next(
+            item
+            for item in index["items"]
+            if item["target"]["language"] == "en"
+            and item["target"]["scenario_id"] == source["scenario_id"]
+        )
+        assert ancestor["source"]["benchmark_version"] == "0.6"
+        assert ancestor["source"]["scenario_id"] == "source-001"
+
+
+@pytest.mark.parametrize(
+    "language_tags", [[], ["source-language-vi"], ["source-language-en", "source-language-vi"]]
+)
+def test_v07_translation_requires_exact_explicit_english_source_language(
+    v07_small_fixture: Path, language_tags: list[str]
+) -> None:
+    path, records, _ = _translate_first_record(v07_small_fixture)
+    records[0]["tags"] = [
+        t for t in records[0]["tags"] if not t.startswith("source-language-")
+    ] + language_tags
+    _write_jsonl(path, records)
+    with pytest.raises(ValidationError, match="source-language"):
+        build_lineage_index(v07_small_fixture)
+
+
+@pytest.mark.parametrize("source_id", ["v07-agentic-en-00", "v07-core-vi-00"])
+def test_v07_translation_rejects_cross_track_or_self_source(
+    v07_small_fixture: Path, source_id: str
+) -> None:
+    path, records, _ = _translate_first_record(v07_small_fixture)
+    records[0]["tags"] = [t for t in records[0]["tags"] if not t.startswith("source-scenario-")] + [
+        f"source-scenario-{source_id}"
+    ]
+    _write_jsonl(path, records)
+    with pytest.raises(ValidationError, match="resolve to exactly one"):
+        build_lineage_index(v07_small_fixture)
+
+
+def test_v07_translation_rejects_an_english_back_edge_and_cycle(v07_small_fixture: Path) -> None:
+    _translate_first_record(v07_small_fixture)
+    path = v07_small_fixture / "core/en/dependency_boundaries.jsonl"
+    records = [json.loads(line) for line in path.read_text().splitlines()]
+    records[0]["tags"] = [
+        "concept-family-core-00",
+        "context-core-00",
+        "derivation-adapted",
+        "source-version-v0-7",
+        "source-language-vi",
+        "source-scenario-v07-core-vi-00",
+    ]
+    _write_jsonl(path, records)
+    with pytest.raises(ValidationError, match="Vietnamese target"):
+        build_lineage_index(v07_small_fixture)
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [("benchmark_version", "0.6"), ("language", "vi"), ("benchmark_track", "agentic")],
+)
+def test_v07_translation_rejects_mismatched_source_metadata(
+    v07_small_fixture: Path, field: str, value: str
+) -> None:
+    path, records, _ = _translate_first_record(v07_small_fixture)
+    source_path = v07_small_fixture / "core/en" / path.name
+    sources = [json.loads(line) for line in source_path.read_text().splitlines()]
+    sources[0][field] = value
+    _write_jsonl(source_path, sources)
+    with pytest.raises(ValidationError):
+        build_lineage_index(v07_small_fixture)
+
+
+def test_v07_translation_does_not_allow_other_source_versions(v07_small_fixture: Path) -> None:
+    path, records, _ = _translate_first_record(v07_small_fixture)
+    records[0]["tags"] = [
+        t.replace("source-version-v0-7", "source-version-v0-8") for t in records[0]["tags"]
+    ]
+    _write_jsonl(path, records)
+    with pytest.raises(ValidationError, match="source version"):
+        build_lineage_index(v07_small_fixture)
+
+
+def test_source_language_tag_cannot_be_used_on_authored_new_records(
+    v07_small_fixture: Path,
+) -> None:
+    path = v07_small_fixture / "core/vi/dependency_boundaries.jsonl"
+    records = [json.loads(line) for line in path.read_text().splitlines()]
+    records[0]["tags"].append("source-language-en")
+    _write_jsonl(path, records)
+    with pytest.raises(ValidationError, match="authored-new.*source"):
+        build_lineage_index(v07_small_fixture)
+
+
+def test_historical_sources_cannot_override_their_same_language_rule(
+    v07_small_fixture: Path,
+) -> None:
+    path = v07_small_fixture / "core/en/dependency_boundaries.jsonl"
+    records = [json.loads(line) for line in path.read_text().splitlines()]
+    records[0]["tags"].append("source-language-vi")
+    _write_jsonl(path, records)
+    with pytest.raises(ValidationError, match="source-language.*reserved"):
+        build_lineage_index(v07_small_fixture)
+
+
 def test_split_assignment_requires_25_families_per_track_category(
     v07_small_fixture: Path,
 ) -> None:
