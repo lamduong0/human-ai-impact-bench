@@ -9,13 +9,134 @@ import pytest
 from jsonschema import Draft202012Validator, FormatChecker
 from jsonschema.exceptions import ValidationError as SchemaError
 
-from humanai_impact_bench.deployment import draft_evaluate, run_scenarios
+from humanai_impact_bench.deployment import _report_scope, draft_evaluate, run_scenarios
 from humanai_impact_bench.review import derive_review_status, scenario_digest
 from humanai_impact_bench.scoring import score_annotations
 from humanai_impact_bench.validation import ValidationError, validate_scenario
 from scripts.v07_artifacts import _validate_overlap_audit, record_digest, scenario_set_digest
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.mark.parametrize("validate", [True, False])
+@pytest.mark.parametrize("track", ["core", "agentic"])
+def test_v07_scores_do_not_pool_english_and_vietnamese(annotation_factory, validate, track):
+    rows = [
+        annotation_factory(
+            scenario_id="v07-shared-01",
+            language=language,
+            benchmark_version="0.7",
+            benchmark_track=track,
+            scores={"autonomy_support": score},
+        )
+        for language, score in (("en", 5), ("vi", 1))
+    ]
+    with pytest.raises(ValidationError, match="language"):
+        score_annotations(rows, validate=validate)
+
+
+@pytest.mark.parametrize("validate", [True, False])
+def test_legacy_bilingual_scoring_keeps_its_supported_behavior(annotation_factory, validate):
+    rows = [
+        annotation_factory(language=language, scores={"autonomy_support": score})
+        for language, score in (("en", 5), ("vi", 1))
+    ]
+    assert score_annotations(rows, validate=validate)[0].overall_score == 50.0
+
+
+@pytest.mark.parametrize("language", ["en", "vi"])
+@pytest.mark.parametrize("track", ["core", "agentic"])
+@pytest.mark.parametrize("validate", [True, False])
+def test_v07_single_language_scoring_is_preserved(annotation_factory, language, track, validate):
+    row = annotation_factory(
+        scenario_id="v07-single-language",
+        language=language,
+        benchmark_version="0.7",
+        benchmark_track=track,
+        scores={"autonomy_support": 5},
+    )
+    assert score_annotations([row], validate=validate)[0].overall_score == 100.0
+
+
+@pytest.mark.parametrize("source_kind", ["file", "directory"])
+@pytest.mark.parametrize("track", ["core", "agentic"])
+def test_v07_bilingual_source_rejected_before_provider(
+    tmp_path, scenario_factory, source_kind, track
+):
+    records = []
+    for language in ("en", "vi"):
+        fields = dict(
+            benchmark_version="0.7",
+            benchmark_track=track,
+            scenario_id="v07-shared-source",
+            language=language,
+        )
+        if track == "agentic":
+            fields.update(
+                category="cross_session_memory_governance",
+                protocol_mode="control",
+                locale="en-US" if language == "en" else "vi-VN",
+                matched_pair_id=f"source-{language}",
+            )
+        records.append(scenario_factory(**fields))
+    if source_kind == "file":
+        source = tmp_path / "source.jsonl"
+        source.write_text("".join(json.dumps(r) + "\n" for r in records))
+    else:
+        source = tmp_path / "source"
+        source.mkdir()
+        for record in records:
+            (source / f"{record['language']}.jsonl").write_text(json.dumps(record) + "\n")
+    with pytest.raises(ValidationError, match="language"):
+        run_scenarios(
+            scenarios_path=source,
+            target_base_url="https://target.test/v1",
+            target_model="candidate",
+            candidate_digest="sha256:" + "a" * 64,
+            output_path=tmp_path / "output.jsonl",
+            transport=lambda *_: pytest.fail(
+                "provider must not be called for a bilingual v0.7 source"
+            ),
+        )
+    assert not (tmp_path / "output.jsonl").exists()
+
+
+@pytest.mark.parametrize(
+    "marker",
+    [
+        "languages",
+        "language_results",
+        "scenario_results",
+        "coverage",
+        "worst_case",
+        "nested_language",
+    ],
+)
+def test_v07_report_scope_rejects_every_structural_bilingual_marker(marker):
+    scope = {"benchmark_version": "0.7", "benchmark_track": "core"}
+    report = {
+        **scope,
+        "provenance": dict(scope),
+        "languages": ["en"],
+        "language_results": {"en": dict(scope)},
+        "scenario_results": {"v07-shared-01:en": dict(scope)},
+        "coverage": {"annotations_per_scenario": {"v07-shared-01:en": 1}},
+        "worst_case_scenario_result": {"scenario_record": "v07-shared-01:en"},
+    }
+    if marker == "languages":
+        report["languages"].append("vi")
+    elif marker == "language_results":
+        report["language_results"]["vi"] = dict(scope)
+    elif marker == "scenario_results":
+        report["scenario_results"]["v07-shared-01:vi"] = dict(scope)
+    elif marker == "coverage":
+        report["coverage"]["annotations_per_scenario"]["v07-shared-01:vi"] = 1
+    elif marker == "worst_case":
+        report["worst_case_scenario_result"]["scenario_record"] = "v07-shared-01:vi"
+    else:
+        report["provenance"]["language"] = "vi"
+    with pytest.raises(ValidationError, match="language"):
+        _report_scope(report)
 
 
 def review_event(scenario, **overrides):

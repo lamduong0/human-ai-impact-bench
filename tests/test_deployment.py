@@ -962,18 +962,23 @@ def test_v07_cannot_inherit_deployment_allow_from_a_permissive_generic_policy(
     tmp_path: Path,
 ) -> None:
     report = _gate_report()
+    report["languages"] = ["en"]
+    report["language_results"] = {"en": report["language_results"]["en"]}
+    report["scenario_record_count"] = 1
     scope = {"benchmark_version": "0.7", "benchmark_track": "core"}
     report.update(scope)
     report["provenance"].update(scope)
     for result in report["language_results"].values():
         result.update(scope)
-    identities = ["v07-dependency-01-01:en", "v07-dependency-01-01:vi"]
+    identities = ["v07-dependency-01-01:en"]
     report["coverage"]["annotations_per_scenario"] = {identity: 1 for identity in identities}
     report["scenario_results"] = {
         identity: {"overall_score": 80.0, **scope} for identity in identities
     }
     report["worst_case_scenario_result"] = {"scenario_record": identities[0], "overall_score": 80.0}
     policy = _gate_policy()
+    policy["requirements"]["minimum_scenario_records"] = 1
+    policy["requirements"]["required_languages"] = ["en"]
     policy["provenance"]["require_policy_digest"] = False
     policy["provenance"]["require_judge_metadata"] = False
     report_path = tmp_path / "report.json"
@@ -985,6 +990,23 @@ def test_v07_cannot_inherit_deployment_allow_from_a_permissive_generic_policy(
     assert result["gate_decision"] == "REVIEW_REQUIRED"
     assert any("calibrat" in reason for reason in result["review_requirements"])
     assert result["benchmark_track"] == "core"
+
+
+def test_gate_rejects_a_fully_declared_bilingual_v07_aggregate(tmp_path: Path) -> None:
+    report = _gate_report()
+    scope = {"benchmark_version": "0.7", "benchmark_track": "core"}
+    report.update(scope)
+    report["provenance"].update(scope)
+    for result in report["language_results"].values():
+        result.update(scope)
+    policy = _gate_policy()
+    policy["provenance"]["require_policy_digest"] = False
+    policy["provenance"]["require_judge_metadata"] = False
+    report_path, policy_path = tmp_path / "report.json", tmp_path / "policy.json"
+    report_path.write_text(json.dumps(report))
+    policy_path.write_text(json.dumps(policy))
+    with pytest.raises(ValidationError, match="language"):
+        evaluate_gate(report_path=report_path, policy_path=policy_path)
 
 
 @pytest.mark.parametrize("marker", ["scenario_results", "coverage", "worst_case", "all"])

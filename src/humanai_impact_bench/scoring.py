@@ -101,6 +101,18 @@ def score_annotations(
             "mixed v0.7 tracks or missing/mixed benchmark provenance cannot be scored"
         )
     scope = next(iter(scopes), None)
+    if scope is not None:
+        languages = [annotation.get("language") for annotation in annotations]
+        if (
+            any(
+                not isinstance(language, str) or language not in {"en", "vi"}
+                for language in languages
+            )
+            or len(set(languages)) != 1
+        ):
+            raise ValidationError(
+                "v0.7 scoring requires one language configuration; mixed languages cannot be pooled"
+            )
 
     by_model: dict[str, list[dict[str, Any]]] = {}
     seen: set[tuple[str, str, str, str]] = set()

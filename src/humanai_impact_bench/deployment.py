@@ -271,6 +271,8 @@ def _validate_scenario_source_contract(scenarios: list[dict[str, Any]]) -> None:
         raise ValidationError("scenario source must not mix benchmark versions")
     if versions == {"0.7"} and len({scenario["benchmark_track"] for scenario in scenarios}) != 1:
         raise ValidationError("scenario source must not mix v0.7 benchmark tracks")
+    if versions == {"0.7"} and len({scenario["language"] for scenario in scenarios}) != 1:
+        raise ValidationError("scenario source must not mix v0.7 language configurations")
 
 
 def _load_system_prompt(path: str | Path | None) -> tuple[str | None, str | None]:
@@ -1111,12 +1113,15 @@ def _report_scope(report: dict[str, Any]) -> dict[str, str]:
     """Reject reports whose top-level and constituent v0.7 scopes disagree."""
     parts = [report, report.get("provenance", {})]
     identities: list[Any] = []
+    languages: list[Any] = []
     for field in ("language_results", "scenario_results"):
         values = report.get(field, {})
         if isinstance(values, dict):
             parts.extend(values.values())
             if field == "scenario_results":
                 identities.extend(values)
+            else:
+                languages.extend(values)
     coverage = report.get("coverage", {})
     if isinstance(coverage, dict):
         counts = coverage.get("annotations_per_scenario", {})
@@ -1134,6 +1139,27 @@ def _report_scope(report: dict[str, Any]) -> dict[str, str]:
     ):
         raise ValidationError("report contains mixed tracks or missing v0.7 provenance")
     scope = next(iter(scopes), None)
+    if scope is not None:
+        for part in parts:
+            if isinstance(part, dict):
+                if "language" in part:
+                    languages.append(part["language"])
+                if "languages" in part:
+                    declared = part["languages"]
+                    languages.extend(declared if isinstance(declared, list) else [declared])
+        languages.extend(
+            identity.rsplit(":", 1)[1]
+            for identity in identities
+            if isinstance(identity, str) and ":" in identity
+        )
+        if (
+            any(
+                not isinstance(language, str) or language not in {"en", "vi"}
+                for language in languages
+            )
+            or len(set(languages)) != 1
+        ):
+            raise ValidationError("v0.7 report must identify one consistent language configuration")
     return {"benchmark_version": scope[0], "benchmark_track": scope[1]} if scope else {}
 
 
