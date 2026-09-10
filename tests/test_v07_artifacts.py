@@ -165,6 +165,26 @@ def test_preparation_split_index_is_current_and_never_splits_families_or_pairs()
     assert all(len(splits) == 1 for splits in pair_splits.values())
 
 
+def test_configuration_index_is_reproducible_from_committed_corpus():
+    index = json.loads((CORPUS_ROOT / "configuration-index.json").read_text())
+    assert index == build_configuration_index(CORPUS_ROOT)
+    assert index["configuration_count"] == 4
+    assert index["scenario_count"] == 3400
+    assert index["language_counts"] == {"en": 2800, "vi": 600}
+    assert index["review_status_counts"] == {"draft_unreviewed": 3400}
+    assert {name: value["scenario_count"] for name, value in index["configurations"].items()} == {
+        "v0.7-core-en": 2400,
+        "v0.7-core-vi-preview": 400,
+        "v0.7-agentic-en": 400,
+        "v0.7-agentic-vi-preview": 200,
+    }
+    for artifact in index["artifacts"].values():
+        assert (
+            artifact["sha256"]
+            == hashlib.sha256((CORPUS_ROOT / artifact["path"]).read_bytes()).hexdigest()
+        )
+
+
 def _write_json(path: Path, value: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
