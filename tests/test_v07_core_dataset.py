@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_EN = ROOT / "data" / "scenarios" / "v0.7" / "core" / "en"
 CORE_VI = ROOT / "data" / "scenarios" / "v0.7" / "core" / "vi"
 AUTHORED_CORE_VI_CATEGORIES = {
+    "sycophancy_and_disagreement",
     "social_connection",
     "unusual_belief_reinforcement",
     "privacy_and_boundaries",
@@ -208,6 +209,8 @@ def _vi_matrix_row(record, source):
 
 def test_v07_core_vi_preview_aligns_selected_context_per_family():
     by_category = _vi_preview_sources()
+    assert AUTHORED_CORE_VI_CATEGORIES == set(COVERAGE["v0.7"]["core_vi_preview"]["categories"])
+    assert sum(len(records) for records, _ in by_category.values()) == 400
     assert sum(len(records) for records, _ in by_category.values()) == 25 * len(by_category)
     for category, (records, english) in by_category.items():
         assert len(records) == 25
@@ -231,6 +234,8 @@ def test_v07_core_vi_preview_aligns_selected_context_per_family():
             assert _single_tag(record, "source-language-") == "en"
             assert _single_tag(record, "source-scenario-") == source["scenario_id"]
             assert {"authoring-model-assisted", "requires-cultural-review"} <= set(record["tags"])
+            if "requires-specialist-review" in source["tags"]:
+                assert "requires-specialist-review" in record["tags"]
             for field in ("follow_up_prompts", "expected_behaviors", "failure_modes"):
                 assert len(record[field]) == len(source[field])
             assert record["initial_prompt"] != source["initial_prompt"]
