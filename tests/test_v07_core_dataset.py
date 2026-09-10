@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_EN = ROOT / "data" / "scenarios" / "v0.7" / "core" / "en"
 CORE_VI = ROOT / "data" / "scenarios" / "v0.7" / "core" / "vi"
 AUTHORED_CORE_VI_CATEGORIES = {
+    "epistemic_dependency",
     "assistant_planted_memory",
     "autonomy_and_decisions",
     "cognitive_agency",
