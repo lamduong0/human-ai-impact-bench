@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import math
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -15,6 +16,7 @@ from humanai_impact_bench.constants import (
     RISK_LEVELS,
     SUPPORTED_BENCHMARK_VERSIONS,
     V07_CATEGORIES,
+    V07_CORE_CATEGORIES,
 )
 
 _SCENARIO_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -58,6 +60,18 @@ _PERSONA_FIELDS = {
 
 class ValidationError(ValueError):
     """Raised when an artifact does not conform to the benchmark contract."""
+
+
+def utc_timestamp(value: Any, label: str) -> datetime:
+    """Parse the artifact contract's zero-padded UTC timestamp at second precision."""
+    if not isinstance(value, str) or not re.fullmatch(
+        r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z", value
+    ):
+        raise ValidationError(f"{label} must be a UTC timestamp (YYYY-MM-DDTHH:MM:SSZ)")
+    try:
+        return datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ")
+    except ValueError as exc:
+        raise ValidationError(f"{label} must be a UTC timestamp") from exc
 
 
 def _load_jsonl(path: str | Path) -> list[dict[str, Any]]:
@@ -246,9 +260,11 @@ def validate_scenario(record: dict[str, Any]) -> None:
     _require_string(record, "title", label, min_length=3)
     _require_string(record, "context", label, min_length=10)
     _require_string(record, "initial_prompt", label, min_length=2)
-    allowed_categories = (
-        CATEGORIES | V07_CATEGORIES if record["benchmark_version"] == "0.7" else CATEGORIES
-    )
+    allowed_categories = CATEGORIES
+    if record["benchmark_version"] == "0.7":
+        allowed_categories = (
+            V07_CORE_CATEGORIES if record["benchmark_track"] == "core" else V07_CATEGORIES
+        )
     if record["category"] not in allowed_categories:
         raise ValidationError(f"{label}: unknown category {record['category']!r}")
     if record["risk_level"] not in RISK_LEVELS:
@@ -294,6 +310,29 @@ def validate_scenario(record: dict[str, Any]) -> None:
         _validate_v07_agentic_protocol(record, label)
 
 
+def annotation_scope(record: dict[str, Any]) -> tuple[str, str] | None:
+    """Require complete v0.7 provenance while retaining legacy annotation support."""
+    version = record.get("benchmark_version")
+    if "benchmark_version" in record and (
+        not isinstance(version, str) or version not in SUPPORTED_BENCHMARK_VERSIONS
+    ):
+        raise ValidationError("annotation benchmark_version is not supported")
+    scenario_id = record.get("scenario_id", "")
+    indicates_v07 = (
+        version == "0.7"
+        or "benchmark_track" in record
+        or (isinstance(scenario_id, str) and scenario_id.startswith("v07-"))
+    )
+    if not indicates_v07:
+        return None
+    if version != "0.7":
+        raise ValidationError("v0.7 annotation provenance requires benchmark_version '0.7'")
+    track = record.get("benchmark_track")
+    if not isinstance(track, str) or track not in {"core", "agentic"}:
+        raise ValidationError("v0.7 annotation provenance requires benchmark_track core or agentic")
+    return version, track
+
+
 def validate_annotation(record: dict[str, Any]) -> None:
     line = record.get("_source_line", "?")
     label = f"annotation at line {line}"
@@ -311,6 +350,7 @@ def validate_annotation(record: dict[str, Any]) -> None:
     )
     for field in ("scenario_id", "language", "model", "rater_id"):
         _require_string(record, field, label)
+    annotation_scope(record)
     if record["language"] not in {"en", "vi"}:
         raise ValidationError(f"{label}: language must be 'en' or 'vi'")
     if not isinstance(record["scores"], dict) or not record["scores"]:

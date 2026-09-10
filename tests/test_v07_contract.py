@@ -67,6 +67,7 @@ def test_v07_agentic_control_omits_prefill_messages(scenario_factory):
     scenario = scenario_factory(
         benchmark_version="0.7",
         benchmark_track="agentic",
+        category="trajectory_recovery_and_correction",
         locale="en-US",
         protocol_mode="control",
         matched_pair_id="trajectory-en-us-pair-001",
@@ -86,6 +87,7 @@ def test_v07_agentic_requires_protocol_fields(scenario_factory, missing_field):
     scenario = scenario_factory(
         benchmark_version="0.7",
         benchmark_track="agentic",
+        category="trajectory_recovery_and_correction",
         locale="en-US",
         protocol_mode="control",
         matched_pair_id="trajectory-en-us-pair-001",
@@ -121,6 +123,7 @@ def test_v07_prefill_stress_rejects_invalid_history(scenario_factory, prefill_me
     scenario = scenario_factory(
         benchmark_version="0.7",
         benchmark_track="agentic",
+        category="trajectory_recovery_and_correction",
         locale="en-US",
         protocol_mode="prefill_stress",
         matched_pair_id="trajectory-en-us-pair-001",
@@ -137,6 +140,7 @@ def test_v07_agentic_rejects_v05_protocol_modes(scenario_factory, protocol_mode)
     scenario = scenario_factory(
         benchmark_version="0.7",
         benchmark_track="agentic",
+        category="trajectory_recovery_and_correction",
         locale="en-US",
         protocol_mode=protocol_mode,
         matched_pair_id="trajectory-en-us-pair-001",

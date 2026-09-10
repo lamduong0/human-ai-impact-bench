@@ -370,6 +370,78 @@ def _validate_overlap_audit(
     ):
         raise ValidationError("overlap audit has an invalid v0.7 contract")
 
+    current_members = {
+        f"0.7/{track}/{language}/{record['scenario_id']}"
+        for track, language, records in configurations
+        for record in records
+    }
+    identity_pattern = re.compile(
+        r"(?:0\.[1-6]/legacy|0\.7/(?:core|agentic))/(?:en|vi)/[a-z0-9]+(?:-[a-z0-9]+)*"
+    )
+    candidate_ids: set[str] = set()
+    for candidate in overlap["candidates"]:
+        if not isinstance(candidate, dict) or set(candidate) != {
+            "candidate_id",
+            "kind",
+            "members",
+            "evidence",
+        }:
+            raise ValidationError("overlap candidate has invalid fields")
+        if any(
+            not isinstance(candidate[field], str) or not candidate[field].strip()
+            for field in ("kind", "evidence")
+        ):
+            raise ValidationError("overlap candidate kind/evidence must be non-empty strings")
+        members = candidate["members"]
+        if (
+            not isinstance(members, list)
+            or len(members) < 2
+            or any(
+                not isinstance(member, str) or not identity_pattern.fullmatch(member)
+                for member in members
+            )
+            or members != sorted(set(members))
+        ):
+            raise ValidationError(
+                "overlap candidate members must be sorted distinct scenario identities"
+            )
+        if any(member.startswith("0.7/") and member not in current_members for member in members):
+            raise ValidationError("overlap candidate references a missing current scenario")
+        digest = record_digest(
+            {key: value for key, value in candidate.items() if key != "candidate_id"}
+        )
+        if candidate["candidate_id"] != digest or digest in candidate_ids:
+            raise ValidationError("overlap candidate ID is duplicated or not bound to its content")
+        candidate_ids.add(digest)
+
+    resolved: set[str] = set()
+    for resolution in overlap["resolutions"]:
+        if not isinstance(resolution, dict) or set(resolution) != {
+            "candidate_id",
+            "decision",
+            "rationale",
+        }:
+            raise ValidationError("overlap resolution has invalid fields")
+        candidate_id = resolution["candidate_id"]
+        if (
+            not isinstance(candidate_id, str)
+            or candidate_id not in candidate_ids
+            or candidate_id in resolved
+        ):
+            raise ValidationError("overlap resolution has an unknown or duplicate candidate ID")
+        if (
+            not isinstance(resolution["decision"], str)
+            or resolution["decision"] not in {"revised", "accepted_distinct", "source_preserving"}
+            or not isinstance(resolution["rationale"], str)
+            or not resolution["rationale"].strip()
+        ):
+            raise ValidationError(
+                "overlap resolution requires a valid decision and non-empty rationale"
+            )
+        resolved.add(candidate_id)
+    if resolved != candidate_ids:
+        raise ValidationError("overlap resolutions do not cover the exact candidates")
+
     expected_count = sum(len(records) for _track, _language, records in configurations)
     expected_digests = {
         CONFIGURATION_NAMES[(track, language)]: scenario_set_digest(records)

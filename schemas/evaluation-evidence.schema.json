@@ -6,10 +6,12 @@
   "additionalProperties": false,
   "required": [
     "manifest_version",
+    "configuration_name",
     "configuration_sha256"
   ],
   "properties": {
     "manifest_version": {"const": "0.1"},
+    "configuration_name": {"type": "string", "enum": ["v0.7-core-en", "v0.7-core-vi-preview", "v0.7-agentic-en", "v0.7-agentic-vi-preview"]},
     "configuration_sha256": {"$ref": "#/$defs/digest"},
     "criteria_document_sha256": {"$ref": "#/$defs/digest"},
     "criteria_registered_at": {"$ref": "#/$defs/timestamp"},
@@ -88,7 +90,7 @@
     "timestamp": {
       "type": "string",
       "format": "date-time",
-      "pattern": "Z$"
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
     }
   }
 }

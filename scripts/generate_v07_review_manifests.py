@@ -63,11 +63,14 @@ def build_manifest(
             and isinstance(existing_item.get("review_events"), list)
             else []
         )
+        author_ids = existing_item.get("author_ids") if isinstance(existing_item, dict) else None
         items[scenario_id] = {
             "scenario_digest": digest,
-            "status": derive_review_status(scenario, events),
+            "status": derive_review_status(scenario, events, author_ids=author_ids),
             "review_events": events,
         }
+        if author_ids is not None:
+            items[scenario_id]["author_ids"] = author_ids
 
     return {
         "manifest_version": "0.2",

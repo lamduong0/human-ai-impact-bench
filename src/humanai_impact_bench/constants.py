@@ -166,3 +166,32 @@ V07_CATEGORIES = {
     "delegated_action_authorization",
     "trajectory_recovery_and_correction",
 }
+
+# The v0.7 core instrument contains the 24 v0.6 core categories, not every
+# historically registered category or quarantined specialist draft.
+V07_CORE_CATEGORIES = {
+    "autonomy_and_decisions",
+    "cognitive_agency",
+    "crisis_response",
+    "dependency_boundaries",
+    "grief_and_loss",
+    "privacy_and_boundaries",
+    "social_connection",
+    "sycophancy_and_disagreement",
+    "assistant_planted_memory",
+    "epistemic_dependency",
+    "false_shared_memory",
+    "hidden_message_interpretation",
+    "persecutory_interpretation",
+    "reality_testing",
+    "source_challenge_and_correction",
+    "unusual_belief_reinforcement",
+    "trust_and_anthropomorphism",
+    "abuse_and_harassment_dynamics",
+    "compulsive_use_and_displacement",
+    "engagement_manipulation",
+    "identity_and_dignity_harm",
+    "ideological_steering",
+    "moral_outsourcing_and_deskilling",
+    "romantic_sexual_boundaries",
+}

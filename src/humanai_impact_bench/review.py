@@ -5,11 +5,10 @@ from __future__ import annotations
 import hashlib
 import json
 from collections import Counter
-from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from humanai_impact_bench.validation import ValidationError, load_scenarios
+from humanai_impact_bench.validation import ValidationError, load_scenarios, utc_timestamp
 
 REVIEW_TYPES = {"construct", "locale", "specialist_safety", "release"}
 DECISIONS = {"approved", "changes_requested"}
@@ -68,47 +67,66 @@ def _validate_event(event: Any, label: str) -> dict[str, str]:
     for field in _EVENT_FIELDS:
         if not isinstance(event[field], str) or not event[field].strip():
             raise ValidationError(f"{label}.{field} must be a non-empty string")
+    if event["reviewer_id"] != event["reviewer_id"].strip():
+        raise ValidationError(f"{label}.reviewer_id must not contain surrounding whitespace")
     if event["review_type"] not in REVIEW_TYPES:
         raise ValidationError(f"{label}.review_type is not allowed")
     if event["decision"] not in DECISIONS:
         raise ValidationError(f"{label}.decision is not allowed")
-    try:
-        datetime.strptime(event["reviewed_at"], "%Y-%m-%dT%H:%M:%SZ")
-    except ValueError as exc:
-        raise ValidationError(f"{label}.reviewed_at must be a UTC timestamp") from exc
+    utc_timestamp(event["reviewed_at"], f"{label}.reviewed_at")
     if not _is_digest(event["scenario_digest"]):
         raise ValidationError(f"{label}.scenario_digest must be lowercase SHA-256")
     return event
 
 
-def _latest_events(events: list[dict[str, str]]) -> dict[str, dict[str, str]]:
-    latest: dict[str, tuple[str, int, dict[str, str]]] = {}
+def _latest_events(events: list[dict[str, str]]) -> list[dict[str, str]]:
+    latest: dict[tuple[str, str, str], tuple[str, int, dict[str, str]]] = {}
     for index, event in enumerate(events):
-        key = event["review_type"]
+        # Only the same reviewer in the same review scope can supersede their
+        # own decision. Another approval cannot silently resolve an objection.
+        key = (event["review_type"], event["reviewer_id"], event["reviewed_locale"])
         candidate = (event["reviewed_at"], index, event)
         if key not in latest or candidate[:2] > latest[key][:2]:
             latest[key] = candidate
-    return {key: value[2] for key, value in latest.items()}
+    return [value[2] for value in latest.values()]
 
 
-def _is_independent_construct(event: dict[str, str]) -> bool:
+def _is_independent_approval(event: dict[str, str], author_ids: list[str]) -> bool:
     disclosure = " ".join(event["conflict_disclosure"].casefold().split())
-    return disclosure in {"none", "no conflict", "no author conflict"}
-
-
-def _has_independent_construct(events: list[dict[str, str]]) -> bool:
-    return any(
-        event["review_type"] == "construct"
-        and event["decision"] == "approved"
-        and _is_independent_construct(event)
-        for event in events
+    # These identities and qualifications are declarations, not authentication.
+    # Unknown authorship cannot establish independent approval.
+    return (
+        bool(author_ids)
+        and event["reviewer_id"] not in author_ids
+        and disclosure in {"none", "no conflict", "no author conflict"}
     )
 
 
-def derive_review_status(scenario: dict[str, Any], events: list[dict[str, Any]]) -> str:
+def _has_independent_construct(events: list[dict[str, str]], author_ids: list[str]) -> bool:
+    return any(
+        event["review_type"] == "construct"
+        and event["decision"] == "approved"
+        and _is_independent_approval(event, author_ids)
+        for event in _latest_events(events)
+    )
+
+
+def derive_review_status(
+    scenario: dict[str, Any], events: list[dict[str, Any]], *, author_ids: list[str] | None = None
+) -> str:
     """Derive review maturity from events bound to the current scenario digest."""
     if not isinstance(events, list):
         raise ValidationError("review_events must be an array")
+    author_ids = [] if author_ids is None else author_ids
+    if (
+        not isinstance(author_ids, list)
+        or any(
+            not isinstance(value, str) or not value.strip() or value != value.strip()
+            for value in author_ids
+        )
+        or len(author_ids) != len(set(author_ids))
+    ):
+        raise ValidationError("author_ids must contain distinct non-empty declared author IDs")
     validated = [
         _validate_event(event, f"review_events[{index}]") for index, event in enumerate(events)
     ]
@@ -118,24 +136,25 @@ def derive_review_status(scenario: dict[str, Any], events: list[dict[str, Any]])
         return "draft_unreviewed"
 
     latest = _latest_events(current)
-    if any(event["decision"] == "changes_requested" for event in latest.values()):
+    if any(event["decision"] == "changes_requested" for event in latest):
         return "changes_requested"
 
     required = {"construct"}
     if scenario["language"] == "vi":
         required.add("locale")
-    if scenario["risk_level"] in {"high", "critical"}:
+    if scenario["risk_level"] in {
+        "high",
+        "critical",
+    } or "requires-specialist-review" in scenario.get("tags", []):
         required.add("specialist_safety")
     approvals = {
-        review_type for review_type, event in latest.items() if event["decision"] == "approved"
+        event["review_type"]
+        for event in latest
+        if event["decision"] == "approved"
+        and _is_independent_approval(event, author_ids)
+        and (event["review_type"] != "locale" or event["reviewed_locale"] == "vi-VN")
     }
-    if _has_independent_construct(current):
-        approvals.add("construct")
-    else:
-        approvals.discard("construct")
     if not required <= approvals:
-        return "in_review"
-    if scenario["language"] == "vi" and latest["locale"]["reviewed_locale"] != "vi-VN":
         return "in_review"
     if "release" in approvals:
         return "release_ready"
@@ -219,7 +238,11 @@ def validate_v07_review_manifest(
         scenario_id = scenario["scenario_id"]
         current_digest = scenario_digest(scenario)
         item = manifest["items"][scenario_id]
-        if not isinstance(item, dict) or set(item) != _ITEM_FIELDS:
+        if (
+            not isinstance(item, dict)
+            or not _ITEM_FIELDS <= set(item)
+            or set(item) - _ITEM_FIELDS - {"author_ids"}
+        ):
             raise ValidationError(f"review item {scenario_id} has invalid fields")
         if not _is_digest(item["scenario_digest"]):
             raise ValidationError(
@@ -237,7 +260,8 @@ def validate_v07_review_manifest(
         stale_review_count += any(
             event["scenario_digest"] != current_digest for event in validated_events
         )
-        status = derive_review_status(scenario, events)
+        author_ids = item.get("author_ids")
+        status = derive_review_status(scenario, events, author_ids=author_ids)
         if item["scenario_digest"] != current_digest and item["status"] != "draft_unreviewed":
             raise ValidationError(
                 f"review item {scenario_id} is stale and must store status 'draft_unreviewed'"
@@ -247,7 +271,7 @@ def validate_v07_review_manifest(
                 event for event in validated_events if event["scenario_digest"] == current_digest
             ]
             if item["status"] in {"reviewed", "release_ready"} and not (
-                _has_independent_construct(current_events)
+                _has_independent_construct(current_events, author_ids or [])
             ):
                 raise ValidationError(
                     f"review item {scenario_id} lacks independent construct review"

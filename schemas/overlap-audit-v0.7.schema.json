@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HumanAI-Impact-Bench v0.7 resolved overlap audit",
+  "type": "object",
+  "required": ["audit_version", "benchmark_version", "candidate_count", "candidates", "configuration_sha256", "resolutions", "scenario_count", "valid"],
+  "properties": {
+    "audit_version": {"const": "0.1"},
+    "benchmark_version": {"const": "0.7"},
+    "scenario_count": {"type": "integer", "minimum": 0},
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "valid": {"const": true},
+    "configuration_sha256": {"type": "object", "additionalProperties": {"$ref": "#/$defs/digest"}},
+    "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}},
+    "resolutions": {"type": "array", "items": {"$ref": "#/$defs/resolution"}}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "text": {"type": "string", "pattern": "\\S"},
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidate_id", "kind", "members", "evidence"],
+      "properties": {
+        "candidate_id": {"$ref": "#/$defs/digest"},
+        "kind": {"$ref": "#/$defs/text"},
+        "evidence": {"$ref": "#/$defs/text"},
+        "members": {
+          "type": "array", "minItems": 2, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^(?:0\\.[1-6]/legacy|0\\.7/(?:core|agentic))/(?:en|vi)/[a-z0-9]+(?:-[a-z0-9]+)*$"}
+        }
+      }
+    },
+    "resolution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidate_id", "decision", "rationale"],
+      "properties": {
+        "candidate_id": {"$ref": "#/$defs/digest"},
+        "decision": {"enum": ["revised", "accepted_distinct", "source_preserving"]},
+        "rationale": {"$ref": "#/$defs/text"}
+      }
+    }
+  }
+}

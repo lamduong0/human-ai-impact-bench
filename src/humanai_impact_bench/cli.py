@@ -157,6 +157,10 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     evidence_parser.add_argument("--configuration-index", type=Path, required=True)
     evidence_parser.add_argument("--evidence", type=Path)
+    evidence_parser.add_argument(
+        "--configuration",
+        help="named configuration; omitted returns independent states for every configuration",
+    )
     return parser
 
 
@@ -236,7 +240,9 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(result, ensure_ascii=False))
             return 0
         if args.command == "evidence-status":
-            result = evaluate_evidence_status(args.configuration_index, args.evidence)
+            result = evaluate_evidence_status(
+                args.configuration_index, args.evidence, configuration_name=args.configuration
+            )
             print(json.dumps(result, ensure_ascii=False))
             return 0
     except (ValidationError, RuntimeError) as exc:

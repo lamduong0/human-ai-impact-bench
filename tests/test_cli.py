@@ -12,7 +12,6 @@ from typing import Any
 import pytest
 
 from humanai_impact_bench.cli import main
-from humanai_impact_bench.digests import record_digest
 
 
 def write_jsonl(path: Path, records: list[dict[str, Any]]) -> Path:
@@ -187,7 +186,9 @@ def test_verify_blind_set_command_emits_content_free_summary(
     assert scenario["initial_prompt"] not in captured.out
 
 
-def test_evidence_status_command_emits_hold(tmp_path: Path, capsys: Any) -> None:
+def test_evidence_status_command_rejects_unbacked_review_summary(
+    tmp_path: Path, capsys: Any
+) -> None:
     configuration = {
         "index_version": "0.1",
         "benchmark_version": "0.7",
@@ -211,16 +212,11 @@ def test_evidence_status_command_emits_hold(tmp_path: Path, capsys: Any) -> None
     path = tmp_path / "configuration-index.json"
     path.write_text(json.dumps(configuration), encoding="utf-8")
 
-    assert main(["evidence-status", "--configuration-index", str(path)]) == 0
+    assert main(["evidence-status", "--configuration-index", str(path)]) == 2
 
     captured = capsys.readouterr()
-    assert json.loads(captured.out) == {
-        "evidence_stage": "REVIEWED_DATASET",
-        "deployment_action": "HOLD",
-        "missing_evidence": ["preregistered_discrimination", "blind_human_calibration"],
-        "configuration_sha256": record_digest(configuration),
-    }
-    assert captured.err == ""
+    assert captured.out == ""
+    assert "invalid summary fields" in captured.err
 
 
 @pytest.mark.parametrize("failure", ["invalid-manifest", "missing-scenarios", "count", "digest"])

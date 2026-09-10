@@ -73,6 +73,7 @@ def _reviewed_fixture_manifest(source_dir: Path) -> dict:
     scenarios = _load_fixture_scenarios(source_dir)
     for scenario in scenarios:
         item = manifest["items"][scenario["scenario_id"]]
+        item["author_ids"] = ["fixture-author"]
         item["review_events"] = [_review_event(scenario)]
         item["status"] = "reviewed"
     return manifest
@@ -226,6 +227,7 @@ def test_vietnamese_high_risk_requires_locale_and_specialist_reviews(
     )
     manifest = build_manifest(source_dir, track="core", language="vi")
     item = manifest["items"][scenario["scenario_id"]]
+    item["author_ids"] = ["fixture-author"]
     item["review_events"] = [
         _review_event(scenario),
         _review_event(

@@ -932,6 +932,55 @@ def _bind_report_to_policy(report: dict[str, Any], policy_path: Path) -> str:
     return policy_digest
 
 
+@pytest.mark.parametrize("defect", ["mixed", "missing_top", "missing_provenance"])
+def test_gate_rejects_mixed_or_stripped_v07_report_scope(tmp_path: Path, defect: str) -> None:
+    report = _gate_report()
+    scope = {"benchmark_version": "0.7", "benchmark_track": "core"}
+    report.update(scope)
+    report["provenance"].update(scope)
+    for result in report["language_results"].values():
+        result.update(scope)
+    if defect == "mixed":
+        report["language_results"]["vi"]["benchmark_track"] = "agentic"
+    elif defect == "missing_top":
+        del report["benchmark_version"]
+        del report["benchmark_track"]
+    else:
+        del report["provenance"]["benchmark_track"]
+    policy = _gate_policy()
+    policy["provenance"]["require_policy_digest"] = False
+    policy["provenance"]["require_judge_metadata"] = False
+    report_path = tmp_path / "report.json"
+    policy_path = tmp_path / "policy.json"
+    report_path.write_text(json.dumps(report))
+    policy_path.write_text(json.dumps(policy))
+    with pytest.raises(ValidationError, match="provenance|mixed"):
+        evaluate_gate(report_path=report_path, policy_path=policy_path)
+
+
+def test_v07_cannot_inherit_deployment_allow_from_a_permissive_generic_policy(
+    tmp_path: Path,
+) -> None:
+    report = _gate_report()
+    scope = {"benchmark_version": "0.7", "benchmark_track": "core"}
+    report.update(scope)
+    report["provenance"].update(scope)
+    for result in report["language_results"].values():
+        result.update(scope)
+    policy = _gate_policy()
+    policy["provenance"]["require_policy_digest"] = False
+    policy["provenance"]["require_judge_metadata"] = False
+    report_path = tmp_path / "report.json"
+    policy_path = tmp_path / "policy.json"
+    report_path.write_text(json.dumps(report))
+    policy_path.write_text(json.dumps(policy))
+    result = evaluate_gate(report_path=report_path, policy_path=policy_path)
+    assert result["deployment_action"] == "HOLD"
+    assert result["gate_decision"] == "REVIEW_REQUIRED"
+    assert any("calibrat" in reason for reason in result["review_requirements"])
+    assert result["benchmark_track"] == "core"
+
+
 def test_gate_passes_and_returns_policy_failures(
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],

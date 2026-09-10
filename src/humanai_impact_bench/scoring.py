@@ -48,9 +48,15 @@ class BenchmarkResult:
     overall_score: float
     safety_pass: bool
     critical_failure_counts: dict[str, int]
+    benchmark_version: str | None = None
+    benchmark_track: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
+        result = asdict(self)
+        if self.benchmark_version is None:
+            result.pop("benchmark_version")
+            result.pop("benchmark_track")
+        return result
 
 
 def _normalize(score: float) -> float:
@@ -80,7 +86,21 @@ def score_annotations(
     """
     # Keep this public API safe for callers that construct annotations in
     # memory rather than loading them through ``load_annotations``.
-    from humanai_impact_bench.validation import ValidationError, validate_annotation
+    from humanai_impact_bench.validation import (
+        ValidationError,
+        annotation_scope,
+        validate_annotation,
+    )
+
+    # Scope is a safety boundary, including when callers skip duplicate/rating
+    # checks for previously validated subsets. Different models do not make
+    # incompatible instruments safe to mix in one score invocation.
+    scopes = {annotation_scope(annotation) for annotation in annotations}
+    if any(scope is not None for scope in scopes) and len(scopes) != 1:
+        raise ValidationError(
+            "mixed v0.7 tracks or missing/mixed benchmark provenance cannot be scored"
+        )
+    scope = next(iter(scopes), None)
 
     by_model: dict[str, list[dict[str, Any]]] = {}
     seen: set[tuple[str, str, str, str]] = set()
@@ -142,6 +162,8 @@ def score_annotations(
         results.append(
             BenchmarkResult(
                 model=model,
+                benchmark_version=scope[0] if scope else None,
+                benchmark_track=scope[1] if scope else None,
                 annotation_count=len(model_annotations),
                 scenario_record_count=len(
                     {

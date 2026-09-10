@@ -26,6 +26,7 @@ from humanai_impact_bench.constants import (
 from humanai_impact_bench.scoring import score_annotations
 from humanai_impact_bench.validation import (
     ValidationError,
+    annotation_scope,
     load_scenarios,
     validate_annotation,
 )
@@ -239,6 +240,12 @@ def _candidate_digest(value: str) -> str:
             "candidate digest must be sha256:<64 hex characters> or git:<7-64 hex characters>"
         )
     return value.lower()
+
+
+def _v07_provenance(scenario: dict[str, Any]) -> dict[str, str]:
+    if scenario["benchmark_version"] == "0.7":
+        return {"benchmark_version": "0.7", "benchmark_track": scenario["benchmark_track"]}
+    return {}
 
 
 def _scenario_contract(scenario: dict[str, Any]) -> str:
@@ -477,7 +484,7 @@ def run_scenarios(
         }
         contract = _scenario_contract(scenario)
         if scenario["benchmark_version"] == "0.7":
-            record["benchmark_track"] = scenario["benchmark_track"]
+            record.update(_v07_provenance(scenario))
         if contract in {"v0.5-agentic", "v0.7-agentic"}:
             record["protocol"] = {
                 "protocol_mode": protocol_mode,
@@ -685,6 +692,7 @@ def _judge_request(
         "required_output": schema_description,
     }
     contract = _scenario_contract(scenario)
+    material["scenario"].update(_v07_provenance(scenario))
     if contract in {"v0.5-agentic", "v0.7-agentic"}:
         assert bound_evidence is not None
         evidence, protocol = bound_evidence
@@ -739,6 +747,7 @@ def _parse_judgment(content: str, scenario: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(judgment["rationale"], str) or not judgment["rationale"].strip():
         raise RuntimeError("judge rationale must be a non-empty string")
     annotation = {
+        **_v07_provenance(scenario),
         "scenario_id": scenario["scenario_id"],
         "language": scenario["language"],
         "model": "__validation_placeholder__",
@@ -893,6 +902,7 @@ def draft_evaluate(
             raise last_error
         return {
             "artifact_version": _EVALUATION_ARTIFACT_VERSION,
+            **_v07_provenance(scenario),
             "evidence_stage": "PREVIEW",
             # Deprecated alias for consumers of the pre-0.2 field; DRAFT normalizes
             # to PREVIEW in the gate reader.
@@ -940,6 +950,7 @@ def draft_evaluate(
     counts = Counter(coverage_keys)
     generated_at = _timestamp()
     report: dict[str, Any] = {
+        **_v07_provenance(scenarios[0]),
         "tool": _TOOL_NAME,
         "report_version": _EVALUATION_ARTIFACT_VERSION,
         "evidence_stage": "PREVIEW",
@@ -983,6 +994,7 @@ def draft_evaluate(
             "reviewed_scenario_records": 0,
         },
         "provenance": {
+            **_v07_provenance(scenarios[0]),
             "dataset_digest": dataset_digest,
             "candidate_digest": candidate,
             "transcript_digest": _sha256_file(transcripts_path),
@@ -1001,6 +1013,7 @@ def draft_evaluate(
     return {
         "tool": _TOOL_NAME,
         "evidence_stage": "PREVIEW",
+        **_v07_provenance(scenarios[0]),
         "scenario_record_count": len(scenarios),
         "unique_scenario_count": len({scenario["scenario_id"] for scenario in scenarios}),
         "annotation_count": len(annotations),
@@ -1094,9 +1107,24 @@ def _evidence_stage(value: dict[str, Any], label: str) -> str:
     return current
 
 
+def _report_scope(report: dict[str, Any]) -> dict[str, str]:
+    """Reject reports whose top-level and constituent v0.7 scopes disagree."""
+    parts = [report, report.get("provenance", {})]
+    for field in ("language_results", "scenario_results"):
+        values = report.get(field, {})
+        if isinstance(values, dict):
+            parts.extend(values.values())
+    scopes = {annotation_scope(part if isinstance(part, dict) else {}) for part in parts}
+    if any(scope is not None for scope in scopes) and len(scopes) != 1:
+        raise ValidationError("report contains mixed tracks or missing v0.7 provenance")
+    scope = next(iter(scopes), None)
+    return {"benchmark_version": scope[0], "benchmark_track": scope[1]} if scope else {}
+
+
 def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[str, Any]:
     """Evaluate a report against a deterministic deployment policy."""
     report = _load_json(report_path, "report")
+    report_scope = _report_scope(report)
     policy = _load_json(policy_path, "policy")
     required_policy_fields = {
         "policy_version",
@@ -1467,6 +1495,12 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
 
     failures: list[str] = []
     review_requirements: list[str] = []
+    if report_scope:
+        review_requirements.append(
+            "v0.7 requires a verified calibrated deployment policy; calibration verification "
+            "is not implemented, so legacy or declared policy thresholds cannot "
+            "authorize deployment"
+        )
     blocking_failures: list[str] = []
     if report_evidence_stage != policy_evidence_stage:
         failures.append(
@@ -1630,6 +1664,7 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
     return {
         "tool": _TOOL_NAME,
         "gate_decision": gate_decision,
+        **report_scope,
         # Deprecated aliases for third-party consumers of the pre-rename output
         # contract; prefer gate_decision / evidence_stage.
         "gate": gate_decision,

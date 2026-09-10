@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from collections import Counter
 from datetime import datetime
@@ -9,7 +10,8 @@ from pathlib import Path
 from typing import Any
 
 from humanai_impact_bench.digests import record_digest
-from humanai_impact_bench.validation import ValidationError
+from humanai_impact_bench.review import validate_v07_review_manifest
+from humanai_impact_bench.validation import ValidationError, load_scenarios, utc_timestamp
 
 _CONFIGURATION_FIELDS = {
     "index_version",
@@ -24,6 +26,7 @@ _CONFIGURATION_FIELDS = {
 }
 _EVIDENCE_FIELDS = {
     "manifest_version",
+    "configuration_name",
     "configuration_sha256",
     "criteria_document_sha256",
     "criteria_registered_at",
@@ -40,7 +43,7 @@ _EVIDENCE_FIELDS = {
     "failure_counts_report_digest",
     "earliest_result_at",
 }
-_REQUIRED_EVIDENCE_FIELDS = {"manifest_version", "configuration_sha256"}
+_REQUIRED_EVIDENCE_FIELDS = {"manifest_version", "configuration_name", "configuration_sha256"}
 _RUN_REPORT_FIELDS = {"candidate_family_id", "report_sha256", "result_at", "complete"}
 _BLIND_FIELDS = {
     "valid",
@@ -88,12 +91,7 @@ def _require_digest(value: Any, label: str) -> None:
 
 
 def _utc_timestamp(value: Any, label: str) -> datetime:
-    if not isinstance(value, str):
-        raise ValidationError(f"{label} must be a UTC timestamp")
-    try:
-        return datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ")
-    except ValueError as exc:
-        raise ValidationError(f"{label} must be a UTC timestamp") from exc
+    return utc_timestamp(value, label)
 
 
 def _validate_counts(value: Any, label: str, total: int) -> None:
@@ -147,6 +145,18 @@ def _validate_configuration_index(configuration: dict[str, Any]) -> None:
         raise ValidationError("configuration summaries do not match scenario_count")
     if dict(sorted(review_counts.items())) != configuration["review_status_counts"]:
         raise ValidationError("configuration index review summary does not match configurations")
+    for field in ("category_counts", "language_counts"):
+        _validate_counts(configuration[field], f"configuration index {field}", scenario_count)
+        counts: Counter[str] = Counter()
+        for name, item in configuration["configurations"].items():
+            if field not in item:
+                raise ValidationError(f"configuration {name} has invalid summary fields")
+            _validate_counts(item[field], f"configuration {name} {field}", item["scenario_count"])
+            counts.update(item[field])
+        if dict(counts) != configuration[field]:
+            raise ValidationError(
+                f"configuration index {field} summary does not match configurations"
+            )
 
 
 def _reviews_are_complete(configuration: dict[str, Any]) -> bool:
@@ -154,13 +164,128 @@ def _reviews_are_complete(configuration: dict[str, Any]) -> bool:
     return bool(counts) and set(counts) <= _REVIEWED_STATUSES
 
 
-def _validate_evidence(
-    evidence: dict[str, Any], configuration: dict[str, Any]
-) -> tuple[bool, bool]:
+def _bound_artifact(root: Path, reference: Any, label: str) -> Path:
+    """Resolve an actual local artifact and verify its exact bytes."""
+    if not isinstance(reference, dict) or not {"path", "sha256"} <= set(reference):
+        raise ValidationError(f"{label} artifact reference is invalid")
+    name = reference["path"]
+    if not isinstance(name, str) or not name.strip() or Path(name).is_absolute():
+        raise ValidationError(f"{label} artifact path must be relative to the configuration index")
+    path = (root / name).resolve()
+    if not path.is_relative_to(root.resolve()):
+        raise ValidationError(f"{label} artifact path leaves the configuration directory")
+    _require_digest(reference["sha256"], f"{label} artifact digest")
+    try:
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError as exc:
+        raise ValidationError(f"{label} artifact cannot be read: {path}: {exc}") from exc
+    if actual != reference["sha256"]:
+        raise ValidationError(f"{label} artifact digest does not match file: {path}")
+    return path
+
+
+def _verify_configuration(root: Path, name: str, summary: dict[str, Any]) -> bool:
+    required = {
+        "benchmark_track",
+        "language",
+        "scenario_count",
+        "category_counts",
+        "language_counts",
+        "review_status_counts",
+        "files",
+        "review_manifest",
+    }
+    if set(summary) != required:
+        raise ValidationError(f"configuration {name} has invalid summary fields")
+    track, language = summary["benchmark_track"], summary["language"]
+    if (
+        not isinstance(track, str)
+        or track not in {"core", "agentic"}
+        or not isinstance(language, str)
+        or language not in {"en", "vi"}
+    ):
+        raise ValidationError(f"configuration {name} has an invalid track/language")
+    expected_name = f"v0.7-{track}-{language}" + ("-preview" if language == "vi" else "")
+    if name != expected_name:
+        raise ValidationError(f"configuration {name} does not match its track/language")
+    directory = (root / track / language).resolve()
+    files = summary["files"]
+    if not isinstance(files, list) or not files:
+        raise ValidationError(f"configuration {name} requires actual scenario artifacts")
+    records: list[dict[str, Any]] = []
+    seen_paths: set[Path] = set()
+    for reference in files:
+        if not isinstance(reference, dict) or set(reference) != {
+            "path",
+            "sha256",
+            "scenario_count",
+        }:
+            raise ValidationError(f"configuration {name} has an invalid scenario artifact")
+        path = _bound_artifact(root, reference, name)
+        if path.parent != directory or path.suffix != ".jsonl" or path in seen_paths:
+            raise ValidationError(
+                f"configuration {name} has a duplicate or misplaced scenario artifact"
+            )
+        seen_paths.add(path)
+        loaded = load_scenarios(path)
+        if not _is_nonnegative_integer(reference["scenario_count"]) or reference[
+            "scenario_count"
+        ] != len(loaded):
+            raise ValidationError(f"configuration {name} file scenario_count does not match data")
+        records.extend(loaded)
+    if seen_paths != {path.resolve() for path in directory.glob("*.jsonl")}:
+        raise ValidationError(f"configuration {name} does not list the exact scenario artifact set")
+    if len(records) != summary["scenario_count"] or len({r["scenario_id"] for r in records}) != len(
+        records
+    ):
+        raise ValidationError(
+            f"configuration {name} has an incorrect count or duplicate scenario IDs"
+        )
+    if any(
+        r["benchmark_version"] != "0.7"
+        or r["benchmark_track"] != track
+        or r["language"] != language
+        for r in records
+    ):
+        raise ValidationError(f"configuration {name} source version/track/language does not match")
+    for field, actual in (
+        ("category_counts", dict(Counter(r["category"] for r in records))),
+        ("language_counts", {language: len(records)}),
+    ):
+        _validate_counts(summary[field], f"configuration {name} {field}", len(records))
+        if summary[field] != actual:
+            raise ValidationError(f"configuration {name} {field} does not match actual scenarios")
+    review_ref = summary["review_manifest"]
+    if not isinstance(review_ref, dict) or set(review_ref) != {"path", "sha256"}:
+        raise ValidationError(f"configuration {name} has an invalid review artifact")
+    review_path = _bound_artifact(root, review_ref, f"configuration {name} review")
+    if review_path.parent != directory:
+        raise ValidationError(
+            f"configuration {name} review artifact is outside its source directory"
+        )
+    manifest = _load_json(review_path, "review manifest")
+    review = validate_v07_review_manifest(directory, manifest)
+    if review["status_counts"] != summary["review_status_counts"] or review[
+        "scenario_count"
+    ] != len(records):
+        raise ValidationError(
+            f"configuration {name} review summary does not match actual review evidence"
+        )
+    if any(
+        manifest["items"][r["scenario_id"]]["scenario_digest"] != record_digest(r) for r in records
+    ):
+        raise ValidationError(f"configuration {name} has a stale scenario review digest")
+    return _reviews_are_complete(summary)
+
+
+def _validate_evidence(evidence: dict[str, Any], configuration: dict[str, Any], name: str) -> None:
+    """Validate declarations only; this format cannot verify empirical evidence."""
     if not _REQUIRED_EVIDENCE_FIELDS <= set(evidence) or set(evidence) - _EVIDENCE_FIELDS:
         raise ValidationError("evaluation-evidence manifest has invalid fields")
     if evidence["manifest_version"] != "0.1":
         raise ValidationError("evaluation-evidence manifest_version must be '0.1'")
+    if evidence["configuration_name"] != name:
+        raise ValidationError("evaluation-evidence configuration_name does not match selection")
 
     for field in (
         "configuration_sha256",
@@ -173,7 +298,9 @@ def _validate_evidence(
         if field in evidence:
             _require_digest(evidence[field], f"evaluation-evidence {field}")
     if evidence["configuration_sha256"] != record_digest(configuration):
-        raise ValidationError("evaluation-evidence configuration digest does not match index")
+        raise ValidationError(
+            "evaluation-evidence configuration digest does not match selected configuration"
+        )
     for field in ("agreement_passed", "discrimination_passed"):
         if field in evidence and not isinstance(evidence[field], bool):
             raise ValidationError(f"evaluation-evidence {field} must be a boolean")
@@ -280,72 +407,91 @@ def _validate_evidence(
                 "evaluation-evidence failure counts must be non-negative integers"
             )
 
-    discrimination_fields = {
-        "criteria_document_sha256",
-        "criteria_registered_at",
-        "candidate_families",
-        "run_reports",
-        "judge_sha256",
-        "discrimination_report_sha256",
-        "discrimination_passed",
-        "failure_counts",
-        "failure_counts_report_digest",
-        "earliest_result_at",
-    }
-    discrimination_complete = (
-        discrimination_fields <= set(evidence)
-        and report_families == set(families)
-        and all(report["complete"] for report in reports)
-        and evidence["discrimination_passed"] is True
-        and failures["failed_scenarios"] == 0
-        and failures["missing_results"] == 0
-    )
-    human_fields = {
-        "blind_set_verification",
-        "human_calibration",
-        "agreement_report_sha256",
-        "agreement_passed",
-    }
-    human_complete = (
-        human_fields <= set(evidence)
-        and blind["valid"] is True
-        and calibration["blinded"] is True
-        and calibration["double_rated"] is True
-        and evidence["agreement_passed"] is True
-    )
-    return discrimination_complete, human_complete
+    # This manifest carries declarations, not resolvable run/calibration report
+    # contracts. Validating hash syntax and claimed booleans cannot establish
+    # quantitative evidence. Promotion remains unavailable until actual reports,
+    # ratings, coverage, criteria and decisions can be reconciled.
 
 
 def evaluate_evidence_status(
     configuration_index_path: Path,
     evidence_path: Path | None = None,
+    *,
+    configuration_name: str | None = None,
 ) -> dict[str, Any]:
-    """Return v0.7 evidence maturity; no evidence state can authorize deployment."""
-    configuration = _load_json(Path(configuration_index_path), "configuration index")
-    _validate_configuration_index(configuration)
-    configuration_sha256 = record_digest(configuration)
+    """Verify content review per configuration; never authorize deployment.
 
-    if evidence_path is not None:
-        evidence = _load_json(Path(evidence_path), "evaluation-evidence manifest")
-        discrimination_complete, human_complete = _validate_evidence(evidence, configuration)
-    else:
-        discrimination_complete = human_complete = False
-
-    reviewed = _reviews_are_complete(configuration)
-    missing = []
-    if not reviewed:
-        missing.append("independent_review")
-    if not discrimination_complete:
-        missing.append("preregistered_discrimination")
-    if not human_complete:
-        missing.append("blind_human_calibration")
-    stage = (
-        "PREVIEW" if not reviewed else "VALIDATED_EVALUATION" if not missing else "REVIEWED_DATASET"
+    Quantitative artifact verification is not implemented for the assertion-only
+    evidence format. Even a structurally complete declaration cannot promote a
+    reviewed dataset to VALIDATED_EVALUATION.
+    """
+    path = Path(configuration_index_path)
+    index = _load_json(path, "configuration index")
+    _validate_configuration_index(index)
+    configurations = index["configurations"]
+    if configuration_name is not None and configuration_name not in configurations:
+        raise ValidationError(f"unknown configuration: {configuration_name}")
+    names = [configuration_name] if configuration_name is not None else sorted(configurations)
+    evidence = (
+        _load_json(Path(evidence_path), "evaluation-evidence manifest")
+        if evidence_path is not None
+        else None
     )
 
+    results = {}
+    for name in names:
+        summary = configurations[name]
+        try:
+            reviewed = _verify_configuration(path.parent, name, summary)
+        except ValidationError as exc:
+            if len(names) == 1:
+                raise
+            results[name] = {
+                "configuration_name": name,
+                "evidence_stage": "PREVIEW",
+                "deployment_action": "HOLD",
+                "missing_evidence": [
+                    "configuration_artifacts",
+                    "independent_review",
+                    "preregistered_discrimination",
+                    "blind_human_calibration",
+                ],
+                "artifact_error": str(exc),
+                "configuration_sha256": record_digest(summary),
+            }
+            continue
+        if evidence is not None and (len(names) == 1 or evidence.get("configuration_name") == name):
+            _validate_evidence(evidence, summary, name)
+        missing = [] if reviewed else ["independent_review"]
+        missing.extend(
+            [
+                "preregistered_discrimination",
+                "blind_human_calibration",
+                "quantitative_artifact_verification_not_implemented",
+            ]
+        )
+        results[name] = {
+            "configuration_name": name,
+            "benchmark_track": summary["benchmark_track"],
+            "language": summary["language"],
+            "evidence_stage": "REVIEWED_DATASET" if reviewed else "PREVIEW",
+            "deployment_action": "HOLD",
+            "missing_evidence": missing,
+            "configuration_sha256": record_digest(summary),
+        }
+    if (
+        evidence is not None
+        and len(names) > 1
+        and (
+            not isinstance(evidence.get("configuration_name"), str)
+            or evidence["configuration_name"] not in results
+        )
+    ):
+        raise ValidationError("evaluation-evidence must name a configuration in the index")
+    if len(names) == 1:
+        return results[names[0]]
     return {
-        "evidence_stage": stage,
         "deployment_action": "HOLD",
-        "missing_evidence": missing,
-        "configuration_sha256": configuration_sha256,
+        "configuration_count": len(results),
+        "configurations": results,
     }
