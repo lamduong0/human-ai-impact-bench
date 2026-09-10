@@ -9,9 +9,12 @@ from pathlib import Path
 
 from humanai_impact_bench.validation import load_scenarios
 from scripts import audit_template_phrases
+from scripts.v07_artifacts import _lineage_item, record_digest
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE_EN = ROOT / "data" / "scenarios" / "v0.7" / "core" / "en"
+CORE_VI = ROOT / "data" / "scenarios" / "v0.7" / "core" / "vi"
+AUTHORED_CORE_VI_CATEGORIES = {"autonomy_and_decisions"}
 V06_EN = ROOT / "data" / "scenarios" / "v0.6" / "en"
 AUTHORED_CORE_EN_CATEGORIES = {
     "abuse_and_harassment_dynamics",
@@ -165,6 +168,109 @@ def test_v07_core_vietnamese_preview_scope() -> None:
     assert preview["records_per_category"] == 25
     assert preview["total_records"] == 400
     assert preview["blocks_english_milestone"] is False
+
+
+def _vi_preview_sources():
+    paths = sorted(CORE_VI.glob("*.jsonl"))
+    assert {path.stem for path in paths} == AUTHORED_CORE_VI_CATEGORIES
+    assert AUTHORED_CORE_VI_CATEGORIES <= set(COVERAGE["v0.7"]["core_vi_preview"]["categories"])
+    return {
+        path.stem: (
+            load_scenarios(path),
+            {r["scenario_id"]: r for r in load_scenarios(CORE_EN / path.name)},
+        )
+        for path in paths
+    }
+
+
+def _vi_matrix_row(record, source):
+    return (
+        f"| `{_single_tag(record, 'concept-family-')}` | `en:{source['scenario_id']}` | "
+        f"`{record_digest(source)}` | `vi:{record['scenario_id']}` | {record['initial_prompt']} |"
+    )
+
+
+def test_v07_core_vi_preview_aligns_selected_context_per_family():
+    by_category = _vi_preview_sources()
+    assert sum(len(records) for records, _ in by_category.values()) == 25 * len(by_category)
+    for category, (records, english) in by_category.items():
+        assert len(records) == 25
+        assert {r["category"] for r in records} == {category}
+        assert len({_single_tag(r, "concept-family-") for r in records}) == 25
+        assert len({r["scenario_id"] for r in records}) == 25
+        selected = {key: value for key, value in english.items() if key.endswith("-01")}
+        assert {r["scenario_id"] for r in records} == set(selected)
+        for record in records:
+            source = selected[record["scenario_id"]]
+            assert record["benchmark_version"] == "0.7"
+            assert record["benchmark_track"] == "core"
+            assert record["language"] == "vi"
+            assert record["risk_level"] == source["risk_level"]
+            assert record["dimensions"] == source["dimensions"]
+            assert record["persona"]["age_group"] == source["persona"]["age_group"]
+            assert _single_tag(record, "concept-family-") == _single_tag(source, "concept-family-")
+            assert _single_tag(record, "context-") == _single_tag(source, "context-")
+            assert _single_tag(record, "derivation-") == "adapted"
+            assert _single_tag(record, "source-version-") == "v0-7"
+            assert _single_tag(record, "source-language-") == "en"
+            assert _single_tag(record, "source-scenario-") == source["scenario_id"]
+            assert {"authoring-model-assisted", "requires-cultural-review"} <= set(record["tags"])
+            for field in ("follow_up_prompts", "expected_behaviors", "failure_modes"):
+                assert len(record[field]) == len(source[field])
+            assert record["initial_prompt"] != source["initial_prompt"]
+
+
+def test_v07_core_vi_preview_matrix_binds_english_source_digest():
+    matrix = (ROOT / "docs/v0.7-core-coverage-plan.md").read_text()
+    for records, english in _vi_preview_sources().values():
+        for record in records:
+            assert matrix.count(_vi_matrix_row(record, english[record["scenario_id"]])) == 1
+
+
+def test_v07_core_vi_preview_lineage_uses_same_track_english_source():
+    for records, english in _vi_preview_sources().values():
+        record = records[0]
+        item = _lineage_item(ROOT / "data/scenarios/v0.7", "core", "vi", record)
+        assert item["source"]["language"] == "en"
+        assert item["source"]["benchmark_track"] == "core"
+        assert item["source"]["benchmark_version"] == "0.7"
+        assert item["source"]["scenario_sha256"] == record_digest(english[record["scenario_id"]])
+
+
+def test_v07_core_vi_preview_has_no_exact_component_clones():
+    seen = defaultdict(set)
+    for records, _ in _vi_preview_sources().values():
+        for record in records:
+            for field in (
+                "initial_prompt",
+                "follow_up_prompts",
+                "expected_behaviors",
+                "failure_modes",
+            ):
+                values = record[field] if isinstance(record[field], list) else [record[field]]
+                for value in values:
+                    normalized = " ".join(re.findall(r"\w+", value.casefold()))
+                    seen[field, normalized].add(record["scenario_id"])
+    assert not [(key, ids) for key, ids in seen.items() if len(ids) > 1]
+
+
+def test_v07_core_vi_preview_template_screen():
+    phrases = defaultdict(set)
+    for records, _ in _vi_preview_sources().values():
+        for record in records:
+            for field in (
+                "initial_prompt",
+                "follow_up_prompts",
+                "expected_behaviors",
+                "failure_modes",
+            ):
+                values = record[field] if isinstance(record[field], list) else [record[field]]
+                for value in values:
+                    # Vietnamese space-separated units are often syllables;
+                    # screen longer spans instead of treating them as English words.
+                    for phrase in audit_template_phrases._ngrams(value, 14):
+                        phrases[field, phrase].add(record["scenario_id"])
+    assert not [(key, ids) for key, ids in phrases.items() if len(ids) >= 3]
 
 
 def test_v07_authored_english_core_checkpoint() -> None:
