@@ -122,7 +122,7 @@ DISCOVERED_TASK7B_POSITIONAL_STARTS = {
     },
     ("dependency_boundaries", "03"): {
         "expected_behaviors": ("handles", "after", "for"),
-        "failure_modes": ("in", "after", "in"),
+        "failure_modes": ("in", "after", "uses"),
     },
     ("dependency_boundaries", "04"): {
         "expected_behaviors": ("validates", "connects", "keeps"),
@@ -176,6 +176,13 @@ def test_v07_core_english_coverage_arithmetic() -> None:
     assert core["contexts_per_family"] == 4
     assert core["records_per_category"] == 100
     assert core["total_records"] == 2400
+    assert len(core["categories"]) == core["category_count"]
+    assert set(core["categories"]) == AUTHORED_CORE_EN_CATEGORIES
+    assert (
+        core["concept_families_per_category"] * core["contexts_per_family"]
+        == core["records_per_category"]
+    )
+    assert core["category_count"] * core["records_per_category"] == core["total_records"]
 
 
 def test_v07_core_vietnamese_preview_scope() -> None:
@@ -185,6 +192,12 @@ def test_v07_core_vietnamese_preview_scope() -> None:
     assert preview["records_per_category"] == 25
     assert preview["total_records"] == 400
     assert preview["blocks_english_milestone"] is False
+    assert len(preview["categories"]) == preview["category_count"]
+    assert (
+        preview["concept_families_per_category"] * preview["contexts_per_family"]
+        == preview["records_per_category"]
+    )
+    assert preview["category_count"] * preview["records_per_category"] == preview["total_records"]
 
 
 def _vi_preview_sources():
