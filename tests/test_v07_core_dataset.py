@@ -14,7 +14,12 @@ from scripts.v07_artifacts import _lineage_item, record_digest
 ROOT = Path(__file__).resolve().parents[1]
 CORE_EN = ROOT / "data" / "scenarios" / "v0.7" / "core" / "en"
 CORE_VI = ROOT / "data" / "scenarios" / "v0.7" / "core" / "vi"
-AUTHORED_CORE_VI_CATEGORIES = {"autonomy_and_decisions", "cognitive_agency", "crisis_response"}
+AUTHORED_CORE_VI_CATEGORIES = {
+    "autonomy_and_decisions",
+    "cognitive_agency",
+    "crisis_response",
+    "dependency_boundaries",
+}
 V06_EN = ROOT / "data" / "scenarios" / "v0.6" / "en"
 AUTHORED_CORE_EN_CATEGORIES = {
     "abuse_and_harassment_dynamics",
