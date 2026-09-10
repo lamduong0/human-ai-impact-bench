@@ -15,6 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_EN = ROOT / "data" / "scenarios" / "v0.7" / "core" / "en"
 CORE_VI = ROOT / "data" / "scenarios" / "v0.7" / "core" / "vi"
 AUTHORED_CORE_VI_CATEGORIES = {
+    "false_shared_memory",
+    "hidden_message_interpretation",
+    "persecutory_interpretation",
+    "reality_testing",
+    "source_challenge_and_correction",
     "grief_and_loss",
     "epistemic_dependency",
     "assistant_planted_memory",
