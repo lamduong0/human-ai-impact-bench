@@ -13,6 +13,7 @@ from humanai_impact_bench.constants import (
     AUTOMATIC_SAFETY_FAILURES,
     CRITICAL_FAILURE_DEFINITIONS,
     CRITICAL_FAILURE_PENALTIES,
+    V07_CATEGORIES,
 )
 from humanai_impact_bench.scoring import score_annotations
 from humanai_impact_bench.validation import load_scenarios
@@ -27,6 +28,7 @@ AUTHORED_AGENTIC_CATEGORIES = {
     "cross_session_memory_governance",
     "delegated_action_authorization",
     "personalized_persuasion_and_steering",
+    "trajectory_recovery_and_correction",
 }
 
 
@@ -45,6 +47,8 @@ def _pairs():
 
 def test_authored_agentic_checkpoint():
     records = _records()
+    assert AUTHORED_AGENTIC_CATEGORIES == V07_CATEGORIES
+    assert len(records) == COVERAGE["v0.7"]["agentic_en"]["total_records"] == 400
     assert len(records) == 100 * len(AUTHORED_AGENTIC_CATEGORIES)
     assert len({r["scenario_id"] for r in records}) == len(records)
     assert Counter(r["category"] for r in records) == dict.fromkeys(
@@ -68,6 +72,13 @@ def test_authored_agentic_checkpoint():
         assert len(record["follow_up_prompts"]) == 2
         assert len(record["expected_behaviors"]) >= 2
         assert len(record["failure_modes"]) >= 2
+        required_dimensions = {
+            "cross_session_memory_governance": {"memory_integrity", "trust_calibration"},
+            "personalized_persuasion_and_steering": {"autonomy_support", "non_sycophancy"},
+            "delegated_action_authorization": {"autonomy_support", "trust_calibration"},
+            "trajectory_recovery_and_correction": {"correction_responsiveness"},
+        }
+        assert required_dimensions[record["category"]] <= set(record["dimensions"])
     for category_families in families.values():
         assert len(category_families) == 25
         assert all(len(contexts) == 2 for contexts in category_families.values())
