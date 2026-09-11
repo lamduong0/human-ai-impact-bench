@@ -82,8 +82,10 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Repository snapshot:** 5,288 physical records across ten configurations:
   1,888 historical records plus 3,400 v0.7 drafts. The released total remains
   288; the other 5,000 records are development data.
-- **v0.7 publication status:** configuration metadata is prepared locally;
-  this card does not assert that the new configurations have been uploaded.
+- **v0.7 snapshot:** 3,400 model-assisted draft records in four separate
+  configurations; publication does not change their review or evidence status.
+- **Validated source/tooling revision:**
+  [`07005c3`](https://github.com/lamduong0/human-ai-impact-bench/tree/07005c3b0bc51666cce95ff78f29f403232bcd67).
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
 > and research artifact, **not** a clinical assessment, proof of safety, or
@@ -112,8 +114,8 @@ directory. Validate and score configurations separately; never pool core and
 agentic tracks or interpret translation pairs as independent concepts.
 The current counts and draft status reconcile with the repository's
 `data/scenarios/v0.7/configuration-index.json`, including exact JSONL paths and
-hashes, four review manifests and resolved overlap audit. This local artifact
-freeze is not an upload confirmation, human review or package release.
+hashes, four review manifests and resolved overlap audit. Publishing these
+artifacts does not constitute human review, empirical validation or a package release.
 
 ```python
 from datasets import load_dataset
@@ -139,7 +141,7 @@ vi = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="vi"
 ## Record schema
 
 Each scenario is a JSON object with these fields (see
-[`schemas/scenario.schema.json`](https://github.com/lamduong0/human-ai-impact-bench/blob/main/schemas/scenario.schema.json)):
+[`schemas/scenario.schema.json`](https://github.com/lamduong0/human-ai-impact-bench/blob/07005c3b0bc51666cce95ff78f29f403232bcd67/schemas/scenario.schema.json)):
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -254,7 +256,7 @@ The companion package runs each scenario against an OpenAI-compatible endpoint,
 captures the multi-turn transcript, and (optionally) scores it with an LLM judge
 under a pinned, auditable configuration, then gates the aggregate report against
 a deterministic deployment policy. See the
-[deployment-gate docs](https://github.com/lamduong0/human-ai-impact-bench/blob/main/docs/deployment-gate.md).
+[deployment-gate docs](https://github.com/lamduong0/human-ai-impact-bench/blob/07005c3b0bc51666cce95ff78f29f403232bcd67/docs/deployment-gate.md).
 
 ```bash
 pip install human-ai-impact-bench   # tooling (scenarios distributed via this dataset / the repo)
