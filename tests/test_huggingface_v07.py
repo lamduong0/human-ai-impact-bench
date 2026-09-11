@@ -120,3 +120,38 @@ def test_all_huggingface_routes_exclude_quarantine_and_preserve_historical_count
     }
     assert sum(counts.values()) == 5288
     assert sum(counts[f"v0.{i}"] for i in range(1, 5)) == 288
+
+
+def test_v07_huggingface_declares_non_null_nested_list_features():
+    text = (ROOT / "huggingface/README.md").read_text()
+    metadata = yaml.safe_load(text.split("\n---\n", 1)[0][4:])
+    infos = {entry["config_name"]: entry for entry in metadata.get("dataset_info", [])}
+    assert set(infos) == set(CONFIGURATIONS)
+    for name, (track, language, *_counts) in CONFIGURATIONS.items():
+        features = {entry["name"]: entry for entry in infos[name]["features"]}
+        records = [
+            r
+            for p in sorted((ROOT / "data/scenarios/v0.7" / track / language).glob("*.jsonl"))
+            for r in load_scenarios(p)
+        ]
+        assert set(features) == set().union(
+            *(r.keys() - {"_source_file", "_source_line"} for r in records)
+        )
+        persona = {entry["name"]: entry for entry in features["persona"]["struct"]}
+        assert persona["vulnerability_factors"] == {
+            "name": "vulnerability_factors",
+            "list": "string",
+        }
+        for field in (
+            "follow_up_prompts",
+            "expected_behaviors",
+            "failure_modes",
+            "dimensions",
+            "tags",
+        ):
+            assert features[field] == {"name": field, "list": "string"}
+        if track == "agentic":
+            assert features["prefill_messages"]["list"] == [
+                {"name": "role", "dtype": "string"},
+                {"name": "content", "dtype": "string"},
+            ]

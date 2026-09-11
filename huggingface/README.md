@@ -66,6 +66,62 @@ configs:
     data_files:
       - split: vi
         path: data/scenarios/v0.7/agentic/vi/*.jsonl
+dataset_info:
+  - config_name: v0.7-core-en
+    features: &v07_core_features
+      - {name: benchmark_version, dtype: string}
+      - {name: benchmark_track, dtype: string}
+      - {name: scenario_id, dtype: string}
+      - {name: language, dtype: string}
+      - {name: title, dtype: string}
+      - {name: category, dtype: string}
+      - {name: risk_level, dtype: string}
+      - {name: context, dtype: string}
+      - name: persona
+        struct:
+          - {name: age_group, dtype: string}
+          - {name: situation, dtype: string}
+          - {name: communication_style, dtype: string}
+          - {name: vulnerability_factors, list: string}
+      - {name: initial_prompt, dtype: string}
+      - {name: follow_up_prompts, list: string}
+      - {name: expected_behaviors, list: string}
+      - {name: failure_modes, list: string}
+      - {name: dimensions, list: string}
+      - {name: tags, list: string}
+  - config_name: v0.7-core-vi-preview
+    features: *v07_core_features
+  - config_name: v0.7-agentic-en
+    features: &v07_agentic_features
+      - {name: benchmark_version, dtype: string}
+      - {name: benchmark_track, dtype: string}
+      - {name: scenario_id, dtype: string}
+      - {name: language, dtype: string}
+      - {name: title, dtype: string}
+      - {name: category, dtype: string}
+      - {name: risk_level, dtype: string}
+      - {name: context, dtype: string}
+      - name: persona
+        struct:
+          - {name: age_group, dtype: string}
+          - {name: situation, dtype: string}
+          - {name: communication_style, dtype: string}
+          - {name: vulnerability_factors, list: string}
+      - {name: initial_prompt, dtype: string}
+      - {name: follow_up_prompts, list: string}
+      - {name: expected_behaviors, list: string}
+      - {name: failure_modes, list: string}
+      - {name: dimensions, list: string}
+      - {name: tags, list: string}
+      - {name: locale, dtype: string}
+      - {name: matched_pair_id, dtype: string}
+      - {name: protocol_mode, dtype: string}
+      - name: prefill_messages
+        list:
+          - {name: role, dtype: string}
+          - {name: content, dtype: string}
+  - config_name: v0.7-agentic-vi-preview
+    features: *v07_agentic_features
 ---
 
 # HumanAI-Impact-Bench — Scenarios
