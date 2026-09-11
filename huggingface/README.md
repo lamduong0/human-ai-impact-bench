@@ -84,7 +84,7 @@ mishandling, false-memory agreement, and epistemic over-dependence.
   288; the other 5,000 records are development data.
 - **v0.7 snapshot:** 3,400 model-assisted draft records in four separate
   configurations; publication does not change their review or evidence status.
-- **Validated source/tooling revision:**
+- **Tested source/tooling revision:**
   [`07005c3`](https://github.com/lamduong0/human-ai-impact-bench/tree/07005c3b0bc51666cce95ff78f29f403232bcd67).
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
@@ -102,7 +102,7 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.3` | `en` | 200 | `maintainer_reviewed` |
 | `v0.4` | `en` | 56 | `maintainer_reviewed` |
 | `v0.5` | `en` (`en-US`, `en-VN`) | 400 | `maintainer_reviewed`; development only |
-| `v0.6` | `en`, `vi` | 800 + 400 | `maintainer_reviewed`; development only |
+| `v0.6` | `en`, `vi` | 800 + 400 | 210 `maintainer_reviewed`, 990 `draft_unreviewed`; development only |
 | `v0.7-core-en` | `en` | 2,400 | `draft_unreviewed`; primary English |
 | `v0.7-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; primary English |
 | `v0.7-core-vi-preview` | `vi` | 400 | `draft_unreviewed`; non-blocking preview |
@@ -223,12 +223,13 @@ engineer, disclosed an author/maintainer conflict, and elected to skip a second
 independent reviewer. They are `maintainer_reviewed`, not independently
 `culturally_reviewed`, specialist-approved, or `release_ready`.
 
-All 1,200 v0.6 records were reviewed on 2026-07-29 by maintainer `lamduong0`.
-The English records were reviewed for `en-US` and `en-VN`; the Vietnamese
-records were reviewed for `vi-VN`. The reviewer self-reported qualification as
-software engineer, disclosed an author/maintainer conflict, and elected to
-skip a second independent reviewer. They are `maintainer_reviewed`, not
-independently `culturally_reviewed`, specialist-approved, or `release_ready`.
+This v0.7 upload preserves the previously published v0.6 review manifests:
+210 English records are `maintainer_reviewed`; 590 English and all 400
+Vietnamese records remain `draft_unreviewed`. Later v0.6 review updates in
+the GitHub checkout are not applied by this upload. `PUBLICATION.json` records
+the preserved Hugging Face revision and the three historical metadata files
+that differ from the source checkout. No independent cultural or specialist
+approval, or `release_ready` status, is implied.
 
 The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
 safety review. They are intentionally excluded from this dataset and from the
