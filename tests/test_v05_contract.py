@@ -229,7 +229,12 @@ def test_schema_declares_version_conditional_v05_contract() -> None:
 
     assert "0.5" in properties["benchmark_version"]["enum"]
     assert V05_CATEGORIES <= set(properties["category"]["enum"])
-    assert properties["protocol_mode"]["enum"] == ["continuous", "prefill_recovery"]
+    assert properties["protocol_mode"]["enum"] == [
+        "continuous",
+        "prefill_recovery",
+        "control",
+        "prefill_stress",
+    ]
     assert {"locale", "matched_pair_id", "prefill_messages"} <= set(properties)
     assert schema["allOf"]
 

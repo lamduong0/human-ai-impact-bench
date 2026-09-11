@@ -23,7 +23,7 @@
   "properties": {
     "benchmark_version": {
       "type": "string",
-      "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"]
+      "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"]
     },
     "scenario_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "language": { "type": "string", "enum": ["en", "vi"] },
@@ -65,7 +65,11 @@
         "cognitive_scaffolding_and_metacognition",
         "institutional_authority_and_workplace_coercion",
         "emotion_inference_and_surveillance",
-        "grief_identity_and_memorial_simulation"
+        "grief_identity_and_memorial_simulation",
+        "cross_session_memory_governance",
+        "personalized_persuasion_and_steering",
+        "delegated_action_authorization",
+        "trajectory_recovery_and_correction"
       ]
     },
     "risk_level": {
@@ -132,6 +136,10 @@
       "items": { "type": "string" },
       "uniqueItems": true
     },
+    "benchmark_track": {
+      "type": "string",
+      "enum": ["core", "agentic"]
+    },
     "locale": {
       "type": "string",
       "minLength": 1,
@@ -139,7 +147,7 @@
     },
     "protocol_mode": {
       "type": "string",
-      "enum": ["continuous", "prefill_recovery"]
+      "enum": ["continuous", "prefill_recovery", "control", "prefill_stress"]
     },
     "matched_pair_id": {
       "type": "string",
@@ -212,6 +220,12 @@
       },
       "then": {
         "required": ["locale", "protocol_mode", "matched_pair_id"],
+        "not": { "required": ["benchmark_track"] },
+        "properties": {
+          "protocol_mode": {
+            "enum": ["continuous", "prefill_recovery"]
+          }
+        },
         "allOf": [
           {
             "if": {
@@ -236,15 +250,147 @@
             }
           }
         ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "benchmark_version": { "const": "0.7" }
+        },
+        "required": ["benchmark_version"]
       },
-      "else": {
+      "then": {
+        "required": ["benchmark_track"],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "benchmark_track": { "const": "core" }
+              },
+              "required": ["benchmark_track"]
+            },
+            "then": {
+              "properties": {
+                "category": {
+                  "enum": [
+                    "autonomy_and_decisions", "cognitive_agency", "crisis_response",
+                    "dependency_boundaries", "grief_and_loss", "privacy_and_boundaries",
+                    "social_connection", "sycophancy_and_disagreement",
+                    "assistant_planted_memory", "epistemic_dependency", "false_shared_memory",
+                    "hidden_message_interpretation", "persecutory_interpretation",
+                    "reality_testing", "source_challenge_and_correction",
+                    "unusual_belief_reinforcement", "trust_and_anthropomorphism",
+                    "abuse_and_harassment_dynamics", "compulsive_use_and_displacement",
+                    "engagement_manipulation", "identity_and_dignity_harm",
+                    "ideological_steering", "moral_outsourcing_and_deskilling",
+                    "romantic_sexual_boundaries"
+                  ]
+                }
+              },
+              "not": {
+                "anyOf": [
+                  { "required": ["locale"] },
+                  { "required": ["protocol_mode"] },
+                  { "required": ["matched_pair_id"] },
+                  { "required": ["prefill_messages"] }
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "benchmark_track": { "const": "agentic" }
+              },
+              "required": ["benchmark_track"]
+            },
+            "then": {
+              "required": ["locale", "protocol_mode", "matched_pair_id"],
+              "properties": {
+                "category": {
+                  "enum": [
+                    "cross_session_memory_governance",
+                    "personalized_persuasion_and_steering",
+                    "delegated_action_authorization",
+                    "trajectory_recovery_and_correction"
+                  ]
+                },
+                "protocol_mode": {
+                  "enum": ["control", "prefill_stress"]
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "protocol_mode": { "const": "control" }
+                    },
+                    "required": ["protocol_mode"]
+                  },
+                  "then": {
+                    "not": { "required": ["prefill_messages"] }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "protocol_mode": { "const": "prefill_stress" }
+                    },
+                    "required": ["protocol_mode"]
+                  },
+                  "then": {
+                    "required": ["prefill_messages"]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "benchmark_version": {
+            "enum": ["0.1", "0.2", "0.3", "0.4", "0.6"]
+          }
+        },
+        "required": ["benchmark_version"]
+      },
+      "then": {
         "not": {
           "anyOf": [
+            { "required": ["benchmark_track"] },
             { "required": ["locale"] },
             { "required": ["protocol_mode"] },
             { "required": ["matched_pair_id"] },
             { "required": ["prefill_messages"] }
           ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "benchmark_version": {
+            "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"]
+          }
+        },
+        "required": ["benchmark_version"]
+      },
+      "then": {
+        "not": {
+          "properties": {
+            "category": {
+              "enum": [
+                "cross_session_memory_governance",
+                "personalized_persuasion_and_steering",
+                "delegated_action_authorization",
+                "trajectory_recovery_and_correction"
+              ]
+            }
+          },
+          "required": ["category"]
         }
       }
     }

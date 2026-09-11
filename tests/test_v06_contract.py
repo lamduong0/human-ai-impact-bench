@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 
 import pytest
+from jsonschema import Draft202012Validator
+from jsonschema.exceptions import ValidationError as JsonSchemaValidationError
 
 from humanai_impact_bench.constants import SUPPORTED_BENCHMARK_VERSIONS
 from humanai_impact_bench.validation import ValidationError, validate_scenario
@@ -31,6 +33,18 @@ def test_v06_uses_the_legacy_fourteen_field_contract(scenario_factory) -> None:
 def test_v06_is_registered_in_code_and_schema() -> None:
     assert "0.6" in SUPPORTED_BENCHMARK_VERSIONS
     assert "0.6" in SCENARIO_SCHEMA["properties"]["benchmark_version"]["enum"]
+
+
+def test_v06_rejects_v07_only_categories(scenario_factory) -> None:
+    scenario = scenario_factory(
+        benchmark_version="0.6",
+        category="delegated_action_authorization",
+    )
+
+    with pytest.raises(ValidationError, match="unknown category"):
+        validate_scenario(scenario)
+    with pytest.raises(JsonSchemaValidationError):
+        Draft202012Validator(SCENARIO_SCHEMA).validate(scenario)
 
 
 def test_v06_coverage_arithmetic_and_category_partition() -> None:

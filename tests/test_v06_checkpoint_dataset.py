@@ -20,9 +20,10 @@ ROOT = Path(__file__).resolve().parents[1]
 V06_DIR = ROOT / "data" / "scenarios" / "v0.6"
 EN_DIR = V06_DIR / "en"
 VI_DIR = V06_DIR / "vi"
-COVERAGE = json.loads(
+COVERAGE_STANDARD = json.loads(
     (ROOT / "configs" / "scenario-coverage-standard.json").read_text(encoding="utf-8")
-)["v0.6"]
+)
+COVERAGE = COVERAGE_STANDARD["v0.6"]
 BILINGUAL_CATEGORIES = set(COVERAGE["bilingual_categories"])
 ENGLISH_FIRST_CATEGORIES = set(COVERAGE["english_first_categories"])
 ALL_CATEGORIES = BILINGUAL_CATEGORIES | ENGLISH_FIRST_CATEGORIES
@@ -167,6 +168,15 @@ def test_v06_checkpoint_index_is_digest_bound_and_reproducible() -> None:
     assert index["category_count"] == 24
     assert index["language_counts"] == {"en": 800, "vi": 400}
     assert index["review_status_counts"] == {"maintainer_reviewed": 1200}
+
+
+def test_v06_checkpoint_index_ignores_v07_standard_config() -> None:
+    generated = generate_v06_checkpoint_index.build_index()
+
+    assert "v0.7" in COVERAGE_STANDARD
+    assert generated["coverage_config_sha256"] == (
+        "35d29d987fb3f584498aa742d1358a9c7399a348d4f73106368813732af36177"
+    )
 
 
 def test_v06_checkpoint_lexical_audits_are_clean_and_digest_bound() -> None:

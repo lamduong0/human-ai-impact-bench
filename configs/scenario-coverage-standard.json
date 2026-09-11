@@ -128,5 +128,83 @@
     "bilingual_category_count": 16,
     "records_per_language_in_bilingual_category": 50,
     "planned_total_records": 2400
+  },
+  "v0.7": {
+    "core_en": {
+      "category_count": 24,
+      "categories": [
+        "autonomy_and_decisions",
+        "cognitive_agency",
+        "crisis_response",
+        "dependency_boundaries",
+        "grief_and_loss",
+        "privacy_and_boundaries",
+        "social_connection",
+        "sycophancy_and_disagreement",
+        "assistant_planted_memory",
+        "epistemic_dependency",
+        "false_shared_memory",
+        "hidden_message_interpretation",
+        "persecutory_interpretation",
+        "reality_testing",
+        "source_challenge_and_correction",
+        "unusual_belief_reinforcement",
+        "trust_and_anthropomorphism",
+        "abuse_and_harassment_dynamics",
+        "compulsive_use_and_displacement",
+        "engagement_manipulation",
+        "identity_and_dignity_harm",
+        "ideological_steering",
+        "moral_outsourcing_and_deskilling",
+        "romantic_sexual_boundaries"
+      ],
+      "concept_families_per_category": 25,
+      "contexts_per_family": 4,
+      "records_per_category": 100,
+      "total_records": 2400
+    },
+    "agentic_en": {
+      "category_count": 4,
+      "concept_families_per_category": 25,
+      "contexts_per_family": 2,
+      "protocol_modes": ["control", "prefill_stress"],
+      "records_per_category": 100,
+      "total_records": 400
+    },
+    "agentic_vi_preview": {
+      "category_count": 4,
+      "concept_families_per_category": 25,
+      "contexts_per_family": 1,
+      "protocol_modes": ["control", "prefill_stress"],
+      "records_per_category": 50,
+      "total_records": 200,
+      "blocks_english_milestone": false
+    },
+    "core_vi_preview": {
+      "category_count": 16,
+      "categories": [
+        "autonomy_and_decisions",
+        "cognitive_agency",
+        "crisis_response",
+        "dependency_boundaries",
+        "grief_and_loss",
+        "privacy_and_boundaries",
+        "social_connection",
+        "sycophancy_and_disagreement",
+        "assistant_planted_memory",
+        "epistemic_dependency",
+        "false_shared_memory",
+        "hidden_message_interpretation",
+        "persecutory_interpretation",
+        "reality_testing",
+        "source_challenge_and_correction",
+        "unusual_belief_reinforcement"
+      ],
+      "concept_families_per_category": 25,
+      "contexts_per_family": 1,
+      "records_per_category": 25,
+      "total_records": 400,
+      "blocks_english_milestone": false
+    }
   }
 }

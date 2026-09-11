@@ -50,6 +50,78 @@ configs:
         path: data/scenarios/v0.6/en/*.jsonl
       - split: vi
         path: data/scenarios/v0.6/vi/*.jsonl
+  - config_name: v0.7-core-en
+    data_files:
+      - split: en
+        path: data/scenarios/v0.7/core/en/*.jsonl
+  - config_name: v0.7-agentic-en
+    data_files:
+      - split: en
+        path: data/scenarios/v0.7/agentic/en/*.jsonl
+  - config_name: v0.7-core-vi-preview
+    data_files:
+      - split: vi
+        path: data/scenarios/v0.7/core/vi/*.jsonl
+  - config_name: v0.7-agentic-vi-preview
+    data_files:
+      - split: vi
+        path: data/scenarios/v0.7/agentic/vi/*.jsonl
+dataset_info:
+  - config_name: v0.7-core-en
+    features: &v07_core_features
+      - {name: benchmark_version, dtype: string}
+      - {name: benchmark_track, dtype: string}
+      - {name: scenario_id, dtype: string}
+      - {name: language, dtype: string}
+      - {name: title, dtype: string}
+      - {name: category, dtype: string}
+      - {name: risk_level, dtype: string}
+      - {name: context, dtype: string}
+      - name: persona
+        struct:
+          - {name: age_group, dtype: string}
+          - {name: situation, dtype: string}
+          - {name: communication_style, dtype: string}
+          - {name: vulnerability_factors, list: string}
+      - {name: initial_prompt, dtype: string}
+      - {name: follow_up_prompts, list: string}
+      - {name: expected_behaviors, list: string}
+      - {name: failure_modes, list: string}
+      - {name: dimensions, list: string}
+      - {name: tags, list: string}
+  - config_name: v0.7-core-vi-preview
+    features: *v07_core_features
+  - config_name: v0.7-agentic-en
+    features: &v07_agentic_features
+      - {name: benchmark_version, dtype: string}
+      - {name: benchmark_track, dtype: string}
+      - {name: scenario_id, dtype: string}
+      - {name: language, dtype: string}
+      - {name: title, dtype: string}
+      - {name: category, dtype: string}
+      - {name: risk_level, dtype: string}
+      - {name: context, dtype: string}
+      - name: persona
+        struct:
+          - {name: age_group, dtype: string}
+          - {name: situation, dtype: string}
+          - {name: communication_style, dtype: string}
+          - {name: vulnerability_factors, list: string}
+      - {name: initial_prompt, dtype: string}
+      - {name: follow_up_prompts, list: string}
+      - {name: expected_behaviors, list: string}
+      - {name: failure_modes, list: string}
+      - {name: dimensions, list: string}
+      - {name: tags, list: string}
+      - {name: locale, dtype: string}
+      - {name: matched_pair_id, dtype: string}
+      - {name: protocol_mode, dtype: string}
+      - name: prefill_messages
+        list:
+          - {name: role, dtype: string}
+          - {name: content, dtype: string}
+  - config_name: v0.7-agentic-vi-preview
+    features: *v07_agentic_features
 ---
 
 # HumanAI-Impact-Bench — Scenarios
@@ -63,8 +135,13 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
 - **License:** Apache-2.0
 - **Languages:** English (`en`), Vietnamese (`vi`)
-- **Size:** 1,888 scenarios across six benchmark revisions: 288 released
-  records and 1,600 development-checkpoint records
+- **Repository snapshot:** 5,288 physical records across ten configurations:
+  1,888 historical records plus 3,400 v0.7 drafts. The released total remains
+  288; the other 5,000 records are development data.
+- **v0.7 snapshot:** 3,400 model-assisted draft records in four separate
+  configurations; publication does not change their review or evidence status.
+- **Tested source/tooling revision:**
+  [`07005c3`](https://github.com/lamduong0/human-ai-impact-bench/tree/07005c3b0bc51666cce95ff78f29f403232bcd67).
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
 > and research artifact, **not** a clinical assessment, proof of safety, or
@@ -81,7 +158,20 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.3` | `en` | 200 | `maintainer_reviewed` |
 | `v0.4` | `en` | 56 | `maintainer_reviewed` |
 | `v0.5` | `en` (`en-US`, `en-VN`) | 400 | `maintainer_reviewed`; development only |
-| `v0.6` | `en`, `vi` | 800 + 400 | `maintainer_reviewed`; development only |
+| `v0.6` | `en`, `vi` | 800 + 400 | 210 `maintainer_reviewed`, 990 `draft_unreviewed`; development only |
+| `v0.7-core-en` | `en` | 2,400 | `draft_unreviewed`; primary English |
+| `v0.7-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; primary English |
+| `v0.7-core-vi-preview` | `vi` | 400 | `draft_unreviewed`; non-blocking preview |
+| `v0.7-agentic-vi-preview` | `vi` | 200 (100 pairs) | `draft_unreviewed`; non-blocking preview |
+
+The v0.7 primary English milestone has 2,800 records; the two Vietnamese
+previews add 600. Each configuration routes only to its named track/language
+directory. Validate and score configurations separately; never pool core and
+agentic tracks or interpret translation pairs as independent concepts.
+The current counts and draft status reconcile with the repository's
+`data/scenarios/v0.7/configuration-index.json`, including exact JSONL paths and
+hashes, four review manifests and resolved overlap audit. Publishing these
+artifacts does not constitute human review, empirical validation or a package release.
 
 ```python
 from datasets import load_dataset
@@ -107,15 +197,16 @@ vi = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="vi"
 ## Record schema
 
 Each scenario is a JSON object with these fields (see
-[`schemas/scenario.schema.json`](https://github.com/lamduong0/human-ai-impact-bench/blob/main/schemas/scenario.schema.json)):
+[`schemas/scenario.schema.json`](https://github.com/lamduong0/human-ai-impact-bench/blob/07005c3b0bc51666cce95ff78f29f403232bcd67/schemas/scenario.schema.json)):
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `benchmark_version` | string | `0.1` through `0.6` |
+| `benchmark_version` | string | `0.1` through `0.7` |
+| `benchmark_track` | string | Required for v0.7: `core` or `agentic` |
 | `scenario_id` | string | Stable kebab-case identifier |
 | `language` | string | `en` \| `vi` |
 | `title` | string | Short human-readable title |
-| `category` | string | e.g. `dependency_boundaries`, `reality_testing`, `engagement_manipulation`, `identity_and_dignity_harm` (24 published categories) |
+| `category` | string | v0.7 has 24 core categories and four separately registered agentic categories |
 | `risk_level` | string | `low` \| `moderate` \| `high` \| `critical` |
 | `context` | string | Situation description |
 | `persona` | object | Age group, situation, communication style, vulnerability factors |
@@ -129,6 +220,13 @@ Each scenario is a JSON object with these fields (see
 Version 0.5 additionally uses `locale`, `protocol_mode`, `matched_pair_id`, and
 optional `prefill_messages` to define its synthetic continuous-versus-recovery
 protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
+Version 0.7 agentic uses `locale`, `protocol_mode` (`control` or
+`prefill_stress`), `matched_pair_id`, and stress-only `prefill_messages`.
+Each pair holds visible prompts, metadata and the common rubric fixed; only
+synthetic prior history differs. Score newly generated candidate replies, not
+benchmark-authored assistant prefills. Action probes concern conversational
+authorization claims, not observed tool execution, and simulated session
+history does not verify product memory.
 
 ## Intended use
 
@@ -140,6 +238,21 @@ protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
 or any representation of automated scores as validated human outcomes.
 
 ## Review maturity and exclusions
+
+All 3,400 v0.7 records are model-assisted `draft_unreviewed`, with empty review
+events and no inherited source approvals. Vietnamese adaptation preserves
+selected English source lineage but still requires native-speaker/cultural
+and applicable specialist review; source matching is not cultural equivalence.
+Public calibration/evaluation splits are both public and therefore not blind.
+Any blind-set claim requires separately access-controlled data and a verified
+pre-evaluation commitment, not merely the public split name.
+
+No v0.7 deployment policy exists. Automated evaluation remains PREVIEW; the
+generic gate returns `REVIEW_REQUIRED`/`HOLD` for otherwise passing v0.7 runs.
+Quantitative evidence verification is not implemented: the evidence-status
+tool cannot promote beyond `REVIEWED_DATASET`, and these unreviewed drafts do
+not meet even that stage. Hashes, declarations and record counts are not
+validated evaluation, clinical safety or human-outcome evidence.
 
 The v0.3 and v0.4 English-first expansions are `maintainer_reviewed`.
 Per-scenario review state is published in each revision's
@@ -166,12 +279,13 @@ engineer, disclosed an author/maintainer conflict, and elected to skip a second
 independent reviewer. They are `maintainer_reviewed`, not independently
 `culturally_reviewed`, specialist-approved, or `release_ready`.
 
-All 1,200 v0.6 records were reviewed on 2026-07-29 by maintainer `lamduong0`.
-The English records were reviewed for `en-US` and `en-VN`; the Vietnamese
-records were reviewed for `vi-VN`. The reviewer self-reported qualification as
-software engineer, disclosed an author/maintainer conflict, and elected to
-skip a second independent reviewer. They are `maintainer_reviewed`, not
-independently `culturally_reviewed`, specialist-approved, or `release_ready`.
+This v0.7 upload preserves the previously published v0.6 review manifests:
+210 English records are `maintainer_reviewed`; 590 English and all 400
+Vietnamese records remain `draft_unreviewed`. Later v0.6 review updates in
+the GitHub checkout are not applied by this upload. `PUBLICATION.json` records
+the preserved Hugging Face revision and the three historical metadata files
+that differ from the source checkout. No independent cultural or specialist
+approval, or `release_ready` status, is implied.
 
 The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
 safety review. They are intentionally excluded from this dataset and from the
@@ -199,7 +313,7 @@ The companion package runs each scenario against an OpenAI-compatible endpoint,
 captures the multi-turn transcript, and (optionally) scores it with an LLM judge
 under a pinned, auditable configuration, then gates the aggregate report against
 a deterministic deployment policy. See the
-[deployment-gate docs](https://github.com/lamduong0/human-ai-impact-bench/blob/main/docs/deployment-gate.md).
+[deployment-gate docs](https://github.com/lamduong0/human-ai-impact-bench/blob/07005c3b0bc51666cce95ff78f29f403232bcd67/docs/deployment-gate.md).
 
 ```bash
 pip install human-ai-impact-bench   # tooling (scenarios distributed via this dataset / the repo)

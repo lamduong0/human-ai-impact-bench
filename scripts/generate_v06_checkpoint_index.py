@@ -18,7 +18,7 @@ except ModuleNotFoundError:  # Direct execution places scripts/ on sys.path.
 
 ROOT = Path(__file__).resolve().parents[1]
 V06_DIR = ROOT / "data" / "scenarios" / "v0.6"
-COVERAGE_CONFIG = ROOT / "configs" / "scenario-coverage-standard.json"
+V06_COVERAGE_CONFIG = ROOT / "configs" / "scenario-coverage-v0.6.json"
 LINEAGE_INDEX = V06_DIR / "lineage-index.json"
 OUTPUT_PATH = V06_DIR / "checkpoint-index.json"
 
@@ -56,7 +56,7 @@ def _load_language(language: str) -> list[dict[str, Any]]:
 
 
 def build_index() -> dict[str, Any]:
-    config = json.loads(COVERAGE_CONFIG.read_text(encoding="utf-8"))["v0.6"]
+    config = json.loads(V06_COVERAGE_CONFIG.read_text(encoding="utf-8"))["v0.6"]
     categories = set(config["categories"])
     bilingual = set(config["bilingual_categories"])
     english_first = set(config["english_first_categories"])
@@ -150,7 +150,7 @@ def build_index() -> dict[str, Any]:
         "category_counts": dict(sorted(category_counts.items())),
         "language_counts": dict(sorted(Counter(item["language"] for item in items).items())),
         "review_status_counts": dict(sorted(review_status_counts.items())),
-        "coverage_config_sha256": _sha256_bytes(COVERAGE_CONFIG),
+        "coverage_config_sha256": _sha256_bytes(V06_COVERAGE_CONFIG),
         "lineage_index_sha256": _sha256_bytes(LINEAGE_INDEX),
         "review_manifest_sha256": {
             language: _sha256_bytes(V06_DIR / language / "review-status.json")

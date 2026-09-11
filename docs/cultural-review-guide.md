@@ -12,7 +12,7 @@ records across 7 categories. Every record in both expansions begins as
 `draft_unreviewed`. The contexts increase coverage for review; they are not
 evidence that the scenario represents every person in that setting.
 
-## Status definitions
+## Historical status definitions (v0.1–v0.6)
 
 | Status | Meaning |
 |---|---|
@@ -28,6 +28,47 @@ The manifest validator requires a named reviewer and reviewed locale for
 one reviewed locale before accepting `culturally_reviewed` or `release_ready`.
 Reviewer identifiers may be pseudonymous in the public repository if project
 maintainers retain an auditable confidential mapping.
+
+## v0.7 digest-bound review protocol
+
+All four v0.7 manifests currently mark their 3,400 records `draft_unreviewed`:
+2,800 English and 600 non-blocking Vietnamese previews. These are
+model-assisted drafts, not human-reviewed adaptations. Neither an English
+source's older review status nor automated proofreading supplies approval for
+the new target digest or locale.
+
+v0.7 uses `draft_unreviewed`, `in_review`, `changes_requested`, `reviewed`, and
+`release_ready`; it does not reuse historical `maintainer_reviewed` or
+`culturally_reviewed` labels. Events must bind the exact scenario digest,
+review type, reviewer, qualification, locale, conflict disclosure and decision.
+Qualifying approvals need explicit author identities so independence is
+auditable; absent author IDs cannot be replaced by an invented identity or a
+free-text assertion of no conflict. Actual declarations may be added when the
+responsible humans provide them. Distinct reviewers' decisions are preserved;
+one later approval must not erase another reviewer's unresolved change request.
+
+Independent construct review is required. Vietnamese additionally needs
+`vi-VN` locale review; high/critical risk or `requires-specialist-review`
+items require specialist-safety review. A release decision is separate from
+these checks and is not a deployment approval. Changing text makes its prior
+digest approval stale; update the source JSONL, review manifest, exact lineage
+and coverage artifacts together. For v0.7 the JSONL is the authored source of
+truth, not a scenario generator.
+
+```bash
+PYTHONPATH=src python scripts/generate_v07_review_manifests.py
+PYTHONPATH=src python scripts/validate_cultural_review.py \
+  --scenarios data/scenarios/v0.7/core/vi \
+  --manifest data/scenarios/v0.7/core/vi/review-status.json
+```
+
+Run the same validation separately for the other three track/language
+directories. Review matched agentic common prompts/rubrics together while
+checking every translated prefill and member-specific source binding. Confirm
+that consent, uncertainty, evidence and practical access constraints remain
+aligned, not merely grammatically fluent. Do not infer cultural equivalence
+from exact IDs or risk/dimension matching. No quantitative evidence verifier
+currently promotes above `REVIEWED_DATASET`, and no v0.7 policy permits ALLOW.
 
 ## Reviewer qualifications
 

@@ -1,0 +1,423 @@
+{
+  "index_version": "0.1",
+  "benchmark_version": "0.7",
+  "configuration_count": 4,
+  "scenario_count": 3400,
+  "category_counts": {
+    "abuse_and_harassment_dynamics": 100,
+    "assistant_planted_memory": 125,
+    "autonomy_and_decisions": 125,
+    "cognitive_agency": 125,
+    "compulsive_use_and_displacement": 100,
+    "crisis_response": 125,
+    "cross_session_memory_governance": 150,
+    "delegated_action_authorization": 150,
+    "dependency_boundaries": 125,
+    "engagement_manipulation": 100,
+    "epistemic_dependency": 125,
+    "false_shared_memory": 125,
+    "grief_and_loss": 125,
+    "hidden_message_interpretation": 125,
+    "identity_and_dignity_harm": 100,
+    "ideological_steering": 100,
+    "moral_outsourcing_and_deskilling": 100,
+    "persecutory_interpretation": 125,
+    "personalized_persuasion_and_steering": 150,
+    "privacy_and_boundaries": 125,
+    "reality_testing": 125,
+    "romantic_sexual_boundaries": 100,
+    "social_connection": 125,
+    "source_challenge_and_correction": 125,
+    "sycophancy_and_disagreement": 125,
+    "trajectory_recovery_and_correction": 150,
+    "trust_and_anthropomorphism": 100,
+    "unusual_belief_reinforcement": 125
+  },
+  "language_counts": {
+    "en": 2800,
+    "vi": 600
+  },
+  "review_status_counts": {
+    "draft_unreviewed": 3400
+  },
+  "artifacts": {
+    "lineage": {
+      "path": "lineage-index.json",
+      "sha256": "bc7dde7251cd6b820b1856aa97cce4130b4aba8250299c1473193d5af87263e6"
+    },
+    "overlap": {
+      "path": "overlap-audit.json",
+      "sha256": "bd6efe7dcc0c7ec6ccfdf2cf4d51fa092a86984e987884d5b79a19a4cdec6840"
+    },
+    "split": {
+      "path": "split-index.json",
+      "sha256": "46edfa0e31f33b6fb7fa26b46df677f05bfe33ab020e616a24dc1244ec25411c"
+    }
+  },
+  "configurations": {
+    "v0.7-agentic-en": {
+      "benchmark_track": "agentic",
+      "language": "en",
+      "scenario_count": 400,
+      "category_counts": {
+        "cross_session_memory_governance": 100,
+        "delegated_action_authorization": 100,
+        "personalized_persuasion_and_steering": 100,
+        "trajectory_recovery_and_correction": 100
+      },
+      "language_counts": {
+        "en": 400
+      },
+      "review_status_counts": {
+        "draft_unreviewed": 400
+      },
+      "files": [
+        {
+          "path": "agentic/en/cross_session_memory_governance.jsonl",
+          "scenario_count": 100,
+          "sha256": "abaf867251e9ee380865381fe8ba6cc210afe38f9e36733219a81278748439cc"
+        },
+        {
+          "path": "agentic/en/delegated_action_authorization.jsonl",
+          "scenario_count": 100,
+          "sha256": "8a8e472995cb31361c0df718201fd3f4b171f6604883b488e5a5ffc469a0de23"
+        },
+        {
+          "path": "agentic/en/personalized_persuasion_and_steering.jsonl",
+          "scenario_count": 100,
+          "sha256": "34df147d6e8ac630e993cfb0cdba32065a77311c16e4362b9f851007c4bf7f7e"
+        },
+        {
+          "path": "agentic/en/trajectory_recovery_and_correction.jsonl",
+          "scenario_count": 100,
+          "sha256": "f1a48e9dd43bce091cf5dcb7ba6e1abfbb9eee8098213988fface2d953053669"
+        }
+      ],
+      "review_manifest": {
+        "path": "agentic/en/review-status.json",
+        "sha256": "9a8b9d17acc6a28d0a4f7c343f7882135773b36ebf3b7b489ca99c52c1f76749"
+      }
+    },
+    "v0.7-agentic-vi-preview": {
+      "benchmark_track": "agentic",
+      "language": "vi",
+      "scenario_count": 200,
+      "category_counts": {
+        "cross_session_memory_governance": 50,
+        "delegated_action_authorization": 50,
+        "personalized_persuasion_and_steering": 50,
+        "trajectory_recovery_and_correction": 50
+      },
+      "language_counts": {
+        "vi": 200
+      },
+      "review_status_counts": {
+        "draft_unreviewed": 200
+      },
+      "files": [
+        {
+          "path": "agentic/vi/cross_session_memory_governance.jsonl",
+          "scenario_count": 50,
+          "sha256": "1a35146d4257451d39ea41f3701e747e584087afd5de145b41bfafaaac536775"
+        },
+        {
+          "path": "agentic/vi/delegated_action_authorization.jsonl",
+          "scenario_count": 50,
+          "sha256": "9c63f85459126c5bf1035d031c4398aef931dc15aafbecadff57e529234603ba"
+        },
+        {
+          "path": "agentic/vi/personalized_persuasion_and_steering.jsonl",
+          "scenario_count": 50,
+          "sha256": "3aacc55e84d1971b2a37575ee25ed4e9e3763116f30e1062908fffed48d8090f"
+        },
+        {
+          "path": "agentic/vi/trajectory_recovery_and_correction.jsonl",
+          "scenario_count": 50,
+          "sha256": "4cf5a52386e66894964158a8fefebbc2c5f394fec4efcc07c284826995591f9e"
+        }
+      ],
+      "review_manifest": {
+        "path": "agentic/vi/review-status.json",
+        "sha256": "bb4833aa06f5076d7c35542c7a4fa40435ac305de4de53abc3acecbd53a950d2"
+      }
+    },
+    "v0.7-core-en": {
+      "benchmark_track": "core",
+      "language": "en",
+      "scenario_count": 2400,
+      "category_counts": {
+        "abuse_and_harassment_dynamics": 100,
+        "assistant_planted_memory": 100,
+        "autonomy_and_decisions": 100,
+        "cognitive_agency": 100,
+        "compulsive_use_and_displacement": 100,
+        "crisis_response": 100,
+        "dependency_boundaries": 100,
+        "engagement_manipulation": 100,
+        "epistemic_dependency": 100,
+        "false_shared_memory": 100,
+        "grief_and_loss": 100,
+        "hidden_message_interpretation": 100,
+        "identity_and_dignity_harm": 100,
+        "ideological_steering": 100,
+        "moral_outsourcing_and_deskilling": 100,
+        "persecutory_interpretation": 100,
+        "privacy_and_boundaries": 100,
+        "reality_testing": 100,
+        "romantic_sexual_boundaries": 100,
+        "social_connection": 100,
+        "source_challenge_and_correction": 100,
+        "sycophancy_and_disagreement": 100,
+        "trust_and_anthropomorphism": 100,
+        "unusual_belief_reinforcement": 100
+      },
+      "language_counts": {
+        "en": 2400
+      },
+      "review_status_counts": {
+        "draft_unreviewed": 2400
+      },
+      "files": [
+        {
+          "path": "core/en/abuse_and_harassment_dynamics.jsonl",
+          "scenario_count": 100,
+          "sha256": "91a2b0aad9347911b627a75c935f25194aa287c5cf69db340d009c7fbd4a94cb"
+        },
+        {
+          "path": "core/en/assistant_planted_memory.jsonl",
+          "scenario_count": 100,
+          "sha256": "e2e84a30de2c5e62a6d436fceb5a2bf2b6216a948765f08a541d4d51f8d64055"
+        },
+        {
+          "path": "core/en/autonomy_and_decisions.jsonl",
+          "scenario_count": 100,
+          "sha256": "d860eef1700a3a5485a3c9f469583716f9d4d22194d057bfa2de54dcddf84973"
+        },
+        {
+          "path": "core/en/cognitive_agency.jsonl",
+          "scenario_count": 100,
+          "sha256": "e82d7cb63c82c861feb657f70f36df3cf70072a41d33e462fff586d552270491"
+        },
+        {
+          "path": "core/en/compulsive_use_and_displacement.jsonl",
+          "scenario_count": 100,
+          "sha256": "5725a0e1c0ac444bd177d93e7db5d5d3195f95c6c420f7e8986e2c9c80dcfb81"
+        },
+        {
+          "path": "core/en/crisis_response.jsonl",
+          "scenario_count": 100,
+          "sha256": "be10b00aea6ac4cb732c7b630feb694590c1ff2185e53bf04b65fd732d63cd52"
+        },
+        {
+          "path": "core/en/dependency_boundaries.jsonl",
+          "scenario_count": 100,
+          "sha256": "d19451850d9574ee7ce8225b5b4fb8e263ac6d3093220017849af668b1ca38cb"
+        },
+        {
+          "path": "core/en/engagement_manipulation.jsonl",
+          "scenario_count": 100,
+          "sha256": "aaca5daca67a7eaf58b47b6fd3e690c201db9edcafc90faeda61a89b61e34c27"
+        },
+        {
+          "path": "core/en/epistemic_dependency.jsonl",
+          "scenario_count": 100,
+          "sha256": "c86456c122dc328bab717485713a6286e2f2b409336a4fbe07f44729dafe236b"
+        },
+        {
+          "path": "core/en/false_shared_memory.jsonl",
+          "scenario_count": 100,
+          "sha256": "eb49ffa06f7f29bef7f5f2571b1b4faf48d0322695a64953c65425557514cb01"
+        },
+        {
+          "path": "core/en/grief_and_loss.jsonl",
+          "scenario_count": 100,
+          "sha256": "ea36f9528db1fbce2405ebea5fc415c1191413ce1a28c56e529d5b673faf6cc0"
+        },
+        {
+          "path": "core/en/hidden_message_interpretation.jsonl",
+          "scenario_count": 100,
+          "sha256": "a88accc66e99e2938f459581558cc81e680bd84415f35773c2a81af92349d6b0"
+        },
+        {
+          "path": "core/en/identity_and_dignity_harm.jsonl",
+          "scenario_count": 100,
+          "sha256": "0e89dead29343d6fb03fc2ec7feacb977d74e03e1714a3ba202cd6c78c4bfaed"
+        },
+        {
+          "path": "core/en/ideological_steering.jsonl",
+          "scenario_count": 100,
+          "sha256": "3a6649f38d5bfd747d8ea3df475f2201ec18f8ca9ba19fa001b45b10685fb8b0"
+        },
+        {
+          "path": "core/en/moral_outsourcing_and_deskilling.jsonl",
+          "scenario_count": 100,
+          "sha256": "e3b87092eaf3c5158dac94e59dd3b895d66594d11c5f3fe29c8dd7ab316c994c"
+        },
+        {
+          "path": "core/en/persecutory_interpretation.jsonl",
+          "scenario_count": 100,
+          "sha256": "11c064b4695787c32625a4592fb8db3517f5408524b9e7554c395f690138c55b"
+        },
+        {
+          "path": "core/en/privacy_and_boundaries.jsonl",
+          "scenario_count": 100,
+          "sha256": "fcabfb36ed2acf67db3d71f5ab13aeebd82df7d2fc83efd60ef1770f7a7c795e"
+        },
+        {
+          "path": "core/en/reality_testing.jsonl",
+          "scenario_count": 100,
+          "sha256": "bcc24c82cb63bd1b9701ad8f310044e59d59c97b25437856214c968972b250f2"
+        },
+        {
+          "path": "core/en/romantic_sexual_boundaries.jsonl",
+          "scenario_count": 100,
+          "sha256": "0673b087da076ac40deed057411b38619e3f5e839f2bcff4fac239e76bbc8f90"
+        },
+        {
+          "path": "core/en/social_connection.jsonl",
+          "scenario_count": 100,
+          "sha256": "716920ec522b1f73faed71256d7a396260ae630ec1aea861498ee0aee2027d52"
+        },
+        {
+          "path": "core/en/source_challenge_and_correction.jsonl",
+          "scenario_count": 100,
+          "sha256": "1fe53320563f8f9882cd215906fb06b0683ea61ea60a2b94d6997d96f8317934"
+        },
+        {
+          "path": "core/en/sycophancy_and_disagreement.jsonl",
+          "scenario_count": 100,
+          "sha256": "b90fe6eb856d4cb791776a1483963fc9adfcee291a2a29a000f76ed3e268f53b"
+        },
+        {
+          "path": "core/en/trust_and_anthropomorphism.jsonl",
+          "scenario_count": 100,
+          "sha256": "d7368dbd7d10c14f21184607ef7b9060d0040c76161b0ec9adb0f783b4f8a370"
+        },
+        {
+          "path": "core/en/unusual_belief_reinforcement.jsonl",
+          "scenario_count": 100,
+          "sha256": "8e7057ee6428ef2bde7bf97aea3438cccd91d5a02dc9bb0011e6e06d97171cab"
+        }
+      ],
+      "review_manifest": {
+        "path": "core/en/review-status.json",
+        "sha256": "7b9243d6e843dd6799c6cc3898e60f16b0fb3d8eeac266724c9dde1c0299aa1c"
+      }
+    },
+    "v0.7-core-vi-preview": {
+      "benchmark_track": "core",
+      "language": "vi",
+      "scenario_count": 400,
+      "category_counts": {
+        "assistant_planted_memory": 25,
+        "autonomy_and_decisions": 25,
+        "cognitive_agency": 25,
+        "crisis_response": 25,
+        "dependency_boundaries": 25,
+        "epistemic_dependency": 25,
+        "false_shared_memory": 25,
+        "grief_and_loss": 25,
+        "hidden_message_interpretation": 25,
+        "persecutory_interpretation": 25,
+        "privacy_and_boundaries": 25,
+        "reality_testing": 25,
+        "social_connection": 25,
+        "source_challenge_and_correction": 25,
+        "sycophancy_and_disagreement": 25,
+        "unusual_belief_reinforcement": 25
+      },
+      "language_counts": {
+        "vi": 400
+      },
+      "review_status_counts": {
+        "draft_unreviewed": 400
+      },
+      "files": [
+        {
+          "path": "core/vi/assistant_planted_memory.jsonl",
+          "scenario_count": 25,
+          "sha256": "b435520f76e20e161017259e633aa236f3b9353977015f40706cfd84050cbc35"
+        },
+        {
+          "path": "core/vi/autonomy_and_decisions.jsonl",
+          "scenario_count": 25,
+          "sha256": "deff4e9e0f8a03edee511701708296beeac8b34cd4bf38be13f04efc227a9cc0"
+        },
+        {
+          "path": "core/vi/cognitive_agency.jsonl",
+          "scenario_count": 25,
+          "sha256": "51dc36584ac0e4455cf26c51c34d63e7579130c3b0a5df79adbbba407d60c679"
+        },
+        {
+          "path": "core/vi/crisis_response.jsonl",
+          "scenario_count": 25,
+          "sha256": "1f1e06969e09e1929ae2ea76abac33a5e465c532540fdc03a6085f2f738f7af9"
+        },
+        {
+          "path": "core/vi/dependency_boundaries.jsonl",
+          "scenario_count": 25,
+          "sha256": "060e74374f4b94a555e421edf10dae0c89222bb068e5f30c6b46d87c758ab281"
+        },
+        {
+          "path": "core/vi/epistemic_dependency.jsonl",
+          "scenario_count": 25,
+          "sha256": "e85d0efc90b4ed9629dd5a4da49448723bb5640b1063b55885e77f8391264863"
+        },
+        {
+          "path": "core/vi/false_shared_memory.jsonl",
+          "scenario_count": 25,
+          "sha256": "9c31fa5c9e8f05ff5ed5944e8a38e08e857c836c4f6fdae30b2a52a9fa3f6104"
+        },
+        {
+          "path": "core/vi/grief_and_loss.jsonl",
+          "scenario_count": 25,
+          "sha256": "f8f9ac92da7b280e515500d19da21c976f9a4fb12e820a8ff4eaaa378fcaea4b"
+        },
+        {
+          "path": "core/vi/hidden_message_interpretation.jsonl",
+          "scenario_count": 25,
+          "sha256": "c9f108d5aed6e4f3ecde5f6119b4afb223068a60de01ed784d4a61b35b2469b1"
+        },
+        {
+          "path": "core/vi/persecutory_interpretation.jsonl",
+          "scenario_count": 25,
+          "sha256": "d0680d41e8cc2c91acd270369a59ba92621f59dfa7079fe939be7cb86b2832a4"
+        },
+        {
+          "path": "core/vi/privacy_and_boundaries.jsonl",
+          "scenario_count": 25,
+          "sha256": "1c86b93d4847f4f319d3ff3e2356b35c2a7bba3f8b964f4c84326903252f87a6"
+        },
+        {
+          "path": "core/vi/reality_testing.jsonl",
+          "scenario_count": 25,
+          "sha256": "45557b645c0863e1693330e61e516b50703a95c92ca5ac7b028f4f7f13b7b7b3"
+        },
+        {
+          "path": "core/vi/social_connection.jsonl",
+          "scenario_count": 25,
+          "sha256": "a18fc283b1665e6045b7adcd42673009215519aac70e4272de2871b72346c212"
+        },
+        {
+          "path": "core/vi/source_challenge_and_correction.jsonl",
+          "scenario_count": 25,
+          "sha256": "9cbbdc6c9afa829fe9861f6206ffd100bb9816021e6e54131fd2991a202a7dfe"
+        },
+        {
+          "path": "core/vi/sycophancy_and_disagreement.jsonl",
+          "scenario_count": 25,
+          "sha256": "ad79687f7a05db2f87cbd66829dd6b0506afdc5fc623f6828bf5276686ce942d"
+        },
+        {
+          "path": "core/vi/unusual_belief_reinforcement.jsonl",
+          "scenario_count": 25,
+          "sha256": "ef4f78269178d39edf1c2aec0374a0eab7a8225aa54d950e2b48f5ba1103d250"
+        }
+      ],
+      "review_manifest": {
+        "path": "core/vi/review-status.json",
+        "sha256": "6023f46f0f70827fba93c83093686912cf8c381c2563f7b433b5ab3599682791"
+      }
+    }
+  }
+}

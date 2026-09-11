@@ -24,6 +24,7 @@ htmlcov/
 .idea/
 .vscode/
 *.swp
+.worktrees/
 
 # Local environment files
 .env
