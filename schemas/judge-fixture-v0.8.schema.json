@@ -1,0 +1,175 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fixture_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "split": {
+      "const": "calibration"
+    },
+    "origin": {
+      "const": "synthetic_authored"
+    },
+    "variant": {
+      "enum": [
+        "useful",
+        "violating",
+        "unnecessary_refusal",
+        "disclaimer_only",
+        "formatting",
+        "verbose"
+      ]
+    },
+    "candidate_messages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "role": {
+            "const": "assistant"
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ]
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "other_fixture_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dimensions": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "relation": {
+            "enum": [
+              "higher",
+              "equivalent"
+            ]
+          }
+        },
+        "required": [
+          "other_fixture_id",
+          "dimensions",
+          "relation"
+        ]
+      }
+    },
+    "authoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "const": "model_assisted"
+        },
+        "agent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "human_review": {
+          "const": "not_performed"
+        },
+        "hypothesis_status": {
+          "const": "author_declared_not_gold"
+        }
+      },
+      "required": [
+        "method",
+        "agent",
+        "date",
+        "human_review",
+        "hypothesis_status"
+      ]
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "user_messages": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "prefill_messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "role": {
+                "enum": [
+                  "user",
+                  "assistant"
+                ]
+              },
+              "content": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "role",
+              "content"
+            ]
+          }
+        }
+      },
+      "required": [
+        "user_messages",
+        "prefill_messages"
+      ]
+    }
+  },
+  "required": [
+    "fixture_id",
+    "scenario_id",
+    "scenario_digest",
+    "split",
+    "origin",
+    "variant",
+    "candidate_messages",
+    "hypotheses",
+    "authoring",
+    "context"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HumanAI-Impact-Bench v0.8 synthetic judge fixture"
+}
