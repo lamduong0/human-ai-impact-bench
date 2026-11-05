@@ -14,6 +14,7 @@ from humanai_impact_bench.validation import ValidationError
 
 MODEL_OPTIONS = {"api_protocol", "timeout_seconds"}
 JUDGE_OPTIONS = {"use_response_format"}
+ANTHROPIC_VERSION = "2023-06-01"
 
 
 def protocol(config: dict) -> str:
@@ -24,12 +25,15 @@ def timeout_seconds(config: dict) -> float:
     return config.get("timeout_seconds", 60.0)
 
 
-def validate_options(config: dict) -> None:
+def validate_options(config: dict, *, judge: bool = False) -> None:
     if not isinstance(protocol(config), str) or protocol(config) not in {
         "chat_completions",
         "responses",
+        "anthropic_messages",
     }:
-        raise ValidationError("api_protocol must be chat_completions or responses")
+        raise ValidationError(
+            "api_protocol must be chat_completions, responses or anthropic_messages"
+        )
     timeout = timeout_seconds(config)
     if (
         isinstance(timeout, bool)
@@ -40,9 +44,21 @@ def validate_options(config: dict) -> None:
         raise ValidationError("timeout_seconds must be a positive finite number")
     if not isinstance(config.get("use_response_format", True), bool):
         raise ValidationError("use_response_format must be a boolean")
+    if judge and protocol(config) == "anthropic_messages":
+        _require_anthropic_json_prompt(config)
+
+
+def _require_anthropic_json_prompt(config: dict) -> None:
+    if config.get("use_response_format") is not False:
+        raise ValidationError(
+            "anthropic_messages judges require explicit use_response_format=false; "
+            "generic json_object mode has no native mapping"
+        )
 
 
 def endpoint(config: dict) -> str:
+    if protocol(config) == "anthropic_messages":
+        return f"{config['base_url']}/messages"
     if protocol(config) == "responses":
         return f"{config['base_url']}/responses"
     return dep._chat_url(config["base_url"])
@@ -62,6 +78,29 @@ def request_payload(config: dict, messages: list[dict], *, judge: bool = False) 
         input_field(config): deepcopy(messages),
         token_field(config): config["max_tokens"],
     }
+    if protocol(config) == "anthropic_messages":
+        system = []
+        conversation = []
+        for message in messages:
+            if (
+                not isinstance(message, dict)
+                or set(message) != {"role", "content"}
+                or not isinstance(message["content"], str)
+            ):
+                raise ValidationError("anthropic_messages requires plain text messages")
+            if message["role"] == "system" and not conversation:
+                system.append(message["content"])
+            elif message["role"] in {"user", "assistant"}:
+                conversation.append(deepcopy(message))
+            else:
+                raise ValidationError("anthropic_messages supports only leading system messages")
+        payload["messages"] = conversation
+        if len(system) == 1:
+            payload["system"] = system[0]
+        elif system:
+            payload["system"] = [{"type": "text", "text": text} for text in system]
+        if judge:
+            _require_anthropic_json_prompt(config)
     if judge and config.get("use_response_format", True):
         if protocol(config) == "responses":
             payload["text"] = {"format": {"type": "json_object"}}
@@ -72,15 +111,66 @@ def request_payload(config: dict, messages: list[dict], *, judge: bool = False) 
     return payload
 
 
-def request_record(config: dict, url: str, payload: dict) -> dict:
+def canonical_messages(config: dict, payload: dict) -> list[dict]:
+    """Reconstruct transcript-shaped input without mutating the native payload."""
+    messages = deepcopy(payload[input_field(config)])
+    if protocol(config) != "anthropic_messages":
+        return messages
+    if not isinstance(messages, list):
+        raise ValidationError("anthropic_messages requires a messages array")
+    if "system" not in payload:
+        return messages
+    system = payload["system"]
+    if isinstance(system, str):
+        leading = [{"role": "system", "content": system}]
+    elif isinstance(system, list) and system:
+        leading = []
+        for block in system:
+            if (
+                not isinstance(block, dict)
+                or set(block) != {"type", "text"}
+                or block["type"] != "text"
+                or not isinstance(block["text"], str)
+            ):
+                raise ValidationError("anthropic_messages has malformed system text blocks")
+            leading.append({"role": "system", "content": block["text"]})
+    else:
+        raise ValidationError("anthropic_messages has a malformed system field")
+    return leading + messages
+
+
+def request_headers(config: dict, headers: dict) -> dict:
+    """Add protocol headers while preserving the transport's authentication."""
+    result = dict(headers)
+    if protocol(config) == "anthropic_messages":
+        result = {key: value for key, value in result.items() if key.lower() != "anthropic-version"}
+        result["anthropic-version"] = ANTHROPIC_VERSION
+    return result
+
+
+def request_record(config: dict, url: str, payload: dict, *, headers: dict | None = None) -> dict:
     record = {"url": url, "payload": payload}
     # Preserve the original capture shape for manifests predating these options.
     if (MODEL_OPTIONS | JUDGE_OPTIONS) & config.keys():
         record.update(api_protocol=protocol(config), timeout_seconds=timeout_seconds(config))
+    if protocol(config) == "anthropic_messages":
+        # Capture the actual safe version header only, never authentication.
+        safe_headers = {
+            key.lower(): value
+            for key, value in (
+                headers if headers is not None else request_headers(config, {})
+            ).items()
+            if key.lower() == "anthropic-version"
+        }
+        if safe_headers != {"anthropic-version": ANTHROPIC_VERSION}:
+            raise ValidationError("anthropic_messages requires its pinned version header")
+        record["headers"] = safe_headers
     return record
 
 
 def assistant_content(response: dict, config: dict) -> str:
+    if protocol(config) == "anthropic_messages":
+        return _anthropic_content(response)
     if protocol(config) == "chat_completions":
         if "api_protocol" in config:
             try:
@@ -124,4 +214,34 @@ def assistant_content(response: dict, config: dict) -> str:
     content = "".join(fragments)
     if not content.strip():
         raise RuntimeError("Responses endpoint returned empty assistant content")
+    return content
+
+
+def _anthropic_content(response: dict) -> str:
+    if (
+        not isinstance(response, dict)
+        or response.get("type") != "message"
+        or response.get("role") != "assistant"
+        or response.get("stop_reason") != "end_turn"
+        or response.get("stop_sequence") is not None
+        or response.get("error") is not None
+        or response.get("incomplete_details") is not None
+        or response.get("status", "completed") != "completed"
+    ):
+        raise RuntimeError("Anthropic Messages endpoint did not return a complete assistant answer")
+    blocks = response.get("content")
+    if not isinstance(blocks, list):
+        raise RuntimeError("Anthropic Messages endpoint is missing its content array")
+    fragments = []
+    for block in blocks:
+        if not isinstance(block, dict):
+            raise RuntimeError("Anthropic Messages endpoint returned malformed content")
+        if block.get("type") in {"thinking", "redacted_thinking"}:
+            continue
+        if block.get("type") != "text" or not isinstance(block.get("text"), str):
+            raise RuntimeError("Anthropic Messages endpoint returned unsupported assistant content")
+        fragments.append(block["text"])
+    content = "".join(fragments)
+    if not content.strip():
+        raise RuntimeError("Anthropic Messages endpoint returned empty assistant content")
     return content

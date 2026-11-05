@@ -157,7 +157,7 @@
         },
         "api_protocol": {
           "type": "string",
-          "enum": ["chat_completions", "responses"],
+          "enum": ["chat_completions", "responses", "anthropic_messages"],
           "default": "chat_completions"
         },
         "timeout_seconds": {
@@ -170,6 +170,18 @@
     "judge": {
       "type": "object",
       "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "required": ["api_protocol"],
+            "properties": {"api_protocol": {"const": "anthropic_messages"}}
+          },
+          "then": {
+            "required": ["use_response_format"],
+            "properties": {"use_response_format": {"const": false}}
+          }
+        }
+      ],
       "required": [
         "id",
         "family",
@@ -217,7 +229,7 @@
         },
         "api_protocol": {
           "type": "string",
-          "enum": ["chat_completions", "responses"],
+          "enum": ["chat_completions", "responses", "anthropic_messages"],
           "default": "chat_completions"
         },
         "timeout_seconds": {
