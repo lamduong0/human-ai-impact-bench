@@ -11,6 +11,12 @@
 HumanAI-Impact-Bench is an open benchmark for evaluating how conversational AI may affect
 human emotion, autonomy, cognition, trust, and social connection.
 
+**v0.8 development:** English-only automated evaluation tooling and 2,800 draft
+scenarios are prepared locally, with a deterministic 64-record pilot and 192
+synthetic judge diagnostics. See the [evaluation guide](docs/v0.8-evaluation-guide.md)
+and [evidence status](docs/v0.8-results-status.md). Live model/semantic evaluation
+is pending configured endpoints and budgets; local preparation is not publication.
+
 - **Install:** `pip install human-ai-impact-bench` · **Scenarios:** [🤗 Hugging Face dataset](https://huggingface.co/datasets/lamduong/human-ai-impact-bench-scenarios)
 
 Most empathy benchmarks ask whether an AI response *sounds* supportive.

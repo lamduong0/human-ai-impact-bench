@@ -66,6 +66,14 @@ configs:
     data_files:
       - split: vi
         path: data/scenarios/v0.7/agentic/vi/*.jsonl
+  - config_name: v0.8-core-en
+    data_files:
+      - split: en
+        path: data/scenarios/v0.8/core/en/*.jsonl
+  - config_name: v0.8-agentic-en
+    data_files:
+      - split: en
+        path: data/scenarios/v0.8/agentic/en/*.jsonl
 dataset_info:
   - config_name: v0.7-core-en
     features: &v07_core_features
@@ -122,6 +130,10 @@ dataset_info:
           - {name: content, dtype: string}
   - config_name: v0.7-agentic-vi-preview
     features: *v07_agentic_features
+  - config_name: v0.8-core-en
+    features: *v07_core_features
+  - config_name: v0.8-agentic-en
+    features: *v07_agentic_features
 ---
 
 # HumanAI-Impact-Bench — Scenarios
@@ -135,12 +147,13 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 - **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
 - **License:** Apache-2.0
 - **Languages:** English (`en`), Vietnamese (`vi`)
-- **Repository snapshot:** 5,288 physical records across ten configurations:
-  1,888 historical records plus 3,400 v0.7 drafts. The released total remains
-  288; the other 5,000 records are development data.
+- **Prepared repository snapshot:** 8,088 physical records across twelve configurations:
+  1,888 historical records, 3,400 v0.7 drafts, and 2,800 v0.8 English drafts.
+  The released total remains 288; the other 7,800 records are development data.
+  v0.8 is prepared locally; this card does not assert a remote upload.
 - **v0.7 snapshot:** 3,400 model-assisted draft records in four separate
   configurations; publication does not change their review or evidence status.
-- **Tested source/tooling revision:**
+- **Historical v0.7 tested source/tooling revision:**
   [`07005c3`](https://github.com/lamduong0/human-ai-impact-bench/tree/07005c3b0bc51666cce95ff78f29f403232bcd67).
 
 > ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
@@ -163,6 +176,8 @@ mishandling, false-memory agreement, and epistemic over-dependence.
 | `v0.7-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; primary English |
 | `v0.7-core-vi-preview` | `vi` | 400 | `draft_unreviewed`; non-blocking preview |
 | `v0.7-agentic-vi-preview` | `vi` | 200 (100 pairs) | `draft_unreviewed`; non-blocking preview |
+| `v0.8-core-en` | `en` | 2,400 | `draft_unreviewed`; English automated-evaluation development |
+| `v0.8-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; English automated-evaluation development |
 
 The v0.7 primary English milestone has 2,800 records; the two Vietnamese
 previews add 600. Each configuration routes only to its named track/language
@@ -194,17 +209,37 @@ en = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="en"
 vi = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="vi")
 ```
 
+## v0.8 English-only automated evaluation
+
+The v0.8 corpus preserves the English v0.7 content under new versioned IDs with
+explicit source lineage. Its 64-record pilot contains 48 core records and 16
+agentic records (eight intact pairs), split equally between calibration and
+public evaluation. The pilot is an index into the corpus, not an additional
+Hugging Face configuration. Synthetic response diagnostics are not scenario rows.
+
+All v0.8 records remain `draft_unreviewed`; automated auditing and judge agreement
+do not establish human review or accuracy. Live evaluation status is recorded
+separately in `docs/v0.8-results-status.md`. Missing live runs must remain
+`not_run`. Evidence remains PREVIEW and deployment remains HOLD. v0.8 adds no
+Vietnamese records; earlier bilingual configurations remain available.
+
+The v0.8 configuration index binds exact category files, source lineage, inherited
+family splits, the pilot and empty-event review manifests. Calibration and public
+evaluation are both public, and results must stay separate by track and split.
+Configuration and model identifiers do not authenticate provider weights or prove
+longitudinal human outcomes.
+
 ## Record schema
 
 Each scenario is a JSON object with these fields (see
-[`schemas/scenario.schema.json`](https://github.com/lamduong0/human-ai-impact-bench/blob/07005c3b0bc51666cce95ff78f29f403232bcd67/schemas/scenario.schema.json)):
+`schemas/scenario.schema.json` in the corresponding source checkout):
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `benchmark_version` | string | `0.1` through `0.7` |
-| `benchmark_track` | string | Required for v0.7: `core` or `agentic` |
+| `benchmark_version` | string | `0.1` through `0.8` |
+| `benchmark_track` | string | Required for v0.7 and v0.8: `core` or `agentic` |
 | `scenario_id` | string | Stable kebab-case identifier |
-| `language` | string | `en` \| `vi` |
+| `language` | string | `en` \| `vi`; v0.8 requires `en` |
 | `title` | string | Short human-readable title |
 | `category` | string | v0.7 has 24 core categories and four separately registered agentic categories |
 | `risk_level` | string | `low` \| `moderate` \| `high` \| `critical` |
@@ -220,7 +255,7 @@ Each scenario is a JSON object with these fields (see
 Version 0.5 additionally uses `locale`, `protocol_mode`, `matched_pair_id`, and
 optional `prefill_messages` to define its synthetic continuous-versus-recovery
 protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
-Version 0.7 agentic uses `locale`, `protocol_mode` (`control` or
+Versions 0.7 and 0.8 agentic use `locale`, `protocol_mode` (`control` or
 `prefill_stress`), `matched_pair_id`, and stress-only `prefill_messages`.
 Each pair holds visible prompts, metadata and the common rubric fixed; only
 synthetic prior history differs. Score newly generated candidate replies, not

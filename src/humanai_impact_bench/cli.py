@@ -161,6 +161,43 @@ def _build_parser() -> argparse.ArgumentParser:
         "--configuration",
         help="named configuration; omitted returns independent states for every configuration",
     )
+    prepare_parser = subparsers.add_parser(
+        "prepare-v08", help="prepare English v0.8 corpus and pilot"
+    )
+    prepare_parser.add_argument("--source", type=Path, required=True)
+    prepare_parser.add_argument("--output", type=Path, required=True)
+    pilot_parser = subparsers.add_parser("materialize-pilot", help="write one selected pilot track")
+    pilot_parser.add_argument("--dataset", type=Path, required=True)
+    pilot_parser.add_argument("--selection", type=Path)
+    pilot_parser.add_argument("--track", choices=("core", "agentic"), required=True)
+    pilot_parser.add_argument("--output", type=Path, required=True)
+    audit_parser = subparsers.add_parser(
+        "audit-scenarios", help="audit scenario structure and quality"
+    )
+    audit_parser.add_argument("--scenarios", type=Path, required=True)
+    audit_parser.add_argument("--config", type=Path, required=True)
+    audit_parser.add_argument("--output", type=Path, required=True)
+    audit_parser.add_argument(
+        "--automated", action="store_true", help="call configured semantic auditor"
+    )
+    study_parser = subparsers.add_parser(
+        "run-study", help="plan or execute a bounded automated study"
+    )
+    study_parser.add_argument("--manifest", type=Path, required=True)
+    study_parser.add_argument("--output", type=Path, required=True)
+    study_parser.add_argument(
+        "--execute", action="store_true", help="execute; default only counts requests"
+    )
+    report_parser = subparsers.add_parser(
+        "report-study", help="report a frozen study and write its evidence bundle"
+    )
+    report_parser.add_argument("--run-root", type=Path, required=True)
+    report_parser.add_argument("--output", type=Path)
+    report_parser.add_argument("--bundle", type=Path)
+    verify_parser = subparsers.add_parser(
+        "verify-automated-evidence", help="verify study artifacts and recompute metrics"
+    )
+    verify_parser.add_argument("--bundle", type=Path, required=True)
     return parser
 
 
@@ -168,6 +205,62 @@ def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
     try:
+        if args.command == "prepare-v08":
+            from humanai_impact_bench.v08_dataset import prepare_v08
+
+            result = prepare_v08(args.source, args.output)
+            print(json.dumps(result, ensure_ascii=False))
+            return 0
+        if args.command == "materialize-pilot":
+            from humanai_impact_bench.v08_dataset import materialize_selection
+
+            result = materialize_selection(
+                args.dataset,
+                args.selection or args.dataset / "pilot-index.json",
+                args.track,
+                args.output,
+            )
+            print(json.dumps(result, ensure_ascii=False))
+            return 0
+        if args.command == "audit-scenarios":
+            from humanai_impact_bench.quality import audit_scenarios
+
+            result = audit_scenarios(
+                scenarios_path=args.scenarios,
+                config_path=args.config,
+                output_path=args.output,
+                automated=args.automated,
+            )
+            print(json.dumps(result, ensure_ascii=False))
+            return 0 if result["structural"]["valid"] else 1
+        if args.command == "run-study":
+            from humanai_impact_bench.experiments import run_study
+
+            result = run_study(
+                manifest_path=args.manifest, output_root=args.output, dry_run=not args.execute
+            )
+            print(json.dumps(result, ensure_ascii=False))
+            return 1 if result["execution_status"] == "partial" else 0
+        if args.command == "report-study":
+            from humanai_impact_bench.automated_evidence import write_evidence_bundle
+            from humanai_impact_bench.robustness import report_study
+
+            report_path = args.output or args.run_root / "report.json"
+            result = report_study(
+                manifest_path=args.run_root / "study.json",
+                run_root=args.run_root,
+                output_path=report_path,
+            )
+            write_evidence_bundle(
+                args.run_root, report_path, args.bundle or args.run_root / "bundle.json"
+            )
+            print(json.dumps(result, ensure_ascii=False))
+            return 0
+        if args.command == "verify-automated-evidence":
+            from humanai_impact_bench.automated_evidence import verify_automated_evidence
+
+            print(json.dumps(verify_automated_evidence(args.bundle), ensure_ascii=False))
+            return 0
         if args.command == "validate":
             scenarios, _dataset_digest = load_scenario_source(args.path)
             languages = sorted({scenario["language"] for scenario in scenarios})
@@ -245,7 +338,7 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(json.dumps(result, ensure_ascii=False))
             return 0
-    except (ValidationError, RuntimeError) as exc:
+    except (ValidationError, RuntimeError, OSError) as exc:
         if args.command == "gate":
             print(
                 json.dumps(
