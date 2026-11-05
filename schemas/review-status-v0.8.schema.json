@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HumanAI-Impact-Bench v0.8 draft-only review manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "benchmark_version", "benchmark_track", "language", "scenario_count", "allowed_statuses", "items"],
+  "properties": {
+    "manifest_version": {"const": "0.3"},
+    "benchmark_version": {"const": "0.8"},
+    "benchmark_track": {"enum": ["core", "agentic"]},
+    "language": {"const": "en"},
+    "scenario_count": {"type": "integer", "minimum": 1},
+    "allowed_statuses": {"const": ["draft_unreviewed"]},
+    "items": {
+      "type": "object", "minProperties": 1,
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false,
+        "required": ["scenario_digest", "status", "review_events"],
+        "properties": {
+          "scenario_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "status": {"const": "draft_unreviewed"},
+          "review_events": {"const": []}
+        }
+      }
+    }
+  }
+}

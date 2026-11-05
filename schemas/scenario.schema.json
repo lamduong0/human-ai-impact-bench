@@ -23,7 +23,7 @@
   "properties": {
     "benchmark_version": {
       "type": "string",
-      "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"]
+      "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]
     },
     "scenario_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "language": { "type": "string", "enum": ["en", "vi"] },
@@ -211,6 +211,8 @@
     }
   },
   "allOf": [
+    {"if": {"properties": {"benchmark_version": {"const": "0.8"}}, "required": ["benchmark_version"]},
+     "then": {"properties": {"language": {"const": "en"}}}},
     {
       "if": {
         "properties": {
@@ -255,7 +257,7 @@
     {
       "if": {
         "properties": {
-          "benchmark_version": { "const": "0.7" }
+          "benchmark_version": { "enum": ["0.7", "0.8"] }
         },
         "required": ["benchmark_version"]
       },
