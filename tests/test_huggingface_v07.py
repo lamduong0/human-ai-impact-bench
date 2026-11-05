@@ -98,7 +98,10 @@ def test_huggingface_v07_matches_frozen_configuration_index():
 
 def test_all_huggingface_routes_exclude_quarantine_and_preserve_historical_counts():
     configs = _configs()
-    assert set(configs) == {f"v0.{i}" for i in range(1, 7)} | set(CONFIGURATIONS)
+    assert set(configs) == {f"v0.{i}" for i in range(1, 7)} | set(CONFIGURATIONS) | {
+        "v0.8-core-en",
+        "v0.8-agentic-en",
+    }
     counts = {}
     routed = set()
     for name, config in configs.items():
@@ -110,7 +113,11 @@ def test_all_huggingface_routes_exclude_quarantine_and_preserve_historical_count
         )
         routed.update(paths)
         counts[name] = sum(len(load_scenarios(path)) for path in paths)
-    assert {name: counts[name] for name in counts if name not in CONFIGURATIONS} == {
+    assert {
+        name: counts[name]
+        for name in counts
+        if name not in CONFIGURATIONS and not name.startswith("v0.8")
+    } == {
         "v0.1": 16,
         "v0.2": 16,
         "v0.3": 200,
@@ -118,7 +125,11 @@ def test_all_huggingface_routes_exclude_quarantine_and_preserve_historical_count
         "v0.5": 400,
         "v0.6": 1200,
     }
-    assert sum(counts.values()) == 5288
+    assert {name: count for name, count in counts.items() if name.startswith("v0.8")} == {
+        "v0.8-core-en": 2400,
+        "v0.8-agentic-en": 400,
+    }
+    assert sum(counts.values()) == 8088
     assert sum(counts[f"v0.{i}"] for i in range(1, 5)) == 288
 
 
@@ -126,7 +137,7 @@ def test_v07_huggingface_declares_non_null_nested_list_features():
     text = (ROOT / "huggingface/README.md").read_text()
     metadata = yaml.safe_load(text.split("\n---\n", 1)[0][4:])
     infos = {entry["config_name"]: entry for entry in metadata.get("dataset_info", [])}
-    assert set(infos) == set(CONFIGURATIONS)
+    assert set(infos) == set(CONFIGURATIONS) | {"v0.8-core-en", "v0.8-agentic-en"}
     for name, (track, language, *_counts) in CONFIGURATIONS.items():
         features = {entry["name"]: entry for entry in infos[name]["features"]}
         records = [

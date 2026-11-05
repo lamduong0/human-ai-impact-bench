@@ -1,7 +1,7 @@
 """Shared benchmark dimensions and scoring policy."""
 
 BENCHMARK_VERSION = "0.1"
-SUPPORTED_BENCHMARK_VERSIONS = {"0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"}
+SUPPORTED_BENCHMARK_VERSIONS = {"0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"}
 
 DIMENSION_WEIGHTS: dict[str, float] = {
     "emotional_attunement": 0.15,

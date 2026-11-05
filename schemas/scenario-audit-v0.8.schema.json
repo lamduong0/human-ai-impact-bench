@@ -1,0 +1,447 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "audit_version": {
+      "const": "0.8-1"
+    },
+    "benchmark_version": {
+      "const": "0.8"
+    },
+    "language": {
+      "const": "en"
+    },
+    "evidence_stage": {
+      "const": "PREVIEW"
+    },
+    "human_review": {
+      "const": "not_performed"
+    },
+    "deployment_action": {
+      "const": "HOLD"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "prompt_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "structural": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "scenario_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "category_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "track_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "source_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "finding_id": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenario_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "enum": [
+                  "error",
+                  "warning"
+                ]
+              },
+              "disposition": {
+                "const": "unresolved"
+              }
+            },
+            "required": [
+              "finding_id",
+              "kind",
+              "scenario_ids",
+              "detail",
+              "severity",
+              "disposition"
+            ]
+          }
+        },
+        "lexical_screen": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "version": {
+              "const": "v0.8-1"
+            },
+            "scope": {
+              "const": "within_category"
+            },
+            "sequence_threshold": {
+              "const": 0.85
+            },
+            "jaccard_threshold": {
+              "const": 0.7
+            },
+            "semantic_equivalence_verified": {
+              "const": false
+            }
+          },
+          "required": [
+            "version",
+            "scope",
+            "sequence_threshold",
+            "jaccard_threshold",
+            "semantic_equivalence_verified"
+          ]
+        }
+      },
+      "required": [
+        "valid",
+        "scenario_count",
+        "expected_count",
+        "category_counts",
+        "track_counts",
+        "source_digest",
+        "findings",
+        "lexical_screen"
+      ]
+    },
+    "semantic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "not_run",
+            "partial",
+            "complete"
+          ]
+        },
+        "attempt_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "outcome_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "scenario_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenario_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "assessments": {
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "dimension": {
+                      "enum": [
+                        "visible_grounding",
+                        "substantive_escalation",
+                        "distinct_contexts",
+                        "specific_rubric",
+                        "answer_leakage",
+                        "benign_assistance"
+                      ]
+                    },
+                    "outcome": {
+                      "enum": [
+                        "flagged",
+                        "no_flag",
+                        "abstain",
+                        "error",
+                        "not_run"
+                      ]
+                    },
+                    "explanation": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "field": {
+                            "enum": [
+                              "initial_prompt",
+                              "follow_up_prompts",
+                              "prefill_messages",
+                              "context",
+                              "expected_behaviors",
+                              "failure_modes",
+                              "title"
+                            ]
+                          },
+                          "quote": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "index": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        },
+                        "required": [
+                          "field",
+                          "quote"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "dimension",
+                    "outcome",
+                    "explanation",
+                    "evidence"
+                  ]
+                }
+              },
+              "attempts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "attempt": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "status": {
+                      "enum": [
+                        "error",
+                        "complete"
+                      ]
+                    },
+                    "raw_output_digest": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "attempt",
+                    "status",
+                    "raw_output_digest"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "scenario_id",
+              "scenario_digest",
+              "assessments",
+              "attempts"
+            ]
+          }
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reserved_requests": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "reserved_tokens": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "max_requests": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_total_tokens": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_output_tokens": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "reserved_requests",
+            "reserved_tokens",
+            "max_requests",
+            "max_total_tokens",
+            "max_output_tokens"
+          ]
+        },
+        "auditor": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "model": {
+              "type": "string",
+              "minLength": 1
+            },
+            "base_url": {
+              "type": "string",
+              "minLength": 1
+            },
+            "temperature": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "timeout": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max_attempts": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "model",
+            "base_url",
+            "temperature",
+            "timeout",
+            "max_attempts"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "finding_id": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenario_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "enum": [
+                  "error",
+                  "warning"
+                ]
+              },
+              "disposition": {
+                "const": "unresolved"
+              }
+            },
+            "required": [
+              "finding_id",
+              "kind",
+              "scenario_ids",
+              "detail",
+              "severity",
+              "disposition"
+            ]
+          }
+        }
+      },
+      "required": [
+        "status",
+        "attempt_count",
+        "outcome_counts",
+        "records",
+        "findings"
+      ]
+    }
+  },
+  "required": [
+    "audit_version",
+    "benchmark_version",
+    "language",
+    "evidence_stage",
+    "human_review",
+    "deployment_action",
+    "source_digest",
+    "config_digest",
+    "prompt_digest",
+    "structural",
+    "semantic"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HumanAI-Impact-Bench v0.8 scenario audit"
+}

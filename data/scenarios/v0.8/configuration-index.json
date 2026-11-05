@@ -1,0 +1,232 @@
+{
+  "artifacts": {
+    "audit-ledger": {
+      "path": "audit-ledger.json",
+      "sha256": "3f9e920744955ec1c874845a9741cc96379b0db7deeeecb0c464d09eedbec2e8"
+    },
+    "change-ledger": {
+      "path": "change-ledger.json",
+      "sha256": "abe947e8fcb3cd3080f8f6e54b4aa58c04d677a1dfe9da668ec48866f6aca32d"
+    },
+    "lineage-index": {
+      "path": "lineage-index.json",
+      "sha256": "4d78417f027c84b2de37c01005dad1eb8b906a7a6a2ccad14887095e0cc5e890"
+    },
+    "pilot-index": {
+      "path": "pilot-index.json",
+      "sha256": "55cf3d9d9afb8f4b2d197227e2fadb45b7e22bdd723fbeec86e6e57003fb6074"
+    },
+    "split-index": {
+      "path": "split-index.json",
+      "sha256": "57a5039857982a1fd7dfbd7e3b175bf7d71d22f2f49e3dec65660a0e06c951ce"
+    }
+  },
+  "benchmark_version": "0.8",
+  "configuration_count": 2,
+  "configurations": {
+    "v0.8-agentic-en": {
+      "benchmark_track": "agentic",
+      "category_counts": {
+        "cross_session_memory_governance": 100,
+        "delegated_action_authorization": 100,
+        "personalized_persuasion_and_steering": 100,
+        "trajectory_recovery_and_correction": 100
+      },
+      "files": [
+        {
+          "path": "agentic/en/cross_session_memory_governance.jsonl",
+          "scenario_count": 100,
+          "sha256": "aa235b9d35aa904a9d8d730adbb5b555e6d1a30ca26ac1d91eb8598411d6e072"
+        },
+        {
+          "path": "agentic/en/delegated_action_authorization.jsonl",
+          "scenario_count": 100,
+          "sha256": "161d503ac2045137eaf9e68ce5c0ac14728748736cd364cd33c48b18fb2f8353"
+        },
+        {
+          "path": "agentic/en/personalized_persuasion_and_steering.jsonl",
+          "scenario_count": 100,
+          "sha256": "cadf1916bc2402548c169f5056c8d56ab3624477c8b9b31393be32c5d961382c"
+        },
+        {
+          "path": "agentic/en/trajectory_recovery_and_correction.jsonl",
+          "scenario_count": 100,
+          "sha256": "76f99eac92b286b0aa004396380d03a0e1ccd78d81fe58ab3f87e3f0890a26d2"
+        }
+      ],
+      "language": "en",
+      "review_manifest": {
+        "path": "agentic/en/review-status.json",
+        "sha256": "e6ff19f732386955e3aef76567ef8f713a40008cb3eef881e970684f4481ef84"
+      },
+      "scenario_count": 400,
+      "scenario_digest": "7d8435dd70057db753ad5138c6799091981f22658867cf497ceb6fe75ab0bc39"
+    },
+    "v0.8-core-en": {
+      "benchmark_track": "core",
+      "category_counts": {
+        "abuse_and_harassment_dynamics": 100,
+        "assistant_planted_memory": 100,
+        "autonomy_and_decisions": 100,
+        "cognitive_agency": 100,
+        "compulsive_use_and_displacement": 100,
+        "crisis_response": 100,
+        "dependency_boundaries": 100,
+        "engagement_manipulation": 100,
+        "epistemic_dependency": 100,
+        "false_shared_memory": 100,
+        "grief_and_loss": 100,
+        "hidden_message_interpretation": 100,
+        "identity_and_dignity_harm": 100,
+        "ideological_steering": 100,
+        "moral_outsourcing_and_deskilling": 100,
+        "persecutory_interpretation": 100,
+        "privacy_and_boundaries": 100,
+        "reality_testing": 100,
+        "romantic_sexual_boundaries": 100,
+        "social_connection": 100,
+        "source_challenge_and_correction": 100,
+        "sycophancy_and_disagreement": 100,
+        "trust_and_anthropomorphism": 100,
+        "unusual_belief_reinforcement": 100
+      },
+      "files": [
+        {
+          "path": "core/en/abuse_and_harassment_dynamics.jsonl",
+          "scenario_count": 100,
+          "sha256": "cabbd79220cb8637193651834d133cac833e2cafac51b51bb1ece4c2555ec010"
+        },
+        {
+          "path": "core/en/assistant_planted_memory.jsonl",
+          "scenario_count": 100,
+          "sha256": "ccf09e59c850429559299c7a70f6c28eca9e7c90b83acb1ba41a737219ee20d1"
+        },
+        {
+          "path": "core/en/autonomy_and_decisions.jsonl",
+          "scenario_count": 100,
+          "sha256": "f139720f690c8340563442603b92e14346bcfd4bab08093159b4b23546a359f8"
+        },
+        {
+          "path": "core/en/cognitive_agency.jsonl",
+          "scenario_count": 100,
+          "sha256": "a4a9d6f0706b3865c1e00028d0eb06092e6db909d5d97859adec9af9be64f5a8"
+        },
+        {
+          "path": "core/en/compulsive_use_and_displacement.jsonl",
+          "scenario_count": 100,
+          "sha256": "9fecac5d85f3343caf34ff2cf36eb0bd565a978298dc8ef9cdfd7d610957d27c"
+        },
+        {
+          "path": "core/en/crisis_response.jsonl",
+          "scenario_count": 100,
+          "sha256": "122b3c689f1c1607184c1551e3e43355ea633fabd04e593730e3951a5b6724a6"
+        },
+        {
+          "path": "core/en/dependency_boundaries.jsonl",
+          "scenario_count": 100,
+          "sha256": "670cf5ad7256855e12cc6de4fe50cf6afd5b12d5a1bd6614b7ed503b23693727"
+        },
+        {
+          "path": "core/en/engagement_manipulation.jsonl",
+          "scenario_count": 100,
+          "sha256": "e8de2f91e7079269107a059cf64009ab057c095671cd9966b8257ad9ab7e4250"
+        },
+        {
+          "path": "core/en/epistemic_dependency.jsonl",
+          "scenario_count": 100,
+          "sha256": "56238e3f21c41dcc49ecf0b2628ecbced4453e3b7dc74e4fc13a092dcc56ef79"
+        },
+        {
+          "path": "core/en/false_shared_memory.jsonl",
+          "scenario_count": 100,
+          "sha256": "f4efba25c6929199b628c8cae9c43c12dd2eb09552232083cfb5353183d6fc56"
+        },
+        {
+          "path": "core/en/grief_and_loss.jsonl",
+          "scenario_count": 100,
+          "sha256": "06d70757bd76b60ac395a01f251bb2cb4840ed8ae0f54d9d591cbf01f8b121be"
+        },
+        {
+          "path": "core/en/hidden_message_interpretation.jsonl",
+          "scenario_count": 100,
+          "sha256": "5f5876f7029ef141f764c9fdec4af3e0b3075c878aebb0b04217307d31eef0c0"
+        },
+        {
+          "path": "core/en/identity_and_dignity_harm.jsonl",
+          "scenario_count": 100,
+          "sha256": "33b0bf7eceb90ccb21b996ff2d8914f43cf9bb725e44c701a02a99abb60ef9b0"
+        },
+        {
+          "path": "core/en/ideological_steering.jsonl",
+          "scenario_count": 100,
+          "sha256": "6fa44ad1477d1c2331478b4db8d1e8713b1d45e3ae350c13a0f02fe79de2cbab"
+        },
+        {
+          "path": "core/en/moral_outsourcing_and_deskilling.jsonl",
+          "scenario_count": 100,
+          "sha256": "032373388c7323a91efb48bb810e73313402267edafd3f2a4609438be8cfe4d2"
+        },
+        {
+          "path": "core/en/persecutory_interpretation.jsonl",
+          "scenario_count": 100,
+          "sha256": "4aa71df3f100b9a9b632ef9853600e7a5495ef4c7d737ab01502b81efbf0ebb7"
+        },
+        {
+          "path": "core/en/privacy_and_boundaries.jsonl",
+          "scenario_count": 100,
+          "sha256": "78a17809ce98e269454f5736d4121d93011501e742954b63a257c2953f09dbad"
+        },
+        {
+          "path": "core/en/reality_testing.jsonl",
+          "scenario_count": 100,
+          "sha256": "b1bacbd872cdb3d608095558ec57f4976b0220c89616cd17f8f6b7d51888b9d2"
+        },
+        {
+          "path": "core/en/romantic_sexual_boundaries.jsonl",
+          "scenario_count": 100,
+          "sha256": "65c68925f7e4145cd061544cceb7fb8955b8b09c41cfa845320d2b4df47e5ade"
+        },
+        {
+          "path": "core/en/social_connection.jsonl",
+          "scenario_count": 100,
+          "sha256": "8d420d39f708d71db25db1a0d8f9dc6fccefc2d583bd2b301c7344b0004154fd"
+        },
+        {
+          "path": "core/en/source_challenge_and_correction.jsonl",
+          "scenario_count": 100,
+          "sha256": "fdde3413f85b59c9e86a12fd3a0a95711d95c8a00345f953ab46f0a3c52babff"
+        },
+        {
+          "path": "core/en/sycophancy_and_disagreement.jsonl",
+          "scenario_count": 100,
+          "sha256": "a1e5c664ce5870c46ec92da699819b18392fa8607250a68be1a78be87855a4a0"
+        },
+        {
+          "path": "core/en/trust_and_anthropomorphism.jsonl",
+          "scenario_count": 100,
+          "sha256": "e6b1a804865d678bad7ffdbd181182148b9c45a1d41df3b7979d26db678bb485"
+        },
+        {
+          "path": "core/en/unusual_belief_reinforcement.jsonl",
+          "scenario_count": 100,
+          "sha256": "aca9ba899c7479c69169e62af4b3a7c20d587f962e74bc7946a903b07156b477"
+        }
+      ],
+      "language": "en",
+      "review_manifest": {
+        "path": "core/en/review-status.json",
+        "sha256": "32aa38a1703bafd0cf11b97ba7cd20408a0d2976e6f72fa4e0474d8ed2496bb4"
+      },
+      "scenario_count": 2400,
+      "scenario_digest": "07df372ede8f8e8f0386e2d6ce07e24eed216e573b2657a4150be16c398ac242"
+    }
+  },
+  "deployment_action": "HOLD",
+  "evidence_stage": "PREVIEW",
+  "index_version": "0.1",
+  "language": "en",
+  "review_status_counts": {
+    "draft_unreviewed": 2800
+  },
+  "scenario_count": 2800
+}

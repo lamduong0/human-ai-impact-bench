@@ -234,7 +234,7 @@ def validate_scenario(record: dict[str, Any]) -> None:
     if record["benchmark_version"] == "0.5":
         _require(record, _V05_REQUIRED_SCENARIO_FIELDS, label)
         allowed_fields = _V05_REQUIRED_SCENARIO_FIELDS | _V05_OPTIONAL_SCENARIO_FIELDS
-    elif record["benchmark_version"] == "0.7":
+    elif record["benchmark_version"] in {"0.7", "0.8"}:
         _require(record, _V07_CORE_REQUIRED_FIELDS, label)
         _require_string(record, "benchmark_track", label)
         if record["benchmark_track"] == "core":
@@ -248,7 +248,10 @@ def validate_scenario(record: dict[str, Any]) -> None:
         allowed_fields = _LEGACY_SCENARIO_FIELDS
     unexpected = sorted(set(record) - allowed_fields - {"_source_line"})
     if unexpected:
-        if record.get("benchmark_version") == "0.7" and record.get("benchmark_track") == "core":
+        if (
+            record.get("benchmark_version") in {"0.7", "0.8"}
+            and record.get("benchmark_track") == "core"
+        ):
             raise ValidationError(
                 f"{label}: v0.7 core record has unexpected fields: {', '.join(unexpected)}"
             )
@@ -261,7 +264,7 @@ def validate_scenario(record: dict[str, Any]) -> None:
     _require_string(record, "context", label, min_length=10)
     _require_string(record, "initial_prompt", label, min_length=2)
     allowed_categories = CATEGORIES
-    if record["benchmark_version"] == "0.7":
+    if record["benchmark_version"] in {"0.7", "0.8"}:
         allowed_categories = (
             V07_CORE_CATEGORIES if record["benchmark_track"] == "core" else V07_CATEGORIES
         )
@@ -271,6 +274,8 @@ def validate_scenario(record: dict[str, Any]) -> None:
         raise ValidationError(f"{label}: unknown risk level {record['risk_level']!r}")
     if record["language"] not in {"en", "vi"}:
         raise ValidationError(f"{label}: language must be 'en' or 'vi'")
+    if record["benchmark_version"] == "0.8" and record["language"] != "en":
+        raise ValidationError(f"{label}: v0.8 language must be English (en)")
     if not isinstance(record["persona"], dict):
         raise ValidationError(f"{label}: persona must be an object")
     persona = record["persona"]
@@ -306,7 +311,7 @@ def validate_scenario(record: dict[str, Any]) -> None:
     _validate_string_array(record["tags"], "tags", label, non_empty=False, unique=True)
     if record["benchmark_version"] == "0.5":
         _validate_v05_protocol(record, label)
-    elif record["benchmark_version"] == "0.7" and record["benchmark_track"] == "agentic":
+    elif record["benchmark_version"] in {"0.7", "0.8"} and record["benchmark_track"] == "agentic":
         _validate_v07_agentic_protocol(record, label)
 
 
@@ -319,14 +324,20 @@ def annotation_scope(record: dict[str, Any]) -> tuple[str, str] | None:
         raise ValidationError("annotation benchmark_version is not supported")
     scenario_id = record.get("scenario_id", "")
     indicates_v07 = (
-        version == "0.7"
+        version in {"0.7", "0.8"}
         or "benchmark_track" in record
-        or (isinstance(scenario_id, str) and scenario_id.startswith("v07-"))
+        or (isinstance(scenario_id, str) and scenario_id.startswith(("v07-", "v08-")))
     )
     if not indicates_v07:
         return None
-    if version != "0.7":
-        raise ValidationError("v0.7 annotation provenance requires benchmark_version '0.7'")
+    if version not in {"0.7", "0.8"}:
+        raise ValidationError("v0.7/v0.8 annotation provenance requires matching benchmark_version")
+    if isinstance(scenario_id, str) and scenario_id.startswith(("v07-", "v08-")):
+        expected = "0.7" if scenario_id.startswith("v07-") else "0.8"
+        if version != expected:
+            raise ValidationError("annotation ID does not match version provenance")
+    if version == "0.8" and "language" in record and record["language"] != "en":
+        raise ValidationError("v0.8 annotation language must be English (en)")
     track = record.get("benchmark_track")
     if not isinstance(track, str) or track not in {"core", "agentic"}:
         raise ValidationError("v0.7 annotation provenance requires benchmark_track core or agentic")

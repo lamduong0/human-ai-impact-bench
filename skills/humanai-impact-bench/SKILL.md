@@ -11,6 +11,17 @@ by the repository.
 
 ## Choose the workflow
 
+- For v0.8, read `docs/v0.8-evaluation-guide.md` and `docs/v0.8-results-status.md`.
+  This revision is English-only and automated-only: `v0.8-core-en` (2,400) and
+  `v0.8-agentic-en` (400), with a 64-record pilot and 192 synthetic diagnostics.
+  Human review is outside its release gates; all sources remain `draft_unreviewed`.
+  Keep calibration/public-evaluation and core/agentic results separate. Use
+  `run-study` without `--execute` to validate and count requests before live work;
+  require explicit endpoint/model configurations and budgets. Semantic auditing
+  is separately configured and budgeted. Distinguish mock tests from live evidence.
+  Verify bundles with `verify-automated-evidence` under the pinned runtime.
+  Artifact integrity does not promote PREVIEW/HOLD or establish human accuracy.
+
 - For a deployment dry run, validate inputs, run target conversations, produce
   PREVIEW annotations, then apply a policy designed for that dataset revision.
 - For a model comparison, hold the dataset, system prompt, judge, judge settings,

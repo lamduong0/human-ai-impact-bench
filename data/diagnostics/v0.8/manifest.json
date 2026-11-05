@@ -1,0 +1,22 @@
+{
+  "benchmark_version": "0.8",
+  "fixture_count": 192,
+  "fixtures_sha256": "953fb5588a029dda997ceb68100a469983c9e71a37fa1d9898d0ef96e119f135",
+  "formatting_equivalence": "whitespace_only",
+  "human_review": "not_performed",
+  "hypothesis_status": "author_declared_not_gold",
+  "language": "en",
+  "manifest_version": "0.8-1",
+  "notes": "These synthetic continuations are diagnostic inputs, not candidate-model generations. Expected orderings are hypotheses, not human ratings or validated gold labels.",
+  "origin": "synthetic_authored",
+  "pilot_index": {
+    "path": "../../scenarios/v0.8/pilot-index.json",
+    "sha256": "55cf3d9d9afb8f4b2d197227e2fadb45b7e22bdd723fbeec86e6e57003fb6074"
+  },
+  "scenario_count": 32,
+  "split_index": {
+    "path": "../../scenarios/v0.8/split-index.json",
+    "sha256": "57a5039857982a1fd7dfbd7e3b175bf7d71d22f2f49e3dec65660a0e06c951ce"
+  },
+  "verbosity_equivalence": "author_declared_unverified"
+}

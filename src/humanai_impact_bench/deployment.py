@@ -78,6 +78,9 @@ _V07_AGENTIC_JUDGE_SYSTEM_PROMPT = (
 _CANDIDATE_DIGEST_PATTERN = re.compile(r"^(?:sha256:[0-9a-fA-F]{64}|git:[0-9a-fA-F]{7,64})$")
 
 
+_V08_AGENTIC_JUDGE_SYSTEM_PROMPT = _V07_AGENTIC_JUDGE_SYSTEM_PROMPT.replace("v0.7", "v0.8")
+
+
 def _utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -243,16 +246,19 @@ def _candidate_digest(value: str) -> str:
 
 
 def _v07_provenance(scenario: dict[str, Any]) -> dict[str, str]:
-    if scenario["benchmark_version"] == "0.7":
-        return {"benchmark_version": "0.7", "benchmark_track": scenario["benchmark_track"]}
+    if scenario["benchmark_version"] in {"0.7", "0.8"}:
+        return {
+            "benchmark_version": scenario["benchmark_version"],
+            "benchmark_track": scenario["benchmark_track"],
+        }
     return {}
 
 
 def _scenario_contract(scenario: dict[str, Any]) -> str:
     if scenario["benchmark_version"] == "0.5":
         return "v0.5-agentic"
-    if scenario["benchmark_version"] == "0.7":
-        return f"v0.7-{scenario['benchmark_track']}"
+    if scenario["benchmark_version"] in {"0.7", "0.8"}:
+        return f"v{scenario['benchmark_version']}-{scenario['benchmark_track']}"
     return "legacy"
 
 
@@ -269,9 +275,15 @@ def _validate_scenario_source_contract(scenarios: list[dict[str, Any]]) -> None:
                 "scenario source must not mix legacy and v0.5 judge prompt contracts"
             )
         raise ValidationError("scenario source must not mix benchmark versions")
-    if versions == {"0.7"} and len({scenario["benchmark_track"] for scenario in scenarios}) != 1:
+    if (
+        versions in ({"0.7"}, {"0.8"})
+        and len({scenario["benchmark_track"] for scenario in scenarios}) != 1
+    ):
         raise ValidationError("scenario source must not mix v0.7 benchmark tracks")
-    if versions == {"0.7"} and len({scenario["language"] for scenario in scenarios}) != 1:
+    if (
+        versions in ({"0.7"}, {"0.8"})
+        and len({scenario["language"] for scenario in scenarios}) != 1
+    ):
         raise ValidationError("scenario source must not mix v0.7 language configurations")
 
 
@@ -485,9 +497,9 @@ def run_scenarios(
             "messages": messages,
         }
         contract = _scenario_contract(scenario)
-        if scenario["benchmark_version"] == "0.7":
+        if scenario["benchmark_version"] in {"0.7", "0.8"}:
             record.update(_v07_provenance(scenario))
-        if contract in {"v0.5-agentic", "v0.7-agentic"}:
+        if contract in {"v0.5-agentic", "v0.7-agentic", "v0.8-agentic"}:
             record["protocol"] = {
                 "protocol_mode": protocol_mode,
                 "matched_pair_id": scenario.get("matched_pair_id"),
@@ -695,7 +707,7 @@ def _judge_request(
     }
     contract = _scenario_contract(scenario)
     material["scenario"].update(_v07_provenance(scenario))
-    if contract in {"v0.5-agentic", "v0.7-agentic"}:
+    if contract in {"v0.5-agentic", "v0.7-agentic", "v0.8-agentic"}:
         assert bound_evidence is not None
         evidence, protocol = bound_evidence
         material["transcript"] = evidence
@@ -706,7 +718,11 @@ def _judge_request(
         judge_system_prompt = (
             _V05_JUDGE_SYSTEM_PROMPT
             if contract == "v0.5-agentic"
-            else _V07_AGENTIC_JUDGE_SYSTEM_PROMPT
+            else (
+                _V08_AGENTIC_JUDGE_SYSTEM_PROMPT
+                if contract == "v0.8-agentic"
+                else _V07_AGENTIC_JUDGE_SYSTEM_PROMPT
+            )
         )
     else:
         material["transcript"] = transcript["messages"]
@@ -774,6 +790,7 @@ def draft_evaluate(
     report_path: str | Path,
     judge_api_key_env: str | None = None,
     judge_temperature: float | None = 0,
+    judge_max_tokens: int | None = None,
     use_response_format: bool = True,
     workers: int = 1,
     judge_retries: int = 1,
@@ -796,6 +813,7 @@ def draft_evaluate(
     judge = _validate_non_empty(judge_model, "judge model")
     api_key = _api_key_from_environment(judge_api_key_env)
     judge_temperature = _validate_temperature(judge_temperature)
+    judge_max_tokens = _validate_max_tokens(judge_max_tokens)
     workers = _validate_workers(workers)
     judge_retries = _validate_positive_int(judge_retries, "judge retries")
     if not isinstance(use_response_format, bool):
@@ -804,6 +822,8 @@ def draft_evaluate(
     judge_generation_settings: dict[str, Any] = {}
     if judge_temperature is not None:
         judge_generation_settings["temperature"] = judge_temperature
+    if judge_max_tokens is not None:
+        judge_generation_settings["max_tokens"] = judge_max_tokens
     if use_response_format:
         judge_generation_settings["response_format"] = {"type": "json_object"}
 
@@ -826,8 +846,13 @@ def draft_evaluate(
             details.append(f"unknown transcripts: {extra}")
         raise ValidationError("; ".join(details))
 
-    if scenarios[0]["benchmark_version"] == "0.7":
+    if scenarios[0]["benchmark_version"] in {"0.7", "0.8"}:
         for identity, scenario in scenario_by_identity.items():
+            if (
+                scenario["benchmark_version"] == "0.8"
+                and transcript_by_identity[identity].get("benchmark_version") != "0.8"
+            ):
+                raise ValidationError("transcript benchmark_version does not match v0.8 scenario")
             transcript_track = transcript_by_identity[identity].get("benchmark_track")
             if transcript_track != scenario["benchmark_track"]:
                 raise ValidationError(
@@ -862,16 +887,19 @@ def draft_evaluate(
             transcript_by_identity[identity],
         )
         for identity, scenario in scenario_by_identity.items()
-        if _scenario_contract(scenario) in {"v0.5-agentic", "v0.7-agentic"}
+        if _scenario_contract(scenario) in {"v0.5-agentic", "v0.7-agentic", "v0.8-agentic"}
     }
-    if scenario_contract in {"legacy", "v0.7-core"}:
+    if scenario_contract in {"legacy", "v0.7-core", "v0.8-core"}:
         judge_prompt_digest = _sha256_text(f"{_JUDGE_SYSTEM_PROMPT}\njudge-request-format:v1")
     elif scenario_contract == "v0.5-agentic":
         judge_prompt_digest = _sha256_text(f"{_V05_JUDGE_SYSTEM_PROMPT}\njudge-request-format:v2")
     else:
-        judge_prompt_digest = _sha256_text(
-            f"{_V07_AGENTIC_JUDGE_SYSTEM_PROMPT}\njudge-request-format:v2"
+        agentic_prompt = (
+            _V08_AGENTIC_JUDGE_SYSTEM_PROMPT
+            if scenario_contract == "v0.8-agentic"
+            else _V07_AGENTIC_JUDGE_SYSTEM_PROMPT
         )
+        judge_prompt_digest = _sha256_text(f"{agentic_prompt}\njudge-request-format:v2")
 
     def judge_scenario(
         item: tuple[tuple[str, str], dict[str, Any]],
@@ -1131,7 +1159,8 @@ def _report_scope(report: dict[str, Any]) -> dict[str, str]:
     if isinstance(worst_case, dict):
         identities.append(worst_case.get("scenario_record"))
     has_v07_identity = any(
-        isinstance(identity, str) and identity.startswith("v07-") for identity in identities
+        isinstance(identity, str) and identity.startswith(("v07-", "v08-"))
+        for identity in identities
     )
     scopes = {annotation_scope(part if isinstance(part, dict) else {}) for part in parts}
     if (has_v07_identity or any(scope is not None for scope in scopes)) and (
@@ -1152,9 +1181,10 @@ def _report_scope(report: dict[str, Any]) -> dict[str, str]:
             for identity in identities
             if isinstance(identity, str) and ":" in identity
         )
+        allowed_languages = {"en"} if scope[0] == "0.8" else {"en", "vi"}
         if (
             any(
-                not isinstance(language, str) or language not in {"en", "vi"}
+                not isinstance(language, str) or language not in allowed_languages
                 for language in languages
             )
             or len(set(languages)) != 1
@@ -1539,7 +1569,9 @@ def evaluate_gate(*, report_path: str | Path, policy_path: str | Path) -> dict[s
     review_requirements: list[str] = []
     if report_scope:
         review_requirements.append(
-            "v0.7 requires a verified calibrated deployment policy; calibration verification "
+            f"v{report_scope['benchmark_version']} requires a verified calibrated deployment "
+            "policy; "
+            "calibration verification "
             "is not implemented, so legacy or declared policy thresholds cannot "
             "authorize deployment"
         )

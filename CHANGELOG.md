@@ -17,6 +17,13 @@ the dataset revision does not create a new Python distribution version.
 
 ### Added
 
+- English-only v0.8 development configurations with 2,400 core and 400 agentic
+  draft scenarios, inherited family splits, immutable lineage and a 64-record pilot.
+- Structural and opt-in semantic audits, 192 authored synthetic judge diagnostics,
+  bounded study execution, raw-response capture, resumable attempt ledgers,
+  per-judge consistency reports and artifact/metric verification. Automated
+  evidence stays PREVIEW/HOLD; live inference and publication are separate.
+
 - Four locally prepared v0.7 dataset configurations: `v0.7-core-en` (2,400),
   `v0.7-agentic-en` (400), `v0.7-core-vi-preview` (400), and
   `v0.7-agentic-vi-preview` (200). All 3,400 records are model-assisted drafts;

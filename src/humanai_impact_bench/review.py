@@ -290,3 +290,53 @@ def validate_v07_review_manifest(
         "status_counts": dict(sorted(statuses.items())),
         "stale_review_count": stale_review_count,
     }
+
+
+def validate_v08_review_manifest(
+    scenarios_path: str | Path,
+    manifest_path: str | Path | dict[str, Any],
+) -> dict[str, Any]:
+    """Validate the intentionally draft-only English v0.8 manifest contract."""
+    scenarios = _load_scenario_set(scenarios_path)
+    manifest = _load_manifest(manifest_path)
+    if set(manifest) != _MANIFEST_FIELDS:
+        raise ValidationError("v0.8 review manifest has invalid fields")
+    if manifest["manifest_version"] != "0.3" or manifest["benchmark_version"] != "0.8":
+        raise ValidationError("v0.8 review requires manifest 0.3 and benchmark 0.8")
+    if manifest["language"] != "en" or manifest["benchmark_track"] not in {"core", "agentic"}:
+        raise ValidationError("v0.8 review requires an English core or agentic configuration")
+    if manifest["allowed_statuses"] != ["draft_unreviewed"]:
+        raise ValidationError("v0.8 automated-only review statuses must be draft_unreviewed")
+    if any(
+        r["benchmark_version"] != "0.8"
+        or r["language"] != "en"
+        or r["benchmark_track"] != manifest["benchmark_track"]
+        for r in scenarios
+    ):
+        raise ValidationError("v0.8 review scope does not match scenario data")
+    ids = [r["scenario_id"] for r in scenarios]
+    if (
+        len(ids) != len(set(ids))
+        or not isinstance(manifest["items"], dict)
+        or set(manifest["items"]) != set(ids)
+    ):
+        raise ValidationError("v0.8 review items must match unique scenario identities")
+    if type(manifest["scenario_count"]) is not int or manifest["scenario_count"] != len(scenarios):
+        raise ValidationError("v0.8 review scenario count mismatch")
+    for row in scenarios:
+        item = manifest["items"][row["scenario_id"]]
+        if not isinstance(item, dict) or set(item) != _ITEM_FIELDS:
+            raise ValidationError("v0.8 review item has invalid fields")
+        if item["status"] != "draft_unreviewed" or item["review_events"] != []:
+            raise ValidationError("v0.8 automated-only scenarios cannot claim human review")
+        if item["scenario_digest"] != scenario_digest(row):
+            raise ValidationError("v0.8 review scenario digest mismatch")
+    return {
+        "valid": True,
+        "benchmark_version": "0.8",
+        "benchmark_track": manifest["benchmark_track"],
+        "language": "en",
+        "scenario_count": len(scenarios),
+        "status_counts": {"draft_unreviewed": len(scenarios)},
+        "stale_review_count": 0,
+    }

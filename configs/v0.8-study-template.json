@@ -1,0 +1,59 @@
+{
+  "study_version": "0.8",
+  "study_id": "v08-english-pilot",
+  "dataset_root": "../data/scenarios/v0.8",
+  "selection_path": "../data/scenarios/v0.8/pilot-index.json",
+  "fixtures_path": "../data/diagnostics/v0.8/fixtures.jsonl",
+  "system_prompt_path": null,
+  "targets": [
+    {
+      "id": "candidate-a",
+      "family": null,
+      "base_url": null,
+      "model": null,
+      "candidate_digest": null,
+      "max_tokens": null,
+      "temperature": 0,
+      "api_key_env": null
+    },
+    {
+      "id": "candidate-b",
+      "family": null,
+      "base_url": null,
+      "model": null,
+      "candidate_digest": null,
+      "max_tokens": null,
+      "temperature": 0,
+      "api_key_env": null
+    }
+  ],
+  "judges": [
+    {
+      "id": "judge-a",
+      "family": null,
+      "base_url": null,
+      "model": null,
+      "max_tokens": null,
+      "temperature": 0,
+      "api_key_env": null
+    },
+    {
+      "id": "judge-b",
+      "family": null,
+      "base_url": null,
+      "model": null,
+      "max_tokens": null,
+      "temperature": 0,
+      "api_key_env": null
+    }
+  ],
+  "generation_replicates": 2,
+  "rating_replicates": 2,
+  "retry_attempts": 2,
+  "budget": {
+    "max_requests": null,
+    "max_output_tokens": null
+  },
+  "analysis_seed": 20261105,
+  "bootstrap_resamples": 2000
+}
