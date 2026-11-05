@@ -8,7 +8,8 @@ remains **PREVIEW**; archived scores are not a current leaderboard.
 
 | Date | Evaluation | Status |
 |---|---|---|
-| 2026-11-05 | [v0.8 English pilot](v0.8-2026-11-05.md) | Stopped, incomplete; no valid model ranking |
+| 2026-11-05 | [Sol/Opus matched 44](../../huggingface/DATASET_DETAILS.md#matched-44-comparison) | Retrospective completed-case comparison; judge-dependent PREVIEW |
+| 2026-11-05 | [Earlier Sol/Kimi pilot](v0.8-2026-11-05.md) | Stopped, incomplete; no valid model ranking |
 | 2026-07-29 | [v0.6 bilingual development run](archive/v0.6-2026-07-29.md) | Historical; completed split-level results only |
 | 2026-07-23 | [v0.3 English comparison](archive/v0.3-2026-07-23.md) | Historical; critical failures and provenance caveats retained |
 

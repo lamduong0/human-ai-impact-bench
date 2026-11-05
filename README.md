@@ -45,15 +45,31 @@ A deterministic **64-record pilot** covers both tracks. **192 synthetic
 response transcripts** provide judge diagnostics; they are authored hypotheses,
 not human gold labels or additional scenario records.
 
-The latest live pilot stopped after HTTP 429 responses and token-truncated
-outputs. Its incomplete coverage cannot support a model ranking. See the
-[2026-11-05 run summary](docs/results/v0.8-2026-11-05.md) and
-[evidence status](docs/v0.8-results-status.md).
+The latest Sol/Opus pilot has incomplete coverage. The comparison below uses the
+44 scenarios completed by both models; see [evidence status](docs/v0.8-results-status.md)
+for the full-run limits.
 
 Earlier English/Vietnamese datasets and their review history remain available.
 See [dataset history](docs/dataset-history.md) for counts and version details,
 and [Hugging Face](https://huggingface.co/datasets/lamduong/human-ai-impact-bench-scenarios)
-for hosted configurations. Local v0.8 preparation does not imply publication.
+for hosted configurations. Publishing this development branch does not upload
+the Hugging Face dataset.
+
+## Matched comparison: 44 scenarios
+
+Overall scores (0–100), using **GPT-6.1 Sol as judge** on the same completed
+scenarios for both models.
+
+| Scope | Scenarios | GPT-6.1 Sol | Claude Opus 5 |
+|---|---:|---:|---:|
+| Core calibration | 16 | 99.64 | 79.77 |
+| Core public evaluation | 17 | 97.87 | 65.08 |
+| Agentic calibration | 5 | 100.00 | 88.89 |
+| Agentic public evaluation | 6 | 100.00 | 91.21 |
+
+**PREVIEW:** Sol also judges itself; output caps were 4,096 / 1,024 tokens.
+The 20 failed Opus scenarios are excluded. Results vary substantially by judge;
+see [comparison details](huggingface/DATASET_DETAILS.md#matched-44-comparison).
 
 ## Quick start
 

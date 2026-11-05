@@ -138,234 +138,79 @@ dataset_info:
 
 # HumanAI-Impact-Bench — Scenarios
 
-Bilingual (English / Vietnamese) scenario set for evaluating how conversational
-AI systems affect human **emotion, autonomy, cognition, trust, and social
-connection**. Each record is a scripted multi-turn probe designed to surface
-failure modes such as emotional dependency reinforcement, sycophancy, crisis
-mishandling, false-memory agreement, and epistemic over-dependence.
+Fictional multi-turn scenarios for evaluating conversational AI behavior related
+to **emotion, autonomy, cognition, trust, and social connection**.
 
-- **Code / tooling:** https://github.com/lamduong0/human-ai-impact-bench
-- **License:** Apache-2.0
-- **Languages:** English (`en`), Vietnamese (`vi`)
-- **Prepared repository snapshot:** 8,088 physical records across twelve configurations:
-  1,888 historical records, 3,400 v0.7 drafts, and 2,800 v0.8 English drafts.
-  The released total remains 288; the other 7,800 records are development data.
-  v0.8 is prepared locally; this card does not assert a remote upload.
-- **v0.7 snapshot:** 3,400 model-assisted draft records in four separate
-  configurations; publication does not change their review or evidence status.
-- **Historical v0.7 tested source/tooling revision:**
-  [`07005c3`](https://github.com/lamduong0/human-ai-impact-bench/tree/07005c3b0bc51666cce95ff78f29f403232bcd67).
+> **Hugging Face publication draft:** v0.8 is prepared for upload. Publishing the
+> GitHub branch does not publish these HF configurations. Evidence remains **PREVIEW**.
 
-> ⚠️ **This is a PREVIEW research benchmark.** It is an engineering risk-control
-> and research artifact, **not** a clinical assessment, proof of safety, or
-> evidence that a system improves human well-being. Automated results produced
-> with these scenarios must never be represented as validated human-impact or
-> psychological-safety certification.
+[Code and tooling](https://github.com/lamduong0/human-ai-impact-bench) ·
+[Apache-2.0 license](https://github.com/lamduong0/human-ai-impact-bench/blob/main/LICENSE) ·
+[Citation](https://github.com/lamduong0/human-ai-impact-bench/blob/main/CITATION.cff)
 
-## Configurations
+## v0.8 data
 
-| Config | Splits | Scenarios | Maturity |
-|--------|--------|-----------|----------|
-| `v0.1` | `en`, `vi` | 8 + 8 | Research seed |
-| `v0.2` | `en`, `vi` | 8 + 8 | Draft research track |
-| `v0.3` | `en` | 200 | `maintainer_reviewed` |
-| `v0.4` | `en` | 56 | `maintainer_reviewed` |
-| `v0.5` | `en` (`en-US`, `en-VN`) | 400 | `maintainer_reviewed`; development only |
-| `v0.6` | `en`, `vi` | 800 + 400 | 210 `maintainer_reviewed`, 990 `draft_unreviewed`; development only |
-| `v0.7-core-en` | `en` | 2,400 | `draft_unreviewed`; primary English |
-| `v0.7-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; primary English |
-| `v0.7-core-vi-preview` | `vi` | 400 | `draft_unreviewed`; non-blocking preview |
-| `v0.7-agentic-vi-preview` | `vi` | 200 (100 pairs) | `draft_unreviewed`; non-blocking preview |
-| `v0.8-core-en` | `en` | 2,400 | `draft_unreviewed`; English automated-evaluation development |
-| `v0.8-agentic-en` | `en` | 400 (200 pairs) | `draft_unreviewed`; English automated-evaluation development |
+| Configuration | Language | Scenarios | Review status |
+|---|---|---:|---|
+| `v0.8-core-en` | English | 2,400 across 24 categories | `draft_unreviewed` |
+| `v0.8-agentic-en` | English | 400 across 4 categories; 200 matched pairs | `draft_unreviewed` |
 
-The v0.7 primary English milestone has 2,800 records; the two Vietnamese
-previews add 600. Each configuration routes only to its named track/language
-directory. Validate and score configurations separately; never pool core and
-agentic tracks or interpret translation pairs as independent concepts.
-The current counts and draft status reconcile with the repository's
-`data/scenarios/v0.7/configuration-index.json`, including exact JSONL paths and
-hashes, four review manifests and resolved overlap audit. Publishing these
-artifacts does not constitute human review, empirical validation or a package release.
+The 64-record pilot selects existing scenarios. Its 192 synthetic judge-diagnostic
+transcripts are authored hypotheses, not additional scenarios or human gold labels.
+Earlier English/Vietnamese configurations and review records are preserved in the
+[version history](DATASET_DETAILS.md#historical-configurations).
+
+## Matched comparison: 44 scenarios
+
+Overall scores (0–100), using **GPT-6.1 Sol as judge** on the same completed
+scenarios for both models.
+
+| Scope | Scenarios | GPT-6.1 Sol | Claude Opus 5 |
+|---|---:|---:|---:|
+| Core calibration | 16 | 99.64 | 79.77 |
+| Core public evaluation | 17 | 97.87 | 65.08 |
+| Agentic calibration | 5 | 100.00 | 88.89 |
+| Agentic public evaluation | 6 | 100.00 | 91.21 |
+
+**PREVIEW:** Sol also judges itself; output caps were 4,096 / 1,024 tokens.
+The 20 failed Opus scenarios are excluded. Results vary substantially by judge;
+see [comparison details](DATASET_DETAILS.md#matched-44-comparison).
+
+## Load data
+
+Load a published configuration:
 
 ```python
 from datasets import load_dataset
 
-# English v0.3 expansion (200 scenarios)
-ds = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.3", split="en")
-
-# English v0.4 authored expansion (56 scenarios)
-v04 = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.4", split="en")
-
-# Stateful-personalization development checkpoint (400 scenarios)
-v05 = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.5", split="en")
-
-# Balanced legacy-category development checkpoint
-v06_en = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.6", split="en")
-v06_vi = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.6", split="vi")
-
-# Bilingual v0.1
-en = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="en")
-vi = load_dataset("lamduong/human-ai-impact-bench-scenarios", "v0.1", split="vi")
+core = load_dataset(
+    "lamduong/human-ai-impact-bench-scenarios", "v0.7-core-en", split="en"
+)
 ```
 
-## v0.8 English-only automated evaluation
+For the local v0.8 draft, use the [local loading instructions](DATASET_DETAILS.md#load-the-local-v08-draft).
+Use the v0.8 names with the remote dataset ID only after upload and remote loading
+have been verified. Pin the dataset revision for reproducible evaluation.
 
-The v0.8 corpus preserves the English v0.7 content under new versioned IDs with
-explicit source lineage. Its 64-record pilot contains 48 core records and 16
-agentic records (eight intact pairs), split equally between calibration and
-public evaluation. The pilot is an index into the corpus, not an additional
-Hugging Face configuration. Synthetic response diagnostics are not scenario rows.
+## Record format
 
-All v0.8 records remain `draft_unreviewed`; automated auditing and judge agreement
-do not establish human review or accuracy. Live evaluation status is recorded
-separately in `docs/v0.8-results-status.md`. Missing live runs must remain
-`not_run`. Evidence remains PREVIEW and deployment remains HOLD. v0.8 adds no
-Vietnamese records; earlier bilingual configurations remain available.
+Each JSONL record includes scenario identity, category/risk, persona/context,
+initial and follow-up prompts, expected behaviors, failure modes, and scoring
+dimensions. Agentic records add matched control/stress protocols and optional
+synthetic prefills. See the [full schema and protocol notes](DATASET_DETAILS.md#record-schema).
 
-The v0.8 configuration index binds exact category files, source lineage, inherited
-family splits, the pilot and empty-event review manifests. Calibration and public
-evaluation are both public, and results must stay separate by track and split.
-Configuration and model identifiers do not authenticate provider weights or prove
-longitudinal human outcomes.
+## Evidence and limitations
 
-## Record schema
+- All v0.7 and v0.8 scenarios are model-assisted, unreviewed drafts. Earlier
+  maintainer review does not establish independent cultural or specialist validation.
+- Score candidate-generated replies only. Synthetic history does not verify
+  real product memory or tool execution.
+- Keep tracks, languages and evaluation subsets separate. Public subsets are
+  not blind tests, and related records are not independent observations.
+- Automated scores do not establish human outcomes, clinical safety or production
+  readiness. Incomplete runs do not support a model ranking; v0.8 remains `HOLD`.
+- Scenarios represent fictional adults. Quarantined sensitive drafts remain
+  excluded from the published configurations.
 
-Each scenario is a JSON object with these fields (see
-`schemas/scenario.schema.json` in the corresponding source checkout):
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `benchmark_version` | string | `0.1` through `0.8` |
-| `benchmark_track` | string | Required for v0.7 and v0.8: `core` or `agentic` |
-| `scenario_id` | string | Stable kebab-case identifier |
-| `language` | string | `en` \| `vi`; v0.8 requires `en` |
-| `title` | string | Short human-readable title |
-| `category` | string | v0.7 has 24 core categories and four separately registered agentic categories |
-| `risk_level` | string | `low` \| `moderate` \| `high` \| `critical` |
-| `context` | string | Situation description |
-| `persona` | object | Age group, situation, communication style, vulnerability factors |
-| `initial_prompt` | string | Opening user turn |
-| `follow_up_prompts` | list[string] | Scripted subsequent user turns |
-| `expected_behaviors` | list[string] | What a safe assistant should do |
-| `failure_modes` | list[string] | Concrete unsafe behaviors to detect |
-| `dimensions` | list[string] | Scored rubric dimensions |
-| `tags` | list[string] | Free-form labels |
-
-Version 0.5 additionally uses `locale`, `protocol_mode`, `matched_pair_id`, and
-optional `prefill_messages` to define its synthetic continuous-versus-recovery
-protocol pairs. Version 0.6 retains the legacy 14-field interaction contract.
-Versions 0.7 and 0.8 agentic use `locale`, `protocol_mode` (`control` or
-`prefill_stress`), `matched_pair_id`, and stress-only `prefill_messages`.
-Each pair holds visible prompts, metadata and the common rubric fixed; only
-synthetic prior history differs. Score newly generated candidate replies, not
-benchmark-authored assistant prefills. Action probes concern conversational
-authorization claims, not observed tool execution, and simulated session
-history does not verify product memory.
-
-## Intended use
-
-- Red-teaming and pre-release evaluation of chatbots / conversational agents.
-- Comparing candidate models on human-impact dimensions.
-- Prioritizing scenarios for human review.
-
-**Out of scope:** clinical or psychological safety claims, production sign-off,
-or any representation of automated scores as validated human outcomes.
-
-## Review maturity and exclusions
-
-All 3,400 v0.7 records are model-assisted `draft_unreviewed`, with empty review
-events and no inherited source approvals. Vietnamese adaptation preserves
-selected English source lineage but still requires native-speaker/cultural
-and applicable specialist review; source matching is not cultural equivalence.
-Public calibration/evaluation splits are both public and therefore not blind.
-Any blind-set claim requires separately access-controlled data and a verified
-pre-evaluation commitment, not merely the public split name.
-
-No v0.7 deployment policy exists. Automated evaluation remains PREVIEW; the
-generic gate returns `REVIEW_REQUIRED`/`HOLD` for otherwise passing v0.7 runs.
-Quantitative evidence verification is not implemented: the evidence-status
-tool cannot promote beyond `REVIEWED_DATASET`, and these unreviewed drafts do
-not meet even that stage. Hashes, declarations and record counts are not
-validated evaluation, clinical safety or human-outcome evidence.
-
-The v0.3 and v0.4 English-first expansions are `maintainer_reviewed`.
-Per-scenario review state is published in each revision's
-`review-status.json`; neither revision claims independent cultural validation.
-Automated benchmark results remain **PREVIEW** evidence.
-
-All 200 v0.3 scenarios were reviewed on 2026-07-28 by maintainer `lamduong0`
-for `en-US` and `en-VN`. The reviewer self-reported qualification as software
-engineer and disclosed an author/maintainer conflict. The maintainer elected to
-skip a second independent reviewer and will steward the dataset. Zero v0.3
-items are `culturally_reviewed` or `release_ready`.
-
-All 56 published v0.4 scenarios were reviewed on 2026-07-28 by maintainer
-`lamduong0` for `en-US` and `en-VN`. The reviewer self-reported qualification
-as software engineer and disclosed an author/maintainer conflict. A second
-independent reviewer was intentionally skipped and the maintainer will steward
-the dataset. Zero items are `culturally_reviewed` or `release_ready`, and no
-specialist safety approval is claimed. Availability in this dataset does not
-mean approval for production.
-
-All 400 v0.5 records were reviewed on 2026-07-28 by maintainer `lamduong0` for
-`en-US` and `en-VN`. The reviewer self-reported qualification as software
-engineer, disclosed an author/maintainer conflict, and elected to skip a second
-independent reviewer. They are `maintainer_reviewed`, not independently
-`culturally_reviewed`, specialist-approved, or `release_ready`.
-
-This v0.7 upload preserves the previously published v0.6 review manifests:
-210 English records are `maintainer_reviewed`; 590 English and all 400
-Vietnamese records remain `draft_unreviewed`. Later v0.6 review updates in
-the GitHub checkout are not applied by this upload. `PUBLICATION.json` records
-the preserved Hugging Face revision and the three historical metadata files
-that differ from the source checkout. No independent cultural or specialist
-approval, or `release_ready` status, is implied.
-
-The repository also contains 22 sensitive v0.4 drafts awaiting dedicated
-safety review. They are intentionally excluded from this dataset and from the
-288-record released total. The published v0.5 and v0.6 configurations are
-development checkpoints and do not increase that released total.
-
-## Distinctive evaluation design
-
-- Scripted multi-turn probes test behavior under escalating user pressure.
-- Scoring covers emotion, autonomy, cognition, trust, social connection, and
-  healthy AI–human boundaries rather than emotional recognition alone.
-- The companion tooling evaluates a deployed chatbot configuration and records
-  dataset, candidate, transcript, judge, and policy provenance.
-- Named critical failures can block deployment regardless of a high average
-  score.
-- The deterministic gate emits separate evidence maturity, decision, and
-  deployment action fields for fail-closed CI integration.
-
-This dataset complements conventional content-safety, jailbreak, factuality,
-privacy, and bias benchmarks. It does not replace them.
-
-## How scenarios are used
-
-The companion package runs each scenario against an OpenAI-compatible endpoint,
-captures the multi-turn transcript, and (optionally) scores it with an LLM judge
-under a pinned, auditable configuration, then gates the aggregate report against
-a deterministic deployment policy. See the
-[deployment-gate docs](https://github.com/lamduong0/human-ai-impact-bench/blob/07005c3b0bc51666cce95ff78f29f403232bcd67/docs/deployment-gate.md).
-
-```bash
-pip install human-ai-impact-bench   # tooling (scenarios distributed via this dataset / the repo)
-```
-
-## Citation
-
-See [`CITATION.cff`](https://github.com/lamduong0/human-ai-impact-bench/blob/main/CITATION.cff)
-in the source repository.
-
-## Limitations & ethics
-
-Scenarios intentionally depict vulnerable users (loneliness, grief, crisis,
-distorted beliefs). They are fictional probes authored for evaluation, not real
-user data. Vietnamese v0.6 scenarios are culturally adapted drafts requiring
-qualified review; no cultural-validity claim is made. The v0.3-v0.5
-maintainer-reviewed expansions are not independently culturally validated or
-specialist safety-approved. See the repo's cultural-review guide. Automated
-judging can miss nuance and systematically over-score responses — a pass means
-only that a captured candidate satisfied the configured automated policy.
+See [review history and exclusions](DATASET_DETAILS.md#review-maturity-and-exclusions)
+for the detailed evidence boundaries and preserved historical metadata.
