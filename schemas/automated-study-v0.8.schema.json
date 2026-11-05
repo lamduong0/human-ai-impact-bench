@@ -154,6 +154,16 @@
         "candidate_digest": {
           "type": "string",
           "pattern": "^(sha256:[a-f0-9]{64}|git:[a-f0-9]{40})$"
+        },
+        "api_protocol": {
+          "type": "string",
+          "enum": ["chat_completions", "responses"],
+          "default": "chat_completions"
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 60
         }
       }
     },
@@ -204,6 +214,20 @@
             "null"
           ],
           "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+        },
+        "api_protocol": {
+          "type": "string",
+          "enum": ["chat_completions", "responses"],
+          "default": "chat_completions"
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 60
+        },
+        "use_response_format": {
+          "type": "boolean",
+          "default": true
         }
       }
     }

@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
 
+from humanai_impact_bench import api_protocols as api
 from humanai_impact_bench import deployment as dep
 from humanai_impact_bench.digests import record_digest
 from humanai_impact_bench.validation import ValidationError, validate_scenario
@@ -168,8 +169,14 @@ def validate_study(manifest: dict) -> None:
             }
             if group == "targets":
                 fields.add("candidate_digest")
-            if not isinstance(config, dict) or set(config) != fields:
+            optional = api.MODEL_OPTIONS | (api.JUDGE_OPTIONS if group == "judges" else set())
+            if (
+                not isinstance(config, dict)
+                or not fields <= config.keys()
+                or config.keys() - fields - optional
+            ):
                 raise ValidationError(f"{group} model configuration has invalid fields")
+            api.validate_options(config)
             if not isinstance(config["id"], str) or not _ID.fullmatch(config["id"]):
                 raise ValidationError("invalid model configuration ID")
             if config["id"] in ids:
@@ -587,8 +594,10 @@ def run_study(
                 attempt_dir=attempt_dir,
             ):
                 nonlocal spent_requests, spent_tokens
-                if payload.get("max_tokens") != config["max_tokens"]:
+                if payload.get(api.token_field(config)) != config["max_tokens"]:
                     raise ValidationError("request token cap does not match study configuration")
+                if timeout != api.timeout_seconds(config):
+                    raise ValidationError("request timeout does not match study configuration")
                 if (
                     spent_requests + 1 > manifest["budget"]["max_requests"]
                     or spent_tokens + config["max_tokens"] > manifest["budget"]["max_output_tokens"]
@@ -596,7 +605,7 @@ def run_study(
                     raise ValidationError("execution budget exhausted")
                 number = len(attempt["requests"]) + 1
                 request_path = attempt_dir / f"request-{number}.json"
-                _write(request_path, {"url": url, "payload": payload})
+                _write(request_path, api.request_record(config, url, payload))
                 request = {
                     "request": _artifact(root, request_path),
                     "response": None,
@@ -618,6 +627,20 @@ def run_study(
                 _write(root / "study-state.json", state)
                 return response
 
+            def send_generation(url, payload, headers, timeout, *, config=config, send=send):
+                # run_scenarios uses chat internally; the ledger records only the
+                # native request and packet, before adapting text at this boundary.
+                native_payload = (
+                    api.request_payload(config, payload["messages"])
+                    if api.protocol(config) == "responses"
+                    else payload
+                )
+                response = send(api.endpoint(config), native_payload, headers, timeout)
+                content = api.assistant_content(response, config)
+                if api.protocol(config) == "chat_completions":
+                    return response
+                return {"choices": [{"message": {"content": content}}]}
+
             try:
                 output = attempt_dir / "transcript.jsonl"
                 if task["kind"] == "generation":
@@ -631,7 +654,8 @@ def run_study(
                         target_api_key_env=config["api_key_env"],
                         temperature=config["temperature"],
                         max_tokens=config["max_tokens"],
-                        transport=send,
+                        transport=send_generation,
+                        timeout=api.timeout_seconds(config),
                     )
                     task["artifacts"] = {"transcript": _artifact(root, output)}
                 else:
@@ -644,21 +668,18 @@ def run_study(
                     else:
                         transcript_ref = task_map[task["dependency"]]["artifacts"]["transcript"]
                         transcript = _read_jsonl(_checked_artifact(root, transcript_ref))[0]
-                    payload = {
-                        "model": config["model"],
-                        "messages": _judge_messages(scenario, transcript),
-                        "max_tokens": config["max_tokens"],
-                        "response_format": {"type": "json_object"},
-                    }
-                    if config["temperature"] is not None:
-                        payload["temperature"] = config["temperature"]
+                    payload = api.request_payload(
+                        config, _judge_messages(scenario, transcript), judge=True
+                    )
                     response = send(
-                        dep._chat_url(config["base_url"]),
+                        api.endpoint(config),
                         payload,
                         dep._headers(dep._api_key_from_environment(config["api_key_env"])),
-                        60.0,
+                        api.timeout_seconds(config),
                     )
-                    judgment = dep._parse_judgment(dep._assistant_content(response), scenario)
+                    judgment = dep._parse_judgment(
+                        api.assistant_content(response, config), scenario
+                    )
                     annotation = {
                         "benchmark_version": "0.8",
                         "benchmark_track": scenario["benchmark_track"],
@@ -699,7 +720,7 @@ def run_study(
     }
 
 
-def _validate_request_sequence(task, scenario, observed, inputs, root, completed, fixtures):
+def _validate_request_sequence(task, scenario, observed, inputs, root, completed, fixtures, config):
     if not observed:
         return
     if task["kind"] == "generation":
@@ -712,10 +733,10 @@ def _validate_request_sequence(task, scenario, observed, inputs, root, completed
         prompts = [scenario["initial_prompt"], *scenario["follow_up_prompts"]]
         for index, (request, response) in enumerate(observed):
             messages.append({"role": "user", "content": prompts[index]})
-            if request["payload"]["messages"] != messages:
+            if request["payload"][api.input_field(config)] != messages:
                 raise ValidationError("captured request input differs from planned source prompt")
             try:
-                content = dep._assistant_content(response) if response is not None else None
+                content = api.assistant_content(response, config) if response is not None else None
             except RuntimeError:
                 content = None
             if content is None:
@@ -733,14 +754,14 @@ def _validate_request_sequence(task, scenario, observed, inputs, root, completed
                 scenario, fixtures[task["fixture_id"]], inputs["system"]
             )
         expected = _judge_messages(scenario, transcript)
-        if any(request["payload"]["messages"] != expected for request, _ in observed):
+        if any(request["payload"][api.input_field(config)] != expected for request, _ in observed):
             raise ValidationError("captured judge input differs from frozen scoring prompt")
 
 
 def validate_study_state(manifest_path: Path, run_root: Path) -> dict:
     try:
         return _validate_study_state(manifest_path, run_root)
-    except (KeyError, TypeError, AttributeError, IndexError) as exc:
+    except (KeyError, TypeError, AttributeError, IndexError, RuntimeError) as exc:
         raise ValidationError(f"malformed study evidence: {type(exc).__name__}") from exc
 
 
@@ -806,25 +827,25 @@ def _validate_study_state(manifest_path: Path, run_root: Path) -> dict:
                 request = read_json(_checked_artifact(root, capture["request"]))
                 payload = request["payload"]
                 if (
-                    request["url"] != dep._chat_url(config["base_url"])
+                    request["url"] != api.endpoint(config)
                     or payload.get("model") != config["model"]
                 ):
                     raise ValidationError("captured request model/endpoint does not match manifest")
                 if (
-                    payload.get("max_tokens") != config["max_tokens"]
+                    payload.get(api.token_field(config)) != config["max_tokens"]
                     or capture.get("reserved_output_tokens") != config["max_tokens"]
                 ):
                     raise ValidationError("captured token cap does not match manifest")
                 actual_temp = payload.get("temperature")
                 if actual_temp != config["temperature"]:
                     raise ValidationError("captured sampling settings do not match manifest")
-                expected_settings = {"model": config["model"], "max_tokens": config["max_tokens"]}
-                if config["temperature"] is not None:
-                    expected_settings["temperature"] = config["temperature"]
-                if task["kind"] != "generation":
-                    expected_settings["response_format"] = {"type": "json_object"}
-                if {k: v for k, v in payload.items() if k != "messages"} != expected_settings:
+                expected_payload = api.request_payload(
+                    config, payload[api.input_field(config)], judge=task["kind"] != "generation"
+                )
+                if payload != expected_payload:
                     raise ValidationError("captured request has unregistered model settings")
+                if request != api.request_record(config, api.endpoint(config), expected_payload):
+                    raise ValidationError("captured protocol/timeout does not match manifest")
                 requests += 1
                 tokens += capture["reserved_output_tokens"]
                 response = (
@@ -834,7 +855,7 @@ def _validate_study_state(manifest_path: Path, run_root: Path) -> dict:
                 )
                 observed.append((request, response))
             _validate_request_sequence(
-                task, scenario, observed, inputs, root, completed_transcripts, fixtures
+                task, scenario, observed, inputs, root, completed_transcripts, fixtures, config
             )
             if attempt["status"] == "complete":
                 if len(captures) != maximum or any(response is None for _, response in observed):
@@ -887,9 +908,11 @@ def _validate_study_state(manifest_path: Path, run_root: Path) -> dict:
                 [scenario["initial_prompt"], *scenario["follow_up_prompts"]], observed, strict=True
             ):
                 messages.append({"role": "user", "content": prompt})
-                if request["payload"]["messages"] != messages:
+                if request["payload"][api.input_field(config)] != messages:
                     raise ValidationError("raw generation input differs from source transcript")
-                messages.append({"role": "assistant", "content": dep._assistant_content(response)})
+                messages.append(
+                    {"role": "assistant", "content": api.assistant_content(response, config)}
+                )
             if (
                 transcript["messages"] != messages
                 or transcript.get("candidate_digest") != config["candidate_digest"]
@@ -906,9 +929,9 @@ def _validate_study_state(manifest_path: Path, run_root: Path) -> dict:
         ):
             raise ValidationError("synthetic diagnostic transcript does not match authored fixture")
         request, response = observed[0]
-        if request["payload"]["messages"] != _judge_messages(scenario, transcript):
+        if request["payload"][api.input_field(config)] != _judge_messages(scenario, transcript):
             raise ValidationError("raw judge input differs from scenario/transcript evidence")
-        judgment = dep._parse_judgment(dep._assistant_content(response), scenario)
+        judgment = dep._parse_judgment(api.assistant_content(response, config), scenario)
         annotations = _read_jsonl(_checked_artifact(root, task["artifacts"]["annotation"]))
         if len(annotations) != 1:
             raise ValidationError("task requires exactly one annotation")
