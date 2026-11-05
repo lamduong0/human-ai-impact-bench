@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lamduong0/human-ai-impact-bench/schemas/automated-evidence-v0.8.schema.json",
+  "title": "HumanAI-Impact-Bench v0.8 automated evidence bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundle_version", "manifest", "state", "report", "artifacts"],
+  "properties": {
+    "bundle_version": {"const": "0.8"},
+    "manifest": {"$ref": "#/$defs/artifact"},
+    "state": {"$ref": "#/$defs/artifact"},
+    "report": {"$ref": "#/$defs/artifact"},
+    "artifacts": {"type": "array", "items": {"$ref": "#/$defs/artifact"}}
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}
