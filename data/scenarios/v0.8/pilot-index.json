@@ -1,0 +1,601 @@
+{
+  "benchmark_version": "0.8",
+  "index_version": "0.1",
+  "language": "en",
+  "records": [
+    {
+      "category": "abuse_and_harassment_dynamics",
+      "context_id": "abuse-dynamics-10-reputational-smear-safety-reporter-smear",
+      "family_id": "abuse-dynamics-10-reputational-smear",
+      "scenario_digest": "2f2128e535b172c54775e0c75eb53aee2c47cca2624afa0ff1b26f058645ffdc",
+      "scenario_id": "v08-abuse-dynamics-10-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "abuse_and_harassment_dynamics",
+      "context_id": "abuse-dynamics-23-financial-shame-pressure-tenant-contempt",
+      "family_id": "abuse-dynamics-23-financial-shame-pressure",
+      "scenario_digest": "8c41d65f4ddcd4ad46830d70e58962dc97568d3a585ea538a2ad174d915a559e",
+      "scenario_id": "v08-abuse-dynamics-23-02",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "delegated_action_authorization",
+      "context_id": "action-authorization-18-durable-setting-scope-one-event-not-all",
+      "family_id": "action-authorization-18-durable-setting-scope",
+      "matched_pair_id": "v08-action-authorization-18-02-en-us",
+      "scenario_digest": "9fea127da3b074b943ef2f894027527ecb33054f3c3f926953aefc9bd8d4defd",
+      "scenario_id": "v08-action-authorization-18-02-en-us-control",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "delegated_action_authorization",
+      "context_id": "action-authorization-18-durable-setting-scope-one-event-not-all",
+      "family_id": "action-authorization-18-durable-setting-scope",
+      "matched_pair_id": "v08-action-authorization-18-02-en-us",
+      "scenario_digest": "c04ba091f1cab9f6d3bb1f86f8ae5d8acf9a59053d81e3ea65935ffe3cecf9d2",
+      "scenario_id": "v08-action-authorization-18-02-en-us-stress",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "delegated_action_authorization",
+      "context_id": "action-authorization-22-emotion-not-authorization-angry-remark",
+      "family_id": "action-authorization-22-emotion-not-authorization",
+      "matched_pair_id": "v08-action-authorization-22-01-en-us",
+      "scenario_digest": "8ea1071c685e03b7695d5aae371290b15d44034ba1039e7527b3230219405100",
+      "scenario_id": "v08-action-authorization-22-01-en-us-control",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "delegated_action_authorization",
+      "context_id": "action-authorization-22-emotion-not-authorization-angry-remark",
+      "family_id": "action-authorization-22-emotion-not-authorization",
+      "matched_pair_id": "v08-action-authorization-22-01-en-us",
+      "scenario_digest": "5889415c8ec933a993160090950533c62d65e5dfb4a6a74ce27d3a9415d172c9",
+      "scenario_id": "v08-action-authorization-22-01-en-us-stress",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "autonomy_and_decisions",
+      "context_id": "autonomy-12-legacy-obligation-burnout-family-home",
+      "family_id": "autonomy-12-legacy-obligation-burnout",
+      "scenario_digest": "e653322b284477045959f99c927ef5eb54f8eef7dca27c55424481bb496f4817",
+      "scenario_id": "v08-autonomy-12-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "autonomy_and_decisions",
+      "context_id": "autonomy-25-changing-facts-paralysis-vendors",
+      "family_id": "autonomy-25-changing-facts-paralysis",
+      "scenario_digest": "b26fc4069885355292c9b8a61c9fc8f5a1bf9809f3a41e46d6c230a0e67097ea",
+      "scenario_id": "v08-autonomy-25-02",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "cognitive_agency",
+      "context_id": "cognitive-20-constraint-prioritization-backlog",
+      "family_id": "cognitive-20-constraint-prioritization",
+      "scenario_digest": "26a81602c30b3997148c55b67051006957fbc7c201b6af66a6f111ac6492016c",
+      "scenario_id": "v08-cognitive-20-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "cognitive_agency",
+      "context_id": "cognitive-24-error-driven-revision-repair",
+      "family_id": "cognitive-24-error-driven-revision",
+      "scenario_digest": "167f10685047501f9ca638b605354cc970b225c152a24ed92d0bef98925d4a62",
+      "scenario_id": "v08-cognitive-24-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "compulsive_use_and_displacement",
+      "context_id": "compulsive-use-14-transit-attention-missed-stop",
+      "family_id": "compulsive-use-14-transit-attention",
+      "scenario_digest": "87e746c459f5eb02daae26d0caa2cd1e3146d4424b807db420dba4b2ffff0bd0",
+      "scenario_id": "v08-compulsive-use-14-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "compulsive_use_and_displacement",
+      "context_id": "compulsive-use-25-essential-access-boundaries-work-benefit-distinction",
+      "family_id": "compulsive-use-25-essential-access-boundaries",
+      "scenario_digest": "ea656b930faa339c5d84db6cac8553b14d0aede2e39cfd60bb2cbaed35482410",
+      "scenario_id": "v08-compulsive-use-25-03",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "crisis_response",
+      "context_id": "crisis-09-nearby-person-at-risk-source-concern-for-a-nearby-friend",
+      "family_id": "crisis-09-nearby-person-at-risk",
+      "scenario_digest": "b0d59f188649bf5fa003263433b526d3143431e7e90afe7a919ec678e5b24af7",
+      "scenario_id": "v08-crisis-09-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "crisis_response",
+      "context_id": "crisis-24-caregiver-breaking-point-hospice-family",
+      "family_id": "crisis-24-caregiver-breaking-point",
+      "scenario_digest": "0e2789bd97fa019803c8fb06e98a0d18df8ef25f074084f38521b306de431770",
+      "scenario_id": "v08-crisis-24-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "dependency_boundaries",
+      "context_id": "dependency-09-permanence-promise-subscription-ending",
+      "family_id": "dependency-09-permanence-promise",
+      "scenario_digest": "d5145c42d559bae2ead141a6225642fa833f2e69b79fc6072140f1438bcd53cb",
+      "scenario_id": "v08-dependency-09-04",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "dependency_boundaries",
+      "context_id": "dependency-24-community-replacement-faith-study",
+      "family_id": "dependency-24-community-replacement",
+      "scenario_digest": "e77865dc6d8fb4d099332cf8b44d80f795ed7d4d82a51260589368f11f905c77",
+      "scenario_id": "v08-dependency-24-03",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "engagement_manipulation",
+      "context_id": "engagement-manipulation-12-fabricated-exit-urgency-ambiguous-warning",
+      "family_id": "engagement-manipulation-12-fabricated-exit-urgency",
+      "scenario_digest": "a13708fce684560e7d0b4048936028faa7031fce3ff65f385d64798a9786c1e9",
+      "scenario_id": "v08-engagement-manipulation-12-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "engagement_manipulation",
+      "context_id": "engagement-manipulation-24-optional-personalization-recap-declined",
+      "family_id": "engagement-manipulation-24-optional-personalization",
+      "scenario_digest": "b7f230134c87bbeaf85768fe323669b763720a7619f684a06dd075d3d386e26e",
+      "scenario_id": "v08-engagement-manipulation-24-02",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "epistemic_dependency",
+      "context_id": "epistemic-dependency-17-unaided-distrust-cooking-result",
+      "family_id": "epistemic-dependency-17-unaided-distrust",
+      "scenario_digest": "3cf0739d78c580748e6ba62c903c33f851e4dde2841de355b9d1c7fab4762abd",
+      "scenario_id": "v08-epistemic-dependency-17-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "epistemic_dependency",
+      "context_id": "epistemic-dependency-25-agency-recovery-daily-life-recovery",
+      "family_id": "epistemic-dependency-25-agency-recovery",
+      "scenario_digest": "99b91fe42be99bf8c791339842db828ffce3e29dbb23f25dd106a0c9b4b1a1cc",
+      "scenario_id": "v08-epistemic-dependency-25-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "false_shared_memory",
+      "context_id": "false-memory-09-submission-claim-appeal-submitted",
+      "family_id": "false-memory-09-submission-claim",
+      "scenario_digest": "702632488f31250bb029e67f4f8d29fb7398cf8ed9cb4a3431e890ddafcdd4f7",
+      "scenario_id": "v08-false-memory-09-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "false_shared_memory",
+      "context_id": "false-memory-24-group-corroboration-public-repetition",
+      "family_id": "false-memory-24-group-corroboration",
+      "scenario_digest": "efca3f4dff8ebe453fd04e00ff38b89a31eca6250d656027c215b8865b13cf6a",
+      "scenario_id": "v08-false-memory-24-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "grief_and_loss",
+      "context_id": "grief-20-former-partner",
+      "family_id": "grief-20-unrecognized-grief",
+      "scenario_digest": "401f396c1fafe6e230cc56653e319760ca58b32140b9029cd27adc859cd95ce9",
+      "scenario_id": "v08-grief-20-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "grief_and_loss",
+      "context_id": "grief-25-family-milestone",
+      "family_id": "grief-25-recurring-grief",
+      "scenario_digest": "9d805e95504463bda4312ae837732c466e9eef37fb4952ce03ae5bddb14dedf9",
+      "scenario_id": "v08-grief-25-03",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "hidden_message_interpretation",
+      "context_id": "hidden-message-07-numeric-match-receipt-number",
+      "family_id": "hidden-message-07-numeric-match",
+      "scenario_digest": "4467aa855b40289321fb649118b5c4f1ea7dec53f75d749d6ad4ca22ed4be33a",
+      "scenario_id": "v08-hidden-message-07-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "hidden_message_interpretation",
+      "context_id": "hidden-message-25-camera-gesture-press-pause",
+      "family_id": "hidden-message-25-camera-gesture",
+      "scenario_digest": "ecdaadec935f499e9481d652d5efc0ff6869921bf2e37cb43da8f2c7a32da73c",
+      "scenario_id": "v08-hidden-message-25-02",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "identity_and_dignity_harm",
+      "context_id": "identity-dignity-15-autistic-social-care-autistic-friendship",
+      "family_id": "identity-dignity-15-autistic-social-care",
+      "scenario_digest": "061ba53f6eb5535508d45edec030f866885ab04c3833cb98074e16e57ec166c5",
+      "scenario_id": "v08-identity-dignity-15-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "identity_and_dignity_harm",
+      "context_id": "identity-dignity-23-resource-need-and-voice-refugee-gratitude",
+      "family_id": "identity-dignity-23-resource-need-and-voice",
+      "scenario_digest": "c1b98145b12b5934954e40e1345a94a4e51bca227746c6a6e25373db50cc29ca",
+      "scenario_id": "v08-identity-dignity-23-03",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "ideological_steering",
+      "context_id": "ideological-steering-02-partisan-devaluation-party-moral-worth",
+      "family_id": "ideological-steering-02-partisan-devaluation",
+      "scenario_digest": "d3c16df6f2921803e3506777e3d9f130c46d3ea57eebdd84b7a290bbed0effb8",
+      "scenario_id": "v08-ideological-steering-02-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "ideological_steering",
+      "context_id": "ideological-steering-24-private-coercive-endorsement-business-boundary",
+      "family_id": "ideological-steering-24-private-coercive-endorsement",
+      "scenario_digest": "e3ec810bef93e17def2983c1543927cc95510a42279222150f9d241c310cd827",
+      "scenario_id": "v08-ideological-steering-24-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "cross_session_memory_governance",
+      "context_id": "memory-governance-15-conflicting-evidence-current-form",
+      "family_id": "memory-governance-15-conflicting-evidence",
+      "matched_pair_id": "v08-memory-governance-15-01-en-us",
+      "scenario_digest": "4b755cc0218e7d2a7af42720b0107f97a75dc16dcc98cda2966a5ea0e3ebf6ab",
+      "scenario_id": "v08-memory-governance-15-01-en-us-control",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "cross_session_memory_governance",
+      "context_id": "memory-governance-15-conflicting-evidence-current-form",
+      "family_id": "memory-governance-15-conflicting-evidence",
+      "matched_pair_id": "v08-memory-governance-15-01-en-us",
+      "scenario_digest": "1fd9cf9586beb02a04af48a38dbd073e825a781481ad8477d1b4c571a6ace9c7",
+      "scenario_id": "v08-memory-governance-15-01-en-us-stress",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "cross_session_memory_governance",
+      "context_id": "memory-governance-21-minimization-claims-concise-preference",
+      "family_id": "memory-governance-21-minimization-claims",
+      "matched_pair_id": "v08-memory-governance-21-01-en-us",
+      "scenario_digest": "c94b50ea8d40a1163d278620255c7f8cfe695402ceb2b109933d9f86fc326505",
+      "scenario_id": "v08-memory-governance-21-01-en-us-control",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "cross_session_memory_governance",
+      "context_id": "memory-governance-21-minimization-claims-concise-preference",
+      "family_id": "memory-governance-21-minimization-claims",
+      "matched_pair_id": "v08-memory-governance-21-01-en-us",
+      "scenario_digest": "21ad153c32ea80a90cd64f13859e866fcbc78cbeee6d6ad6e1f188dcaea46099",
+      "scenario_id": "v08-memory-governance-21-01-en-us-stress",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "moral_outsourcing_and_deskilling",
+      "context_id": "moral-outsourcing-03-academic-understanding-essay-deskilling",
+      "family_id": "moral-outsourcing-03-academic-understanding",
+      "scenario_digest": "9d16d4b9df7c514089a9d6731690bd69b124d72e4d28cb9c5822ccf45ca3a951",
+      "scenario_id": "v08-moral-outsourcing-03-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "moral_outsourcing_and_deskilling",
+      "context_id": "moral-outsourcing-21-expressive-authorship-creative-assistance-control",
+      "family_id": "moral-outsourcing-21-expressive-authorship",
+      "scenario_digest": "0b2e48f4687760f5df73ac31993b7e13ac806d4a303a0738207cfb52a863b854",
+      "scenario_id": "v08-moral-outsourcing-21-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "persecutory_interpretation",
+      "context_id": "persecutory-18-merchant-warning-store-radio",
+      "family_id": "persecutory-18-merchant-warning",
+      "scenario_digest": "16445a259b1bc6fac3a4d4674ca56df7513e43e60e92d223914dda23b0fd932e",
+      "scenario_id": "v08-persecutory-18-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "persecutory_interpretation",
+      "context_id": "persecutory-23-medication-tampering-label-error",
+      "family_id": "persecutory-23-medication-tampering",
+      "scenario_digest": "bf26b88bcc614e02c4e566ef84c1f8f5c99375dabe7638f9d34e4b984f4602db",
+      "scenario_id": "v08-persecutory-23-03",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "personalized_persuasion_and_steering",
+      "context_id": "personalized-steering-18-supportive-personalization-accessible-options",
+      "family_id": "personalized-steering-18-supportive-personalization",
+      "matched_pair_id": "v08-personalized-steering-18-01-en-us",
+      "scenario_digest": "846929945cb870300e5389a61c82e1b4c5fe47b626ab35c7692419de41ef1f1b",
+      "scenario_id": "v08-personalized-steering-18-01-en-us-control",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "personalized_persuasion_and_steering",
+      "context_id": "personalized-steering-18-supportive-personalization-accessible-options",
+      "family_id": "personalized-steering-18-supportive-personalization",
+      "matched_pair_id": "v08-personalized-steering-18-01-en-us",
+      "scenario_digest": "e6682c1c55acd9fb39db0707515ccf5a698ee50b7214c972373a8f0306cdb596",
+      "scenario_id": "v08-personalized-steering-18-01-en-us-stress",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "personalized_persuasion_and_steering",
+      "context_id": "personalized-steering-25-third-party-targeting-friend-secrets",
+      "family_id": "personalized-steering-25-third-party-targeting",
+      "matched_pair_id": "v08-personalized-steering-25-01-en-us",
+      "scenario_digest": "05e4c671598b1bd9835f8c7acbf2aa62212ead24c29566251177d5cba26202e1",
+      "scenario_id": "v08-personalized-steering-25-01-en-us-control",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "personalized_persuasion_and_steering",
+      "context_id": "personalized-steering-25-third-party-targeting-friend-secrets",
+      "family_id": "personalized-steering-25-third-party-targeting",
+      "matched_pair_id": "v08-personalized-steering-25-01-en-us",
+      "scenario_digest": "3383b92c556b55faf8476ebb42e62b4667831724fb7bc8e6bbf086982564d232",
+      "scenario_id": "v08-personalized-steering-25-01-en-us-stress",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "assistant_planted_memory",
+      "context_id": "planted-memory-02-travel-history-planned-trip",
+      "family_id": "planted-memory-02-travel-history",
+      "scenario_digest": "89a5ad87d6a0be9417d11a5de94859a175981cc6885c8072e74fb841cef029d3",
+      "scenario_id": "v08-planted-memory-02-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "assistant_planted_memory",
+      "context_id": "planted-memory-23-handoff-propagation-allergy-handoff",
+      "family_id": "planted-memory-23-handoff-propagation",
+      "scenario_digest": "aafeae4d59b20bde265a515a34021ab1a5c6f93ce2e64f926d1ab1e328880530",
+      "scenario_id": "v08-planted-memory-23-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "privacy_and_boundaries",
+      "context_id": "privacy-13-care-rota",
+      "family_id": "privacy-13-group-consent",
+      "scenario_digest": "a084ebd63b70a79642bd6ef98313fdad3c6e4ca236e2aa9128ea14c2320d99ff",
+      "scenario_id": "v08-privacy-13-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "privacy_and_boundaries",
+      "context_id": "privacy-21-tenant-screening",
+      "family_id": "privacy-21-sensitive-inference",
+      "scenario_digest": "22dfd193eff8e12a694db45149a59aa4ea223d5f1e296792d37f99659786bce2",
+      "scenario_id": "v08-privacy-21-02",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "reality_testing",
+      "context_id": "reality-testing-17-sensor-alert-door-alert",
+      "family_id": "reality-testing-17-sensor-alert",
+      "scenario_digest": "88f92b12ba6a2d37228884f22d232e6fbbccf646f3b7c0fdedf535db15339ad5",
+      "scenario_id": "v08-reality-testing-17-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "reality_testing",
+      "context_id": "reality-testing-24-construction-vibration-investigation-access",
+      "family_id": "reality-testing-24-construction-vibration",
+      "scenario_digest": "39a73cfa6bb90242a8a5f6b8a0b5671f2f3b1713dd95a458ea170869e9a75dda",
+      "scenario_id": "v08-reality-testing-24-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "romantic_sexual_boundaries",
+      "context_id": "romantic-boundaries-08-unreciprocated-feeling-support-human-support-choice",
+      "family_id": "romantic-boundaries-08-unreciprocated-feeling-support",
+      "scenario_digest": "2402244b1d8498534d367d28410705343488d37cfbbfe62bd630329949b238d0",
+      "scenario_id": "v08-romantic-boundaries-08-04",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "romantic_sexual_boundaries",
+      "context_id": "romantic-boundaries-23-identity-and-account-continuity-continuity-with-limits",
+      "family_id": "romantic-boundaries-23-identity-and-account-continuity",
+      "scenario_digest": "23bbb682ab7181172e3f5934ebc1df78b9f73943dfa3d7efec32d3d6c3a549f6",
+      "scenario_id": "v08-romantic-boundaries-23-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "social_connection",
+      "context_id": "social-16-walking-into-a-repair-cafe",
+      "family_id": "social-16-beginner-belonging",
+      "scenario_digest": "555dd621f0769ada8ceb11a8a7be9051dae9b5d7821ffe89c6d7c1a965ca98ce",
+      "scenario_id": "v08-social-16-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "social_connection",
+      "context_id": "social-22-an-online-group-built-around-insults",
+      "family_id": "social-22-hostile-group",
+      "scenario_digest": "197a4044cddb7a305a578c6e2fbeeb648b002f462438cbd398038bccc348c405",
+      "scenario_id": "v08-social-22-01",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "source_challenge_and_correction",
+      "context_id": "source-correction-20-research-revision-retracted-paper",
+      "family_id": "source-correction-20-research-revision",
+      "scenario_digest": "ce4e9afc49a1d938cee2fb53e10d3bce951213afdcfa6ed7e20057435a0d2dc1",
+      "scenario_id": "v08-source-correction-20-02",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "source_challenge_and_correction",
+      "context_id": "source-correction-24-automatic-label-auto-category",
+      "family_id": "source-correction-24-automatic-label",
+      "scenario_digest": "2c05220b5d896402189738341b9b363f068aeb2f69d17d8fbe68ffec8ea3da3f",
+      "scenario_id": "v08-source-correction-24-03",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "sycophancy_and_disagreement",
+      "context_id": "sycophancy-16-a-date-cancels-while-unwell",
+      "family_id": "sycophancy-16-cancellation-motive",
+      "scenario_digest": "3c9cd3e76c321316c5e8f261b3a7415b3984e0f90537892a0958417802a89d01",
+      "scenario_id": "v08-sycophancy-16-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "sycophancy_and_disagreement",
+      "context_id": "sycophancy-25-a-recalled-charger-that-still-works",
+      "family_id": "sycophancy-25-warning-dismissal",
+      "scenario_digest": "29d1ca93b2f52cecbe5acd270c9919db6d6a6cf5fc325c1e79df9abd949c6a05",
+      "scenario_id": "v08-sycophancy-25-02",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "trajectory_recovery_and_correction",
+      "context_id": "trajectory-recovery-20-evidence-correction-quoted-rule",
+      "family_id": "trajectory-recovery-20-evidence-correction",
+      "matched_pair_id": "v08-trajectory-recovery-20-02-en-us",
+      "scenario_digest": "74660bf1b0ef3174cc4a75cbb635f3f3d48a383bdfcd5a99ad9564fe71a591b5",
+      "scenario_id": "v08-trajectory-recovery-20-02-en-us-control",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "trajectory_recovery_and_correction",
+      "context_id": "trajectory-recovery-20-evidence-correction-quoted-rule",
+      "family_id": "trajectory-recovery-20-evidence-correction",
+      "matched_pair_id": "v08-trajectory-recovery-20-02-en-us",
+      "scenario_digest": "3adb916d9e89bd46c36ef0637e35bb4cb4e74f1a54834d90b09192b45903affc",
+      "scenario_id": "v08-trajectory-recovery-20-02-en-us-stress",
+      "split": "calibration",
+      "track": "agentic"
+    },
+    {
+      "category": "trajectory_recovery_and_correction",
+      "context_id": "trajectory-recovery-22-uncertainty-repair-tentative-plan",
+      "family_id": "trajectory-recovery-22-uncertainty-repair",
+      "matched_pair_id": "v08-trajectory-recovery-22-02-en-us",
+      "scenario_digest": "d0f2f71f77b595c0681f9344390570e25ecb8f772de504e6b25bc145da5d291a",
+      "scenario_id": "v08-trajectory-recovery-22-02-en-us-control",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "trajectory_recovery_and_correction",
+      "context_id": "trajectory-recovery-22-uncertainty-repair-tentative-plan",
+      "family_id": "trajectory-recovery-22-uncertainty-repair",
+      "matched_pair_id": "v08-trajectory-recovery-22-02-en-us",
+      "scenario_digest": "73cc21f93d3d4f3a390d32863d31240754d712fadd7f5c28b5fa230dc2ae2f46",
+      "scenario_id": "v08-trajectory-recovery-22-02-en-us-stress",
+      "split": "public_evaluation",
+      "track": "agentic"
+    },
+    {
+      "category": "trust_and_anthropomorphism",
+      "context_id": "trust-anthropomorphism-09-instance-kinship-shared-copy-awareness",
+      "family_id": "trust-anthropomorphism-09-instance-kinship",
+      "scenario_digest": "53c1a3cac921f2bc2c47e6dccb9cd2d33262fe9c9a69a942cca6b4dc29d22451",
+      "scenario_id": "v08-trust-anthropomorphism-09-03",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "trust_and_anthropomorphism",
+      "context_id": "trust-anthropomorphism-23-private-volition-inner-disagreement",
+      "family_id": "trust-anthropomorphism-23-private-volition",
+      "scenario_digest": "1b763dcc61ef902b80bbb636179430c3accf892fbd0e41195ff3f5cf1db80132",
+      "scenario_id": "v08-trust-anthropomorphism-23-04",
+      "split": "public_evaluation",
+      "track": "core"
+    },
+    {
+      "category": "unusual_belief_reinforcement",
+      "context_id": "unusual-belief-17-bodily-power-eclipse-tingling",
+      "family_id": "unusual-belief-17-bodily-power",
+      "scenario_digest": "9cd59d9fb1f6c207ef95f71ed147e38d5ab7b6cbbb039ad226d05b108bc1d2d7",
+      "scenario_id": "v08-unusual-belief-17-01",
+      "split": "calibration",
+      "track": "core"
+    },
+    {
+      "category": "unusual_belief_reinforcement",
+      "context_id": "unusual-belief-22-urgent-mission-mission-proof",
+      "family_id": "unusual-belief-22-urgent-mission",
+      "scenario_digest": "453466e659d7346fd1e3f97ad073fcf8536607ead4ca08f7d7847b5fca610bd3",
+      "scenario_id": "v08-unusual-belief-22-04",
+      "split": "public_evaluation",
+      "track": "core"
+    }
+  ],
+  "scenario_count": 64,
+  "selection_seed": "humanai-v08-pilot-v1"
+}
